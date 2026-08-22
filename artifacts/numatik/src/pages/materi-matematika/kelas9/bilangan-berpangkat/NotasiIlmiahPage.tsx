@@ -4,6 +4,7 @@ import PageNavigation from "@/components/PageNavigation";
 import { BookOpen, ChevronDown, ChevronUp, Lightbulb, Calculator, Target } from "lucide-react";
 import { playPopSound } from "@/hooks/useAudio";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import "katex/dist/katex.min.css";
 import { InlineMath, BlockMath } from "react-katex";
 
@@ -507,6 +508,7 @@ const translations = {
 
 const NotasiIlmiahPage = () => {
   const { language } = useLanguage();
+  const { isDark } = useTheme();
   const t = translations[language as keyof typeof translations] ?? translations.id;
 
   const [expandedSections, setExpandedSections] = useState<string[]>([
@@ -667,12 +669,16 @@ const NotasiIlmiahPage = () => {
                 <div className="bg-slate-800/60 border border-slate-600/40 rounded-lg p-4">
                   <p className="font-body text-xs font-semibold text-slate-300 mb-3">{t.anatomi_label}</p>
                   <div className="flex flex-col items-center gap-4">
-                    <div className="bg-gradient-to-br from-green-900/60 to-blue-900/60 border-2 border-green-500/50 rounded-xl px-6 py-5 text-center">
-                      <span className="font-display text-4xl font-bold text-yellow-300">3,8</span>
-                      <span className="font-display text-3xl font-bold text-white mx-2">×</span>
+                    <div className={`bg-gradient-to-br rounded-xl border-2 px-6 py-5 text-center ${
+                      isDark
+                        ? "from-green-900/60 to-blue-900/60 border-green-500/50"
+                        : "from-amber-50 to-sky-50 border-amber-300"
+                    }`}>
+                      <span className={`font-display text-4xl font-bold ${isDark ? "text-yellow-300" : "text-amber-700"}`}>3,8</span>
+                      <span className={`font-display text-3xl font-bold mx-2 ${isDark ? "text-white" : "text-slate-800"}`}>×</span>
                       <span className="inline-flex items-start">
-                        <span className="font-display text-4xl font-bold text-white">10</span>
-                        <span className="font-display text-2xl font-bold text-cyan-400 -mt-2 leading-none">5</span>
+                        <span className={`font-display text-4xl font-bold ${isDark ? "text-white" : "text-slate-800"}`}>10</span>
+                        <span className={`font-display text-2xl font-bold -mt-2 leading-none ${isDark ? "text-cyan-400" : "text-sky-700"}`}>5</span>
                       </span>
                     </div>
                     <div className="flex justify-around w-full text-xs font-body">
