@@ -40,22 +40,6 @@ const latihanDasar: LatihanSoal[] = [
     pembahasan: "Konsep & Trik: tambahkan semua sisi luar bangun. Sisi miring (jika ada) dihitung dengan Pythagoras.\n\nLangkah: identifikasi setiap sisi luar dari gambar. Bila ada sisi miring, hitung $c=\\sqrt{a^2+b^2}$. Jumlahkan total semua sisi $=94$ cm.\n\nTips: tandai setiap sisi yang sudah dihitung dengan tanda centang agar tidak dobel.\n\nKesimpulan: keliling bangun adalah 94 cm.\n\nJawaban: D",
   },
   {
-    no: 3, type: "pg",
-    soal: "Perhatikan gambar.\n\nLuas gambar di samping adalah ...",
-    gambar: <SoalImage src="https://drive.google.com/thumbnail?id=1ibLO_IUNkOe4yYggPYRkZqP8-sHE_KbP&sz=w400" alt="Soal No. 3 - Luas gambar" />,
-    options: ["A. 294 $cm^2$", "B. 290 $cm^2$", "C. 258 $cm^2$", "D. 250 $cm^2$"],
-    jawaban: "A",
-    pembahasan: "Konsep & Trik: bagi bangun gabungan menjadi persegi panjang/segitiga sederhana, lalu jumlahkan luas masing-masing.\n\nLangkah: pisahkan menjadi beberapa bagian standar. Hitung luas tiap bagian: $L_{persegi\\ panjang}=p\\cdot l$ dan $L_{segitiga}=\\frac{a\\cdot t}{2}$. Total $=294$ cm².\n\nTips: kalau bisa, gunakan strategi \"kurang\" (luas kotak luar dikurangi luas yang kosong) jika lebih cepat.\n\nKesimpulan: luas bangun pada gambar adalah 294 cm².\n\nJawaban: A",
-  },
-  {
-    no: 4, type: "pg",
-    soal: "Perhatikan gambar berikut.\n\nLuas huruf kapital di samping adalah ...",
-    gambar: <SoalImage src="https://drive.google.com/thumbnail?id=1IfrX0BksGxqHmAG0CIoFrGUPmyvsZOqh&sz=w400" alt="Soal No. 4 - Luas huruf kapital" />,
-    options: ["A. 425 $cm^2$", "B. 450 $cm^2$", "C. 500 $cm^2$", "D. 525 $cm^2$"],
-    jawaban: "B",
-    pembahasan: "Konsep & Trik: huruf kapital (E, H, T, dll.) terdiri dari beberapa persegi panjang. Pisahkan, hitung luas tiap bagian, lalu jumlahkan.\n\nLangkah: pisahkan huruf menjadi 2-3 persegi panjang. Hitung tiap luas $=p\\times l$ dan jumlahkan menjadi 450 cm².\n\nTips: hati-hati pada bagian yang tumpang tindih — kurangi sekali agar tidak dihitung dua kali.\n\nKesimpulan: luas huruf kapital tersebut adalah 450 cm².\n\nJawaban: B",
-  },
-  {
     no: 5, type: "pg",
     soal: "Perhatikan gambar.\n\nDiketahui AB = 20 cm, AF = 13 cm dan BD = 10 cm. Luas bangun di samping adalah ...",
     gambar: <SoalImage src="https://drive.google.com/thumbnail?id=13eTUR0UwxWFDKDERb3eqBdP1X4Rdc1A7&sz=w400" alt="Soal No. 5 - Luas bangun" />,

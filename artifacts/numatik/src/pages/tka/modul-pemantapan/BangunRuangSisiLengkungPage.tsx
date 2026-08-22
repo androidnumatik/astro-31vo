@@ -64,7 +64,9 @@ const BangunRuangSisiLengkungPage = () => (
     title="BANGUN RUANG SISI LENGKUNG"
   materiSections={materiSections}
   contohSoal={getTkaContohSoal("bangun-ruang-sisi-lengkung")}
-  latihanDasar={latihanDasarOlimpiade.map((soal) => ({ ...soal, pembahasan: brslDasarPembahasan[soal.no] }))}
+  latihanDasar={latihanDasarOlimpiade
+    .filter((soal) => !new Set([1, 2, 4, 9]).has(soal.no))
+    .map((soal) => ({ ...soal, pembahasan: brslDasarPembahasan[soal.no] }))}
     gambarMap={Object.fromEntries(Object.entries(brslDasarImages).map(([no, src]) => [Number(no), <img src={src} alt={`Gambar soal ${no}`} className="mx-auto w-full max-w-sm rounded-lg border border-border/40 bg-background p-2" />]))}
   />
 );

@@ -594,7 +594,7 @@ const latihanDasarTkaLama: LatihanSoal[] = [
   },
 ];
 
-const nomorPythagorasDihapus = new Set([1, 2, 8, 9, 13, 15, 17, 18, 21, 24, 25, 33, 34]);
+const nomorPythagorasDihapus = new Set([1, 2, 6, 8, 9, 10, 13, 15, 17, 18, 19, 20, 21, 24, 25, 33, 34]);
 const latihanDasarPythagoras = latihanDasarOlimpiade
   .filter((soal) => !nomorPythagorasDihapus.has(soal.no))
   .map((soal, index) => ({

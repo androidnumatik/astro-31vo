@@ -885,13 +885,6 @@ const latihanDasar: LatihanSoal[] = [
     pembahasan: "Konsep: dua sudut berpelurus berjumlah $180°$; susun persamaan linear dari ekspresi sudut yang diberikan.\n\n1. $\\angle ABD$ dan $\\angle CBD$ saling berpelurus: $(3x-25)° + (2x+5)° = 180°$\n2. $5x - 20 = 180 \\Rightarrow 5x = 200 \\Rightarrow x = 40$\n3. $\\angle CBD = (2 \\times 40 + 5)° = 85°$\n4. Pelurus $\\angle CBD = 180° - 85° = 95°$\n\nRumus: sudut berpelurus $\\alpha + \\beta = 180°$\n\nJawaban: C",
   },
   {
-    no: 6, type: "pg",
-    soal: "Pelurus suatu sudut besarnya 3 kali sudut tersebut. Besar sudut tersebut adalah…",
-    options: ["A. $15°$", "B. $30°$", "C. $45°$", "D. $60°$"],
-    jawaban: "C",
-    pembahasan: "Konsep: pelurus (suplemen) dua sudut berjumlah $180°$; susun persamaan dari perbandingan yang diketahui.\n\n1. Misalkan sudut tersebut $=x°$, maka pelurusnya $=(180-x)°$.\n2. Diketahui pelurus $=3\\times$ sudut: $(180-x)=3x$\n3. $180=4x \\Rightarrow x=45°$\n\nRumus: pelurus $=180°-x$\n\nJawaban: C",
-  },
-  {
     no: 7, type: "pg",
     soal: "Perhatikan gambar berikut.\n\nDari gambar di atas besar $\\angle QPR$ adalah ..",
     gambar: <Soal7SVG />,
@@ -937,14 +930,6 @@ const latihanDasar: LatihanSoal[] = [
     pembahasan: "Konsep: gunakan sudut berpelurus untuk mencari $x$, lalu hitung penyiku sudut yang diperoleh.\n\n1. $\\angle A$ dan $\\angle B$ berpelurus: $(2x+3)°+(3x-8)°=180°$\n2. $5x-5=180 \\Rightarrow x=37$\n3. $\\angle A=(2\\times37+3)°=77°$\n4. Penyiku $\\angle A = 90°-77°=13°$\n\nRumus: berpelurus $\\alpha+\\beta=180°$; penyiku $90°-\\alpha$\n\nJawaban: A",
   },
   {
-    no: 13, type: "pg",
-    soal: "Perhatikan gambar berikut ini!\n\nJika $\\angle\\alpha = 3x° - y° - 15°$, $\\angle\\beta = 2y°$, $\\angle\\delta = y° - x° + 85°$, $\\angle\\theta = 2x° + y° - 20°$. Maka nilai dari $x + y = \\cdots$",
-    gambar: <Soal13SVG />,
-    options: ["A. 85", "B. 80", "C. 55", "D. 30"],
-    jawaban: "A",
-    pembahasan: "Konsep: susun sistem dua persamaan linear dari pasangan sudut berpelurus pada gambar, lalu selesaikan untuk $x$ dan $y$.\n\n1. Dari $\\alpha+\\beta=180°$: $(3x-y-15)+2y=180 \\Rightarrow 3x+y=195$ … (1)\n2. Dari $\\delta+\\theta=180°$: $(y-x+85)+(2x+y-20)=180 \\Rightarrow x+2y=115$ … (2)\n3. Dari (1): $y=195-3x$. Substitusi ke (2): $x+2(195-3x)=115 \\Rightarrow -5x=-275 \\Rightarrow x=55$\n4. $y=195-3(55)=30$. Jadi $x+y=55+30=85$.\n\nRumus: sudut berpelurus $\\alpha+\\beta=180°$\n\nJawaban: A",
-  },
-  {
     no: 14, type: "pg",
     soal: "Perhatikan gambar berikut:\n\nJika besar $\\angle a = 95°$ dan $\\angle b = 70°$ maka selisih besar sudut x dan y adalah...",
     gambar: <Soal14SVG />,
@@ -972,14 +957,6 @@ const latihanDasar: LatihanSoal[] = [
     ],
     jawaban: "A",
     pembahasan: "Konsep: sudut berpelurus berjumlah $180°$; sudut bertolak belakang besarnya sama.\n\n1. $p$ dan $q$ berpelurus: $p=180°-q=180°-45°=135°$\n2. $r$ bertolak belakang dengan $p$: $r=p=135°$\n3. $s$ bertolak belakang dengan $q$: $s=q=45°$\n\nRumus: berpelurus $p+q=180°$; bertolak belakang: sama besar\n\nJawaban: A",
-  },
-  {
-    no: 17, type: "pg",
-    soal: "Pada kubus ABCD.EFGH besar sudut BGE adalah...",
-    gambar: <Soal17SVG />,
-    options: ["A. $30°$", "B. $60°$", "C. $45°$", "D. $90°$"],
-    jawaban: "B",
-    pembahasan: "Konsep: diagonal sisi kubus sama panjang ($a\\sqrt{2}$); segitiga dengan ketiga sisi sama panjang adalah segitiga sama sisi dengan setiap sudut $60°$.\n\n1. BG, GE, dan EB adalah diagonal-diagonal sisi kubus dengan panjang $a\\sqrt{2}$ (sama).\n2. Maka $\\triangle BGE$ adalah segitiga sama sisi.\n3. Setiap sudut segitiga sama sisi $=60°$, sehingga $\\angle BGE=60°$.\n\nRumus: diagonal sisi kubus $=a\\sqrt{2}$; sudut segitiga sama sisi $=60°$\n\nJawaban: B",
   },
   {
     no: 18, type: "pg",

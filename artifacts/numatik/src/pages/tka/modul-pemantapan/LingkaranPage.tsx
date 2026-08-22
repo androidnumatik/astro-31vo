@@ -56,7 +56,9 @@ const LingkaranPage = () => (
     title="LINGKARAN"
     materiSections={materiSections}
     contohSoal={getTkaContohSoal("lingkaran")}
-  latihanDasar={latihanOlimpiade.map((soal) => ({ ...soal, pembahasan: lingkaranOlimpiadePembahasan[soal.no] ? JSON.stringify(lingkaranOlimpiadePembahasan[soal.no]) : "" }))}
+  latihanDasar={latihanOlimpiade
+    .filter((soal) => !new Set([6, 12, 13, 29, 30, 31, 32, 33, 34, 35, 36]).has(soal.no))
+    .map((soal) => ({ ...soal, pembahasan: lingkaranOlimpiadePembahasan[soal.no] ? JSON.stringify(lingkaranOlimpiadePembahasan[soal.no]) : "" }))}
   gambarMap={Object.fromEntries(Object.entries(lingkaranImages).map(([no, src]) => [Number(no), <img src={src} alt={`Gambar soal ${no}`} className="mx-auto w-full max-w-sm rounded-lg border border-border/40 bg-background p-2" />]))}
   />
 );
