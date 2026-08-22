@@ -368,7 +368,7 @@ const formatPembahasan = (soal: LatihanSoal) => {
       : lowerText.includes("perbandingan berbalik")
         ? "Untuk perbandingan berbalik nilai, susun tabel V₁ | V₂ dengan baris a, b lalu c, d. Gunakan kali sejajar: ab = cd."
         : "Tentukan informasi yang diketahui, pilih hubungan besaran yang tepat, lalu hitung secara berurutan.";
-  return `Jawaban: ${answer}\n\nTips dan Trik: ${concept}\n\nStep by Step Penyelesaian:\n${soal.pembahasan ?? "Kerjakan dengan menggunakan informasi pada soal."}`;
+  return `Jawaban: ${answer}\n\nKonsep dan Trik: ${concept}\n\nStep by Step Penyelesaian:\n${soal.pembahasan ?? "Kerjakan dengan menggunakan informasi pada soal."}`;
 };
 
 const latihanPerbandingan = latihanDasar
