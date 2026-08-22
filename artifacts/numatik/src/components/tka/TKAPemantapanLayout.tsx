@@ -417,7 +417,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                 : { background: "rgba(16,185,129,0.08)", border: "1px solid rgba(16,185,129,0.22)" }}>
               <Lightbulb className="w-4 h-4 shrink-0 text-emerald-400" />
               <p className="font-body text-xs leading-relaxed" style={{ color: isWhite ? "#065f46" : "rgba(255,255,255,0.6)" }}>
-                Soal-soal berikut disertai <span className="font-semibold" style={{ color: isWhite ? "#059669" : "#6ee7b7" }}>pembahasan lengkap</span>. Coba kerjakan terlebih dahulu sebelum melihat solusinya.
+                Soal-soal berikut disertai <span className="font-semibold" style={{ color: isWhite ? "#059669" : "#6ee7b7" }}>pembahasan lengkap</span> yang selalu ditampilkan.
               </p>
             </div>
 
@@ -425,7 +425,6 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
               {contohSoal.map((soal, qi) => {
                 const type = soal.type ?? "pg";
                 const selected = selectedContohAnswers[soal.no];
-                const isRevealed = revealedAnswers.has(soal.no);
                 const bsArr = pgkbsContohAnswers[soal.no] ?? Array(soal.pernyataan?.length ?? 3).fill(null);
                 const typeBadge = TYPE_BADGE[type];
 
@@ -616,26 +615,8 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                       </div>
                     )}
 
-                    {/* ── Pembahasan ── */}
+                    {/* ── Pembahasan: selalu ditampilkan pada Contoh Soal ── */}
                     {soal.pembahasan && (
-                      <button
-                        type="button"
-                        onClick={() => setRevealedAnswers(prev => {
-                          const next = new Set(prev);
-                          next.has(soal.no) ? next.delete(soal.no) : next.add(soal.no);
-                          return next;
-                        })}
-                        className={`mx-4 mb-4 w-[calc(100%-2rem)] rounded-xl border px-4 py-3 text-left font-display text-xs font-bold transition-colors ${
-                          isLightTheme
-                            ? "border-amber-500 bg-amber-50 text-amber-700 hover:bg-amber-100"
-                            : "border-amber-400 bg-amber-500/15 text-amber-200 hover:bg-amber-500/25"
-                        }`}
-                        aria-expanded={isRevealed}
-                      >
-                        {isRevealed ? "Tutup Pembahasan" : "Lihat Pembahasan"}
-                      </button>
-                    )}
-                    {soal.pembahasan && isRevealed && (
                       <div className="mx-4 mb-4 space-y-2.5">
                         {(soal.jawaban || soal.jawabanBS) && (
                           <div className={`rounded-xl px-4 py-3 flex items-center gap-3 border ${isLightTheme ? "bg-green-50 border-green-300" : "bg-gradient-to-r from-green-900/60 to-emerald-900/30 border-green-500/60"}`}>
