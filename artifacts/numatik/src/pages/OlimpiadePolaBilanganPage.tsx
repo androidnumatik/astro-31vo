@@ -22,7 +22,7 @@ const renderWithLatex = (text: string) => {
   });
 };
 
-const materiSection = {
+export const materiSection = {
   title: "MATERI - POLA BILANGAN",
   sections: [
     {
@@ -146,7 +146,7 @@ Jawab: 1280, 810`
   ]
 };
 
-const latihanDasar = [
+export const latihanDasar = [
   { no: 1, soal: "Diketahui barisan bilangan aritmetika sebagai berikut.\n$-8, -4, 0, 4, 8, 12, n, 20, 24$\nNilai n yang memenuhi adalah ....", options: ["A. 10", "B. 14", "C. 16", "D. 18"] },
   { no: 2, soal: "Tiga suku berikutnya dari 1, 3, 5, 8, 9, 13, …, …., … adalah ....", options: ["A. 13, 18, 17", "B. 13, 17, 18", "C. 14, 17, 18", "D. 14, 18, 18"] },
   { no: 3, soal: "Suku ke-22 dari barisan 99, 93, 87, 81, … adalah ....", options: ["A. –27", "B. –21", "C. –15", "D. –9"] },
@@ -534,7 +534,7 @@ const Soal31SVG = () => {
   );
 };
 
-const soalSVGMap: Record<number, ReactNode> = {
+export const soalSVGMap: Record<number, ReactNode> = {
   27: <Soal27SVG />,
   28: <Soal28SVG />,
   29: <img src="https://drive.google.com/thumbnail?id=1f-EBr1I4CaOwcZbixjEMgb5NxepLfmoM&sz=w800" alt="Pola segitiga" className="my-2 max-w-xs w-full rounded" />,
