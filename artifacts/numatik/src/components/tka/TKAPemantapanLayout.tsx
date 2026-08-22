@@ -612,47 +612,58 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                       </div>
                     )}
 
-                    {/* ── Pembahasan — always visible ── */}
+                    {/* ── Pembahasan ── */}
                     {soal.pembahasan && (
-                      <div className="mx-4 mb-4 rounded-xl p-4"
-                        style={isLightTheme ? {
-                          background: "#ecfdf5",
-                          border: "1px solid #86efac",
-                        } : {
-                          background: "linear-gradient(135deg, rgba(16,185,129,0.08), rgba(5,150,105,0.05))",
-                          border: "1px solid rgba(16,185,129,0.2)",
-                        }}>
-                        <div className="flex items-center gap-2 mb-2">
-                          <Lightbulb className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                          <span className="font-display text-[10px] font-bold tracking-widest uppercase text-emerald-400/80">Pembahasan</span>
-                        </div>
-                        <div className="font-body text-xs leading-relaxed whitespace-pre-wrap"
-                          style={{ color: isLightTheme ? "#14532d" : "rgba(255,255,255,0.75)" }}>
-                          {soal.pembahasan.split('\n').map((line, i) => (
-                            <span key={i}>{i > 0 && <br />}{renderWithLatex(line)}</span>
-                          ))}
-                        </div>
+                      <button
+                        type="button"
+                        onClick={() => setRevealedAnswers(prev => {
+                          const next = new Set(prev);
+                          next.has(soal.no) ? next.delete(soal.no) : next.add(soal.no);
+                          return next;
+                        })}
+                        className={`mx-4 mb-4 w-[calc(100%-2rem)] rounded-xl border px-4 py-3 text-left font-display text-xs font-bold transition-colors ${
+                          isLightTheme
+                            ? "border-amber-500 bg-amber-50 text-amber-700 hover:bg-amber-100"
+                            : "border-amber-400 bg-amber-500/15 text-amber-200 hover:bg-amber-500/25"
+                        }`}
+                        aria-expanded={isRevealed}
+                      >
+                        {isRevealed ? "Tutup Pembahasan" : "Lihat Pembahasan"}
+                      </button>
+                    )}
+                    {soal.pembahasan && isRevealed && (
+                      <div className="mx-4 mb-4 space-y-2.5">
                         {(soal.jawaban || soal.jawabanBS) && (
-                          <div className="mt-2.5 flex items-center gap-2 flex-wrap">
-                            <span className="text-[10px] font-body" style={{ color: isLightTheme ? "#166534" : "rgba(255,255,255,0.4)" }}>Kunci jawaban:</span>
-                            {soal.jawaban && (
-                              <span className="font-display text-xs font-bold px-2.5 py-0.5 rounded-lg text-green-300"
-                                style={{ background: "rgba(34,197,94,0.15)", border: "1px solid rgba(34,197,94,0.3)" }}>
-                                {soal.jawaban}
-                              </span>
-                            )}
-                            {soal.jawabanBS?.map((ans, i) => (
-                              <span key={i} className="font-display text-xs font-bold px-2.5 py-0.5 rounded-lg"
-                                style={{
-                                  background: ans === "B" ? "rgba(34,197,94,0.15)" : "rgba(239,68,68,0.15)",
-                                  border: `1px solid ${ans === "B" ? "rgba(34,197,94,0.3)" : "rgba(239,68,68,0.3)"}`,
-                                  color: ans === "B" ? "#86efac" : "#fca5a5",
-                                }}>
-                                ({i + 1}) {ans}
-                              </span>
-                            ))}
+                          <div className={`rounded-xl px-4 py-3 flex items-center gap-3 border ${isLightTheme ? "bg-green-50 border-green-300" : "bg-gradient-to-r from-green-900/60 to-emerald-900/30 border-green-500/60"}`}>
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-base border ${isLightTheme ? "bg-green-100 border-green-300" : "bg-green-500/20 border-green-400/40"}`}>
+                              <CheckCircle2 className="w-4 h-4 text-green-400" />
+                            </div>
+                            <div>
+                              <p className={`text-[9px] font-bold uppercase tracking-widest mb-0.5 ${isLightTheme ? "text-green-600" : "text-green-400"}`}>Jawaban</p>
+                              <div className={`font-bold text-xs leading-snug ${isLightTheme ? "text-green-800" : "text-green-200"}`}>
+                                {soal.jawaban ? soal.jawaban : soal.jawabanBS?.map((ans, i) => <span key={i} className="mr-2">({i + 1}) {ans}</span>)}
+                              </div>
+                            </div>
                           </div>
                         )}
+                        <div className={`rounded-xl px-4 py-3 border ${isLightTheme ? "bg-violet-50 border-violet-300" : "bg-gradient-to-r from-violet-900/50 to-purple-900/25 border-violet-500/50"}`}>
+                          <p className={`text-[9px] font-bold uppercase tracking-widest mb-2 flex items-center gap-1.5 ${isLightTheme ? "text-violet-600" : "text-violet-300"}`}>
+                            <Lightbulb className="w-3.5 h-3.5" /> Konsep dan Trik
+                          </p>
+                          <p className={`text-xs leading-relaxed ${isLightTheme ? "text-violet-900" : "text-white/80"}`}>
+                            Gunakan jenis perbandingan yang sesuai: senilai jika kedua besaran bergerak searah, dan berbalik nilai jika satu besaran naik sementara yang lain turun.
+                          </p>
+                        </div>
+                        <div className={`rounded-xl px-4 py-3 border ${isLightTheme ? "bg-cyan-50 border-cyan-300" : "bg-gradient-to-r from-cyan-900/40 to-sky-900/20 border-cyan-500/40"}`}>
+                          <p className={`text-[9px] font-bold uppercase tracking-widest mb-2 flex items-center gap-1.5 ${isLightTheme ? "text-cyan-600" : "text-cyan-300"}`}>
+                            <PenLine className="w-3.5 h-3.5" /> Step by Step
+                          </p>
+                          <div className={`text-xs leading-relaxed whitespace-pre-wrap ${isLightTheme ? "text-cyan-900" : "text-white/80"}`}>
+                            {soal.pembahasan.split('\n').map((line, i) => (
+                              <span key={i}>{i > 0 && <br />}{renderWithLatex(line)}</span>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     )}
                   </div>
@@ -1008,8 +1019,8 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                       </div>
                     )}
 
-                    {/* ── Action row: manual reveal remains available for other modules ── */}
-                    {!autoRevealOnAnswer && <div className="px-5 pb-4 flex flex-col gap-2">
+                    {/* ── Action row: every latihan question with a pembahasan gets a visible toggle ── */}
+                    {soal.pembahasan && <div className="px-5 pb-4 flex flex-col gap-2">
                       <button
                         onClick={() => isRevealed ? handleClosePembahasan(soal.no) : handleReveal(soal.no)}
                         className="mt-1 w-full py-2 rounded-lg text-xs font-body font-semibold transition-all border cursor-pointer"

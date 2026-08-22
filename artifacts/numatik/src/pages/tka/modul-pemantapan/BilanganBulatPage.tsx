@@ -1976,6 +1976,18 @@ const BilanganBulatPage = () => {
               { text: "Total biaya kurang dari Rp260.000,00", benar: true }, { text: "Total biaya lebih dari Rp220.000,00", benar: true },
               { text: <span>Estimasi: <InlineMath math="12\times Rp20.000" /></span>, benar: true }, { text: "Nilainya mendekati Rp300.000,00", benar: false },
             ]} />
+            <PembahasanBtn n={31} />
+            {expandedPembahasan.has(31) && (
+              <div id="pembahasan-31" className="mt-3 space-y-2">
+                <PBJawaban>Pernyataan (1), (2), dan (3) benar</PBJawaban>
+                <PBKonsep><p>Gunakan estimasi dengan membulatkan harga per kilogram ke Rp20.000 dan massa 12,3 kg ke sekitar 12 kg.</p></PBKonsep>
+                <PBSteps>
+                  <S n={1}><p>Biaya sebenarnya: <InlineMath math="12{,}3\times19.750=Rp242.925" />.</p></S>
+                  <S n={2}><p>Nilai tersebut lebih dari Rp220.000 dan kurang dari Rp260.000.</p></S>
+                  <S n={3}><p>Estimasi sederhana: <InlineMath math="12\times Rp20.000=Rp240.000" />, sehingga mendekati Rp240.000, bukan Rp300.000.</p></S>
+                </PBSteps>
+              </div>
+            )}
           </Soal>
           <Soal n={32} tipe="MCMA">
             <p className={qText}>Diberikan tiga bilangan <InlineMath math="14^2-4^2" />, <InlineMath math="10^2+44" />, dan <InlineMath math="12\times9" />. Faktor persekutuan ketiganya adalah ....</p>
@@ -1983,6 +1995,18 @@ const BilanganBulatPage = () => {
               { text: <InlineMath math="2\times3" />, benar: true }, { text: <InlineMath math="2\times3^2" />, benar: true },
               { text: <InlineMath math="3^2" />, benar: true }, { text: <InlineMath math="2^2\times3" />, benar: true },
             ]} />
+            <PembahasanBtn n={32} />
+            {expandedPembahasan.has(32) && (
+              <div id="pembahasan-32" className="mt-3 space-y-2">
+                <PBJawaban>Semua pernyataan benar</PBJawaban>
+                <PBKonsep><p>Hitung ketiga bilangan terlebih dahulu, kemudian tentukan faktor persekutuan yang dimiliki semuanya.</p></PBKonsep>
+                <PBSteps>
+                  <S n={1}><p><InlineMath math="14^2-4^2=(14-4)(14+4)=10\times18=180" />.</p></S>
+                  <S n={2}><p><InlineMath math="10^2+44=144" /> dan <InlineMath math="12\times9=108" />.</p></S>
+                  <S n={3}><p>Ketiganya habis dibagi <InlineMath math="6" />, <InlineMath math="18" />, dan <InlineMath math="9" />; faktor <InlineMath math="2^2\times3=12" /> juga merupakan faktor persekutuan.</p></S>
+                </PBSteps>
+              </div>
+            )}
           </Soal>
           <Soal n={33} tipe="MCMA">
             <p className={qText}>Bayu selesai cek fisik pada menit ke-6. Dita dan Farhan mengantre berikutnya di Samsat dengan total layanan 20 menit per orang. Pernyataan yang pasti benar adalah ....</p>
@@ -1992,6 +2016,19 @@ const BilanganBulatPage = () => {
               { text: "Farhan mencetak STNK setelah Bayu mengambil plat.", benar: true },
               { text: "Total waktu kurang dari 60 menit.", benar: false },
             ]} />
+            <PembahasanBtn n={33} />
+            {expandedPembahasan.has(33) && (
+              <div id="pembahasan-33" className="mt-3 space-y-2">
+                <PBJawaban>Pernyataan (1), (2), dan (3) benar</PBJawaban>
+                <PBKonsep><p>Karena antrean berurutan dan setiap layanan memerlukan 20 menit, waktu selesai seseorang menentukan kapan orang berikutnya dapat melanjutkan proses.</p></PBKonsep>
+                <PBSteps>
+                  <S n={1}><p>Bayu selesai cek fisik pada menit ke-6, sehingga proses Bayu berlanjut sebelum Dita memulai cek fisik.</p></S>
+                  <S n={2}><p>Dita berada di antrean setelah Bayu, sedangkan Farhan setelah Dita. Maka Dita memulai pembayaran lebih dahulu daripada Farhan memulai pendaftaran.</p></S>
+                  <S n={3}><p>Farhan adalah peserta terakhir, sehingga pencetakan STNK Farhan berlangsung setelah Bayu mengambil plat.</p></S>
+                  <S n={4}><p>Total proses tidak kurang dari 60 menit karena terdapat tiga peserta dengan layanan 20 menit per orang.</p></S>
+                </PBSteps>
+              </div>
+            )}
           </Soal>
           <Soal n={34} tipe="MCMA">
             <p className={qText}>Harga alat tulis Rian: Rp5.000, Rp10.000, Rp7.000, Rp15.000, Rp20.000, dan Rp25.000. Setiap 5 barang gratis 1 barang termurah. Pernyataan yang benar adalah ....</p>
@@ -2006,6 +2043,22 @@ const BilanganBulatPage = () => {
               { text: "Biaya lebih dari Rp220.000,00", benar: true }, { text: "Biaya kurang dari Rp260.000,00", benar: true },
               { text: <span><InlineMath math="12\times Rp20.000" /> adalah estimasi yang masuk akal.</span>, benar: true }, { text: "Biaya mendekati Rp300.000,00", benar: false },
             ]} />
+            <PembahasanBtn n={35} />
+            {expandedPembahasan.has(35) && (
+              <div id="pembahasan-35" className="mt-3 space-y-2">
+                <PBJawaban>Pernyataan (1), (2), dan (3) benar</PBJawaban>
+                <PBKonsep>
+                  <p>Gunakan estimasi dengan membulatkan harga dan berat ke bilangan yang mudah dihitung.</p>
+                  <p>Harga sebenarnya tetap dapat digunakan untuk memeriksa apakah hasil estimasi masuk akal.</p>
+                </PBKonsep>
+                <PBSteps>
+                  <S n={1}><p>Biaya sebenarnya: <InlineMath math="12{,}3\times19.750=Rp242.925" />, sehingga lebih dari Rp220.000 dan kurang dari Rp260.000.</p></S>
+                  <S n={2}><p>Estimasi: bulatkan <InlineMath math="12{,}3" /> kg menjadi 12 kg dan Rp19.750 menjadi Rp20.000.</p></S>
+                  <S n={3}><div><BlockMath math="12\times Rp20.000=Rp240.000" /></div></S>
+                  <S n={4}><p>Rp240.000 mendekati biaya sebenarnya Rp242.925, bukan Rp300.000.</p></S>
+                </PBSteps>
+              </div>
+            )}
           </Soal>
 
         </div>}{/* end soal-soal */}
