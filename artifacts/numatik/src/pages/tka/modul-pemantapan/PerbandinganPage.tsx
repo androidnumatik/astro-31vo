@@ -447,7 +447,7 @@ const PerbandinganPage = () => (
     materiSections={materiSections}
     latihanDasar={latihanPerbandingan}
     contohSoal={contohSoal}
-    autoRevealOnAnswer
+    autoRevealOnAnswer={false}
   />
 );
 
