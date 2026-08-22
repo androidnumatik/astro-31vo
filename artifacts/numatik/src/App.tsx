@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import MenuPage from "./pages/MenuPage";
+import MenuPage from "@/pages/MenuPage";
 import { Analytics } from '@vercel/analytics/react';
 import { Capacitor } from '@capacitor/core';
 import { initGA, trackPageView } from '@/lib/analytics';
