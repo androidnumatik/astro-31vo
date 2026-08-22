@@ -138,7 +138,7 @@ const latihanDasar: LatihanSoal[] = [
   },
 ];
 
-const contohSoal: LatihanSoal[] = [
+const latihanTambahan: LatihanSoal[] = [
   {
     no: 101,
     type: "pgk",
@@ -342,8 +342,7 @@ const BilanganBerpangkatIrasionalPage = () => (
   <TKAPemantapanLayout
     title="BILANGAN BERPANGKAT DAN IRASIONAL"
     materiSections={materiSections}
-    contohSoal={contohSoal}
-    latihanDasar={latihanDasar}
+    latihanDasar={[...latihanDasar, ...latihanTambahan]}
   />
 );
 
