@@ -177,14 +177,39 @@ const latihanDasar: LatihanSoal[] = [
     jawaban: "B",
     pembahasan: "Sederhanakan bentuk $\\sqrt{a - 2\\sqrt{b}} = \\sqrt{c} - \\sqrt{d}$ dengan mencari $c + d = a$ dan $cd = b$.\n1. $\\sqrt{8-\\frac{1}{2}\\sqrt{15}} = \\sqrt{8-\\frac{\\sqrt{15}}{2}}$\n2. Ubah: $= \\sqrt{\\frac{16-\\sqrt{15}}{2}}$\n3. Cari bentuk $\\sqrt{p}-\\sqrt{q}$ dengan $p+q = \\frac{16}{2}$ dan $2\\sqrt{pq} = \\frac{\\sqrt{15}}{\\sqrt{2}}$...\n4. Berdasarkan kunci jawaban: B ($\\sqrt{\\frac{1}{3}}-\\sqrt{5}$ diambil nilai absolut)\nRumus: $\\sqrt{a-2\\sqrt{b}} = \\sqrt{p}-\\sqrt{q}$ dengan $p+q=a$, $pq=b$ (dan $p>q$)"
   },
-];
+  ];
 
-const BilanganIrasionalPage = () => (
-  <TKAPemantapanLayout
-    title="BILANGAN IRASIONAL"
-    materiSections={materiSections}
-    latihanDasar={latihanDasar}
-  />
-);
+  const contohSoal: LatihanSoal[] = [
+    {
+      no: 1,
+      soal: "Sederhanakan bentuk $\\sqrt{72}$.",
+      options: ["A. $6\\sqrt{2}$", "B. $8\\sqrt{2}$", "C. $9\\sqrt{2}$", "D. $12\\sqrt{2}$"],
+      jawaban: "A",
+      pembahasan: "$\\sqrt{72} = \\sqrt{36 \\times 2} = \\sqrt{36} \\times \\sqrt{2} = 6\\sqrt{2}$."
+    },
+    {
+      no: 2,
+      soal: "Rasionalkan penyebut dari $\\frac{5}{\\sqrt{3}}$.",
+      options: ["A. $\\frac{5\\sqrt{3}}{3}$", "B. $5\\sqrt{3}$", "C. $\\frac{\\sqrt{3}}{5}$", "D. $\\frac{3\\sqrt{5}}{5}$"],
+      jawaban: "A",
+      pembahasan: "$\\frac{5}{\\sqrt{3}} \\times \\frac{\\sqrt{3}}{\\sqrt{3}} = \\frac{5\\sqrt{3}}{3}$."
+    },
+    {
+      no: 3,
+      soal: "Tentukan nilai $2^{\\frac{3}{2}}$.",
+      options: ["A. $2$", "B. $2\\sqrt{2}$", "C. $4$", "D. $4\\sqrt{2}$"],
+      jawaban: "B",
+      pembahasan: "$2^{\\frac{3}{2}} = \\sqrt{2^3} = \\sqrt{8} = 2\\sqrt{2}$."
+    }
+  ];
+
+  const BilanganIrasionalPage = () => (
+    <TKAPemantapanLayout
+      title="BILANGAN IRASIONAL"
+      materiSections={materiSections}
+      latihanDasar={latihanDasar}
+      contohSoal={contohSoal}
+    />
+  );
 
 export default BilanganIrasionalPage;

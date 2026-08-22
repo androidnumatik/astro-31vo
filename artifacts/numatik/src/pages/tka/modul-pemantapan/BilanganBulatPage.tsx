@@ -185,7 +185,9 @@ const BilanganBulatPage = () => {
       tipe === "PGS"  ? "Pilihan Ganda" :
       tipe === "MCMA" ? "Multiple Choice – lebih dari 1 jawaban" :
                         "Pernyataan Benar / Salah";
-    const telaahOrder: Record<number, number> = { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12 };
+    const deletedTelaahNumbers = new Set([1, 4, 12]);
+    if (deletedTelaahNumbers.has(num)) return null;
+    const telaahOrder: Record<number, number> = { 2: 1, 3: 2, 5: 3, 6: 4, 7: 5, 8: 6, 9: 7, 10: 8, 11: 9 };
     return (
       <div style={{ order: telaahOrder[num] ?? 99 }} className={`rounded-xl p-5 ${
         isDark ? "bg-card/70 backdrop-blur border border-border" : "bg-white border border-gray-200 shadow-sm"
@@ -344,16 +346,24 @@ const BilanganBulatPage = () => {
   );
 
   // ── pembahasan toggle button ─────────────────────────────────────────
-  const PembahasanBtn = ({ n }: { n: number }) => (
-    <button
-      onClick={() => { playPopSound(); togglePembahasan(n); }}
-      className={`mt-3 w-full py-2 rounded-lg text-xs font-body font-semibold transition-all border ${
-        isDark ? "border-amber-500/40 text-amber-300 hover:bg-amber-500/10" : "border-amber-400 text-amber-600 hover:bg-amber-50 bg-white"
-      }`}
-    >
-      {expandedPembahasan.has(n) ? "▲ Tutup Pembahasan" : "▼ Lihat Pembahasan"}
-    </button>
-  );
+  const PembahasanBtn = ({ n }: { n: number }) => {
+    const isOpen = expandedPembahasan.has(n);
+    return (
+      <button
+        type="button"
+        aria-expanded={isOpen}
+        aria-controls={`pembahasan-${n}`}
+        onClick={() => { playPopSound(); togglePembahasan(n); }}
+        className={`mt-3 w-full py-2.5 px-3 rounded-lg text-xs font-body font-bold transition-all border-2 cursor-pointer ${
+          isDark
+            ? "border-amber-400 bg-amber-500/15 text-amber-200 hover:bg-amber-500/25"
+            : "border-amber-500 bg-amber-50 text-amber-700 hover:bg-amber-100"
+        }`}
+      >
+        {isOpen ? "Tutup Pembahasan" : "Lihat Pembahasan"}
+      </button>
+    );
+  };
 
   const qText = `font-body text-sm leading-relaxed mb-3 ${isDark ? "text-white/90" : "text-gray-800"}`;
   const hint  = `text-xs font-body font-semibold mb-2`;
@@ -1763,7 +1773,7 @@ const BilanganBulatPage = () => {
                 <PBSteps>
                   <S n={1}><p>(a) Y = −4 &lt; Z = 7 → Y lebih rendah → <span className={`font-bold ${isDark ? "text-green-300" : "text-green-700"}`}>BENAR ✓</span></p></S>
                   <S n={2}><p>(b) X − W = <InlineMath math="25 - 18 = 7°C \neq 6°C" /> → <span className={`font-bold ${isDark ? "text-red-300" : "text-red-600"}`}>SALAH ✗</span></p></S>
-                  <S n={3}><p>(c) Z(7) &lt; W(18) &lt; X(25) → W di antara Z dan X → <span className={`font-bold ${isDark ? "text-green-300" : "text-green-700"}`}>BENAR ✓</span></p></S>
+                  <S n={3}><p>(c) Z(7) &lt; W(18) &lt; X(25) �� W di antara Z dan X → <span className={`font-bold ${isDark ? "text-green-300" : "text-green-700"}`}>BENAR ✓</span></p></S>
                 </PBSteps>
               </div>
             )}

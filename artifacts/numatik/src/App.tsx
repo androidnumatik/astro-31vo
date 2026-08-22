@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
+import MenuPage from "./pages/MenuPage";
 import { Analytics } from '@vercel/analytics/react';
 import { Capacitor } from '@capacitor/core';
 import { initGA, trackPageView } from '@/lib/analytics';
@@ -17,7 +18,7 @@ import PageLoader from "@/components/PageLoader";
 
 // ── Lazy-loaded pages ──────────────────────────────────────────────────────
 const WelcomePage = lazy(() => import("./pages/WelcomePage"));
-  const MenuPage = lazy(() => import("./pages/MenuPage"));
+
   const UjiMandiriPage = lazy(() => import("./pages/UjiMandiriPage"));
 
 const LKPDPage = lazy(() => import("./pages/LKPDPage"));

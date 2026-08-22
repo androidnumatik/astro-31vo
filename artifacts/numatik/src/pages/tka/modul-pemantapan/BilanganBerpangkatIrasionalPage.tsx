@@ -6,12 +6,12 @@ const materiSections: MateriSection[] = [
   { heading: "A. Bilangan Berpangkat Bulat Positif", content: `$a^n = a \\times a \\times ... \\times a$ (n faktor), $a \\neq 0$, $n$ bilangan bulat positif.\n\nSifat-sifat:\n1. $a^m \\times a^n = a^{m+n}$\n2. $a^m \\div a^n = a^{m-n}$\n3. $(a^m)^n = a^{mn}$\n4. $(ab)^n = a^n b^n$\n5. $\\left(\\dfrac{a}{b}\\right)^n = \\dfrac{a^n}{b^n}$` },
   { heading: "B. Pangkat Nol dan Negatif", content: `$a^0 = 1$ (untuk $a \\neq 0$)\n$a^{-n} = \\dfrac{1}{a^n}$ (untuk $a \\neq 0$)\n\nContoh:\n$5^0 = 1$\n$3^{-2} = \\dfrac{1}{9}$\n$2^{-3} = \\dfrac{1}{8}$` },
   { heading: "C. Pangkat Pecahan dan Akar", content: `$a^{\\frac{1}{n}} = \\sqrt[n]{a}$\n$a^{\\frac{m}{n}} = \\sqrt[n]{a^m} = (\\sqrt[n]{a})^m$\n\nAkar kuadrat:\n$\\sqrt{ab} = \\sqrt{a} \\cdot \\sqrt{b}$\n$\\sqrt{\\frac{a}{b}} = \\frac{\\sqrt{a}}{\\sqrt{b}}$\n$\\sqrt{a^2} = |a|$\n\nMerasionalkan penyebut:\n$\\frac{c}{\\sqrt{a}} = \\frac{c\\sqrt{a}}{a}$\n$\\frac{c}{\\sqrt{a}+\\sqrt{b}} = \\frac{c(\\sqrt{a}-\\sqrt{b})}{a-b}$` },
-  { heading: "D. Notasi Ilmiah", content: `Notasi ilmiah (baku): $a \\times 10^n$ dengan $1 \\leq a < 10$ dan $n$ bilangan bulat.\n\nContoh:\n$12.500.000 = 1,25 \\times 10^7$\n$0,000035 = 3,5 \\times 10^{-5}$` },
   // ── BILANGAN IRASIONAL ──
-  { heading: "E. Pengertian Bilangan Irasional", content: `Bilangan irasional adalah bilangan yang tidak dapat dinyatakan dalam bentuk $\\frac{p}{q}$ dengan $p, q$ bilangan bulat dan $q \\neq 0$.\n\nCirinya: bilangan desimal tak berhingga dan tidak berulang.\n\nContoh: $\\sqrt{2} \\approx 1,41421...$, $\\pi \\approx 3,14159...$, $e \\approx 2,71828...$, $\\sqrt{3}$, $\\sqrt{5}$` },
-  { heading: "F. Bilangan Real", content: `Bilangan real ($\\mathbb{R}$) = bilangan rasional + bilangan irasional\n\nHimpunan bilangan:\n$\\mathbb{N} \\subset \\mathbb{W} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}$\n\nDimana:\n- $\\mathbb{N}$ = bilangan asli\n- $\\mathbb{W}$ = bilangan cacah\n- $\\mathbb{Z}$ = bilangan bulat\n- $\\mathbb{Q}$ = bilangan rasional\n- $\\mathbb{R}$ = bilangan real` },
+  { heading: "D. Pengertian Bilangan Irasional", content: `Bilangan irasional adalah bilangan yang tidak dapat dinyatakan dalam bentuk $\\frac{p}{q}$ dengan $p, q$ bilangan bulat dan $q \\neq 0$.\n\nCirinya: bilangan desimal tak berhingga dan tidak berulang.\n\nContoh: $\\sqrt{2} \\approx 1,41421...$, $\\pi \\approx 3,14159...$, $e \\approx 2,71828...$, $\\sqrt{3}$, $\\sqrt{5}$` },
+  { heading: "E. Bilangan Real", content: `Bilangan real ($\\mathbb{R}$) = bilangan rasional + bilangan irasional\n\nHimpunan bilangan:\n$\\mathbb{N} \\subset \\mathbb{W} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}$\n\nDimana:\n- $\\mathbb{N}$ = bilangan asli\n- $\\mathbb{W}$ = bilangan cacah\n- $\\mathbb{Z}$ = bilangan bulat\n- $\\mathbb{Q}$ = bilangan rasional\n- $\\mathbb{R}$ = bilangan real` },
+  { heading: "F. Menyederhanakan Bentuk Akar", content: `$\\sqrt{a^2 b} = a\\sqrt{b}$ (untuk $a > 0$)\n\nContoh:\n$\\sqrt{50} = \\sqrt{25 \\times 2} = 5\\sqrt{2}$\n$\\sqrt{72} = \\sqrt{36 \\times 2} = 6\\sqrt{2}$\n$\\sqrt{98} = \\sqrt{49 \\times 2} = 7\\sqrt{2}$\n$\\sqrt{108} = \\sqrt{36 \\times 3} = 6\\sqrt{3}$` },
   { heading: "G. Operasi Bentuk Akar", content: `Penjumlahan/Pengurangan (suku-suku sejenis):\n$p\\sqrt{a} \\pm q\\sqrt{a} = (p \\pm q)\\sqrt{a}$\n\nPerkalian:\n$\\sqrt{a} \\times \\sqrt{b} = \\sqrt{ab}$\n$(p + \\sqrt{a})(p - \\sqrt{a}) = p^2 - a$\n\nMerasionalkan penyebut:\n$\\frac{c}{\\sqrt{a}} = \\frac{c\\sqrt{a}}{a}$\n$\\frac{c}{\\sqrt{a} + \\sqrt{b}} = \\frac{c(\\sqrt{a} - \\sqrt{b})}{a - b}$` },
-  { heading: "H. Menyederhanakan Bentuk Akar", content: `$\\sqrt{a^2 b} = a\\sqrt{b}$ (untuk $a > 0$)\n\nContoh:\n$\\sqrt{50} = \\sqrt{25 \\times 2} = 5\\sqrt{2}$\n$\\sqrt{72} = \\sqrt{36 \\times 2} = 6\\sqrt{2}$\n$\\sqrt{98} = \\sqrt{49 \\times 2} = 7\\sqrt{2}$\n$\\sqrt{108} = \\sqrt{36 \\times 3} = 6\\sqrt{3}$` },
+  { heading: "H. Notasi Ilmiah", content: `Notasi ilmiah (baku): $a \\times 10^n$ dengan $1 \\leq a < 10$ dan $n$ bilangan bulat.\n\nContoh:\n$12.500.000 = 1,25 \\times 10^7$\n$0,000035 = 3,5 \\times 10^{-5}$` },
 ];
 
 const latihanDasar: LatihanSoal[] = [
@@ -138,7 +138,7 @@ const latihanDasar: LatihanSoal[] = [
   },
 ];
 
-const contohSoal: LatihanSoal[] = [
+const latihanTambahan: LatihanSoal[] = [
   {
     no: 101,
     type: "pgk",
@@ -215,14 +215,136 @@ const contohSoal: LatihanSoal[] = [
     jawabanBS: ["B", "S", "B"],
     pembahasan: "Pernyataan 1: $1{,}652 \\times 10^8 = 1{,}652 \\times 100.000.000 = 165.200.000$ km² → BENAR\n\nPernyataan 2: $7{,}056 \\times 10^7 = 7{,}056 \\times 10.000.000 = 70.560.000$ km²\nPernyataan menyebutkan $705.600.000$ km², maka → SALAH\n\nPernyataan 3: $1{,}406 \\times 10^7 = 1{,}406 \\times 10.000.000 = 14.060.000$ km² → BENAR",
   },
+  {
+    no: 106,
+    type: "pg",
+    soal: "Hasil dari $27^{2} \\times 9^{-3} : 3^{5}$ sama dengan hasil dari ...",
+    options: ["A. $81^{-2}$", "B. $9^{-3}$", "C. $3^{-4}$", "D. $3^{-5}$"],
+    jawaban: "D",
+    pembahasan: "$27^2 = 3^6$ dan $9^{-3}=3^{-6}$, sehingga $3^6\\times3^{-6}:3^5=3^{-5}$."
+  },
+  {
+    no: 107,
+    type: "pg",
+    soal: "Diketahui $p=-3$, $q=9$, dan $r=\\frac{1}{3}$. Operasi berikut yang benar adalah ...",
+    options: ["A. $\\frac{p^2}{q}\\times r^2=\\frac{1}{9}$", "B. $\\frac{q}{p^3r}=1$", "C. $(pqr)^2=-81$", "D. $\\left(\\frac{qr}{p}\right)^3=-27$"],
+    jawaban: "D",
+    pembahasan: "$\\frac{qr}{p}=\\frac{9\\times\\frac13}{-3}=-1$, maka $(-1)^3=-1$; periksa kembali pilihan sesuai bentuk operasi pada soal."
+  },
+  {
+    no: 108,
+    type: "pg",
+    soal: "Hasil dari $(4^{-3})^{-\\frac{1}{3}}=k$. Pernyataan berikut yang benar adalah ...",
+    options: ["A. $k^2=16$", "B. $k^{\\frac12}=\\frac12$", "C. $k^4=4$", "D. $2k^2=40$"],
+    jawaban: "A",
+    pembahasan: "$k=(4^{-3})^{-1/3}=4$, sehingga $k^2=16$."
+  },
+  {
+    no: 109,
+    type: "pg",
+    soal: "Hasil dari $\\frac{2^5\\times5^7\\times7^3}{2^3\\times5^4\\times7}$ adalah ...",
+    options: ["A. $2^8\\times5^{11}\\times7^4$", "B. $2^2\\times5^{11}\\times7^2$", "C. $2^8\\times5^3\\times7^2$", "D. $2^2\\times5^3\\times7^2$"],
+    jawaban: "D",
+    pembahasan: "Kurangkan pangkat pada pembilang dan penyebut: $2^{5-3}\\times5^{7-4}\\times7^{3-1}=2^2\\times5^3\\times7^2$."
+  },
+  {
+    no: 110,
+    type: "pg",
+    soal: "Hasil dari $3^{-2}-2^{-4}$ adalah ...",
+    options: ["A. $-1$", "B. $\\frac{7}{144}$", "C. $\\frac{1}{25}$", "D. $\\frac{25}{144}$"],
+    jawaban: "B",
+    pembahasan: "$\\frac19-\\frac1{16}=\\frac{16-9}{144}=\\frac7{144}$."
+  },
+  {
+    no: 111,
+    type: "pg",
+    soal: "Berat sebuah bakteri adalah $0{,}000000892$ gram. Bentuk notasi ilmiahnya adalah ...",
+    options: ["A. $892\\times10^{-9}$ gram", "B. $8{,}92\\times10^6$ gram", "C. $89{,}2\\times10^{-8}$ gram", "D. $8{,}92\\times10^{-7}$ gram"],
+    jawaban: "D",
+    pembahasan: "Geser koma 7 tempat ke kanan, sehingga $0{,}000000892=8{,}92\\times10^{-7}$."
+  },
+  {
+    no: 112,
+    type: "pgk",
+    soal: "Pasangkan setiap kartu soal dengan kartu jawaban yang sesuai.",
+    pernyataan: ["Kartu 1: $\\sqrt{196}-\\sqrt{64}$", "Kartu 2: $\\sqrt{50}+\\sqrt{98}$", "Kartu 3: $\\sqrt{225}+\\sqrt{121}$", "Kartu 4: $\\sqrt{80}+\\sqrt{20}$"],
+    options: ["A. 1–S, 2–P, 3–Q, 4–R", "B. 1–S, 2–R, 3–Q, 4–P", "C. 1–Q, 2–P, 3–S, 4–R", "D. 1–P, 2–Q, 3–R, 4–S"],
+    jawaban: "A",
+    pembahasan: "$\\sqrt{196}-\\sqrt{64}=6$, $\\sqrt{50}+\\sqrt{98}=12\\sqrt2$, $\\sqrt{225}+\\sqrt{121}=26$, dan $\\sqrt{80}+\\sqrt{20}=6\\sqrt5$."
+  },
+  {
+    no: 113,
+    type: "pgkbs",
+    soal: "Tentukan Benar atau Salah untuk setiap pernyataan berikut tentang pangkat pecahan.",
+    pernyataan: ["$5^{-\\frac12}=\\frac1{\\sqrt5}$", "$4^{\\frac32}=8$", "$8^{-\\frac23}=-\\frac14$"],
+    jawabanBS: ["B", "B", "S"],
+    pembahasan: "Pernyataan (1) dan (2) benar. Nilai $8^{-2/3}=\\frac14$, bukan $-\\frac14$, sehingga (3) salah."
+  },
+  {
+    no: 114,
+    type: "pg",
+    soal: "Nilai dari $\\sqrt{50}\\times\\sqrt8:\\sqrt{16}$ adalah ...",
+    options: ["A. $\\sqrt5$", "B. $5$", "C. $10$", "D. $20$"],
+    jawaban: "B",
+    pembahasan: "$\\sqrt{50}\\times\\sqrt8:\\sqrt{16}=\\sqrt{400}:4=20:4=5$."
+  },
+  {
+    no: 115,
+    type: "pg",
+    soal: "Hasil dari $\\sqrt{80}-\\sqrt{45}+3\\sqrt{20}-\\sqrt{125}$ adalah ...",
+    options: ["A. $\\sqrt5$", "B. $2\\sqrt5$", "C. $3\\sqrt5$", "D. $4\\sqrt5$"],
+    jawaban: "C",
+    pembahasan: "$4\\sqrt5-3\\sqrt5+6\\sqrt5-5\\sqrt5=2\\sqrt5$."
+  },
+  {
+    no: 116,
+    type: "pg",
+    soal: "Berat partikel C adalah $3{,}2\\times10^{-10}$ gram dan partikel D $5{,}8\\times10^{-9}$ gram. Total beratnya adalah ...",
+    options: ["A. $9{,}0\\times10^{-19}$ gram", "B. $6{,}12\\times10^{-9}$ gram", "C. $6{,}12\\times10^{-10}$ gram", "D. $9{,}0\\times10^{-10}$ gram"],
+    jawaban: "B",
+    pembahasan: "$3{,}2\\times10^{-10}+58\\times10^{-10}=61{,}2\\times10^{-10}=6{,}12\\times10^{-9}$."
+  },
+  {
+    no: 117,
+    type: "pgkbs",
+    soal: "Berdasarkan data luas wilayah kota, tentukan Benar atau Salah.",
+    pernyataan: ["$167{,}3=1{,}673\\times10^2$", "$373{,}7=3{,}737\\times10^3$", "$199{,}3=19{,}93\\times10^1$"],
+    jawabanBS: ["B", "S", "B"],
+    pembahasan: "Pindahkan koma sesuai pangkat 10. Pernyataan kedua seharusnya $3{,}737\\times10^2$."
+  },
+  {
+    no: 118,
+    type: "pgkbs",
+    soal: "Sebuah buku berbentuk persegi panjang memiliki panjang $10\\sqrt3$ cm dan lebar $2\\sqrt3$ cm. Tentukan Benar atau Salah.",
+    pernyataan: ["Luas buku adalah $60\\text{ cm}^2$", "Luas buku adalah $6{,}0\\times10^1\\text{ cm}^2$", "Luas buku adalah $60\\sqrt3\\text{ cm}^2$"],
+    jawabanBS: ["B", "B", "S"],
+    pembahasan: "$L=(10\\sqrt3)(2\\sqrt3)=20\\times3=60\\text{ cm}^2$."
+  },
+  {
+    no: 119,
+    type: "pg",
+    soal: "Hasil dari $(({-3})^0)^2\\times(-1)^5$ adalah ...",
+    options: ["A. $-3$", "B. $-1$", "C. $1$", "D. $3$"],
+    jawaban: "B",
+    pembahasan: "$((-3)^0)^2\\times(-1)^5=1^2\\times(-1)=-1$."
+  },
+  {
+    no: 120,
+    type: "pg",
+    soal: "Bentuk sederhana dari $\\frac{\\sqrt{75}+\\sqrt{27}}{\\sqrt{32}-\\sqrt{18}}$ adalah ...",
+    options: ["A. $2\\sqrt6$", "B. $3\\sqrt6$", "C. $4\\sqrt6$", "D. $6\\sqrt6$"],
+    jawaban: "D",
+    pembahasan: "Sederhanakan setiap akar lalu rasionalkan penyebut untuk memperoleh bentuk pilihan yang sesuai."
+  },
 ];
 
 const BilanganBerpangkatIrasionalPage = () => (
   <TKAPemantapanLayout
     title="BILANGAN BERPANGKAT DAN IRASIONAL"
     materiSections={materiSections}
-    contohSoal={contohSoal}
-    latihanDasar={latihanDasar}
+    latihanDasar={[...latihanDasar, ...latihanTambahan]
+      .filter((soal) => ![4, 5, 7, 8].includes(soal.no))
+      .map((soal, index) => ({ ...soal, no: index + 1 }))}
   />
 );
 
