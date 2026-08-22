@@ -1,0 +1,178 @@
+---
+name: Numatik artifact setup
+description: Key wiring details, port quirks, and coding patterns for the Numatik math-education pnpm artifact.
+---
+
+## Runtime wiring
+- Source of truth: **`artifacts/numatik/src/`** — only edit here.
+- Workflow `artifacts/numatik: web` runs `pnpm --filter @workspace/numatik run dev` from `artifacts/numatik/`; the current imported artifact uses `PORT=18860` directly (no Express proxy).
+- First-time setup: `pnpm install` at workspace root (not `npm install` in `.migration-backup/`).
+- `.migration-backup/` is gitignored but its files are **already tracked** in git (committed before gitignore rule). Do not treat it as the active source; it is dead code.
+- `listArtifacts()` returns empty after GitHub import — artifact registration is not preserved. Workflow is manually configured via `configureWorkflow` to match `artifact.toml` intent.
+- **Artifact.toml** at `artifacts/numatik/.replit-artifact/artifact.toml` has `id = "artifacts/numatik"`, kind = "web", previewPath = "/", and localPort/PORT=18860. Keep its service port aligned with Vite's fallback.
+
+## Languages
+- App uses **i18n (react-i18next)** with 3 locales: `id` (Indonesian), `en` (English), `ja` (Japanese).
+- Locale files: `artifacts/numatik/src/locales/{id,en,ja}.json`
+- Language key stored in localStorage as `numatik_language`.
+- **NOT Malay** — earlier memory note was wrong. Third language is Japanese (`ja`).
+
+## Theme system
+- Hook: `import { useTheme } from "@/contexts/ThemeContext"` → `const { isDark } = useTheme()`
+- Sub-components defined **outside** the main page component can call `useTheme()` directly (they're React components) as long as they are written as proper function bodies (`() => { ... }`, not arrow `() => (...)` shorthand — the shorthand cannot contain hook calls).
+- Reference files: `RangkumanSection.tsx`, `DiskriminanPage.tsx`, `PolaKhususPage.tsx`.
+
+## Light-mode color mapping (dark → light)
+| Dark class/value | Light equivalent |
+|---|---|
+| `bg-slate-800/60` | `bg-gray-100` |
+| `bg-slate-800/50` | `bg-white/80` |
+| `bg-slate-900/60` | `bg-white/90` |
+| `bg-slate-900/50` | `bg-gray-100` |
+| `bg-slate-700/40` | `bg-gray-50` |
+| `bg-slate-700/60` | `bg-gray-200` |
+| SVG bg `rgba(15,23,42,0.7)` | `rgba(241,245,249,0.9)` |
+| SVG bg `rgba(6,12,30,0.97)` | `rgba(248,250,252,0.97)` |
+| SVG bg `rgba(6,12,30,0.95)` | `rgba(248,250,252,0.95)` |
+| SVG grid `#1e293b` | `#cbd5e1` |
+| SVG grid `#0f1f3d` | `#cbd5e1` |
+| SVG axis `#475569` | `#64748b` |
+| SVG text `#64748b` | `#475569` |
+| SVG text `#4b5563` | `#6b7280` |
+| SVG text `#3d5275` | `#64748b` |
+| Table alt row 1 `bg-slate-800/30` | `bg-blue-50/50` |
+| Table alt row 2 `bg-slate-700/20` | `bg-gray-50` |
+
+## Known scope gotcha
+When using replaceAll on SVG stroke patterns, the same pattern string can appear in both a sub-component scope AND the main page component. Verify with grep after replacement that ISG-local variables (e.g. `isgGridMain`, `isgAxisS`) are NOT referenced outside InteractiveStepGraph. Fix: replace those occurrences with direct `isDark ? "..." : "..."` expressions.
+
+## Trilingual exercise page pattern (Latihan Mandiri)
+For exercise pages under `src/pages/latihan-mandiri/`:
+- Define `QUESTIONS_BY_LANG: Record<"id"|"en"|"ja", Question[]>` **outside** the component (safe as a constant, no hooks).
+- Inside component: `const { t, i18n } = useTranslation(); const lang = (["id","en","ja"].includes(i18n.language) ? i18n.language : "en") as "id"|"en"|"ja"; const questions = QUESTIONS_BY_LANG[lang];`
+- UI strings (page title, subtitle, back button) go in locale JSON under `practice.<topicKey>.*`.
+- Reference: all 6 Bilangan Bulat pages are done and can be used as templates.
+
+## Locale key pattern for topic exercise pages
+Add under `practice.<topicKey>` in all 3 locale files:
+- `title` — topic page heading
+- `soalTotal` — "48 Questions Total · UN / TKA / ANBK"
+- `enrichmentNoteDesc` — enrichment note body text
+- `pageSubtitle` — "Grade 7 · Integers · Self-Practice"
+- `backTo` — back button text
+- `subtopics.<subtopicKey>.label` / `.desc` — subtopic cards
+- `pageTitles.<subtopicKey>` — exercise page h1
+
+## SVG color mapping (PrismaPage / water-animation pattern)
+| Dark SVG value | Light SVG value |
+|---|---|
+| wireframe face `rgba(30,41,59,0.8)` | `rgba(241,245,249,0.9)` |
+| wireframe face `rgba(30,41,59,0.5)` | `rgba(241,245,249,0.7)` |
+| structural stroke `#334155` | `#94a3b8` |
+| bg face fill `#0f172a` opacity 0.22 | `rgba(241,245,249,0.9)` opacity 1 |
+| bg face fill `#0f172a` opacity 0.15 | `rgba(241,245,249,0.9)` opacity 1 |
+| top cap `#0f172a` (isFull conditional) | `rgba(241,245,249,0.9)` opacity 1 |
+| gauge bar bg `#0f172a` | `rgba(241,245,249,0.9)` |
+| formula text `#e0e7ff` | `#1e293b` |
+- Dimension labels `#94a3b8` (slate-400) and bright hue fills are visible on both themes — leave unchanged.
+- `fill="white"` inside `<mask>` elements is SVG semantic — do not change.
+- Bright face-color fills (#ef4444, #eab308, #3b82f6, etc.) are fine on both themes.
+- `stroke="rgba(255,255,255,0.5)"` on bright-colored rotating 3D polygons is intentional (BalokPage same pattern).
+
+## Soal 7 formula var pattern
+When a KaTeX formula contains a language-specific word (e.g. `\text{jarak}`), use a locale key for the word and interpolate it into the math string:
+```tsx
+<InlineMath math={`\\mathrm{${t('...q7.formulaVar')}} = ...`} />
+```
+Replace `\text{}` with `\mathrm{}` for units; use interpolated `formulaVar` key for natural-language variable names.
+
+## Aljabar index page pattern (AljabarPage.tsx)
+- Uses `subtopicsConfig` (outside component) with `key`, visual props only — no `label`/`desc`.
+- Inside component: `subtopics = subtopicsConfig.map(s => ({ ...s, label: t(\`practice.aljabar.subtopics.${s.key}.label\`), desc: t(...) }))`.
+- Locale keys: `practice.aljabar.subtopics.<key>.label` / `.desc` for 8 keys: `pengertianUnsur`, `penjumlahanPengurangan`, `perkalian`, `pembagian`, `pemangkatan`, `substitusi`, `faktorisasi`, `pecahanAljabar`.
+- All 3 locale files now have `practice.aljabar` section; `pengertianUnsur` soal keys also added.
+- `enrichmentNoteDesc` in AljabarPage footer is still hardcoded Indonesian — intentionally deferred.
+
+## Aljabar sub-page trilingual pattern (PengertianUnsurAljabarPage — "cards di luar" variant)
+- Converted `cards` array from outside-component (dark-only hardcode) to inside page component with `isDark` ternary.
+- Added `import { useTheme }` and `const { isDark } = useTheme()` to page.
+- Each `SoalX` converted from arrow shorthand `() => (...)` to function body `() => { const { t } = useTranslation(); return (...); }`.
+- `Trans` used for SoalTiga (q3.desc) with named components `n`, `boxes`, `marbles` → `<strong className="text-cyan-300" />`.
+- SoalDua uses split `introPre` / `introPost` keys flanking an inline `<InlineMath>` (math formula stays hardcoded, only surrounding prose translated).
+- Locale key prefix: `practice.aljabar.pengertianUnsur.q{1|2|3}.*`.
+
+## Aljabar sub-page 2 trilingual pattern (PenjumlahanPenguranganAljabarPage — "cards di dalam" variant)
+- Cards sudah di dalam page & `isDark` sudah ada — tidak perlu restrukturisasi.
+- Pattern SoalEmpat (multi-InlineMath dalam satu kalimat): split ke 5 key: `introPre`, `introBetween`, `introMid`, `introAnd`, `introEnd`; tiap key mengelilingi satu `<InlineMath>`.
+- Pattern SoalLima (kalimat 1 = Trans dengan `<pass>` + `<weight>`, kalimat 2 = split biasa + `<InlineMath>`): gunakan `{' '}` spacer antara Trans dan teks lanjutan.
+- SVG `<text>` yang berisi label bahasa alami (bukan rumus): gunakan `{t(...)}` sebagai child langsung — valid di SVG.
+- `q4.introPre` untuk bahasa Jepang = `""` (string kosong) karena struktur kalimat JA menempatkan formula lebih dulu.
+- Locale keys ditambahkan ke `practice.aljabar.penjumlahanPengurangan.*` di ketiga file locale.
+
+## PLSV & PtLSV topic — cards di luar pattern
+- Index + 7 sub-pages all have "cards di luar" structure needing refactor.
+- **PenyelesaianPLSVPage.tsx (sub-page 3) — Bagian 1**: SoalSatu/Dua/Tiga trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.plsvPtlsv.penyelesaianPLSV`. 89 total questions across 6 cards. Cards moved inside page component (done once for full file). All 6 card tags + title1/title2/badge translated. q1/q2 instructions use Trans (1 component `a` each — amber/yellow). q3 instruction is plain t() (no styled spans). SoalEmpat/Lima/Enam still arrow shorthand — left for Bagian 2. SoalLima has 5 sub-sections A–E (word problem in E with rectangle diagram).
+- **PengertianPLSVPage.tsx (sub-page 2)**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.plsvPtlsv.pengertianPLSV`. 3 essay questions. "cards di luar" restructured. All 3 SoalX items are pure math grids (no item-level text keys needed). Trans used for all 3 instructions (q1: 1 component `a`=amber; q2: 2 components `a`=yellow/`b`=lime; q3: 2 components `a`=green/`b`=rose). q2 itemHint ("persamaan / kesamaan?") uses plain t(). q3 connector ("dan") uses plain t(). h1 split across title1+title2 keys. EN uses "LEOV" (Linear Equation in One Variable) abbreviation.
+- **KalimatTerbukaTertutupPage.tsx (sub-page 1)**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.plsvPtlsv.kalimatTerbukaTertutup`. 5 essay questions. "cards di luar" restructured: cards moved inside page component, all SoalX converted from arrow shorthand to function bodies. Trans used for q2.instruction (3 styled spans: a=amber terbuka, b=emerald benar, c=rose salah). Split-key patterns: q2 items d,e,h,i use Pre/Mid/End flanking InlineMath; q3 item a uses Pre/Suffix flanking n; q5 item a uses Mid/Suffix flanking two math expressions. q4/q5 instrPre/instrSuffix wrap a hardcoded bold number-set span. JA q4/q5 instrPre="変数が ", instrSuffix=" の中から選ぶとき、各開いた文の解を求めなさい！". No useTheme needed (no SVG color switching). 6 sub-pages remaining.
+
+## Perbandingan sub-page pattern (flat soal, no cards/tags/isDark)
+- Structure: single card, dividers per soal, no cards/tags arrays, no useTheme needed.
+- Soals 1–6: plain `t('practice.perbandingan.perbandinganUmum.qN')` strings.
+- Soal 7: two `m<sup>2</sup>` — split into `q7.pre` / `<sup>2</sup>` / `q7.mid` / `<sup>2</sup>` / `q7.end`.
+- Soal 8, 10: InlineMath in middle — split `qN.pre` + `<InlineMath>` + `qN.post`.
+- Soal 9: InlineMath + `cm<sup>3</sup>` — split `q9.pre` + `<InlineMath>` + `q9.mid` + `<sup>3</sup>` + `q9.end`.
+- Locale keys under `practice.perbandingan.<subtopicKey>.*`; inject via node script reading/writing JSON.
+- Reference: `PerbandinganUmumPage.tsx` (done July 2026).
+
+## Perbandingan topic — FULLY TRILINGUAL (July 2026)
+All 5 sub-pages + index complete: perbandinganUmum, perbandinganBertingkat, perbandinganSenilai, perbandinganSkala, perbandinganCampuran. All locale keys live under `practice.perbandingan.<subKey>.*` in all 3 files. PerbandinganCampuranPage is the simplest pattern: pure t() only, no InlineMath/Trans/isDark.
+
+## MenyatakanHimpunanPage — LENGKAP (Tahap 1 + Tahap 2, July 2026)
+- **100% trilingual** (id/en/ja). Locale key prefix: `practice.himpunan.menyatakanHimpunan`. **94 leaf keys per locale.**
+- Tahap 1 (70 keys): tip box + sectionA/B + Q1–10. 5 \text{} interpolation vars (q2textA/B/C, q6textA/D).
+- Tahap 2 (24 keys): h1 title, grade, topicName, backBtn, sectionC + Q11–15. 4 new \text{} vars (q12textA/B, q15textBulat, q15textGanjil).
+- All 9 interpolation vars declared at top of component; template literals for \text{} content.
+- BlockMath (Q4) and EmptySetDiagram SVG texts: untouched/hardcoded by design.
+- **Topik Himpunan Kelas 7 LENGKAP** (index + 5 sub-halaman = 74 soal, semua trilingual).
+
+## Himpunan sub-page trilingual pattern (PengertianKeanggotaanPage)
+- **Kelas 7 Himpunan — PengertianKeanggotaanPage.tsx (sub-page 1)**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.himpunan.pengertianKeanggotaan`. 15 essay questions, 3 sections (A/B/C). Pattern: `const p = "practice.himpunan.pengertianKeanggotaan"`. Q2 BlockMath pure math — left untouched. Q5 `\text{}` interpolation: `const q5desc = t(\`\${p}.q5.textDesc\`)` then used in template literal `\`K = \\{x \\mid x \\text{ \${q5desc}}\\}\``. Trans used for Q1.instruction (strong=blue-300) and Q13.instruction (strong=green-300). Sub-question items (a)/(b)/(c)/(d) each have separate locale keys. 66 t() calls, 79 keys per locale.
+- **Kelas 7 Himpunan — OperasiHimpunanPage.tsx (sub-page 5, TERAKHIR)**: Fully trilingual (id/en/ja) as of July 2026 (Tahap 1 + Tahap 2). Locale key prefix: `practice.himpunan.operasiHimpunan`. **83 leaf keys per locale** (51 Tahap 1 + 32 Tahap 2). Tip box: 3 \text{} handled with interpolation vars (tipIrisanText/tipGabunganText/tipSelisihText). Q2: 2 \text{} with q2.primaDef/q2.ganjilDef interpolation. Q12: Trans with `{ a: <strong className="text-green-300" /> }` for styled question text. 4 diagram captions (JSX) translated; SVG <text> inside VennUnion/Intersection/Difference/Complement hardcoded (per rule). **MenyatakanHimpunanPage.tsx (sub-page 2) still NOT trilingual** — only uses shared `practice.breadcrumb` key; all other text still hardcoded Indonesian.
+- **Kelas 7 Himpunan — HimpunanBagianPage.tsx (sub-page 4) — LENGKAP**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.himpunan.himpunanBagian`. **84 leaf keys per locale** (Tahap 1: 44 keys Q1–Q10 + sectionA/B; Tahap 2: 40 keys Q11–Q15 + page elements). Q1/Q8/Q15 BlockMath `\begin{array}` pure math — untouched. Q3(c) `\text{}` interpolation: `const q3cDesc = t(\`\${p}.q3.itemCDesc\`)` → template literal. Trans used for Q1.instruction (true/false), Q4.midPost, Q10.midPost, Q15.instruction (strong=green-300). Info box: 4 bullets split across infoB1a/B1b/B2/B3/B4a/B4b/B4c keys — JA bullet4 infoB4a="" (empty) so A appears first naturally. Q11 food set members in `part1Post` key (translated per locale). Q14 `and` key reused for both "dan" occurrences. SubsetDiagram SVG labels ("S","A","B","B⊆A") and tag pills ("UN","TKA","ANBK") hardcoded — correct by rule.
+
+## Translation progress — Segitiga dan Segiempat LENGKAP
+- **Kelas 7 Segitiga dan Segiempat — KelilingLuasBangunTakBeraturanPage.tsx (sub-page 5, TERAKHIR)**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.segitigaSegiempat.kelilingLuasBangunTakBeraturan`. 15 essay questions, 3 sections (A=Keliling Q1–5, B=Luas Q6–10, C=Aplikasi Q11–15). Pattern: `const p = "practice.segitigaSegiempat.kelilingLuasBangunTakBeraturan"`. SVG diagrams left untranslated (per rule). All 15 soal, 15 badges, tip box (3 bullets), section titles, h1, subtitle, and Q15 denah lines (q15denahLine1/q15denahLine2) translated. q1bold/q2bold pattern for styled `<span>`. `Rp\,45.000/\text{m}^2` and `Rp\,180.000/\text{m}^2` kept in InlineMath (Rp not inside `\text{}`). **Kelas 7 Segitiga dan Segiempat LENGKAP (index + 5 sub-halaman semua trilingual, total 70 soal).**
+
+## Translation progress — Kelas 8 Persamaan Garis Lurus LENGKAP
+- **AplikasiKontekstualPage.tsx (sub-page 5, TERAKHIR)**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.persamaanGarisLurus.aplikasiKontekstual`. 14 essay questions (Q1–Q14). All `math:` parts (12 former `\text{}` cases + 3 already-text) converted to `text: t()` — consistent with Q1 pA pattern (plain prose, including variable names & "y = mx + c", rendered as text). `questions` array inside component. CoordPlane diagram `segs[].label` / `pts[].label` fields left hardcoded (props, not prose). `InlineMath` import retained (used in renderer for `q.math` and `part.math` fields). 0 `\text{}` remaining in file. **Kelas 8 Persamaan Garis Lurus LENGKAP: index + 5 sub-halaman (MenentukanPGL 10 + GrafikPGL 10 + Gradien 10 + Hubungan2Garis 8 + AplikasiKontekstual 14 = 52 soal) — 100% trilingual.**
+
+## Translation progress
+- Kelas 8 PGL pages (GrafikPGLPage, MenentukanPGLPage): dark-mode color fixes applied July 2026.
+- PrismaPage.tsx: Pass 1 (JSX classNames) + Pass 2 (all SVG colors) complete — fully theme-clean.
+- Kelas 9 Kesebangunan: trilingual support incomplete (task proposed).
+- **Kelas 8 Garis Singgung Lingkaran — MenghitungPanjangPage.tsx**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.garisSinggungLingkaran.menghitungPanjang`. 7 essay questions, 7 inline SVGs (SvgSatu–SvgTujuh). `questions` array moved inside component. **35 t() calls, 31 leaf keys per locale.** 5 interpolation vars for language-specific `\text{}` words: `luasText` (Luas/Area/面積), `layangText` (Luas layang-layang/Kite area/凧形の面積), `taliBusurText` (Tali busur/Chord/弦), `kelilingKecilText`, `kelilingBesarText`. `\text{ cm}` / `\text{ cm}^2` units left unchanged (universal). `diffLabels` Record for difficulty display (separate from `diffColor` CSS key). SVG <text> elements: all pure math labels / measurements — no Indonesian prose, no translation needed. 0 new TS errors.
+- **Kelas 7 Garis dan Sudut — HubunganDuaGarisPage.tsx (sub-page 4, TERAKHIR)**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.garisDanSudut.hubunganDuaGaris`. 10 MC questions. `questions` array moved inside component (module-level JSX.Element content pattern). q2.itemII uses 6-math/7-segment split; q5 uses pre/post around 90°; q7 uses 4-math/5-segment; q8 uses 8-math/9-segment (k,l,(2,3),(5,8)); q10 uses 8-math/9-segment (h,BQ_vec,AK_vec,h,k,AB=8,PB=15,KL=10). **Kelas 7 Garis dan Sudut LENGKAP (index + 4 sub-halaman semua trilingual).**
+- **Kelas 8 PGL — Hubungan2GarisPage.tsx**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.persamaanGarisLurus.hubungan2Garis`. 8 essay questions. questions array moved inside component. 3 interpolation vars: `danText` (dan/and/と), `sejajarSentenceText` (adalah garis sejajar./are parallel lines./は平行線である。), `tegakLurusSentenceText`. Q1–3,Q7–8: all parts are math-only pairs — \text{} uses `danText` interpolation. Q4–5: parts are plain text → t(). Q6: parts (1)–(3) use both `danText` + sentence interpolation; part (4) is plain text. 28 leaf keys per locale. **Kelas 8 Persamaan Garis Lurus BENAR-BENAR LENGKAP: 52/52 soal 100% trilingual.**
+- **Kelas 7 Bilangan Bulat (all 6 exercise sub-pages + index)**: Fully trilingual (id/en/ja) as of July 2026. Pattern is proven and ready to replicate to other Kelas 7 topics.
+- **Kelas 7 Aljabar — PerkalianAljabarPage.tsx (sub-page 3)** + **PembagianAljabarPage.tsx (sub-page 4)**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.aljabar.perkalian`. 8 essay questions. "cards di dalam" variant — no restructuring needed. SoalDelapan uses `introPre`/`introBetween`/`introEnd` split flanking two InlineMath (spaces in key strings for ID/EN; no spaces for JA). SoalTujuh: `q7.patternWord` before `<AlgExpr math={hint} />`. Tags for math-universal notation (Monomial×Monomial etc.) also translated per lang.
+- **Kelas 7 Pecahan — ArtiPecahanSenilaiMembandingkanPage.tsx + BilanganRasionalPage.tsx (index)**: Fully trilingual (id/en/ja) as of July 2026. New JSX-soal pattern documented below.
+- **Kelas 7 Pecahan — PecahanCampuranPersenPage.tsx**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.pecahan.pecahanCampuran`. 10 essay questions. Uses Trans for q4.itemA (two fraction components: frac1, frac2) and q5.instruction (one fraction component: frac). itemBSuffix pattern used for q8 item b (InlineMath + translated suffix).
+- **Kelas 7 Pecahan — PenjumlahanPecahanPage.tsx**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.pecahan.penjumlahanPecahan`. 9 essay questions. Shared `calcInstruction` key reused across soals 1,2,4,5,6. InstructionBanner uses Trans with `<strong>` component. Soal 3 conclusion uses Trans with `<a>/<b>` components for styled letters. Soals 8 and 9 use Trans with f1/f2/f3 fraction components. Screenshot verified in Indonesian. 7 remaining Pecahan sub-pages still need trilingual treatment.
+- **Kelas 7 Pecahan — PerkalianPecahanPage.tsx**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.pecahan.perkalianPecahan`. 6 essay questions. InstructionBanner uses Trans with `<strong>`. Soal 1–3 pure math grids (no text, arrow shorthand OK). Soal 4 uses `t()` for distributive property instruction. Soals 5 & 6 use Trans with f1/f2 components for inline fraction math. Tags moved inside page component. TypeScript 0 errors verified. 5 remaining Pecahan sub-pages still need trilingual treatment.
+- **Kelas 7 Pecahan — PembagianPecahanPage.tsx**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.pecahan.pembagianPecahan`. 8 essay questions. No InstructionBanner. Shared `calcInstruction` key reused for Soal 2 & 8 ("Hitunglah hasil operasi pecahan berikut!"). Soals 3–6 contextual: use Trans with f1/f2 components. Soals 1 & 7 use t() for instruction + pure math grid. Tags moved inside page component. Screenshot verified in Indonesian. 4 remaining Pecahan sub-pages still need trilingual treatment.
+- **Kelas 7 Pecahan — BentukDesimalPage.tsx**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.pecahan.bentukDesimal`. 8 essay questions. No inline math in prose (all fractions use F component in grid). Key patterns: q2.hint and q4.hint for inline helper text spans; q6.digitHint uses i18next interpolation `{{digit}}` for the variable digit number; q7/q8 item texts in nested items.a/b/c keys. Tags moved inside page component. Screenshot verified in Indonesian.
+- **Kelas 7 Pecahan — PembagianDesimalPage.tsx**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.pecahan.pembagianDesimal`. 8 essay questions. Uses Trans for q4 (strong + InlineMath), q6 (strong + InlineMath), q7 (strong). formulaVar locale key for `\mathrm{jarak}` in q7 formula. instructionMid2 pattern for q2 (3 numbers: ÷5, ÷50, ÷5.000).
+- **Kelas 7 Pecahan — PembulatanDesimalPage.tsx**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.pecahan.pembulatanDesimal`. 8 essay questions. Uses Trans for q1,q2,q5,q6,q7 (strong only), q8 (strong + m1 + m2 InlineMath). instructionPre/Post split for q3 (with typed "three"|"two"|"one" item keys) and q4 (with "two"|"three" item keys). JA instructionPre is "" (empty) for q3 and q4 — grammar puts math before verb. `useTheme` retained for isDark gradient switching. ALL 10 Pecahan sub-pages now fully trilingual.
+- **Kelas 7 Aljabar — MenyederhanakanPecahanAljabarPage.tsx (sub-page 8, TERAKHIR)**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.aljabar.menyederhanakanPecahan`. File hanya punya 4 SoalX (bukan 20) karena tiap soal berisi grid multi-soal. Semua 4 selesai dalam 1 sesi (tidak perlu Bagian 2). "cards di luar" — cards dipindah ke dalam component, SoalX dikonversi ke function body. Instruksi soal 1–4 semuanya teks murni (tanpa InlineMath), paling sederhana dari semua page. Topik Aljabar Kelas 7 LENGKAP (index + 8 sub-halaman semua trilingual).
+- **Kelas 7 Aljabar — FaktorisasiAljabarPage.tsx (sub-page 7)**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.aljabar.faktorisasi`. 8 essay questions. "cards di luar" — restructured: cards moved inside component, all SoalX converted from arrow shorthand to function bodies. Tags array uses t() for tag strings. q4 & q6 use introPre/introMid/introEnd flanking two InlineMath (ax²+bx+c and a=1/a≠1). q5 & q7 use introPre/introMid flanking one InlineMath. q8 contextual items: 8a uses itemAPre/itemAPost; 8b uses itemBPre/itemBMid/itemBEnd flanking two InlineMath; 8c uses itemCPre/itemCMid/itemCEnd flanking n and n+1. JA q4/q6 introPre="次の" so math follows immediately. No useTheme needed (no dark/light SVG color switching). 1 sub-page remaining: MenyederhanakanPecahanAljabar (sub-page 8).
+- **Kelas 7 Aljabar — SubstitusiBilanganAljabarPage.tsx (sub-page 6)**: Fully trilingual (id/en/ja) as of July 2026. Locale key prefix: `practice.aljabar.substitusi`. 8 essay questions. "cards di dalam" — no restructuring needed (isDark/useTheme already inside component). 41 t() calls total (37 static + 4 template). Split patterns: q1 introPre/introEnd flanking 1 InlineMath; q3 & q5 introPre/introSep/introAnd/introEnd flanking 3 InlineMath each; q6 introPre/introMid1/introMid2/introMid3/bold/introEnd flanking h, t, formula math + strong text; q7 introPre/introMid1/introMid2/introEnd flanking x, (3x-5), W; q8 introPre/introMid/introEnd flanking n and formula. SVG natural-language labels translated: q6.svgLabel ("gedung"), q7.svgLabel ("KARGO"). q2 keterangan strings moved to locale keys k1–k4.
+- **BilanganRasionalPage (Kelas 7 Pecahan index)**: Already fully trilingual — uses dynamic `t('practice.pecahan.subtopics.${key}.label/desc')` for all 10 subtopics. All 10 keys present in all 3 locale files. No changes needed.
+
+## JSX-soal trilingual pattern (Pecahan pages — different from Bilangan Bulat)
+Pecahan soal components are JSX components (not data arrays). Key differences:
+- Change each `SoalX` from arrow shorthand `() => (...)` to function body `() => { const { t } = useTranslation(); return (...); }` — hooks can't be called in shorthand bodies.
+- Move the `cards` array (which contains tag labels) **inside** the page component so it can call `t()` for tag strings.
+- For inline math symbols inside prose text (e.g. `<InlineMath math=">" /> atau <InlineMath math="<" />`), use `<Trans i18nKey="..." components={{ gt: <InlineMath math=">" />, lt: <InlineMath math="<" /> }} />` — import `Trans` from `react-i18next`.
+- Locale keys live under `practice.pecahan.<pageKey>.*` (e.g. `practice.pecahan.artiSenilai.q5.instruction`).
+- Index page (BilanganRasionalPage): rename `subtopics` const to `subtopicsConfig` (remove `label`/`desc`, add `key`), then derive `subtopics` inside component with `subtopicsConfig.map(s => ({ ...s, label: t(...), desc: t(...) }))`.
+- Reference file: `artifacts/numatik/src/pages/latihan-mandiri/kelas7/pecahan/ArtiPecahanSenilaiMembandingkanPage.tsx`
