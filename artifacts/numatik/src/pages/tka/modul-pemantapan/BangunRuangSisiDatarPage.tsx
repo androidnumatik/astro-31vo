@@ -60,12 +60,22 @@ const latihanDasarTkaLama: LatihanSoal[] = [
   { no: 46, soal: "Sebuah bak mandi berukuran panjang = 80 cm, lebar = 40 cm, tinggi 60 cm, berisi air setinggi 40 cm, jika 3 buah kubus yang panjang rusuknya 20 cm, dimasukkan ke dalam bak tersebut sehingga tenggelam, tentukan tinggi air sekarang!", options: [] },
 ];
 
+const nomorBangunRuangDihapus = new Set([2, 3, 4, 7, 10, 18, 23, 25, 26, 31, 32, 37, 38, 41, 42, 46]);
+const latihanDasarBangunRuang = latihanDasarOlimpiade
+  .filter((soal) => !nomorBangunRuangDihapus.has(soal.no))
+  .map((soal, index) => ({
+    ...soal,
+    no: index + 1,
+    pembahasan: bangunRuangSisiDatarDasarPembahasan[soal.no],
+    gambar: dasarImages[soal.no] ? <img src={dasarImages[soal.no]} alt={`Gambar soal ${soal.no}`} className="mx-auto w-full max-w-sm rounded-lg border border-border/40 bg-background p-2" /> : undefined,
+  }));
+
 const BangunRuangSisiDatarPage = () => (
   <TKAPemantapanLayout
     title="BANGUN RUANG SISI DATAR"
     materiSections={materiSections}
     contohSoal={getTkaContohSoal("bangun-ruang-sisi-datar")}
-    latihanDasar={latihanDasarOlimpiade.map((soal) => ({ ...soal, pembahasan: bangunRuangSisiDatarDasarPembahasan[soal.no] }))}
+    latihanDasar={latihanDasarBangunRuang}
     gambarMap={Object.fromEntries(Object.entries(dasarImages).map(([no, src]) => [Number(no), <img src={src} alt={`Gambar soal ${no}`} className="mx-auto w-full max-w-sm rounded-lg border border-border/40 bg-background p-2" />]))}
   />
 );

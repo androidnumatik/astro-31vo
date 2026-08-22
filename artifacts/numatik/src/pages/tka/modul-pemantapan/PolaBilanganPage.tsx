@@ -122,12 +122,17 @@ const latihanDasar: LatihanSoal[] = [
   { no: 42, soal: "Tentukan nilai dari\n$\\frac{1}{1} + \\frac{1}{1+2} + \\frac{1}{1+2+3} + \\frac{1}{1+2+3+4} + ... + \\frac{1}{1+2+3+...+2024}$", options: ["A. $\\frac{4048}{2025}$", "B. $\\frac{2024}{2025}$", "C. $\\frac{4048}{2024}$", "D. $\\frac{2023}{2025}$"] },
 ];
 
+const nomorPolaBilanganDihapus = new Set([32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42]);
+const latihanDasarPolaBilangan = latihanDasar
+  .filter((soal) => !nomorPolaBilanganDihapus.has(soal.no))
+  .map((soal, index) => ({ ...soal, no: index + 1 }));
+
 const PolaBilanganPage = () => (
   <TKAPemantapanLayout
     title="POLA BILANGAN"
     materiSections={materiSections}
     contohSoal={contohSoal}
-    latihanDasar={latihanDasar}
+    latihanDasar={latihanDasarPolaBilangan}
   />
 );
 
