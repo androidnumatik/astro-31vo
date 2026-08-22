@@ -169,33 +169,23 @@ const TKAPage = () => {
                 background: isWhite ? "var(--bg-card)" : "rgba(10,10,30,0.7)",
               }}>
               <div className="px-2.5 py-2.5 flex flex-col gap-1">
-                {allTopics.map((topic, ti) => {
-                  const hasRoute = !!routes[topic.name];
+                {allTopics.filter(topic => routes[topic.name]).map((topic, ti) => {
                   return (
                     <button
                       key={topic.name}
                       onClick={() => handleTopicClick(topic.name)}
-                      disabled={!hasRoute}
-                      className={`group flex items-center gap-3 w-full rounded-xl px-3 py-2.5 text-left transition-all duration-200
-                        ${hasRoute ? "cursor-pointer hover:-translate-y-0.5 active:translate-y-0" : "cursor-not-allowed opacity-35"}`}
-                      style={hasRoute ? {
+                      className="group flex items-center gap-3 w-full rounded-xl px-3 py-2.5 text-left transition-all duration-200 cursor-pointer hover:-translate-y-0.5 active:translate-y-0"
+                      style={{
                         background: isWhite ? "var(--bg-secondary)" : "rgba(255,255,255,0.04)",
                         border: isWhite ? "1px solid rgba(0,119,182,0.12)" : "1px solid rgba(255,255,255,0.07)",
-                      } : {
-                        background: isWhite ? "rgba(0,0,0,0.03)" : "rgba(255,255,255,0.02)",
-                        border: isWhite ? "1px solid rgba(0,0,0,0.06)" : "1px solid rgba(255,255,255,0.04)",
                       }}
                       onMouseEnter={e => {
-                        if (hasRoute) {
-                          (e.currentTarget as HTMLButtonElement).style.background = isWhite ? "rgba(0,119,182,0.08)" : "rgba(34,211,238,0.08)";
-                          (e.currentTarget as HTMLButtonElement).style.border = isWhite ? "1px solid rgba(0,119,182,0.3)" : "1px solid rgba(34,211,238,0.3)";
-                        }
+                        (e.currentTarget as HTMLButtonElement).style.background = isWhite ? "rgba(0,119,182,0.08)" : "rgba(34,211,238,0.08)";
+                        (e.currentTarget as HTMLButtonElement).style.border = isWhite ? "1px solid rgba(0,119,182,0.3)" : "1px solid rgba(34,211,238,0.3)";
                       }}
                       onMouseLeave={e => {
-                        if (hasRoute) {
-                          (e.currentTarget as HTMLButtonElement).style.background = isWhite ? "var(--bg-secondary)" : "rgba(255,255,255,0.04)";
-                          (e.currentTarget as HTMLButtonElement).style.border = isWhite ? "1px solid rgba(0,119,182,0.12)" : "1px solid rgba(255,255,255,0.07)";
-                        }
+                        (e.currentTarget as HTMLButtonElement).style.background = isWhite ? "var(--bg-secondary)" : "rgba(255,255,255,0.04)";
+                        (e.currentTarget as HTMLButtonElement).style.border = isWhite ? "1px solid rgba(0,119,182,0.12)" : "1px solid rgba(255,255,255,0.07)";
                       }}
                     >
                       <span className="shrink-0 w-5 h-5 rounded-md flex items-center justify-center font-display font-bold text-[9px]"
@@ -209,13 +199,11 @@ const TKAPage = () => {
                       <span className="flex-1 font-body text-sm font-medium leading-snug text-white/80 group-hover:text-white transition-colors">
                         {topic.name}
                       </span>
-                      {hasRoute && (
-                        <svg className="w-3.5 h-3.5 shrink-0 transition-all duration-200 group-hover:translate-x-1"
-                          style={{ color: "#22d3ee", opacity: 0.5 }}
-                          fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                        </svg>
-                      )}
+                      <svg className="w-3.5 h-3.5 shrink-0 transition-all duration-200 group-hover:translate-x-1"
+                        style={{ color: "#22d3ee", opacity: 0.5 }}
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
                     </button>
                   );
                 })}

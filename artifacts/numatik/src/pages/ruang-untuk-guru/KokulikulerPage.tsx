@@ -684,7 +684,7 @@ const KokulikulerPage = () => {
   return (
     <div className="relative min-h-screen gradient-space overflow-x-hidden text-white">
       <Starfield />
-      <PageNavigation prevPath="/ruang-untuk-guru" />
+      <PageNavigation prevPath="/menu" />
       <div className="relative z-10 max-w-5xl mx-auto px-4 pt-20 pb-14">
 
         {/* Header */}
@@ -950,9 +950,9 @@ const KokulikulerPage = () => {
         </div>
 
         <div className="text-center">
-          <button onClick={() => { playPopSound(); navigate("/ruang-untuk-guru"); }}
+          <button onClick={() => { playPopSound(); navigate("/menu"); }}
             className="inline-flex items-center gap-2 text-sm text-white/60 hover:text-primary transition-colors font-body">
-            <ArrowLeft className="w-4 h-4" /> Kembali ke Ruang Untuk Guru
+            <ArrowLeft className="w-4 h-4" /> Kembali ke Menu Utama
           </button>
         </div>
       </div>

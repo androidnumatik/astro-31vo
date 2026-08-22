@@ -15,6 +15,7 @@ const bukuRefs = [
   "Raharjo, M. 2018. Matematika 1 Untuk SMP/MTs Kelas VII. Jakarta: Erlangga.",
   "Raharjo, M dan Setiawan, A. 2019. Matematik 2 untuk SMP/MTS Kelas VIII. Jakarta: Erlangga.",
   "Sukino. 2020. The Great Matematika untuk Siswa SMP-MTs Kelas IX. Kab. Bandung: Srikandi Empat Widya Utama.",
+  "Supriyanto A dan Setiawan, A. X-Press TKA SMP/MTs Mata Uji Matematika. 2025. Jakarta : Erlangga.",
   "Tim Progresif. 2024. MATEMATIKA 1B SEMESTER 1 untuk SMP/MTs Kelas VII (K-MERDEKA). Jakarta: Erlangga.",
 ];
 

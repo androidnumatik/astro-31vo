@@ -19,9 +19,7 @@ import {
   Sparkles,
   Zap,
   ChevronRight,
-  GraduationCap,
   Film,
-  Filter,
 } from "lucide-react";
 
 const ALL_VIDEOS = [
@@ -205,8 +203,6 @@ const COMING_SOON = [
   { title: "Bilangan Bulat & Operasinya", kelas: "Kelas 7", kelasNum: 7, duration: "–", views: "–", color: "from-cyan-500 via-blue-600 to-indigo-700", colorAccent: "#06b6d4", emoji: "🔢" },
 ];
 
-const KELAS_FILTERS = ["Semua", "Kelas 7", "Kelas 8", "Kelas 9"];
-
 const VideoPembelajaranPage = () => {
   const { theme } = useTheme();
   const isDark = theme === "dark";
@@ -217,17 +213,9 @@ const VideoPembelajaranPage = () => {
   const [likeCount, setLikeCount] = useState(parseInt(ALL_VIDEOS[0].likes));
   const [copied, setCopied] = useState(false);
   const [showDesc, setShowDesc] = useState(false);
-  const [kelasFilter, setKelasFilter] = useState("Semua");
   const playerRef = useRef<HTMLDivElement>(null);
 
   const currentVideo = ALL_VIDEOS[activeIndex];
-
-  const filteredVideos = ALL_VIDEOS.filter(
-    v => kelasFilter === "Semua" || v.kelas === kelasFilter
-  );
-  const filteredComingSoon = COMING_SOON.filter(
-    v => kelasFilter === "Semua" || v.kelas === kelasFilter
-  );
 
   const handleSelectVideo = (index: number) => {
     if (index === activeIndex) return;
@@ -302,7 +290,7 @@ const VideoPembelajaranPage = () => {
                 {[
                   { icon: Play, label: `${ALL_VIDEOS.length} Video`, color: d ? "text-cyan-400" : "text-blue-600" },
                   { icon: Lock, label: `${COMING_SOON.length} Segera Hadir`, color: d ? "text-amber-400" : "text-amber-600" },
-                  { icon: GraduationCap, label: "Kelas 7–9 SMP", color: d ? "text-violet-400" : "text-violet-600" },
+                   { icon: BookOpen, label: "Materi SMP", color: d ? "text-violet-400" : "text-violet-600" },
                 ].map(({ icon: Icon, label, color }) => (
                   <span key={label} className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-display font-bold ${d ? "bg-white/5 border border-white/8" : "bg-white/80 border border-gray-200 shadow-sm"} ${color}`}>
                     <Icon className="w-3.5 h-3.5" /> {label}
@@ -314,30 +302,6 @@ const VideoPembelajaranPage = () => {
 
           {/* Divider gradient */}
           <div className={`h-px w-full ${d ? "bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" : "bg-gradient-to-r from-transparent via-blue-200 to-transparent"}`} />
-        </div>
-      </div>
-
-      {/* ─── FILTER TABS ─── */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-2">
-        <div className="flex items-center gap-2 flex-wrap">
-          <Filter className={`w-3.5 h-3.5 shrink-0 ${d ? "text-white/30" : "text-gray-400"}`} />
-          {KELAS_FILTERS.map(k => (
-            <button
-              key={k}
-              onClick={() => { playPopSound(); setKelasFilter(k); }}
-              className={`px-4 py-1.5 rounded-full text-xs font-display font-bold transition-all duration-200 border ${
-                kelasFilter === k
-                  ? d
-                    ? "bg-cyan-500/20 text-cyan-300 border-cyan-500/50 shadow-[0_0_12px_rgba(6,182,212,0.2)]"
-                    : "bg-blue-600 text-white border-blue-600 shadow-md"
-                  : d
-                    ? "bg-white/4 text-white/50 border-white/8 hover:border-white/20 hover:text-white/70"
-                    : "bg-white text-gray-600 border-gray-200 hover:border-blue-300 hover:text-blue-600"
-              }`}
-            >
-              {k}
-            </button>
-          ))}
         </div>
       </div>
 
@@ -383,7 +347,6 @@ const VideoPembelajaranPage = () => {
                 <div className={`flex items-center justify-between gap-3 px-4 py-2.5 ${d ? "bg-[#040b18]/90" : "bg-gray-50/90"}`}>
                   <div className="flex items-center gap-2 min-w-0">
                     <span className={`text-[10px] font-display font-bold px-2 py-0.5 rounded-full ${d ? "bg-cyan-500/15 text-cyan-400 border border-cyan-500/25" : "bg-blue-100 text-blue-600"}`}>
-                      {currentVideo.kelas}
                     </span>
                     <span className={`text-[10px] font-body truncate ${d ? "text-white/35" : "text-gray-400"}`}>
                       {currentVideo.subject}
@@ -514,11 +477,6 @@ const VideoPembelajaranPage = () => {
 
             {/* ── Playlist items ── */}
             <div className="flex flex-col gap-2.5">
-              {filteredVideos.length === 0 && (
-                <p className={`text-xs font-body text-center py-6 ${d ? "text-white/25" : "text-gray-400"}`}>
-                  Tidak ada video untuk kelas ini
-                </p>
-              )}
               {ALL_VIDEOS.map((vid, i) => {
                 const isActive = i === activeIndex;
                 return (
@@ -585,8 +543,6 @@ const VideoPembelajaranPage = () => {
                           {vid.title}
                         </p>
                         <div className={`flex items-center gap-1.5 text-[10px] font-body ${d ? "text-white/30" : "text-gray-400"}`}>
-                          <span>{vid.kelas}</span>
-                          <span>·</span>
                           <Eye className="w-2.5 h-2.5" />
                           <span>{vid.views}</span>
                         </div>
@@ -614,7 +570,7 @@ const VideoPembelajaranPage = () => {
 
             {/* ── Coming soon cards ── */}
             <div className="flex flex-col gap-2.5">
-              {filteredComingSoon.map((vid, i) => (
+              {COMING_SOON.map((vid, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: 20 }}
@@ -639,8 +595,6 @@ const VideoPembelajaranPage = () => {
                         {vid.title}
                       </p>
                       <div className={`flex items-center gap-1.5 text-[10px] font-body ${d ? "text-white/25" : "text-gray-400"}`}>
-                        <span>{vid.kelas}</span>
-                        <span>·</span>
                         <Eye className="w-2.5 h-2.5" />
                         <span>{vid.views}</span>
                       </div>
