@@ -612,8 +612,13 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                       </div>
                     )}
 
-                    {/* ── Pembahasan — always visible ── */}
+                    {/* ── Pembahasan ── */}
                     {soal.pembahasan && (
+                      <button type="button" onClick={() => setRevealedAnswers(prev => { const next = new Set(prev); next.has(soal.no) ? next.delete(soal.no) : next.add(soal.no); return next; })} className="mx-4 mb-4 w-[calc(100%-2rem)] rounded-xl px-4 py-2.5 text-left font-display text-xs font-bold" aria-expanded={isRevealed}>
+                        {isRevealed ? "Tutup Pembahasan" : "Lihat Pembahasan"}
+                      </button>
+                    )}
+                    {soal.pembahasan && isRevealed && (
                       <div className="mx-4 mb-4 rounded-xl p-4"
                         style={isLightTheme ? {
                           background: "#ecfdf5",
