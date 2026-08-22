@@ -185,7 +185,9 @@ const BilanganBulatPage = () => {
       tipe === "PGS"  ? "Pilihan Ganda" :
       tipe === "MCMA" ? "Multiple Choice – lebih dari 1 jawaban" :
                         "Pernyataan Benar / Salah";
-    const telaahOrder: Record<number, number> = { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12 };
+    const deletedTelaahNumbers = new Set([1, 4, 12]);
+    if (deletedTelaahNumbers.has(num)) return null;
+    const telaahOrder: Record<number, number> = { 2: 1, 3: 2, 5: 3, 6: 4, 7: 5, 8: 6, 9: 7, 10: 8, 11: 9 };
     return (
       <div style={{ order: telaahOrder[num] ?? 99 }} className={`rounded-xl p-5 ${
         isDark ? "bg-card/70 backdrop-blur border border-border" : "bg-white border border-gray-200 shadow-sm"
