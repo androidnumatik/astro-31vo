@@ -29,7 +29,6 @@ const routes: Record<string, string> = {
   "Bangun Ruang Sisi Lengkung": "/tka/modul-pemantapan/bangun-ruang-sisi-lengkung",
   "Statistika": "/tka/modul-pemantapan/statistika",
   "Peluang": "/tka/modul-pemantapan/peluang",
-  "Persamaan Garis": "/tka/modul-pemantapan/persamaan-garis",
 };
 
 
