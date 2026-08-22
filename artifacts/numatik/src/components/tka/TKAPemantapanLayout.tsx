@@ -614,7 +614,20 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
 
                     {/* ── Pembahasan ── */}
                     {soal.pembahasan && (
-                      <button type="button" onClick={() => setRevealedAnswers(prev => { const next = new Set(prev); next.has(soal.no) ? next.delete(soal.no) : next.add(soal.no); return next; })} className="mx-4 mb-4 w-[calc(100%-2rem)] rounded-xl px-4 py-2.5 text-left font-display text-xs font-bold" aria-expanded={isRevealed}>
+                      <button
+                        type="button"
+                        onClick={() => setRevealedAnswers(prev => {
+                          const next = new Set(prev);
+                          next.has(soal.no) ? next.delete(soal.no) : next.add(soal.no);
+                          return next;
+                        })}
+                        className={`mx-4 mb-4 w-[calc(100%-2rem)] rounded-xl border px-4 py-3 text-left font-display text-xs font-bold transition-colors ${
+                          isLightTheme
+                            ? "border-amber-500 bg-amber-50 text-amber-700 hover:bg-amber-100"
+                            : "border-amber-400 bg-amber-500/15 text-amber-200 hover:bg-amber-500/25"
+                        }`}
+                        aria-expanded={isRevealed}
+                      >
                         {isRevealed ? "Tutup Pembahasan" : "Lihat Pembahasan"}
                       </button>
                     )}
