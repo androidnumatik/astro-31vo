@@ -25,6 +25,7 @@ import {
 import Starfield from "@/components/Starfield";
 import PageNavigation from "@/components/PageNavigation";
 import { playPopSound } from "@/hooks/useAudio";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const guruMenuItems = [
   {
@@ -127,6 +128,7 @@ const guruMenuItems = [
 
 const RuangUntukGuruPage = () => {
   const navigate = useNavigate();
+  const { isDark } = useTheme();
 
   const handleClick = (path: string) => {
     playPopSound();
@@ -155,41 +157,54 @@ const RuangUntukGuruPage = () => {
         <div
           className="relative flex items-center gap-4 rounded-2xl border px-5 py-4 mb-8 overflow-hidden animate-slide-up"
           style={{
-            background: "linear-gradient(120deg, #0c3a4a 0%, #0f2d4a 60%, #151a3a 100%)",
-            borderColor: "rgba(6,182,212,0.55)",
-            boxShadow: "0 0 28px rgba(6,182,212,0.18), inset 0 1px 0 rgba(255,255,255,0.08)",
+            background: isDark
+              ? "linear-gradient(120deg, #0c3a4a 0%, #0f2d4a 60%, #151a3a 100%)"
+              : "linear-gradient(120deg, #ffffff 0%, #effaff 60%, #eef2ff 100%)",
+            borderColor: isDark ? "rgba(6,182,212,0.55)" : "rgba(14,116,144,0.35)",
+            boxShadow: isDark
+              ? "0 0 28px rgba(6,182,212,0.18), inset 0 1px 0 rgba(255,255,255,0.08)"
+              : "0 4px 18px rgba(30,64,175,0.10), inset 0 1px 0 rgba(255,255,255,0.9)",
           }}
         >
           {/* subtle glow blob */}
           <div
             className="absolute -left-6 -top-6 w-28 h-28 rounded-full pointer-events-none"
-            style={{ background: "radial-gradient(circle, rgba(6,182,212,0.25) 0%, transparent 70%)", filter: "blur(12px)" }}
+            style={{
+              background: isDark
+                ? "radial-gradient(circle, rgba(6,182,212,0.25) 0%, transparent 70%)"
+                : "radial-gradient(circle, rgba(14,165,233,0.16) 0%, transparent 70%)",
+              filter: "blur(12px)",
+            }}
           />
 
           {/* monitor icon */}
           <div
             className="relative shrink-0 flex items-center justify-center w-12 h-12 rounded-xl border"
             style={{
-              background: "linear-gradient(135deg, rgba(6,182,212,0.25), rgba(59,130,246,0.20))",
-              borderColor: "rgba(6,182,212,0.45)",
-              boxShadow: "0 0 14px rgba(6,182,212,0.25)",
+              background: isDark
+                ? "linear-gradient(135deg, rgba(6,182,212,0.25), rgba(59,130,246,0.20))"
+                : "linear-gradient(135deg, rgba(186,230,253,0.75), rgba(199,210,254,0.72))",
+              borderColor: isDark ? "rgba(6,182,212,0.45)" : "rgba(14,116,144,0.30)",
+              boxShadow: isDark ? "0 0 14px rgba(6,182,212,0.25)" : "0 3px 10px rgba(30,64,175,0.12)",
             }}
           >
-            <Monitor className="w-6 h-6 text-cyan-300" strokeWidth={1.75} />
+            <Monitor className={`w-6 h-6 ${isDark ? "text-cyan-300" : "text-cyan-700"}`} strokeWidth={1.75} />
           </div>
 
           {/* text */}
           <div className="relative flex-1 min-w-0">
-            <p className="font-display text-sm font-bold text-cyan-200 leading-snug mb-0.5">
+            <p className={`font-display text-sm font-bold leading-snug mb-0.5 ${isDark ? "text-cyan-200" : "text-cyan-800"}`}>
               🚀 Lebih Nyaman di Laptop atau PC!
             </p>
-            <p className="font-body text-xs text-white/65 leading-relaxed">
+            <p className={`font-body text-xs leading-relaxed ${isDark ? "text-white/65" : "text-slate-700"}`}>
               Ruang Guru punya banyak tabel & fitur lengkap — buka di desktop biar makin leluasa.{" "}
               <a
                 href="https://www.numatik.app"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-cyan-300 underline underline-offset-2 hover:text-cyan-200 transition-colors"
+                className={`font-semibold underline underline-offset-2 transition-colors ${
+                  isDark ? "text-cyan-300 hover:text-cyan-200" : "text-cyan-700 hover:text-cyan-900"
+                }`}
               >
                 www.numatik.app
               </a>
