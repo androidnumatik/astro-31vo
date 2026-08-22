@@ -1013,8 +1013,8 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                       </div>
                     )}
 
-                    {/* ── Action row: manual reveal remains available for other modules ── */}
-                    {!autoRevealOnAnswer && <div className="px-5 pb-4 flex flex-col gap-2">
+                    {/* ── Action row: every latihan question with a pembahasan gets a visible toggle ── */}
+                    {soal.pembahasan && <div className="px-5 pb-4 flex flex-col gap-2">
                       <button
                         onClick={() => isRevealed ? handleClosePembahasan(soal.no) : handleReveal(soal.no)}
                         className="mt-1 w-full py-2 rounded-lg text-xs font-body font-semibold transition-all border cursor-pointer"
