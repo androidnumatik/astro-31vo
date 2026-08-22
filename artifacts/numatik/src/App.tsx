@@ -936,7 +936,7 @@ const AppInner = () => {
       <Suspense fallback={<PageLoader />}>
         <div className={/^\/materi-matematika\/kelas-[789](?:\/.*)?$/.test(pathname) ? "animation-submaterial-route" : undefined}>
         <Routes>
-          <Route path="/" element={<Navigate to="/menu" replace />} />
+          <Route path="/" element={<WelcomePage />} />
           <Route path="/menu" element={<MenuPage />} />
   <Route path="/uji-mandiri" element={<UjiMandiriPage />} />
           <Route path="/lkpd" element={<LKPDMenuPage />} />

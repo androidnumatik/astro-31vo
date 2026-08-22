@@ -1,5 +1,6 @@
 import TKAPemantapanLayout from "@/components/tka/TKAPemantapanLayout";
 import type { LatihanSoal, MateriSection } from "@/components/tka/TKAPemantapanLayout";
+import { getTkaContohSoal } from "@/data/tkaContohSoal";
 import {
   latihanDasar as latihanDasarOlimpiade,
   materiSection as materiOlimpiade,
@@ -43,8 +44,9 @@ const latihanDasar: LatihanSoal[] = latihanDasarOlimpiade.map((soal, index) => (
 
 const PolaBilanganPage = () => (
   <TKAPemantapanLayout
-    title="OLIMPIADE MATEMATIKA · POLA BILANGAN"
+    title="POLA BILANGAN"
     materiSections={materiSections}
+    contohSoal={getTkaContohSoal("pola-bilangan")}
     latihanDasar={latihanDasar}
     soalSvgMap={soalSvgMap}
   />
