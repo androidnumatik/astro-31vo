@@ -1,6 +1,5 @@
 import TKAPemantapanLayout from "@/components/tka/TKAPemantapanLayout";
 import type { MateriSection, LatihanSoal } from "@/components/tka/TKAPemantapanLayout";
-import { getTkaContohSoal } from "@/data/tkaContohSoal";
 
 const materiSections: MateriSection[] = [
   { heading: "A. Relasi", content: `Relasi dari himpunan A ke himpunan B adalah aturan yang memasangkan anggota-anggota himpunan A dengan anggota-anggota himpunan B.\n\nCara menyatakan relasi:\n1. Diagram panah\n2. Himpunan pasangan berurutan\n3. Tabel\n4. Diagram Cartesius` },
@@ -8,6 +7,128 @@ const materiSections: MateriSection[] = [
   { heading: "C. Banyaknya Fungsi", content: `Jika banyaknya anggota himpunan A = $n(A) = m$ dan banyaknya anggota himpunan B = $n(B) = n$, maka:\n\nBanyaknya fungsi yang mungkin dari A ke B = $n^m$\nBanyaknya fungsi yang mungkin dari B ke A = $m^n$` },
   { heading: "D. Fungsi Linear", content: `Fungsi linear: $f(x) = ax + b$, grafiknya berupa garis lurus.\n\nUntuk menentukan nilai fungsi: substitusikan nilai $x$ ke dalam rumus fungsi.\n\nUntuk menentukan rumus fungsi: jika diketahui nilai-nilai tertentu, bentuk sistem persamaan.` },
   { heading: "E. Korespondensi Satu-Satu", content: `Korespondensi satu-satu adalah fungsi bijektif, yaitu fungsi di mana:\n- Setiap anggota A dipasangkan tepat satu anggota B (injektif/satu-satu)\n- Setiap anggota B dipasangkan dengan setidaknya satu anggota A (surjektif/onto)\n\nSyarat korespondensi satu-satu: $n(A) = n(B)$\n\nBanyaknya korespondensi satu-satu dari A ke B dengan $n(A) = n(B) = n$ adalah $n!$ (n faktorial).` },
+];
+
+const contohSoal: LatihanSoal[] = [
+  {
+    no: 1,
+    type: "pgk",
+    soal: `Kedai “Boba Time” menjual minuman boba custom. Total harga minuman ditentukan oleh banyaknya varian topping yang dipilih pelanggan. Banyaknya topping dinyatakan dengan variabel $x$ (dalam buah), sedangkan total harga (dalam rupiah) dirumuskan dengan $f(x)=12.000+3.000x$.
+
+Harga dasar minuman tanpa topping adalah Rp12.000,00 dan biaya tambahan setiap jenis topping adalah Rp3.000,00. Dimas membeli boba dengan 2 topping, Eka tanpa topping, dan Fani dengan 4 topping. Pilih semua pernyataan yang pasti benar!`,
+    pernyataan: [
+      "Pelanggan yang membayar Rp18.000,00 adalah Dimas.",
+      "Total harga minuman yang dibeli Fani adalah Rp24.000,00.",
+      "Total harga minuman yang dibeli Eka adalah Rp15.000,00.",
+      "Fani membayar dua kali lipat lebih mahal daripada Eka.",
+    ],
+    jawabanPGK: [0, 1, 3],
+    pembahasan: `Gunakan rumus $f(x)=12.000+3.000x$.
+
+Dimas: $f(2)=12.000+3.000(2)=18.000$, sehingga pernyataan 1 benar.
+
+Fani: $f(4)=12.000+3.000(4)=24.000$, sehingga pernyataan 2 benar.
+
+Eka: $f(0)=12.000+3.000(0)=12.000$, bukan Rp15.000,00, sehingga pernyataan 3 salah.
+
+Perbandingan harga Fani dan Eka adalah $24.000:12.000=2:1$. Jadi Fani membayar dua kali harga Eka dan pernyataan 4 benar.
+
+Jawaban benar: pernyataan 1, 2, dan 4.`,
+  },
+  {
+    no: 2,
+    type: "pg",
+    soal: `Diketahui relasi dari himpunan $A=\\{2,3,5\\}$ ke himpunan $B=\\{6,10,12,15\\}$. Relasi tersebut dinyatakan oleh pasangan:
+
+$\\{(2,6),(2,10),(2,12),(3,6),(3,12),(3,15),(5,10),(5,15)\\}$.
+
+Relasi yang paling tepat dari himpunan $A$ ke himpunan $B$ adalah ....`,
+    options: [
+      "A. Kelipatan dari",
+      "B. Faktor dari",
+      "C. Lebih dari",
+      "D. Kurang dari",
+    ],
+    jawaban: "B",
+    pembahasan: `Periksa anggota pertama pada setiap pasangan. Bilangan $2$ merupakan faktor dari $6$, $10$, dan $12$. Bilangan $3$ merupakan faktor dari $6$, $12$, dan $15$. Bilangan $5$ merupakan faktor dari $10$ dan $15$.
+
+Jadi, relasi tersebut adalah “faktor dari”.
+
+Jawaban: B.`,
+  },
+  {
+    no: 3,
+    type: "pg",
+    soal: `Suatu fungsi $f$ memetakan $x$ ke $y$ dengan pasangan nilai berikut.
+
+$\\begin{array}{c|ccccc} x&-2&-1&0&1&2\\\\ \\hline y&11&8&5&2&-1\\end{array}$
+
+Rumus fungsi $f(x)$ yang sesuai dengan tabel tersebut adalah ....`,
+    options: [
+      "A. $f(x)=3x+5$",
+      "B. $f(x)=-3x+5$",
+      "C. $f(x)=-3x-5$",
+      "D. $f(x)=2x+5$",
+    ],
+    jawaban: "B",
+    pembahasan: `Saat $x$ bertambah $1$, nilai $y$ berkurang $3$, sehingga gradiennya adalah $a=-3$. Ketika $x=0$, diperoleh $y=5$, sehingga $b=5$.
+
+Dengan bentuk umum $f(x)=ax+b$, diperoleh $f(x)=-3x+5$.
+
+Pengecekan: $f(1)=-3(1)+5=2$ dan $f(2)=-3(2)+5=-1$, sesuai tabel.
+
+Jawaban: B.`,
+  },
+  {
+    no: 4,
+    type: "pgk",
+    soal: `Grafik hubungan antara durasi sewa mobil (dalam jam) dan total biaya sewa (dalam ribuan rupiah) melalui titik $(0,40)$ dan $(6,160)$. Biaya sewa terdiri dari biaya lepas kunci dan biaya per jam.
+
+Pilih semua pernyataan yang pasti benar!`,
+    pernyataan: [
+      "Biaya lepas kunci (biaya awal saat 0 jam) adalah Rp40.000,00.",
+      "Biaya sewa tiap jam adalah Rp20.000,00.",
+      "Total biaya sewa untuk durasi 4 jam adalah Rp120.000,00.",
+      "Biaya sewa untuk jam pertama saja adalah Rp20.000,00.",
+    ],
+    jawabanPGK: [0, 1, 2],
+    pembahasan: `Titik $(0,40)$ menunjukkan biaya awal sebesar $40$ ribu rupiah, yaitu Rp40.000,00.
+
+Biaya per jam:
+$\\dfrac{160-40}{6-0}=\\dfrac{120}{6}=20$ ribu rupiah, yaitu Rp20.000,00 per jam.
+
+Untuk 4 jam, total biaya:
+$40.000+4(20.000)=120.000$.
+
+Untuk durasi 1 jam, total biaya adalah $40.000+20.000=60.000$, bukan Rp20.000,00.
+
+Jawaban benar: pernyataan 1, 2, dan 3.`,
+  },
+  {
+    no: 5,
+    type: "pgkbs",
+    soal: `Diketahui himpunan $A=\\{x\\mid 2<x\\le 6,\\ x\\in\\text{bilangan bulat}\\}$ dan himpunan $B=\\{x\\mid 5\\le x\\le 20,\\ x\\in\\text{bilangan bulat}\\}$. Relasi $f$ dari himpunan $A$ ke himpunan $B$ dirumuskan dengan $f(x)=3x-1$.
+
+Tentukan Benar atau Salah untuk setiap pernyataan berikut.`,
+    pernyataan: [
+      "Domain relasi $f$ adalah $A=\\{3,4,5,6\\}$.",
+      "Range relasi $f$ adalah $\\{8,11,14,17\\}$.",
+      "Penyajian relasi $f$ dalam himpunan pasangan berurutan adalah $\\{(3,8),(4,11),(5,14),(6,17)\\}$.",
+    ],
+    jawabanBS: ["B", "B", "B"],
+    pembahasan: `Dari $2<x\\le 6$ dengan $x$ bilangan bulat, diperoleh domain:
+$A=\\{3,4,5,6\\}$.
+
+Hitung nilai fungsi:
+$f(3)=3(3)-1=8$,
+$f(4)=3(4)-1=11$,
+$f(5)=3(5)-1=14$, dan
+$f(6)=3(6)-1=17$.
+
+Jadi range adalah $\\{8,11,14,17\\}$ dan himpunan pasangan berurutannya adalah $\\{(3,8),(4,11),(5,14),(6,17)\\}$.
+
+Ketiga pernyataan benar.`,
+  },
 ];
 
 const latihanDasar: LatihanSoal[] = [
@@ -60,7 +181,7 @@ const RelasiFungsiPage = () => (
   <TKAPemantapanLayout
     title="RELASI DAN FUNGSI"
     materiSections={materiSections}
-    contohSoal={getTkaContohSoal("relasi-dan-fungsi")}
+    contohSoal={contohSoal}
   latihanDasar={[...latihanDasar, ...latihanTambahan]}
   />
 );
