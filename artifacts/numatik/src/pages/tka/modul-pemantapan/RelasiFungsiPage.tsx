@@ -9,10 +9,10 @@ const materiSections: MateriSection[] = [
 Misal himpunan A = {1, 2, 4} dan himpunan B = {(1, 1), (1, 2), (1, 4), (2, 2), (2, 4), (4, 4)} mempunyai relasi bahwa himpunan A merupakan faktor dari himpunan B. Relasi himpunan A dan himpunan B dapat dinyatakan dalam tiga cara yaitu Diagram Panah, Pasangan Berurutan dan Diagram Kartesius.
 
 1. Diagram panah
-[IMAGE:https://drive.google.com/thumbnail?id=1Y-yZAbq_xIkLbcPWkB0FZpNkDaSTovSp&sz=w800]
+[IMAGE:https://res.cloudinary.com/s4ge6not/image/upload/v1787457532/fungsi_1_k1ufmz.png]
 2. Himpunan pasangan terurut: {(1, 2), (1, 3), (1, 4), (2, 2), (2, 4), (4, 4)}
 3. Koordinat Kartesius
-[IMAGE:https://drive.google.com/thumbnail?id=1PbZEtxhMoQidTbTFEsNeMcDTD1-YfONb&sz=w800]`,
+[IMAGE:https://res.cloudinary.com/s4ge6not/image/upload/v1787457532/download_gygaky.png]`,
   },
   {
     heading: "B. Domain, Kodomain, Range",
@@ -39,11 +39,12 @@ Syarat fungsi:
 
 Jika himpunan A adalah Domain (daerah asal) dan himpunan B adalah kodomain (daerah kawan) maka relasi himpunan A ke himpunan B merupakan fungsi saat anggota domain mempunyai pasangan tepat satu pada kodomain.
 
-[IMAGE:https://drive.google.com/thumbnail?id=117McnW2tpZK5cqY1U61VE8kAT1HeY8fa&sz=w800]
+[IMAGE:https://res.cloudinary.com/s4ge6not/image/upload/v1787457531/download_3_s3dn3h.png]
 [CENTER:Contoh fungsi]
 Relasi himpunan A ke himpunan B di atas adalah contoh relasi yang merupakan fungsi karena anggota pada domain (daerah asal) A mempunyai pasangan tepat satu di kodomain (daerah kawan) B, yaitu {(a, y), (b, z), (c, z)}. Pada diagram panah di atas kita peroleh Range (daerah hasil) yaitu {y, z}
 
-[IMAGE:https://drive.google.com/thumbnail?id=1xp2mUJRi8nJ0yXPPOF4abq3sEmmaxJWz&sz=w800]
+[IMAGE:https://res.cloudinary.com/s4ge6not/image/upload/v1787457531/download_3_s3dn3h.png]
+[IMAGE:https://res.cloudinary.com/s4ge6not/image/upload/v1787457531/download_2_rjpvf9.png]
 [CENTER:Contoh bukan fungsi]
 Relasi himpunan A ke himpunan B di atas adalah contoh relasi yang bukan fungsi karena anggota pada domain A ada yang mempunyai pasangan di kodomain B lebih dari satu, yaitu {(b, x)} dan {(b, z)}.
 

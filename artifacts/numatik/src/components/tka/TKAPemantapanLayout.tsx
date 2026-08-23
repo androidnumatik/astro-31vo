@@ -353,7 +353,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                       {String.fromCharCode(65 + idx)}
                     </span>
                     <span className="font-display text-sm font-bold text-white/90 flex-1 leading-snug">
-                      {headingText}
+                      {renderWithLatex(headingText)}
                     </span>
                   </div>
 
@@ -375,7 +375,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                                   className="block rounded-xl shadow-lg transition-transform hover:scale-[1.01]"
                                   title="Buka gambar sumber"
                                 >
-                                  <AsyncImage src={normalizeImageUrl(imgMatch[1])} alt="Gambar materi" wrapperClassName="rounded-xl" className="w-full rounded-xl" />
+                                  <AsyncImage src={normalizeImageUrl(imgMatch[1])} alt="Gambar materi" wrapperClassName="rounded-xl" className="max-h-[420px] w-full rounded-xl object-contain bg-white p-2" />
                                 </a>
                                 <a
                                   href={normalizeImageUrl(imgMatch[1])}
