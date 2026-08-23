@@ -1,16 +1,82 @@
 import TKAPemantapanLayout from "@/components/tka/TKAPemantapanLayout";
 import type { MateriSection, LatihanSoal } from "@/components/tka/TKAPemantapanLayout";
-import { getTkaContohSoal } from "@/data/tkaContohSoal";
 
 const materiSections: MateriSection[] = [
-  { heading: "A. Harga Beli (Modal)", content: `Harga beli atau modal adalah harga barang saat dibeli dari produsen, distributor, atau toko lain.\n\nContoh: Seorang pedagang membeli 1 lusin buku dengan harga Rp50.000. Harga beli 1 lusin buku tersebut adalah Rp50.000.` },
-  { heading: "B. Untung dan Rugi", content: `Untung: $\\text{Untung} = \\text{Harga Jual} - \\text{Harga Beli}$ (HJ > HB)\nRugi: $\\text{Rugi} = \\text{Harga Beli} - \\text{Harga Jual}$ (HJ < HB)\nImpas: Harga Jual = Harga Beli` },
-  { heading: "C. Persentase Untung/Rugi", content: `$\\%U = \\dfrac{\\text{Untung}}{\\text{Harga Beli}} \\times 100\\%$\n\n$\\%R = \\dfrac{\\text{Rugi}}{\\text{Harga Beli}} \\times 100\\%$` },
-  { heading: "D. Mencari Harga Jual", content: `Jika untung: $\\text{HJ} = \\dfrac{(100 + \\%U)}{100} \\times \\text{HB}$\n\nJika rugi: $\\text{HJ} = \\dfrac{(100 - \\%R)}{100} \\times \\text{HB}$\n\nJika untung: $\\text{HB} = \\dfrac{100}{100 + \\%U} \\times \\text{HJ}$` },
-  { heading: "E. Bunga Tunggal", content: `$B = M \\times W \\times P$\n\nB = besar bunga, M = modal, W = waktu, dan P = suku bunga per periode.\n\nModal akhir: $M_1 = M(1 + WP)$` },
-  { heading: "F. Diskon (Potongan Harga)", content: `Besar diskon = Persentase diskon × Harga awal\n\nHarga bayar = Harga awal × (100% − Persentase diskon)\n\nDiskon ganda 20% + 10% tidak sama dengan diskon 30%.` },
-  { heading: "G. Pajak (PPN & PPh)", content: `PPN: Total bayar = Harga × (100% + %PPN)\n\nPPh: PKP = Penghasilan bruto − PTKP\nPPh = %PPh × PKP\nPenghasilan bersih = Penghasilan bruto − PPh` },
-  { heading: "H. Bruto, Netto, Tara", content: `Bruto = berat kotor (barang + kemasan)\nNetto = berat bersih (tanpa kemasan)\nTara = berat kemasan\n\nBruto = Netto + Tara` },
+  { heading: "A. Pajak (PPN dan PPh)", content: `PPN merupakan pajak yang dikenakan atas konsumsi barang atau jasa. Jika tarif PPN adalah p%, maka:\n\n$\\text{PPN} = \\dfrac{p}{100} \\times \\text{Harga sebelum pajak}$\n$\\text{Harga setelah PPN} = \\text{Harga sebelum pajak} + \\text{PPN}$\n\nPPh merupakan pajak penghasilan. Penghasilan kena pajak (PKP) dihitung dengan mengurangi penghasilan bruto dengan penghasilan tidak kena pajak (PTKP):\n\n$\\text{PKP} = \\text{Penghasilan bruto} - \\text{PTKP}$\n$\\text{PPh} = \\dfrac{p}{100} \\times \\text{PKP}$\n$\\text{Penghasilan bersih} = \\text{Penghasilan bruto} - \\text{PPh}$` },
+  { heading: "B. Bruto, Netto, dan Tara", content: `Bruto adalah berat kotor, yaitu berat barang beserta kemasannya.\nNetto adalah berat bersih barang tanpa kemasan.\nTara adalah berat kemasan.\n\n$\\text{Bruto} = \\text{Netto} + \\text{Tara}$\n$\\text{Netto} = \\text{Bruto} - \\text{Tara}$\n\nJika tara dinyatakan dalam persentase, maka:\n$\\text{Tara} = \\dfrac{p}{100} \\times \\text{Bruto}$` },
+];
+
+const contohSoal: LatihanSoal[] = [
+  {
+    no: 1,
+    type: "pg",
+    soal: "Seorang pedagang membeli sepeda bekas. Setelah diperbaiki dengan biaya Rp200.000,00, sepeda tersebut dijual dengan harga Rp1.040.000,00 sehingga mendapat untung 30%. Harga beli sepeda semula adalah ....",
+    options: ["A. Rp500.000,00", "B. Rp600.000,00", "C. Rp700.000,00", "D. Rp800.000,00"],
+    jawaban: "B",
+    pembahasan: "Total modal sudah termasuk biaya perbaikan.\nTotal modal $=\\dfrac{100}{100+30}\\times1.040.000=Rp800.000,00$.\nHarga beli semula $=Rp800.000,00-Rp200.000,00=\\mathbf{Rp600.000,00}$.\nJadi, jawaban yang benar adalah B.",
+  },
+  {
+    no: 2,
+    type: "pgk",
+    soal: "Bima menyimpan uang sebesar Rp1.200.000,00 di sebuah bank dengan suku bunga tunggal 15% setahun. Setelah beberapa bulan, ia mengambil seluruh tabungannya beserta bunganya sebesar Rp1.260.000,00.\n\nBerilah tanda centang pada semua pernyataan yang benar! Jawaban benar lebih dari satu.",
+    pernyataan: [
+      "Besar bunga yang diperoleh Bima selama menabung adalah Rp60.000,00.",
+      "Bunga yang diperoleh Bima per bulan adalah Rp15.000,00.",
+      "Lama Bima menabung di bank tersebut adalah 4 bulan.",
+      "Persentase total bunga yang didapatkan terhadap tabungan awal adalah 5%.",
+    ],
+    options: ["A. (1) dan (2) saja", "B. (1), (2), dan (3) saja", "C. (2) dan (4) saja", "D. (1), (2), (3), dan (4)"],
+    jawaban: "D",
+    jawabanPGK: [0, 1, 2, 3],
+    pembahasan: "Bunga total $=Rp1.260.000,00-Rp1.200.000,00=Rp60.000,00$.\nBunga selama satu tahun $=15\\%\\times Rp1.200.000,00=Rp180.000,00$, sehingga bunga per bulan $=Rp180.000,00\\div12=Rp15.000,00$.\nLama menabung $=Rp60.000,00\\div Rp15.000,00=4$ bulan.\nPersentase bunga $=\\dfrac{60.000}{1.200.000}\\times100\\%=5\\%$.\nJadi, semua pernyataan benar.",
+  },
+  {
+    no: 3,
+    type: "pgk",
+    soal: "Pak Budi meminjam uang di koperasi sebesar Rp4.800.000,00. Ia dikenakan bunga tunggal 24% setahun dan berencana mengembalikan pinjaman tersebut dengan cara mengangsur selama 2 tahun (24 bulan).\n\nPilihlah semua pernyataan yang benar! Jawaban benar lebih dari satu.",
+    pernyataan: [
+      "Total bunga yang ditanggung Pak Budi selama 2 tahun adalah Rp2.304.000,00.",
+      "Angsuran pokok pinjaman per bulan tanpa bunga adalah Rp200.000,00.",
+      "Total uang pinjaman beserta bunga yang harus dikembalikan seluruhnya adalah Rp7.104.000,00.",
+      "Besar cicilan total yang harus dibayar Pak Budi setiap bulannya adalah Rp296.000,00.",
+    ],
+    options: ["A. (1) dan (2) saja", "B. (1), (2), dan (3) saja", "C. (2) dan (4) saja", "D. (1), (2), (3), dan (4)"],
+    jawaban: "D",
+    jawabanPGK: [0, 1, 2, 3],
+    pembahasan: "Total bunga $=24\\%\\times Rp4.800.000,00\\times2=Rp2.304.000,00$.\nAngsuran pokok per bulan $=Rp4.800.000,00\\div24=Rp200.000,00$.\nTotal pengembalian $=Rp4.800.000,00+Rp2.304.000,00=Rp7.104.000,00$.\nCicilan per bulan $=Rp7.104.000,00\\div24=\\mathbf{Rp296.000,00}$.\nJadi, semua pernyataan benar.",
+  },
+  {
+    no: 4,
+    type: "pgkbs",
+    soal: "Cermati data harga dan diskon sepatu serta kaos dari empat toko berikut. Febian akan membeli 1 pasang sepatu dan 1 buah kaos. Tentukan apakah setiap pernyataan berikut BENAR atau SALAH!",
+    pernyataan: [
+      "Harga sepatu Rp140.000,00 dan harga kaos Rp100.000,00. Diskon Toko Damai berturut-turut 20% dan 25%. Total yang harus dibayar di Toko Damai adalah Rp187.000,00.",
+      "Diskon Toko Sentosa untuk sepatu dan kaos berturut-turut 30% dan 15%. Total yang harus dibayar di Toko Sentosa adalah Rp183.000,00.",
+      "Toko Rukun memberikan total harga bayar paling murah di antara keempat toko tersebut.",
+    ],
+    jawabanBS: ["B", "B", "S"],
+    pembahasan: "Toko Damai: $80\\%\\times Rp140.000,00+75\\%\\times Rp100.000,00=Rp187.000,00$ (BENAR).\nToko Sentosa: $70\\%\\times Rp140.000,00+85\\%\\times Rp100.000,00=Rp183.000,00$ (BENAR).\nToko Rukun: $85\\%\\times Rp140.000,00+70\\%\\times Rp100.000,00=Rp189.000,00$, sedangkan harga termurah adalah Toko Sentosa (SALAH).",
+  },
+  {
+    no: 5,
+    type: "pgkbs",
+    soal: "Perhatikan daftar harga dan diskon barang berikut. Rani membeli 3 tas, 2 pasang sandal, dan 1 pasang sepatu. Tentukan apakah setiap pernyataan berikut BENAR atau SALAH!",
+    pernyataan: [
+      "Besar potongan harga total untuk 3 tas yang dibeli Rani adalah Rp36.000,00.",
+      "Total harga belanjaan Rani sebelum mendapatkan diskon adalah Rp460.000,00.",
+      "Total uang yang harus dibayarkan Rani setelah dipotong diskon adalah Rp375.000,00.",
+    ],
+    jawabanBS: ["B", "B", "B"],
+    pembahasan: "Diskon 3 tas $=15\\%\\times(3\\times Rp80.000,00)=Rp36.000,00$.\nHarga kotor $=(3\\times Rp80.000,00)+(2\\times Rp50.000,00)+Rp120.000,00=Rp460.000,00$.\nHarga setelah diskon $=(3\\times85\\%\\times Rp80.000,00)+(2\\times75\\%\\times Rp50.000,00)+(80\\%\\times Rp120.000,00)$\n$=Rp204.000,00+Rp75.000,00+Rp96.000,00=\\mathbf{Rp375.000,00}$.\nJadi, semua pernyataan benar.",
+  },
+  {
+    no: 6,
+    type: "pg",
+    soal: "Seorang pedagang membeli satu karung beras dengan bruto 50 kg dan tara 2%. Beras tersebut kemudian dijual secara eceran dengan harga Rp12.000,00 per kg netto. Total pendapatan dari penjualan seluruh beras dalam karung tersebut adalah ....",
+    options: ["A. Rp600.000,00", "B. Rp588.000,00", "C. Rp583.000,00", "D. Rp88.000,00"],
+    jawaban: "B",
+    pembahasan: "Tara $=2\\%\\times50\\text{ kg}=1\\text{ kg}$.\nNetto $=50\\text{ kg}-1\\text{ kg}=49\\text{ kg}$.\nTotal pendapatan $=49\\times Rp12.000,00=\\mathbf{Rp588.000,00}$.\nJadi, jawaban yang benar adalah B.",
+  },
 ];
 
 // 21 soal dibagi merata: 7 PG biasa, 7 PG kompleks (4 pernyataan), dan 7 PG benar-salah (3 pernyataan).
@@ -162,8 +228,8 @@ const AritmetikaSosialPage = () => (
   <TKAPemantapanLayout
     title="ARITMETIKA SOSIAL"
     materiSections={materiSections}
-    contohSoal={getTkaContohSoal("aritmetika-sosial")}
-  latihanDasar={latihanDasar}
+    contohSoal={contohSoal}
+    latihanDasar={latihanDasar}
   />
 );
 
