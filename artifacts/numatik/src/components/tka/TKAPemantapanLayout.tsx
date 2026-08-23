@@ -50,6 +50,8 @@ interface Props {
   optionSvgMap?: Record<string, React.ReactNode>;
   gambarMap?: Record<number, React.ReactNode>;
   autoRevealOnAnswer?: boolean;
+  showImageSourceLinks?: boolean;
+  imageScale?: "default" | "half";
 }
 
 const getGoogleDriveFileId = (value: string) => {
@@ -77,15 +79,19 @@ const isImageUrl = (value: string) => {
     || /blob\.vusercontent\.net|images\.|image\.|imgur\.com|cloudinary\.com|unsplash\.com|googleusercontent\.com/i.test(trimmed);
 };
 
-const renderWithLatex = (text: string) => {
+const renderWithLatex = (text: string, imageScale: "default" | "half" = "default") => {
   const trimmed = text.trim();
   if (isImageUrl(trimmed)) {
+    const imageWrapperClass = imageScale === "half" ? "my-3 mx-auto w-1/2 max-w-xl rounded-xl" : "my-3 mx-auto max-w-xl rounded-xl";
+    const imageClass = imageScale === "half"
+      ? "max-h-[210px] w-full object-contain rounded-xl bg-white p-2"
+      : "max-h-[420px] w-full object-contain rounded-xl bg-white p-2";
     return (
       <AsyncImage
         src={normalizeImageUrl(trimmed)}
         alt="Gambar materi atau soal"
-        wrapperClassName="my-3 mx-auto max-w-xl rounded-xl"
-        className="max-h-[420px] w-full object-contain rounded-xl bg-white p-2"
+        wrapperClassName={imageWrapperClass}
+        className={imageClass}
         showSkeleton
       />
     );
@@ -134,7 +140,7 @@ const TYPE_BADGE: Record<string, { label: string; color: string; bg: string; bor
   },
 };
 
-const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materiSections, latihanDasar, contohSoal, soalSvgMap, optionSvgMap, gambarMap, autoRevealOnAnswer = false }: Props) => {
+const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materiSections, latihanDasar, contohSoal, soalSvgMap, optionSvgMap, gambarMap, autoRevealOnAnswer = false, showImageSourceLinks = true, imageScale = "default" }: Props) => {
   const navigate = useNavigate();
   const { theme } = useTheme();
   const isLightTheme = theme !== "dark" && theme !== "ocean";
@@ -261,6 +267,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
   const conceptTip = title.toLowerCase().includes("rasional")
     ? "Samakan bentuk bilangan terlebih dahulu (pecahan, desimal, atau persen), lalu gunakan operasi dan urutan pengerjaan yang sesuai."
     : "Kenali konsep utama pada soal, tuliskan informasi yang diketahui, lalu pilih operasi atau rumus yang sesuai.";
+  const contentRenderer = (text: string) => renderWithLatex(text, imageScale);
 
   return (
     <div className="relative min-h-screen flex flex-col items-center overflow-hidden tka-pemantapan"
@@ -353,7 +360,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                       {String.fromCharCode(65 + idx)}
                     </span>
                     <span className="font-display text-sm font-bold text-white/90 flex-1 leading-snug">
-                      {renderWithLatex(headingText)}
+                      {contentRenderer(headingText)}
                     </span>
                   </div>
 
@@ -364,27 +371,35 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                         const trimmed = line.trim();
                         const imgMatch = trimmed.match(/^\[IMAGE:([^|]+)(?:\|(\w+))?\]$/);
                         if (imgMatch) {
-                          const sizeClass = imgMatch[2] === 'small' ? 'max-w-[160px]' : 'max-w-sm w-full';
+                          const sizeClass = imgMatch[2] === 'small'
+                            ? (imageScale === "half" ? 'max-w-[80px]' : 'max-w-[160px]')
+                            : (imageScale === "half" ? 'max-w-[192px]' : 'max-w-sm');
                           return (
                             <div key={i} className="my-3 flex justify-center">
                               <div className={`${sizeClass} w-full`}>
-                                <a
-                                  href={normalizeImageUrl(imgMatch[1])}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                  className="block rounded-xl shadow-lg transition-transform hover:scale-[1.01]"
-                                  title="Buka gambar sumber"
-                                >
-                                  <AsyncImage src={normalizeImageUrl(imgMatch[1])} alt="Gambar materi" wrapperClassName="rounded-xl" className="max-h-[420px] w-full rounded-xl object-contain bg-white p-2" />
-                                </a>
-                                <a
-                                  href={normalizeImageUrl(imgMatch[1])}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                  className="mt-1 block text-center text-[10px] text-cyan-300/80 underline underline-offset-2 hover:text-cyan-200"
-                                >
-                                  Buka link gambar
-                                </a>
+                                {showImageSourceLinks ? (
+                                  <a
+                                    href={normalizeImageUrl(imgMatch[1])}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="block rounded-xl shadow-lg transition-transform hover:scale-[1.01]"
+                                    title="Buka gambar sumber"
+                                  >
+                                    <AsyncImage src={normalizeImageUrl(imgMatch[1])} alt="Gambar materi" wrapperClassName="rounded-xl" className={`${imageScale === "half" ? "max-h-[210px]" : "max-h-[420px]"} w-full rounded-xl object-contain bg-white p-2`} />
+                                  </a>
+                                ) : (
+                                  <AsyncImage src={normalizeImageUrl(imgMatch[1])} alt="Gambar materi" wrapperClassName="rounded-xl" className={`${imageScale === "half" ? "max-h-[210px]" : "max-h-[420px]"} w-full rounded-xl object-contain bg-white p-2`} />
+                                )}
+                                {showImageSourceLinks && (
+                                  <a
+                                    href={normalizeImageUrl(imgMatch[1])}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="mt-1 block text-center text-[10px] text-cyan-300/80 underline underline-offset-2 hover:text-cyan-200"
+                                  >
+                                    Buka link gambar
+                                  </a>
+                                )}
                               </div>
                             </div>
                           );
@@ -392,7 +407,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                         const centerMatch = trimmed.match(/^\[CENTER:(.+)\]$/);
                         if (centerMatch) return <div key={i} className="text-center font-semibold mb-1">{centerMatch[1]}</div>;
                         const subheadingMatch = trimmed.match(/^\[SUBHEADING:(.+)\]$/);
-                        if (subheadingMatch) return <div key={i} className="text-amber-300 font-semibold mt-3 mb-1">{renderWithLatex(subheadingMatch[1])}</div>;
+                        if (subheadingMatch) return <div key={i} className="text-amber-300 font-semibold mt-3 mb-1">{contentRenderer(subheadingMatch[1])}</div>;
                         const blockMathMatch = trimmed.match(/^\[BLOCKMATH:(.+)\]$/);
                         if (blockMathMatch) return (
                           <div key={i} className="flex justify-start my-3 pl-2 overflow-x-auto">
@@ -406,7 +421,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                               <div className="min-w-[220px] rounded-xl border-2 border-amber-400/60 bg-amber-400/10 px-6 py-4 text-center">
                                 <div className="mb-3 text-xs font-bold uppercase tracking-widest text-amber-300">{formulaBoxMatch[1]}</div>
                                 {formulaBoxMatch[2].split('|').map((formula, formulaIndex) => (
-                                  <div key={formulaIndex} className="mb-1 text-base font-semibold text-white">{renderWithLatex(formula)}</div>
+                                  <div key={formulaIndex} className="mb-1 text-base font-semibold text-white">{contentRenderer(formula)}</div>
                                 ))}
                               </div>
                             </div>
@@ -430,13 +445,13 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                                   <div className="h-px flex-1 max-w-[40px]"
                                     style={{ background: "rgba(245,158,11,0.4)" }} />
                                 </div>
-                                <span className="text-base font-bold text-white">{renderWithLatex(trimmed)}</span>
+                                <span className="text-base font-bold text-white">{contentRenderer(trimmed)}</span>
                               </div>
                             </div>
                           );
                         }
                         if (trimmed === '') return <div key={i} className="h-1.5" />;
-                        return <div key={i}>{renderWithLatex(line)}</div>;
+                        return <div key={i}>{contentRenderer(line)}</div>;
                       })}
                     </div>
                     {section.jsxAfter && <div className="mt-3">{section.jsxAfter}</div>}
@@ -500,7 +515,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                           {soal.soal.split('\n').map((line, lineIdx) => (
                             <span key={lineIdx}>
                               {lineIdx > 0 && <br />}
-                              {renderWithLatex(line)}
+                              {contentRenderer(line)}
                             </span>
                           ))}
                         </div>
@@ -517,7 +532,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                               style={{ background: "rgba(245,158,11,0.15)", border: "1px solid rgba(245,158,11,0.3)", color: "#fcd34d" }}>
                               {pi + 1}
                             </span>
-                            <span>{renderWithLatex(p)}</span>
+                            <span>{contentRenderer(p)}</span>
                           </div>
                         ))}
                         <p className="text-[11px] font-body text-amber-300/60 mt-2 italic">
@@ -568,7 +583,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                                 }}>
                                 {letter}
                               </span>
-                              <span className="leading-snug">{optionSvgMap?.[opt] ?? renderWithLatex(opt.replace(/^[A-E]\.\s*/, ''))}</span>
+                              <span className="leading-snug">{optionSvgMap?.[opt] ?? contentRenderer(opt.replace(/^[A-E]\.\s*/, ''))}</span>
                               {isThisCorrect && <CheckCircle2 className="w-3.5 h-3.5 shrink-0 ml-auto text-green-400" />}
                               {isSelected && !isThisCorrect && <XCircle className="w-3.5 h-3.5 shrink-0 ml-auto text-red-400" />}
                             </button>
@@ -602,7 +617,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                                   </span>
                                   <span className="font-body text-xs leading-snug flex-1 min-w-0"
                                     style={{ color: isWhite ? "var(--text-secondary)" : "rgba(255,255,255,0.8)" }}>
-                                    {renderWithLatex(p)}
+                                    {contentRenderer(p)}
                                   </span>
                                 </div>
                                 {(["B", "S"] as const).map(choice => {
@@ -686,7 +701,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                           </p>
                           <div className={`text-xs leading-relaxed whitespace-pre-wrap ${isLightTheme ? "text-cyan-900" : "text-white/80"}`}>
                             {soal.pembahasan.split('\n').map((line, i) => (
-                              <span key={i}>{i > 0 && <br />}{renderWithLatex(line)}</span>
+                              <span key={i}>{i > 0 && <br />}{contentRenderer(line)}</span>
                             ))}
                           </div>
                         </div>
@@ -791,17 +806,19 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                           {soal.soal.split('\n').map((line, lineIdx) => {
                             const imgMatch = line.match(/^\[IMAGE:([^|]+)(?:\|(\w+))?\]$/);
                             if (imgMatch) {
-                              const sizeClass = imgMatch[2] === 'small' ? 'max-w-[160px]' : 'max-w-sm w-full';
+                              const sizeClass = imgMatch[2] === 'small'
+                                ? (imageScale === "half" ? 'max-w-[80px]' : 'max-w-[160px]')
+                                : (imageScale === "half" ? 'max-w-[192px]' : 'max-w-sm w-full');
                               return (
                                 <div key={lineIdx} className="my-2 flex justify-center">
-                                  <AsyncImage src={normalizeImageUrl(imgMatch[1])} alt={`Soal ${soal.no}`} wrapperClassName={`${sizeClass} rounded-xl`} className="w-full rounded-xl" />
+                                  <AsyncImage src={normalizeImageUrl(imgMatch[1])} alt={`Soal ${soal.no}`} wrapperClassName={`${sizeClass} rounded-xl`} className={`${imageScale === "half" ? "max-h-[210px]" : ""} w-full rounded-xl object-contain`} />
                                 </div>
                               );
                             }
                             return (
                               <span key={lineIdx}>
                                 {lineIdx > 0 && <br />}
-                                {renderWithLatex(line)}
+                                {contentRenderer(line)}
                               </span>
                             );
                           })}
@@ -844,7 +861,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                               }}>
                               {pi + 1}
                             </span>
-                            <span>{renderWithLatex(p)}</span>
+                            <span>{contentRenderer(p)}</span>
                             {isRevealed && (isCorrectPGK
                               ? <CheckCircle2 className="w-3.5 h-3.5 ml-auto shrink-0 text-green-400" />
                               : isSelectedPGK
@@ -925,9 +942,9 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                                 const pipeIdx = opt.indexOf('|');
                                 const isImg = pipeIdx !== -1 && (opt[pipeIdx + 1] === '/' || opt.slice(pipeIdx + 1, pipeIdx + 5) === 'http');
                                 if (isImg) {
-                                  return <AsyncImage src={normalizeImageUrl(opt.slice(pipeIdx + 1))} alt={`Pilihan ${letter}`} wrapperClassName="max-w-[140px] w-full" className="w-full rounded bg-white p-1" />;
+                                  return <AsyncImage src={normalizeImageUrl(opt.slice(pipeIdx + 1))} alt={`Pilihan ${letter}`} wrapperClassName={`${imageScale === "half" ? "max-w-[70px]" : "max-w-[140px]"} w-full`} className="w-full rounded bg-white p-1 object-contain" />;
                                 }
-                                return <span className="leading-snug">{optionSvgMap?.[opt] ?? renderWithLatex(opt.replace(/^[A-E]\.\s*/, ''))}</span>;
+                                return <span className="leading-snug">{optionSvgMap?.[opt] ?? contentRenderer(opt.replace(/^[A-E]\.\s*/, ''))}</span>;
                               })()}
                               {isRevealed && isThisCorrect && <CheckCircle2 className="w-3.5 h-3.5 shrink-0 ml-auto text-green-400" />}
                               {isRevealed && isSelected && !isThisCorrect && <XCircle className="w-3.5 h-3.5 shrink-0 ml-auto text-red-400" />}
@@ -973,7 +990,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                                     {pi + 1}
                                   </span>
                                   <span className="font-body text-xs text-white/80 leading-snug flex-1 min-w-0">
-                                    {renderWithLatex(p)}
+                                    {contentRenderer(p)}
                                   </span>
                                   {rowEvaluated && (
                                     rowCorrect
@@ -1105,7 +1122,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                           </p>
                           <div className={`text-xs leading-relaxed whitespace-pre-wrap ${isLightTheme ? "text-cyan-900" : "text-white/80"}`}>
                             {(soal.pembahasan ?? '').split('\n').map((line, i) => (
-                              <span key={i}>{i > 0 && <br />}{renderWithLatex(line)}</span>
+                              <span key={i}>{i > 0 && <br />}{contentRenderer(line)}</span>
                             ))}
                           </div>
                         </div>

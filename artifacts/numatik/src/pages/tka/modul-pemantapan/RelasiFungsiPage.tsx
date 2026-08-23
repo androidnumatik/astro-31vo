@@ -23,7 +23,7 @@ Misal himpunan A = {1, 2, 4} dan himpunan B = {(1, 1), (1, 2), (1, 4), (2, 2), (
 3. Range adalah daerah hasil, atau himpunan semua anggota himpunan B yang memiliki pasangan anggota himpunan A.
 
 Contoh:
-[IMAGE:https://drive.google.com/thumbnail?id=1Z2TXwogxkXGzotL83KVPwia4UJEsdtB6&sz=w800]
+[IMAGE:https://res.cloudinary.com/s4ge6not/image/upload/v1787459648/3333_fscqnp.png]
 Tentukan Domain, Kodomain dan Range pada diagram panah berikut.
 - Dari diagram panah tersebut didapat domainnya adalah $D_f = \\{a, b, c, d, e\\}$.
 - Dari diagram panah tersebut didapat kodomainnya adalah $K_f = \\{1, 2, 3, 4, 5\\}$.
@@ -248,7 +248,9 @@ const RelasiFungsiPage = () => (
     title="RELASI DAN FUNGSI"
     materiSections={materiSections}
     contohSoal={contohSoal}
-  latihanDasar={[...latihanDasar, ...latihanTambahan]}
+    showImageSourceLinks={false}
+    imageScale="half"
+    latihanDasar={[...latihanDasar, ...latihanTambahan]}
   />
 );
 
