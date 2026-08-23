@@ -25,19 +25,29 @@ const toPembahasanText = (soalNo: number) => {
   ].join("\n\n");
 };
 
-const materiSections: MateriSection[] = materiOlimpiade.sections.map(({ heading, content }) => ({
-  heading,
-  content,
-}));
+const materiSections: MateriSection[] = materiOlimpiade.sections
+  .filter(({ heading }) => ![
+    "F. Deret Geometri Tak Hingga",
+    "G. Deret Teleskopik",
+    "H. Barisan Satu dan Dua Tingkat",
+  ].includes(heading))
+  .map(({ heading, content }) => ({
+    heading,
+    content,
+  }));
 
 const soalSvgMap = Object.fromEntries(
   Object.entries(soalSVGMapOlimpiade).map(([key, value]) => [key, value]),
 );
 
-const latihanDasar: LatihanSoal[] = latihanDasarOlimpiade.map((soal, index) => ({
+const latihanYangDihapus = new Set([2, 22, 23, 24, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42]);
+
+const latihanDasar: LatihanSoal[] = latihanDasarOlimpiade
+  .filter((soal) => !latihanYangDihapus.has(soal.no))
+  .map((soal) => ({
   ...soal,
   type: "pg",
-  jawaban: kunciJawaban[index],
+  jawaban: kunciJawaban[soal.no - 1],
   pembahasan: toPembahasanText(soal.no),
   soalSvg: soalSvgMap[String(soal.no)] ? String(soal.no) : undefined,
 }));
