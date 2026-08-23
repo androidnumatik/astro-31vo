@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import Starfield from "@/components/Starfield";
 import PageNavigation from "@/components/PageNavigation";
 import { playPopSound } from "@/hooks/useAudio";
-import { GitMerge, Zap, Hash, FunctionSquare, TrendingUp, BrainCircuit, ChevronRight } from "lucide-react";
+import { GitMerge, Zap, Hash, FunctionSquare, TrendingUp, ChevronRight } from "lucide-react";
 
 // ─── Locale base path ─────────────────────────────────────────────────────────
 
@@ -72,18 +72,6 @@ const subtopicsConfig = [
     iconColor: "text-rose-400",
     leftBar: "from-rose-400 to-pink-500",
   },
-  {
-    key: "tkaRelasiFungsi",
-    path: "/latihan-mandiri/kelas-8/relasi-dan-fungsi/tka",
-    soal: 15,
-    icon: BrainCircuit,
-    gradient: "from-fuchsia-900/40 to-purple-900/30",
-    border: "border-fuchsia-500/30",
-    badge: "bg-fuchsia-500/20 text-fuchsia-300 border-fuchsia-400/40",
-    iconBg: "bg-fuchsia-500/20",
-    iconColor: "text-fuchsia-400",
-    leftBar: "from-fuchsia-400 to-purple-500",
-  },
 ];
 
 const RelasiFungsiPage = () => {
@@ -112,7 +100,7 @@ const RelasiFungsiPage = () => {
           <p className="text-white/50 text-xs text-center font-body mb-3">Kelas 8 · {t('practice.breadcrumb')}</p>
           <div className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl px-5 py-2">
             <span className="text-yellow-400 text-sm">⭐</span>
-            <span className="text-white/70 text-xs font-body">57 {t('practice.suffixSoalTotal')} · {t(`${BASE}.diagramBadge`)}</span>
+            <span className="text-white/70 text-xs font-body">42 {t('practice.suffixSoalTotal')} · {t(`${BASE}.diagramBadge`)}</span>
             <span className="text-yellow-400 text-sm">⭐</span>
           </div>
         </div>
