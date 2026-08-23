@@ -6,7 +6,7 @@ import { BookOpen, ChevronDown, ChevronUp, CheckCircle2, XCircle, Lightbulb, Arr
 import { useTheme } from "@/contexts/ThemeContext";
 import { playPopSound } from "@/hooks/useAudio";
 import 'katex/dist/katex.min.css';
-import { InlineMath } from 'react-katex';
+import { InlineMath, BlockMath } from 'react-katex';
 import { AsyncImage } from '@/components/ui/async-image';
 
 export interface MateriSection {
@@ -367,7 +367,48 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                           const sizeClass = imgMatch[2] === 'small' ? 'max-w-[160px]' : 'max-w-sm w-full';
                           return (
                             <div key={i} className="my-3 flex justify-center">
-                              <AsyncImage src={normalizeImageUrl(imgMatch[1])} alt="Gambar materi" wrapperClassName={`${sizeClass} rounded-xl shadow-lg`} className="w-full rounded-xl" />
+                              <div className={`${sizeClass} w-full`}>
+                                <a
+                                  href={normalizeImageUrl(imgMatch[1])}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="block rounded-xl shadow-lg transition-transform hover:scale-[1.01]"
+                                  title="Buka gambar sumber"
+                                >
+                                  <AsyncImage src={normalizeImageUrl(imgMatch[1])} alt="Gambar materi" wrapperClassName="rounded-xl" className="w-full rounded-xl" />
+                                </a>
+                                <a
+                                  href={normalizeImageUrl(imgMatch[1])}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="mt-1 block text-center text-[10px] text-cyan-300/80 underline underline-offset-2 hover:text-cyan-200"
+                                >
+                                  Buka link gambar
+                                </a>
+                              </div>
+                            </div>
+                          );
+                        }
+                        const centerMatch = trimmed.match(/^\[CENTER:(.+)\]$/);
+                        if (centerMatch) return <div key={i} className="text-center font-semibold mb-1">{centerMatch[1]}</div>;
+                        const subheadingMatch = trimmed.match(/^\[SUBHEADING:(.+)\]$/);
+                        if (subheadingMatch) return <div key={i} className="text-amber-300 font-semibold mt-3 mb-1">{renderWithLatex(subheadingMatch[1])}</div>;
+                        const blockMathMatch = trimmed.match(/^\[BLOCKMATH:(.+)\]$/);
+                        if (blockMathMatch) return (
+                          <div key={i} className="flex justify-start my-3 pl-2 overflow-x-auto">
+                            <BlockMath math={`\\begin{aligned}${blockMathMatch[1]}\\end{aligned}`} />
+                          </div>
+                        );
+                        const formulaBoxMatch = trimmed.match(/^\[FORMULABOX:([^|]+)\|(.+)\]$/);
+                        if (formulaBoxMatch) {
+                          return (
+                            <div key={i} className="my-4 flex justify-center">
+                              <div className="min-w-[220px] rounded-xl border-2 border-amber-400/60 bg-amber-400/10 px-6 py-4 text-center">
+                                <div className="mb-3 text-xs font-bold uppercase tracking-widest text-amber-300">{formulaBoxMatch[1]}</div>
+                                {formulaBoxMatch[2].split('|').map((formula, formulaIndex) => (
+                                  <div key={formulaIndex} className="mb-1 text-base font-semibold text-white">{renderWithLatex(formula)}</div>
+                                ))}
+                              </div>
                             </div>
                           );
                         }

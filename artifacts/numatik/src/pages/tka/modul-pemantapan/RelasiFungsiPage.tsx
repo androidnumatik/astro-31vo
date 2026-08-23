@@ -2,11 +2,76 @@ import TKAPemantapanLayout from "@/components/tka/TKAPemantapanLayout";
 import type { MateriSection, LatihanSoal } from "@/components/tka/TKAPemantapanLayout";
 
 const materiSections: MateriSection[] = [
-  { heading: "A. Relasi", content: `Relasi dari himpunan A ke himpunan B adalah aturan yang memasangkan anggota-anggota himpunan A dengan anggota-anggota himpunan B.\n\nCara menyatakan relasi:\n1. Diagram panah\n2. Himpunan pasangan berurutan\n3. Tabel\n4. Diagram Cartesius` },
-  { heading: "B. Fungsi (Pemetaan)", content: `Fungsi dari A ke B adalah relasi khusus yang memasangkan setiap anggota A dengan tepat satu anggota B.\n\nDomain (daerah asal): himpunan A\nKodomain (daerah kawan): himpunan B\nRange (daerah hasil): himpunan anggota B yang mendapat pasangan dari A\n\nFungsi biasa dilambangkan: $f: A \\to B$ atau $y = f(x)$` },
-  { heading: "C. Banyaknya Fungsi", content: `Jika banyaknya anggota himpunan A = $n(A) = m$ dan banyaknya anggota himpunan B = $n(B) = n$, maka:\n\nBanyaknya fungsi yang mungkin dari A ke B = $n^m$\nBanyaknya fungsi yang mungkin dari B ke A = $m^n$` },
-  { heading: "D. Fungsi Linear", content: `Fungsi linear: $f(x) = ax + b$, grafiknya berupa garis lurus.\n\nUntuk menentukan nilai fungsi: substitusikan nilai $x$ ke dalam rumus fungsi.\n\nUntuk menentukan rumus fungsi: jika diketahui nilai-nilai tertentu, bentuk sistem persamaan.` },
-  { heading: "E. Korespondensi Satu-Satu", content: `Korespondensi satu-satu adalah fungsi bijektif, yaitu fungsi di mana:\n- Setiap anggota A dipasangkan tepat satu anggota B (injektif/satu-satu)\n- Setiap anggota B dipasangkan dengan setidaknya satu anggota A (surjektif/onto)\n\nSyarat korespondensi satu-satu: $n(A) = n(B)$\n\nBanyaknya korespondensi satu-satu dari A ke B dengan $n(A) = n(B) = n$ adalah $n!$ (n faktorial).` },
+  {
+    heading: "A. Relasi",
+    content: `Relasi dari himpunan A ke himpunan B adalah hubungan yang memasangkan anggota himpunan A dengan anggota himpunan B.
+
+Misal himpunan A = {1, 2, 4} dan himpunan B = {(1, 1), (1, 2), (1, 4), (2, 2), (2, 4), (4, 4)} mempunyai relasi bahwa himpunan A merupakan faktor dari himpunan B. Relasi himpunan A dan himpunan B dapat dinyatakan dalam tiga cara yaitu Diagram Panah, Pasangan Berurutan dan Diagram Kartesius.
+
+1. Diagram panah
+[IMAGE:https://drive.google.com/thumbnail?id=1Y-yZAbq_xIkLbcPWkB0FZpNkDaSTovSp&sz=w800]
+2. Himpunan pasangan terurut: {(1, 2), (1, 3), (1, 4), (2, 2), (2, 4), (4, 4)}
+3. Koordinat Kartesius
+[IMAGE:https://drive.google.com/thumbnail?id=1PbZEtxhMoQidTbTFEsNeMcDTD1-YfONb&sz=w800]`,
+  },
+  {
+    heading: "B. Domain, Kodomain, Range",
+    content: `1. Domain adalah daerah asal atau himpunan yang memuat elemen pertama himpunan pasangan berurut fungsi f.
+
+2. Kodomain adalah daerah himpunan kawan, atau himpunan yang memuat elemen kedua himpunan pasangan berurut fungsi f.
+
+3. Range adalah daerah hasil, atau himpunan semua anggota himpunan B yang memiliki pasangan anggota himpunan A.
+
+Contoh:
+[IMAGE:https://drive.google.com/thumbnail?id=1Z2TXwogxkXGzotL83KVPwia4UJEsdtB6&sz=w800]
+Tentukan Domain, Kodomain dan Range pada diagram panah berikut.
+- Dari diagram panah tersebut didapat domainnya adalah $D_f = \\{a, b, c, d, e\\}$.
+- Dari diagram panah tersebut didapat kodomainnya adalah $K_f = \\{1, 2, 3, 4, 5\\}$.
+- Dari diagram panah tersebut didapat range nya adalah $R_f = \\{1, 4, 5\\}$.`,
+  },
+  {
+    heading: "C. Fungsi (Pemetaan)",
+    content: `Fungsi (pemetaan) dari himpunan A ke himpunan B adalah hubungan yang memasangkan tepat satu anggota himpunan A dengan anggota himpunan B.
+
+Syarat fungsi:
+- Semua anggota domain tidak memiliki lebih dari satu pasangan
+- Semua anggota domain harus memiliki pasangan
+
+Jika himpunan A adalah Domain (daerah asal) dan himpunan B adalah kodomain (daerah kawan) maka relasi himpunan A ke himpunan B merupakan fungsi saat anggota domain mempunyai pasangan tepat satu pada kodomain.
+
+[IMAGE:https://drive.google.com/thumbnail?id=117McnW2tpZK5cqY1U61VE8kAT1HeY8fa&sz=w800]
+[CENTER:Contoh fungsi]
+Relasi himpunan A ke himpunan B di atas adalah contoh relasi yang merupakan fungsi karena anggota pada domain (daerah asal) A mempunyai pasangan tepat satu di kodomain (daerah kawan) B, yaitu {(a, y), (b, z), (c, z)}. Pada diagram panah di atas kita peroleh Range (daerah hasil) yaitu {y, z}
+
+[IMAGE:https://drive.google.com/thumbnail?id=1xp2mUJRi8nJ0yXPPOF4abq3sEmmaxJWz&sz=w800]
+[CENTER:Contoh bukan fungsi]
+Relasi himpunan A ke himpunan B di atas adalah contoh relasi yang bukan fungsi karena anggota pada domain A ada yang mempunyai pasangan di kodomain B lebih dari satu, yaitu {(b, x)} dan {(b, z)}.
+
+Jika himpunan A banyak anggota adalah n(A) dan himpunan B banyak anggota adalah n(B), maka banyaknya fungsi (pemetaan) yang dapat terjadi dapat kita hitung dengan rumus:
+[FORMULABOX:Rumus Banyak Fungsi|$n(A \\to B) = n(B)^{n(A)}$|$n(B \\to A) = n(A)^{n(B)}$]`,
+  },
+  {
+    heading: "D. Korespondensi Satu-Satu",
+    content: `[SUBHEADING:a. Syarat korespondensi satu-satu]
+- Banyaknya anggota domain sama dengan banyaknya anggota kodomain
+- Setiap anggota domain dan kodomain memiliki tepat satu pasangan
+
+[SUBHEADING:b. Banyaknya korespondensi 1-1 yang mungkin $f : A \\to B$ yang memiliki anggota domain = banyak anggota kodomain = n adalah]
+$n(f) = n! = n \\times (n-1) \\times (n-2) \\times ... \\times 1$`,
+  },
+  {
+    heading: "E. Notasi Fungsi Dan Nilai Fungsi",
+    content: `Notasi fungsi umumnya ditulis dalam bentuk $f: x \\to y$ atau $f: x \\to f(x)$ menjadi $f(x) = y$, dibaca "fungsi f memetakan x ke y". $f(x)$ merupakan hasil peta bayangan dari x.
+
+Untuk nilai fungsi dari suatu domain, hasil yang diperoleh disebut juga daerah hasil (range).
+
+Misalnya diketahui fungsi $f(x) = 2x + 3$, maka nilai fungsi untuk $x = 1$ dinyatakan dalam bentuk:
+[BLOCKMATH:f(x) &= 2x + 3 \\\\ f(1) &= 2(1) + 3 \\\\ &= 2 + 3 \\\\ &= 5]`,
+  },
+  {
+    heading: "F. Rumus Fungsi $f(x)$",
+    content: `Notasi rumus fungsi $f: x \\to ax + b$ dapat ditulis kedalam bentuk $f(x) = ax + b$. Dimana untuk $f(x) = ax + b$ maka $f(k) = ak + b$`,
+  },
 ];
 
 const contohSoal: LatihanSoal[] = [
@@ -132,7 +197,7 @@ Ketiga pernyataan benar.`,
 ];
 
 const latihanDasar: LatihanSoal[] = [
-  { no: 1, soal: "Perhatikan gambar diagram panah berikut!\nRelasi dari A ke B adalah ....", image: "https://drive.google.com/thumbnail?id=1TTucWdnJxyd6lowGZaxVziJio_CgOpvO&sz=w800", options: ["A. akar dari", "B. faktor dari", "C. kuadrat dari", "D. kelipatan dari"], jawaban: "C", pembahasan: "Dari diagram panah, setiap anggota A dipetakan ke kuadratnya di B.\nContoh: 1 → 1, 2 → 4, 3 → 9\nRelasi: 'kuadrat dari'\nJawaban C" },
+  { no: 1, soal: "Perhatikan gambar diagram panah berikut!\nRelasi dari A ke B adalah ....", options: ["A. akar dari", "B. faktor dari", "C. kuadrat dari", "D. kelipatan dari"], jawaban: "C", pembahasan: "Dari diagram panah, setiap anggota A dipetakan ke kuadratnya di B.\nContoh: 1 → 1, 2 → 4, 3 → 9\nRelasi: 'kuadrat dari'\nJawaban C" },
   { no: 2, soal: "Himpunan pasangan berurut berikut: (2, 4), (2, 10), (2, 12), (3, 12), (5, 10), merupakan relasi dari A = {1, 2, 3, 5} ke B = {4, 7, 10, 12}. Relasi yang menghasilkan himpunan pasangan berurut itu adalah ...", options: ["A. Faktor dari", "B. Kelipatan dari", "C. Kurang dari", "D. Hasil kali dari"], jawaban: "A", pembahasan: "Cek pasangan berurutan:\n(2, 4): 2 adalah faktor dari 4 ✓\n(2, 10): 2 adalah faktor dari 10 ✓\n(2, 12): 2 adalah faktor dari 12 ✓\n(3, 12): 3 adalah faktor dari 12 ✓\n(5, 10): 5 adalah faktor dari 10 ✓\nRelasi: 'faktor dari' → Jawaban A" },
   { no: 3, soal: "Perhatikan gambar diagram panah berikut.\n[IMAGE:https://drive.google.com/thumbnail?id=1TBS4kcPEucYHWvEJEjSpiT2v7j1ddEIc&sz=w800|small]\nHimpunan daerah kawan (kodomain) dari diagram panah di atas adalah ...", options: ["A. {1, 2, 3, 4, 5}", "B. {1, 2, 3, 4}", "C. {1, 4, 9, 10}", "D. {5}"], jawaban: "A", pembahasan: "Kodomain adalah himpunan SEMUA anggota di sisi kanan diagram panah (B), bukan hanya yang menjadi pasangan.\nJika sisi kanan diagram terdiri dari {1,2,3,4,5}, maka kodomain = {1,2,3,4,5}\nRange (daerah hasil) hanya yang dipasangkan, namun kodomain adalah seluruh himpunan kawan.\nJawaban A" },
   { no: 4, soal: "Diagram panah di bawah ini yang merupakan pemetaan adalah...", options: ["A. [IMAGE:https://drive.google.com/thumbnail?id=1uS39qKtRE8t-X_vnrhMLId4S45SwPvE0&sz=w800|small]", "B. [IMAGE:https://drive.google.com/thumbnail?id=1U49CEuAusau_dcx9POzbPz6qso6m_VZ3&sz=w800|small]", "C. [IMAGE:https://drive.google.com/thumbnail?id=1uDL94c5sCZ7kBJa0nuLKLnvCxmqyOdmB&sz=w800|small]", "D. [IMAGE:https://drive.google.com/thumbnail?id=1NvvsA6523BqRZCdZP40YOWaio-qgnczZ&sz=w800|small]"], jawaban: "B", pembahasan: "Syarat pemetaan (fungsi):\n1. Setiap anggota domain memiliki tepat SATU pasangan\n2. Tidak boleh ada anggota domain yang tidak memiliki pasangan\n3. Boleh ada anggota kodomain yang tidak memiliki pasangan\nDiagram yang memenuhi kedua syarat tersebut adalah diagram B → Jawaban B" },
