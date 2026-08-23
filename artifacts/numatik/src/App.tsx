@@ -393,6 +393,7 @@ const PengertianRelasiK8Page = lazy(() => import("./pages/latihan-mandiri/kelas8
 const PengertianFungsiK8Page = lazy(() => import("./pages/latihan-mandiri/kelas8/relasi-fungsi/PengertianFungsiPage"));
 const BanyakFungsiK8Page = lazy(() => import("./pages/latihan-mandiri/kelas8/relasi-fungsi/BanyakFungsiPage"));
 const NotasiFungsiK8Page = lazy(() => import("./pages/latihan-mandiri/kelas8/relasi-fungsi/NotasiFungsiPage"));
+const TKARelasiFungsiK8Page = lazy(() => import("./pages/latihan-mandiri/kelas8/relasi-fungsi/TKARelasiFungsiPage"));
 const GrafikFungsiK8Page = lazy(() => import("./pages/latihan-mandiri/kelas8/relasi-fungsi/GrafikFungsiPage"));
 const SPLDVK8Page = lazy(() => import("./pages/latihan-mandiri/kelas8/SPLDVPage"));
 const DefinisiSPLDVK8Page = lazy(() => import("./pages/latihan-mandiri/kelas8/spldv/DefinisiSPLDVPage"));
@@ -1318,6 +1319,7 @@ const AppInner = () => {
           <Route path="/latihan-mandiri/kelas-8/relasi-dan-fungsi/pengertian-fungsi" element={<PengertianFungsiK8Page />} />
           <Route path="/latihan-mandiri/kelas-8/relasi-dan-fungsi/banyak-fungsi" element={<BanyakFungsiK8Page />} />
           <Route path="/latihan-mandiri/kelas-8/relasi-dan-fungsi/notasi-fungsi" element={<NotasiFungsiK8Page />} />
+          <Route path="/latihan-mandiri/kelas-8/relasi-dan-fungsi/tka" element={<TKARelasiFungsiK8Page />} />
           <Route path="/latihan-mandiri/kelas-8/relasi-dan-fungsi/grafik-fungsi" element={<GrafikFungsiK8Page />} />
           <Route path="/latihan-mandiri/kelas-8/spldv" element={<SPLDVK8Page />} />
           <Route path="/latihan-mandiri/kelas-8/spldv/definisi" element={<DefinisiSPLDVK8Page />} />

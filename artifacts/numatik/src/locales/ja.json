@@ -4485,6 +4485,10 @@
         "grafikFungsi": {
           "label": "関数のグラフ（発展）",
           "desc": "値表・切片・傾き・グラフの概形・垂直線テスト"
+        },
+        "tkaRelasiFungsi": {
+          "label": "関係と関数 TKA",
+          "desc": "詳しい解説付きのTKA練習問題15問"
         }
       },
       "pengertianRelasi": {

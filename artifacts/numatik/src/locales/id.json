@@ -4485,6 +4485,10 @@
         "grafikFungsi": {
           "label": "GRAFIK FUNGSI (PENGAYAAN)",
           "desc": "Tabel nilai, titik potong, gradien, sketsa grafik, uji garis vertikal"
+    },
+    "tkaRelasiFungsi": {
+      "label": "TKA RELASI DAN FUNGSI",
+      "desc": "15 soal latihan TKA lengkap dengan pembahasan langkah demi langkah"
         }
       },
       "pengertianRelasi": {
