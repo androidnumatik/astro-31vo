@@ -2,8 +2,14 @@ import TKAPemantapanLayout from "@/components/tka/TKAPemantapanLayout";
 import type { MateriSection, LatihanSoal } from "@/components/tka/TKAPemantapanLayout";
 
 const materiSections: MateriSection[] = [
-  { heading: "A. Pajak (PPN dan PPh)", content: `PPN merupakan pajak yang dikenakan atas konsumsi barang atau jasa. Jika tarif PPN adalah p%, maka:\n\n$\\text{PPN} = \\dfrac{p}{100} \\times \\text{Harga sebelum pajak}$\n$\\text{Harga setelah PPN} = \\text{Harga sebelum pajak} + \\text{PPN}$\n\nPPh merupakan pajak penghasilan. Penghasilan kena pajak (PKP) dihitung dengan mengurangi penghasilan bruto dengan penghasilan tidak kena pajak (PTKP):\n\n$\\text{PKP} = \\text{Penghasilan bruto} - \\text{PTKP}$\n$\\text{PPh} = \\dfrac{p}{100} \\times \\text{PKP}$\n$\\text{Penghasilan bersih} = \\text{Penghasilan bruto} - \\text{PPh}$` },
-  { heading: "B. Bruto, Netto, dan Tara", content: `Bruto adalah berat kotor, yaitu berat barang beserta kemasannya.\nNetto adalah berat bersih barang tanpa kemasan.\nTara adalah berat kemasan.\n\n$\\text{Bruto} = \\text{Netto} + \\text{Tara}$\n$\\text{Netto} = \\text{Bruto} - \\text{Tara}$\n\nJika tara dinyatakan dalam persentase, maka:\n$\\text{Tara} = \\dfrac{p}{100} \\times \\text{Bruto}$` },
+  { heading: "A. Harga Beli (Modal)", content: `Harga beli atau modal adalah harga barang saat dibeli dari produsen, distributor, atau toko lain.\n\nContoh: Seorang pedagang membeli 1 lusin buku dengan harga Rp50.000. Harga beli 1 lusin buku tersebut adalah Rp50.000.` },
+  { heading: "B. Untung dan Rugi", content: `Untung: $\\text{Untung} = \\text{Harga Jual} - \\text{Harga Beli}$ (HJ > HB)\nRugi: $\\text{Rugi} = \\text{Harga Beli} - \\text{Harga Jual}$ (HJ < HB)\nImpas: Harga Jual = Harga Beli` },
+  { heading: "C. Persentase Untung/Rugi", content: `$\\%U = \\dfrac{\\text{Untung}}{\\text{Harga Beli}} \\times 100\\%$\n\n$\\%R = \\dfrac{\\text{Rugi}}{\\text{Harga Beli}} \\times 100\\%$` },
+  { heading: "D. Mencari Harga Jual", content: `Jika untung: $\\text{HJ} = \\dfrac{(100 + \\%U)}{100} \\times \\text{HB}$\n\nJika rugi: $\\text{HJ} = \\dfrac{(100 - \\%R)}{100} \\times \\text{HB}$\n\nJika untung: $\\text{HB} = \\dfrac{100}{100 + \\%U} \\times \\text{HJ}$` },
+  { heading: "E. Bunga Tunggal", content: `$B = M \\times W \\times P$\n\nB = besar bunga, M = modal, W = waktu, dan P = suku bunga per periode.\n\nModal akhir: $M_1 = M(1 + WP)$` },
+  { heading: "F. Diskon (Potongan Harga)", content: `Besar diskon = Persentase diskon × Harga awal\n\nHarga bayar = Harga awal × (100% − Persentase diskon)\n\nDiskon ganda 20% + 10% tidak sama dengan diskon 30%.` },
+  { heading: "G. Bruto, Netto, Tara", content: `Bruto = berat kotor (barang + kemasan)\nNetto = berat bersih (tanpa kemasan)\nTara = berat kemasan\n\nBruto = Netto + Tara` },
+  { heading: "H. Pajak (PPN & PPh)", content: `PPN: Total bayar = Harga × (100% + %PPN)\n\nPPh: PKP = Penghasilan bruto − PTKP\nPPh = %PPh × PKP\nPenghasilan bersih = Penghasilan bruto − PPh` },
 ];
 
 const contohSoal: LatihanSoal[] = [
