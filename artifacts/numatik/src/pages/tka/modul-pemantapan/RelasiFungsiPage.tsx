@@ -61,17 +61,17 @@ Jika himpunan A banyak anggota adalah n(A) dan himpunan B banyak anggota adalah 
 $n(f) = n! = n \\times (n-1) \\times (n-2) \\times ... \\times 1$`,
   },
   {
-    heading: "E. Notasi Fungsi Dan Nilai Fungsi",
+    heading: "E. Rumus Fungsi $f(x)$",
+    content: `Notasi rumus fungsi $f: x \\to ax + b$ dapat ditulis kedalam bentuk $f(x) = ax + b$. Dimana untuk $f(x) = ax + b$ maka $f(k) = ak + b$`,
+  },
+  {
+    heading: "F. Notasi Fungsi Dan Nilai Fungsi",
     content: `Notasi fungsi umumnya ditulis dalam bentuk $f: x \\to y$ atau $f: x \\to f(x)$ menjadi $f(x) = y$, dibaca "fungsi f memetakan x ke y". $f(x)$ merupakan hasil peta bayangan dari x.
 
 Untuk nilai fungsi dari suatu domain, hasil yang diperoleh disebut juga daerah hasil (range).
 
 Misalnya diketahui fungsi $f(x) = 2x + 3$, maka nilai fungsi untuk $x = 1$ dinyatakan dalam bentuk:
 [BLOCKMATH:f(x) &= 2x + 3 \\\\ f(1) &= 2(1) + 3 \\\\ &= 2 + 3 \\\\ &= 5]`,
-  },
-  {
-    heading: "F. Rumus Fungsi $f(x)$",
-    content: `Notasi rumus fungsi $f: x \\to ax + b$ dapat ditulis kedalam bentuk $f(x) = ax + b$. Dimana untuk $f(x) = ax + b$ maka $f(k) = ak + b$`,
   },
 ];
 
