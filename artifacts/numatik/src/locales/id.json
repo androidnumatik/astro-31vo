@@ -44,7 +44,7 @@
     "lkpd": "LKPD",
     "olympiad": "OLIMPIADE",
     "kokurikuler": "KOKURIKULER",
-    "ujiMandiri": "UJI MANDIRI",
+    "ujiMandiri": "UJI MATEMATIKA DASAR",
     "calculator": "KALKULATOR",
     "fastCalc": "HITUNG CEPAT",
     "academic": "TES AKADEMIK",
@@ -100,7 +100,7 @@
       "desc": "Proyek matematika kreatif untuk siswa"
     },
     "ujiMandiri": {
-      "label": "UJI MANDIRI",
+      "label": "UJI MATEMATIKA DASAR",
       "desc": "Cek level matematikamu"
     },
     "fastCalc": {
