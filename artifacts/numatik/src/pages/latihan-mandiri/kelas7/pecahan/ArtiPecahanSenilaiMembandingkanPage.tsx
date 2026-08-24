@@ -38,12 +38,27 @@ const SubLabel = ({ letter, color }: { letter: string; color: string }) => (
 
 const FractionDiagram1C = () => (
   <svg width="220" height="190" viewBox="0 0 460 400" role="img" aria-label="1c">
-    <path d="M230 10 L10 390 L450 390 Z" fill="transparent" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
-    <path d="M230 10 L160 140 L300 140 Z" fill="#a78bfa" fillOpacity="0.35" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
-    <path d="M160 140 L300 140 L230 270 Z" fill="#a78bfa" fillOpacity="0.35" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
-    <path d="M10 390 L105 270 L170 390 Z" fill="#a78bfa" fillOpacity="0.35" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
-    <path d="M170 390 L230 270 L300 390 Z" fill="#a78bfa" fillOpacity="0.35" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
-    <path d="M300 390 L355 270 L450 390 Z" fill="#a78bfa" fillOpacity="0.35" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    {[
+      { points: "230,10 157,137 303,137", shaded: true },
+      { points: "157,137 83,263 230,263", shaded: false },
+      { points: "157,137 303,137 230,263", shaded: true },
+      { points: "303,137 230,263 377,263", shaded: false },
+      { points: "83,263 10,390 157,390", shaded: true },
+      { points: "83,263 230,263 157,390", shaded: false },
+      { points: "230,263 377,263 303,390", shaded: false },
+      { points: "230,263 157,390 303,390", shaded: true },
+      { points: "377,263 303,390 450,390", shaded: true },
+    ].map(({ points, shaded }) => (
+      <polygon
+        key={points}
+        points={points}
+        fill={shaded ? "#a78bfa" : "transparent"}
+        fillOpacity={shaded ? 0.35 : 0}
+        stroke="#a78bfa"
+        strokeWidth="4"
+        strokeLinejoin="round"
+      />
+    ))}
   </svg>
 );
 
