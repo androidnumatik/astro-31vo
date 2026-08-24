@@ -246,11 +246,16 @@ const urutanSubtopik: string[] = [
   "lanjutan-34", "lanjutan-36", "lanjutan-38", "lanjutan-40",
 ];
 
-const latihanDasar: LatihanSoal[] = urutanSubtopik.map((ref, index) => {
+const nomorSoalDihapus = new Set([2, 5, 9, 14, 15, 16, 22, 23, 35, 39, 40, 41, 42, 43, 44]);
+
+const latihanDasar: LatihanSoal[] = urutanSubtopik
+  .map((ref, index) => {
   const soal = soalByRef.get(ref);
   if (!soal) throw new Error(`Soal dengan referensi ${ref} tidak ditemukan`);
   return { ...soal, no: index + 1 };
-});
+  })
+  .filter((soal) => !nomorSoalDihapus.has(soal.no))
+  .map((soal, index) => ({ ...soal, no: index + 1 }));
 
 const ruangSampelDuaDadu = (
   <div className="space-y-4 min-w-[600px]">
