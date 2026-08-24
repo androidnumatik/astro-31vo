@@ -1,28 +1,47 @@
 import TKAPemantapanLayout from "@/components/tka/TKAPemantapanLayout";
 import type { LatihanSoal } from "@/components/tka/TKAPemantapanLayout";
 import { getTkaContohSoal } from "@/data/tkaContohSoal";
+import { statistikaDasarPembahasan } from "@/data/pembahasan/statistikaDasar";
 import {
-  latihanDasar as olimpiadeStatistika,
+  latihanDasar as olimpiadeStatistikaDasar,
   dasarImages,
+  renderDasarVisual,
   materiSections as olimpiadeMateriSections,
 } from "@/pages/OlimpiadeStatistikaPage";
 
-const latihanDasar: LatihanSoal[] = olimpiadeStatistika.map((item) => ({
-  no: item.no,
-  soal: item.soal,
-  image: item.image,
-  options: item.options,
-  jawaban: item.jawaban,
-  pembahasan: typeof item.pembahasan === "string" ? item.pembahasan : item.pembahasan ? [item.pembahasan.konsep, ...item.pembahasan.langkah, item.pembahasan.rumus].filter(Boolean).join("\n") : "",
-}));
+const latihanDasar: LatihanSoal[] = olimpiadeStatistikaDasar.map((item) => {
+  const pembahasan = statistikaDasarPembahasan[item.no];
+  const jawaban = pembahasan?.jawaban.match(/^([A-E])\./)?.[1];
+
+  return {
+    no: item.no,
+    soal: item.soal,
+    options: item.options,
+    jawaban,
+    pembahasan: pembahasan
+      ? [pembahasan.konsepTrik, pembahasan.stepByStep, pembahasan.tips, pembahasan.kesimpulan]
+        .filter(Boolean)
+        .join("\n\n")
+      : undefined,
+  };
+});
+
+const gambarMap = {
+  ...Object.fromEntries(
+    olimpiadeStatistikaDasar
+      .map((item) => [item.no, renderDasarVisual(item.no)] as const)
+      .filter(([, visual]) => visual !== null),
+  ),
+  ...dasarImages,
+};
 
 const StatistikaPage = () => (
   <TKAPemantapanLayout
     title="STATISTIKA"
     materiSections={olimpiadeMateriSections}
-  contohSoal={getTkaContohSoal("statistika")}
-  latihanDasar={latihanDasar}
-    gambarMap={dasarImages}
+    contohSoal={getTkaContohSoal("statistika")}
+    latihanDasar={latihanDasar}
+    gambarMap={gambarMap}
   />
 );
 

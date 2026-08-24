@@ -351,7 +351,7 @@ const formatRupiahShort = (v: number) => {
   return `${v}`;
 };
 
-const renderDasarVisual = (no: number): React.ReactNode => {
+export const renderDasarVisual = (no: number): React.ReactNode => {
   switch (no) {
     case 3:
       return (
