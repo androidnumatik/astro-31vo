@@ -11,7 +11,7 @@ import { statistikaDasarPembahasan } from "@/data/pembahasan/statistikaDasar";
 import { statistikaOlimpiadePembahasan } from "@/data/pembahasan/statistikaOlimpiade";
 
 export const dasarImages: Record<number, string> = {
-  13: "https://drive.google.com/thumbnail?id=1lvt_8S3sZ1GRMIPjjbLxTmaG86AyvZDY&sz=w400",
+  13: "https://res.cloudinary.com/s4ge6not/image/upload/v1787612146/STATISTIKA_-_LATIHAN_DASAR_-_NO_13_fxctir.png",
 };
 
 const olimpiadeImages: Record<number, string[]> = {
