@@ -11,7 +11,8 @@ import { AsyncImage } from '@/components/ui/async-image';
 
 export interface MateriSection {
   heading: string;
-  content: string;
+  content?: string;
+  renderContent?: () => React.ReactNode;
   jsx?: React.ReactNode;
   jsxAfter?: React.ReactNode;
 }
@@ -368,8 +369,9 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
 
                   <div className="px-6 pb-5 pt-1 border-t border-white/5">
                     {section.jsx && <div className="mb-3">{section.jsx}</div>}
+                    {section.renderContent ? section.renderContent() : (
                     <div className="font-body text-sm text-white/80 leading-relaxed space-y-0.5">
-                      {section.content.split('\n').map((line, i) => {
+                      {(section.content ?? "").split('\n').map((line, i) => {
                         const trimmed = line.trim();
                         const imgMatch = trimmed.match(/^\[IMAGE:([^|]+)(?:\|(\w+))?\]$/);
                         if (imgMatch) {
@@ -456,6 +458,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                         return <div key={i}>{contentRenderer(line)}</div>;
                       })}
                     </div>
+                    )}
                     {section.jsxAfter && <div className="mt-3">{section.jsxAfter}</div>}
                   </div>
                 </div>

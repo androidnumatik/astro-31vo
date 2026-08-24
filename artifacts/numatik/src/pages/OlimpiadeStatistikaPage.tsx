@@ -796,7 +796,7 @@ const DiagramKuartil = () => (
   </div>
 );
 
-const materiSections = [
+export const materiSections = [
   {
     heading: "A. Pengertian Data dan Statistika",
     content: `Data: Kumpulan informasi atau fakta dalam bentuk angka atau kategori. Contoh: nilai siswa, tinggi badan, jenis kelamin, hobi.
