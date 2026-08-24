@@ -926,7 +926,11 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                     {/* ── Optional diagram/image, placed after the statements ── */}
                     {(soal.gambar || (soal.soalSvg && soalSvgMap?.[soal.soalSvg]) || gambarMap?.[soal.no]) && (
                       <div className="px-5 pb-2">
-                        {soal.gambar ?? (soal.soalSvg && soalSvgMap?.[soal.soalSvg]) ?? gambarMap?.[soal.no]}
+                        {soal.gambar
+                          ?? (soal.soalSvg && soalSvgMap?.[soal.soalSvg])
+                          ?? (typeof gambarMap?.[soal.no] === "string"
+                            ? renderQuestionImage(gambarMap[soal.no] as string, soal.no)
+                            : gambarMap?.[soal.no])}
                       </div>
                     )}
 
