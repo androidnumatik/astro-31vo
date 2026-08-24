@@ -36,6 +36,29 @@ const SubLabel = ({ letter, color }: { letter: string; color: string }) => (
   </span>
 );
 
+const FractionDiagram1C = () => (
+  <svg width="220" height="190" viewBox="0 0 460 400" role="img" aria-label="1c">
+    <path d="M230 10 L10 390 L450 390 Z" fill="transparent" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M230 10 L160 140 L300 140 Z" fill="#a78bfa" fillOpacity="0.35" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M160 140 L300 140 L230 270 Z" fill="#a78bfa" fillOpacity="0.35" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M10 390 L105 270 L170 390 Z" fill="#a78bfa" fillOpacity="0.35" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M170 390 L230 270 L300 390 Z" fill="#a78bfa" fillOpacity="0.35" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M300 390 L355 270 L450 390 Z" fill="#a78bfa" fillOpacity="0.35" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+  </svg>
+);
+
+const FractionDiagram1D = () => (
+  <svg width="160" height="160" viewBox="0 0 360 360" role="img" aria-label="1d">
+    <rect x="4" y="4" width="352" height="352" fill="transparent" stroke="#a78bfa" strokeWidth="4" />
+    <path d="M5 5 H240 L120 125 H5 Z" fill="#a78bfa" fillOpacity="0.35" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M5 125 H120 V245 L5 355 Z" fill="#a78bfa" fillOpacity="0.35" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M240 245 L355 125 V355 H240 Z" fill="#a78bfa" fillOpacity="0.35" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M240 5 H355 V125 H120 Z" fill="transparent" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M120 125 H355 L240 245 H120 Z" fill="transparent" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M5 355 H240 V245 H120 Z" fill="transparent" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+  </svg>
+);
+
 /* ── Soal 1 ───────────────────────────────────────────── */
 const SoalSatu = () => {
   const { t } = useTranslation();
@@ -96,6 +119,16 @@ const SoalSatu = () => {
               });
             })}
           </svg>
+        </div>
+        {/* Triangle partition */}
+        <div className="flex flex-col items-center gap-2">
+          <SubLabel letter="c" color="bg-violet-500/30 text-violet-300 border border-violet-400/40" />
+          <FractionDiagram1C />
+        </div>
+        {/* Square partition */}
+        <div className="flex flex-col items-center gap-2">
+          <SubLabel letter="d" color="bg-violet-500/30 text-violet-300 border border-violet-400/40" />
+          <FractionDiagram1D />
         </div>
       </div>
     </div>

@@ -18,9 +18,6 @@ const translations = {
     sec1SummaryBold: "Pecahan",
     imgAlt: "Ilustrasi pecahan senilai dengan pizza",
     imgCaption: <>Kelima pizza di atas memiliki ukuran yang sama dan masing-masing menunjukkan bagian yang diarsir (pepperoni). Walaupun penulisannya berbeda (<InlineMath math="\frac{1}{2}, \frac{2}{4}, \frac{3}{6}, \frac{4}{8}, \frac{6}{12}" />), bagian pizza yang diambil tetap sama besar — inilah yang disebut <strong className="text-green-300">Pecahan Senilai</strong>!</>,
-    diagramCaption: "Dua bentuk berikut menunjukkan bagian yang diarsir sebagai pecahan dari keseluruhan bentuk.",
-    diagram1cLabel: "1c",
-    diagram1dLabel: "1d",
     sec1Components: "Setiap pecahan terdiri dari dua komponen utama:",
     numeratorLabel: <>= <strong>Pembilang</strong> (angka di atas garis)</>,
     denominatorLabel: <>= <strong>Penyebut</strong> (angka di bawah garis, <InlineMath math="b \neq 0" />)</>,
@@ -153,9 +150,6 @@ const translations = {
     sec1SummaryBold: "A fraction",
     imgAlt: "Illustration of equivalent fractions with pizza",
     imgCaption: <>All five pizzas above are the same size and each shows the shaded portion (pepperoni). Even though they are written differently (<InlineMath math="\frac{1}{2}, \frac{2}{4}, \frac{3}{6}, \frac{4}{8}, \frac{6}{12}" />), the amount of pizza taken is exactly the same — this is called an <strong className="text-green-300">Equivalent Fraction</strong>!</>,
-    diagramCaption: "The two shapes below show the shaded part as a fraction of the whole shape.",
-    diagram1cLabel: "1c",
-    diagram1dLabel: "1d",
     sec1Components: "Every fraction consists of two main components:",
     numeratorLabel: <>= <strong>Numerator</strong> (number above the line)</>,
     denominatorLabel: <>= <strong>Denominator</strong> (number below the line, <InlineMath math="b \neq 0" />)</>,
@@ -288,9 +282,6 @@ const translations = {
     sec1SummaryBold: "分数",
     imgAlt: "ピザで等価分数を説明するイラスト",
     imgCaption: <>上の 5 枚のピザはすべて同じ大きさで、それぞれ塗られた部分（ペパロニ）を示しています。表記は異なっても（<InlineMath math="\frac{1}{2}, \frac{2}{4}, \frac{3}{6}, \frac{4}{8}, \frac{6}{12}" />）、取った量はまったく同じです — これが<strong className="text-green-300">等価分数</strong>です！</>,
-    diagramCaption: "下の2つの図は、全体に対する色のついた部分を分数で表したものです。",
-    diagram1cLabel: "1c",
-    diagram1dLabel: "1d",
     sec1Components: "すべての分数は 2 つの主要な要素で構成されています：",
     numeratorLabel: <>= <strong>分子</strong>（線の上の数）</>,
     denominatorLabel: <>= <strong>分母</strong>（線の下の数、<InlineMath math="b \neq 0" />）</>,
@@ -416,113 +407,6 @@ const translations = {
   },
 };
 
-const FractionDiagram1C = () => (
-  <svg
-    viewBox="0 0 460 400"
-    className="w-full h-auto"
-    role="img"
-    aria-labelledby="fraction-diagram-1c-title"
-  >
-    <title id="fraction-diagram-1c-title">Fraction diagram 1c</title>
-    <path
-      d="M230 10 L10 390 L450 390 Z"
-      fill="none"
-      stroke="#1f2937"
-      strokeWidth="4"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M230 10 L160 140 L300 140 Z"
-      fill="#bd7b52"
-      stroke="#1f2937"
-      strokeWidth="4"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M160 140 L300 140 L230 270 Z"
-      fill="#bd7b52"
-      stroke="#1f2937"
-      strokeWidth="4"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M10 390 L105 270 L170 390 Z"
-      fill="#bd7b52"
-      stroke="#1f2937"
-      strokeWidth="4"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M170 390 L230 270 L300 390 Z"
-      fill="#bd7b52"
-      stroke="#1f2937"
-      strokeWidth="4"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M300 390 L355 270 L450 390 Z"
-      fill="#bd7b52"
-      stroke="#1f2937"
-      strokeWidth="4"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const FractionDiagram1D = () => (
-  <svg
-    viewBox="0 0 360 360"
-    className="w-full h-auto"
-    role="img"
-    aria-labelledby="fraction-diagram-1d-title"
-  >
-    <title id="fraction-diagram-1d-title">Fraction diagram 1d</title>
-    <rect x="4" y="4" width="352" height="352" fill="none" stroke="#1f2937" strokeWidth="4" />
-    <path
-      d="M5 5 H240 L120 125 H5 Z"
-      fill="#bd7b52"
-      stroke="#1f2937"
-      strokeWidth="4"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M5 125 H120 V245 L5 355 Z"
-      fill="#bd7b52"
-      stroke="#1f2937"
-      strokeWidth="4"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M240 245 L355 125 V355 H240 Z"
-      fill="#bd7b52"
-      stroke="#1f2937"
-      strokeWidth="4"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M240 5 H355 V125 H120 Z"
-      fill="none"
-      stroke="#1f2937"
-      strokeWidth="4"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M120 125 H355 L240 245 H120 Z"
-      fill="none"
-      stroke="#1f2937"
-      strokeWidth="4"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M5 355 H240 V245 H120 Z"
-      fill="none"
-      stroke="#1f2937"
-      strokeWidth="4"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
 const ArtiPecahanPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -565,18 +449,9 @@ const ArtiPecahanPage = () => {
                   <p className="font-body text-sm text-white/80 leading-relaxed mb-4">
                     <strong className="text-primary">{t.sec1SummaryBold}</strong> {t.sec1SummaryBody}
                   </p>
-                  <div className="flex flex-col items-center gap-3">
-                    <p className="font-body text-xs text-white/60 text-center leading-relaxed">{t.diagramCaption}</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-                      <figure className="bg-slate-900/50 rounded-lg p-3 border border-white/10">
-                        <FractionDiagram1C />
-                        <figcaption className="text-center text-xs font-bold text-amber-300 mt-2">{t.diagram1cLabel}</figcaption>
-                      </figure>
-                      <figure className="bg-slate-900/50 rounded-lg p-3 border border-white/10">
-                        <FractionDiagram1D />
-                        <figcaption className="text-center text-xs font-bold text-amber-300 mt-2">{t.diagram1dLabel}</figcaption>
-                      </figure>
-                    </div>
+                  <div className="flex flex-col items-center gap-2">
+                    <img src="/pizza_pecahan.jpg" alt={t.imgAlt} className="w-full rounded-lg object-cover" />
+                    <p className="font-body text-xs text-white/60 text-center leading-relaxed">{t.imgCaption}</p>
                   </div>
                 </div>
 
