@@ -37,7 +37,7 @@ const SubLabel = ({ letter, color }: { letter: string; color: string }) => (
 );
 
 const FractionDiagram1C = () => (
-  <svg width="220" height="190" viewBox="0 0 460 400" role="img" aria-label="1c">
+  <svg width="220" height="190" viewBox="0 0 460 400" className="w-full max-w-[220px] h-auto" role="img" aria-label="1c">
     {[
       { points: "230,10 157,137 303,137", shaded: true },
       { points: "157,137 83,263 230,263", shaded: false },
@@ -54,16 +54,20 @@ const FractionDiagram1C = () => (
         points={points}
         fill={shaded ? "#a78bfa" : "transparent"}
         fillOpacity={shaded ? 0.35 : 0}
-        stroke="#a78bfa"
-        strokeWidth="4"
-        strokeLinejoin="round"
       />
     ))}
+    <path d="M230 10 L10 390 L450 390 Z" fill="none" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M230 10 L157 137 L83 263 L10 390" fill="none" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M230 10 L303 137 L377 263 L450 390" fill="none" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M157 137 L83 263 L157 390" fill="none" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M157 137 L230 263 L157 390" fill="none" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M303 137 L230 263 L303 390" fill="none" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M303 137 L377 263 L303 390" fill="none" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
   </svg>
 );
 
 const FractionDiagram1D = () => (
-  <svg width="160" height="160" viewBox="0 0 360 360" role="img" aria-label="1d">
+  <svg width="160" height="160" viewBox="0 0 360 360" className="w-[160px] h-[160px]" role="img" aria-label="1d">
     <rect x="4" y="4" width="352" height="352" fill="transparent" stroke="#a78bfa" strokeWidth="4" />
     <path d="M5 5 H240 L120 125 H5 Z" fill="#a78bfa" fillOpacity="0.35" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
     <path d="M5 125 H120 V245 L5 355 Z" fill="#a78bfa" fillOpacity="0.35" stroke="#a78bfa" strokeWidth="4" strokeLinejoin="round" />
@@ -82,11 +86,11 @@ const SoalSatu = () => {
       <p className="font-body text-sm text-white/90 leading-relaxed">
         {t('practice.pecahan.artiSenilai.q1.instruction')}
       </p>
-      <div className="flex flex-wrap gap-10 items-center justify-start pt-1">
+      <div className="grid grid-cols-1 landscape:grid-cols-4 gap-6 items-start justify-items-center pt-1">
         {/* Rectangle */}
         <div className="flex flex-col items-center gap-2">
           <SubLabel letter="a" color="bg-violet-500/30 text-violet-300 border border-violet-400/40" />
-          <svg width="220" height="60" viewBox="0 0 220 60" className="rounded">
+          <svg width="220" height="60" viewBox="0 0 220 60" className="w-full max-w-[220px] h-auto rounded">
             <defs>
               <clipPath id="rect-clip-0"><rect x={0} y={0} width={44} height={60} /></clipPath>
               <clipPath id="rect-clip-1"><rect x={44} y={0} width={44} height={60} /></clipPath>
@@ -112,7 +116,7 @@ const SoalSatu = () => {
         {/* Circle */}
         <div className="flex flex-col items-center gap-2">
           <SubLabel letter="b" color="bg-violet-500/30 text-violet-300 border border-violet-400/40" />
-          <svg width="110" height="110" viewBox="0 0 120 120">
+          <svg width="110" height="110" viewBox="0 0 120 120" className="w-[110px] h-[110px]">
             <circle cx={cx} cy={cy} r={r} fill="transparent" stroke="#a78bfa" strokeWidth={1.5} />
             {[0,1,2,3,4,5,6,7].map((i) => (
               <path key={i} d={slicePath(i)}
