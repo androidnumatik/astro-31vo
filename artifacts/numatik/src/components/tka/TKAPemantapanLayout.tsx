@@ -357,7 +357,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
 
                   <div className="w-full flex items-center gap-3 px-5 py-4 text-left pl-6">
                     <span className={`flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold border ${color.badge}`}>
-                      {String.fromCharCode(65 + idx)}
+                      {section.heading.match(/^([A-Z])\.\s*/)?.[1] ?? String.fromCharCode(65 + idx)}
                     </span>
                     <span className="font-display text-sm font-bold text-white/90 flex-1 leading-snug">
                       {contentRenderer(headingText)}
