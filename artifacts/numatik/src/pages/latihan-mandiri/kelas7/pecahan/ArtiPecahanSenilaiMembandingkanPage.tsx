@@ -88,9 +88,10 @@ const SoalSatu = () => {
       </p>
       <div className="grid grid-cols-1 landscape:grid-cols-4 gap-6 items-start justify-items-center pt-1">
         {/* Rectangle */}
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-2 landscape:w-[160px] landscape:h-[160px]">
           <SubLabel letter="a" color="bg-violet-500/30 text-violet-300 border border-violet-400/40" />
-          <svg width="220" height="60" viewBox="0 0 220 60" className="w-full max-w-[220px] h-auto rounded">
+          <div className="flex h-[160px] w-full items-center justify-center">
+          <svg width="220" height="60" viewBox="0 0 220 60" className="w-full max-w-[220px] h-auto rounded landscape:max-w-[160px]">
             <defs>
               <clipPath id="rect-clip-0"><rect x={0} y={0} width={44} height={60} /></clipPath>
               <clipPath id="rect-clip-1"><rect x={44} y={0} width={44} height={60} /></clipPath>
@@ -112,11 +113,13 @@ const SoalSatu = () => {
               </g>
             ))}
           </svg>
+          </div>
         </div>
         {/* Circle */}
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-2 landscape:w-[160px] landscape:h-[160px]">
           <SubLabel letter="b" color="bg-violet-500/30 text-violet-300 border border-violet-400/40" />
-          <svg width="110" height="110" viewBox="0 0 120 120" className="w-[110px] h-[110px]">
+          <div className="flex h-[160px] w-full items-center justify-center">
+          <svg width="110" height="110" viewBox="0 0 120 120" className="w-[110px] h-[110px] landscape:max-w-[110px] landscape:max-h-[110px]">
             <circle cx={cx} cy={cy} r={r} fill="transparent" stroke="#a78bfa" strokeWidth={1.5} />
             {[0,1,2,3,4,5,6,7].map((i) => (
               <path key={i} d={slicePath(i)}
@@ -138,16 +141,21 @@ const SoalSatu = () => {
               });
             })}
           </svg>
+          </div>
         </div>
         {/* Triangle partition */}
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-2 landscape:w-[160px] landscape:h-[160px]">
           <SubLabel letter="c" color="bg-violet-500/30 text-violet-300 border border-violet-400/40" />
-          <FractionDiagram1C />
+          <div className="flex h-[160px] w-full items-center justify-center">
+            <FractionDiagram1C />
+          </div>
         </div>
         {/* Square partition */}
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-2 landscape:w-[160px] landscape:h-[160px]">
           <SubLabel letter="d" color="bg-violet-500/30 text-violet-300 border border-violet-400/40" />
-          <FractionDiagram1D />
+          <div className="flex h-[160px] w-full items-center justify-center">
+            <FractionDiagram1D />
+          </div>
         </div>
       </div>
     </div>
