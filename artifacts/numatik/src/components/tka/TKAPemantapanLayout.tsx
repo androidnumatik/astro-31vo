@@ -36,6 +36,8 @@ export interface LatihanSoal {
   pembahasan?: string;
   /** Optional diagram/image to show below the soal text */
   gambar?: React.ReactNode;
+  /** Optional table or visual to show inside the example-question explanation. */
+  pembahasanDiagram?: React.ReactNode;
   /** Key for a reusable question diagram supplied by the module page. */
   soalSvg?: string;
 }
@@ -704,6 +706,11 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                               <span key={i}>{i > 0 && <br />}{contentRenderer(line)}</span>
                             ))}
                           </div>
+                          {soal.pembahasanDiagram && (
+                            <div className="mt-4 overflow-x-auto">
+                              {soal.pembahasanDiagram}
+                            </div>
+                          )}
                         </div>
                       </div>
                     )}

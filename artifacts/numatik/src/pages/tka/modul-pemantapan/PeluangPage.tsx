@@ -1,7 +1,7 @@
 import TKAPemantapanLayout from "@/components/tka/TKAPemantapanLayout";
 import type { MateriSection, LatihanSoal } from "@/components/tka/TKAPemantapanLayout";
-import { getTkaContohSoal } from "@/data/tkaContohSoal";
 import { latihanDasarSVG } from "@/pages/OlimpiadePeluangPage";
+import diagramKelereng from "@assets/image_1787583206453.png";
 
 const materiSections: MateriSection[] = [
   { heading: "A. Ruang Sampel", content: `Ruang sampel (S) = himpunan semua kemungkinan hasil percobaan.\n\nKejadian (A) = bagian dari ruang sampel.\n\nContoh:\n- Melempar dadu: S = {1, 2, 3, 4, 5, 6}, n(S) = 6\n- Melempar koin: S = {A (angka), G (gambar)}, n(S) = 2\n- Melempar 2 koin: S = {AA, AG, GA, GG}, n(S) = 4` },
@@ -44,12 +44,172 @@ const latihanDasar: LatihanSoal[] = [
   { no: 40, soal: "Tiga buah dadu biasa dilempar sekaligus sebanyak satu kali. Peluang salah satu mata dadu sama dengan jumlah dua mata dadu lainnya adalah …", options: ["A. $\\frac{1}{6}$", "B. $\\frac{5}{24}$", "C. $\\frac{7}{24}$", "D. $\\frac{1}{3}$"] },
 ];
 
+const ruangSampelDuaDadu = (
+  <div className="space-y-4 min-w-[600px]">
+    <div>
+      <p className="mb-2 text-xs font-bold text-cyan-200">Tabel Ruang Sampel Pelemparan 2 Dadu</p>
+      <table className="w-full border-collapse text-center text-[11px] text-cyan-50">
+        <thead>
+          <tr>
+            <th className="border border-cyan-400/30 bg-cyan-400/10 p-2">Dadu 1 \\ Dadu 2</th>
+            {[1, 2, 3, 4, 5, 6].map((value) => <th key={value} className="border border-cyan-400/30 bg-cyan-400/10 p-2">{value}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {[1, 2, 3, 4, 5, 6].map((dadu1) => (
+            <tr key={dadu1}>
+              <th className="border border-cyan-400/30 bg-cyan-400/10 p-2">{dadu1}</th>
+              {[1, 2, 3, 4, 5, 6].map((dadu2) => {
+                const sum = dadu1 + dadu2;
+                const isMultiple = sum % 4 === 0;
+                return (
+                  <td key={dadu2} className={`border border-cyan-400/20 p-2 ${isMultiple ? "bg-emerald-400/25 font-bold text-emerald-200" : "bg-white/5"}`}>
+                    ({dadu1}, {dadu2})
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <p className="mb-2 text-xs font-bold text-cyan-200">Rincian Pembagian Pasangan Kelipatan 4</p>
+      <table className="w-full border-collapse text-left text-[11px] text-cyan-50">
+        <thead>
+          <tr>
+            <th className="border border-cyan-400/30 bg-cyan-400/10 p-2">Nilai Kelipatan 4</th>
+            <th className="border border-cyan-400/30 bg-cyan-400/10 p-2">Pasangan Mata Dadu (D1, D2)</th>
+            <th className="border border-cyan-400/30 bg-cyan-400/10 p-2">Jumlah Kemungkinan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td className="border border-cyan-400/20 p-2">Jumlah = 4</td><td className="border border-cyan-400/20 p-2">(1, 3), (2, 2), (3, 1)</td><td className="border border-cyan-400/20 p-2">3 cara</td></tr>
+          <tr><td className="border border-cyan-400/20 p-2">Jumlah = 8</td><td className="border border-cyan-400/20 p-2">(2, 6), (3, 5), (4, 4), (5, 3), (6, 2)</td><td className="border border-cyan-400/20 p-2">5 cara</td></tr>
+          <tr><td className="border border-cyan-400/20 p-2">Jumlah = 12</td><td className="border border-cyan-400/20 p-2">(6, 6)</td><td className="border border-cyan-400/20 p-2">1 cara</td></tr>
+          <tr className="font-bold text-emerald-200"><td className="border border-cyan-400/20 p-2" colSpan={2}>TOTAL n(A)</td><td className="border border-cyan-400/20 p-2">9 cara</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+);
+
+const contohSoal: LatihanSoal[] = [
+  {
+    no: 1,
+    type: "pg",
+    soal: "Pada percobaan melempar satu buah dadu bermata 6 sebanyak satu kali, tentukan peluang munculnya mata dadu yang merupakan bilangan prima!",
+    options: ["A. $\\frac{1}{6}$", "B. $\\frac{1}{3}$", "C. $\\frac{1}{2}$", "D. $\\frac{2}{3}$"],
+    jawaban: "C",
+    pembahasan:
+      "Jawaban: C\n\n" +
+      "Konsep & Trik:\n" +
+      "Konsep dasar: Peluang $P(A) = \\frac{n(A)}{n(S)}$, di mana $n(A)$ adalah jumlah anggota kejadian yang diinginkan dan $n(S)$ adalah total seluruh ruang sampel.\n\n" +
+      "Trik Cepat: Untuk 1 dadu (6 sisi), tepat 3 sisinya adalah prima $(2,3,5)$. Jadi peluang muncul bilangan prima adalah $\\frac{1}{2}$.\n\n" +
+      "Step-by-Step Penyelesaian:\n" +
+      "Menentukan Ruang Sampel $S$:\n" +
+      "Dadu memiliki 6 sisi, maka $S = \\{1, 2, 3, 4, 5, 6\\}$ sehingga $n(S) = 6$.\n\n" +
+      "Menentukan Kejadian $A$:\n" +
+      "Bilangan prima pada dadu adalah $A = \\{2, 3, 5\\}$ sehingga $n(A) = 3$.\n\n" +
+      "Menghitung Peluang $P(A)$:\n" +
+      "$$P(A) = \\frac{n(A)}{n(S)} = \\frac{3}{6} = \\frac{1}{2}$$",
+  },
+  {
+    no: 2,
+    type: "pg",
+    soal: "Dimas melakukan eksperimen pengundian koin bernomor/bergambar sebanyak $120$ kali. Dari eksperimen tersebut, sisi angka muncul sebanyak $45$ kali, sedangkan sisanya yang muncul adalah sisi gambar. Berapakah frekuensi relatif munculnya sisi gambar?",
+    options: ["A. $\\frac{3}{8}$", "B. $\\frac{5}{8}$", "C. $\\frac{1}{2}$", "D. $\\frac{3}{5}$"],
+    jawaban: "B",
+    pembahasan:
+      "Jawaban: B\n\n" +
+      "Konsep & Trik:\n" +
+      "Frekuensi relatif $F_r(A) = \\frac{\\text{banyak kejadian } A}{\\text{banyak percobaan } (N)}$.\n\n" +
+      "Step-by-Step Penyelesaian:\n" +
+      "Total percobaan $(N) = 120$ dan kejadian muncul angka = $45$.\n\n" +
+      "Banyak kejadian muncul gambar:\n" +
+      "$$120 - 45 = 75$$\n\n" +
+      "Frekuensi relatif gambar:\n" +
+      "$$F_r = \\frac{75}{120} = \\frac{75 \\div 15}{120 \\div 15} = \\frac{5}{8}$$",
+  },
+  {
+    no: 3,
+    type: "pgk",
+    soal: "Sebuah wadah berisi sekantong kelereng dengan berbagai warna. Andika mencatat jumlah kelereng berdasarkan warnanya seperti diagram batang di bawah ini. Jika satu kelereng diambil secara acak dari wadah tersebut, tentukan kebenaran dari pernyataan-pernyataan berikut!",
+    pernyataan: [
+      "Peluang terambil kelereng berwarna Kuning adalah $32\\%$.",
+      "Peluang terambil kelereng berwarna Biru adalah $0,16$.",
+      "Peluang terambil kelereng berwarna Hijau atau Ungu adalah $\\frac{1}{3}$.",
+      "Peluang terambil kelereng selain warna Merah adalah $\\frac{4}{5}$.",
+    ],
+    jawabanPGK: [0, 1, 3],
+    jawaban: "Pernyataan (1), (2), dan (4) BENAR",
+    gambar: <img src={diagramKelereng} alt="Diagram batang jumlah kelereng berdasarkan warna" className="mx-auto w-full max-w-xl rounded-xl border border-white/10 bg-white p-2" />,
+    pembahasan:
+      "Jawaban: Pernyataan 1 (Benar), Pernyataan 2 (Benar), Pernyataan 3 (Salah), Pernyataan 4 (Benar)\n\n" +
+      "Konsep & Trik:\n" +
+      "Total ruang sampel $n(S) = \\sum$ banyak kelereng. Peluang komplemen $P(A^c) = 1 - P(A)$.\n\n" +
+      "Step-by-Step Penyelesaian:\n" +
+      "Hitung ruang sampel total:\n" +
+      "$$n(S) = 8 + 6 + 4 + 5 + 2 = 25$$\n\n" +
+      "Pernyataan 1: $P(K) = \\frac{8}{25} = \\frac{32}{100} = 32\\%$, jadi BENAR.\n\n" +
+      "Pernyataan 2: $P(B) = \\frac{4}{25} = 0,16$, jadi BENAR.\n\n" +
+      "Pernyataan 3: $P(H \\cup U) = \\frac{6+2}{25} = \\frac{8}{25} \\neq \\frac{1}{3}$, jadi SALAH.\n\n" +
+      "Pernyataan 4: Kelereng selain Merah berjumlah $25-5=20$.\n" +
+      "$$P(M^c) = \\frac{20}{25} = \\frac{4}{5}$$\n" +
+      "Jadi pernyataan 4 BENAR.",
+  },
+  {
+    no: 4,
+    type: "pgkbs",
+    soal: "Teks Stimulus: Permainan Monopoli Sederhana\nFajar dan Doni sedang bermain board game dengan melempar dua buah dadu berenam sisi secara bersamaan. Seseorang dapat melangkah sesuai jumlah mata dadu yang muncul. Jika pemain mendapatkan pasangan dadu kembar (dobel), ia mendapat kesempatan melempar sekali lagi. Jika jumlah kedua mata dadu kurang dari 5, pemain masuk ke kotak \"Bonus\". Jika jumlah kedua mata dadu lebih dari 9, pemain masuk ke kotak \"Tantangan\".\n\nBerdasarkan teks di atas, tentukan Benar atau Salah untuk setiap pernyataan berikut!",
+    pernyataan: [
+      "Peluang Fajar masuk ke kotak \"Bonus\" (jumlah $< 5$) adalah $\\frac{1}{6}$.",
+      "Peluang Doni masuk ke kotak \"Tantangan\" (jumlah $> 9$) adalah $\\frac{1}{12}$.",
+      "Peluang seorang pemain mendapat lemparan tambahan (dadu kembar) adalah $\\frac{1}{6}$.",
+    ],
+    jawabanBS: ["B", "S", "B"],
+    pembahasan:
+      "Jawaban:\nPernyataan 1: BENAR\nPernyataan 2: SALAH\nPernyataan 3: BENAR\n\n" +
+      "Konsep & Trik:\n" +
+      "Ruang sampel dua dadu adalah $n(S) = 6 \\times 6 = 36$. Banyak pasangan untuk jumlah 2, 3, 4 berturut-turut adalah 1, 2, 3.\n\n" +
+      "Step-by-Step Penyelesaian:\n" +
+      "Pernyataan 1 (jumlah $<5$): $1+2+3=6$ pasangan, sehingga $P(\\text{Bonus})=\\frac{6}{36}=\\frac{1}{6}$ — BENAR.\n\n" +
+      "Pernyataan 2 (jumlah $>9$): jumlah 10, 11, dan 12 memiliki $3+2+1=6$ pasangan, sehingga $P(\\text{Tantangan})=\\frac{6}{36}=\\frac{1}{6}$, bukan $\\frac{1}{12}$ — SALAH.\n\n" +
+      "Pernyataan 3 (dadu kembar): pasangan kembar $(1,1)$ sampai $(6,6)$ berjumlah 6, sehingga $P(\\text{kembar})=\\frac{6}{36}=\\frac{1}{6}$ — BENAR.",
+  },
+  {
+    no: 5,
+    type: "pg",
+    soal: "Pada giliran berikutnya, peluang Doni untuk melempar dua dadu dengan jumlah mata dadu merupakan bilangan kelipatan 4 adalah ....",
+    options: ["A. $\\frac{1}{4}$", "B. $\\frac{1}{3}$", "C. $\\frac{5}{12}$", "D. $\\frac{1}{2}$"],
+    jawaban: "A",
+    pembahasanDiagram: ruangSampelDuaDadu,
+    pembahasan:
+      "Jawaban: A\n\n" +
+      "Konsep & Trik:\n" +
+      "Kelipatan 4 pada penjumlahan dua dadu (jangkauan hasil 2 sampai 12) adalah 4, 8, dan 12. Banyak pasangan untuk jumlah tersebut adalah 3, 5, dan 1, sehingga totalnya 9 pasangan.\n\n" +
+      "Step-by-Step Penyelesaian:\n" +
+      "Identifikasi kelipatan 4 yang mungkin pada dua dadu:\n" +
+      "$\\{4, 8, 12\\}$.\n\n" +
+      "Mendaftar pasangan mata dadu:\n" +
+      "Jumlah 4: $(1,3), (2,2), (3,1) \\rightarrow 3$ cara.\n" +
+      "Jumlah 8: $(2,6), (3,5), (4,4), (5,3), (6,2) \\rightarrow 5$ cara.\n" +
+      "Jumlah 12: $(6,6) \\rightarrow 1$ cara.\n\n" +
+      "Hitung total kejadian:\n" +
+      "$$n(A) = 3 + 5 + 1 = 9$$\n\n" +
+      "Ruang sampel dua dadu:\n" +
+      "$$n(S) = 6 \\times 6 = 36$$\n\n" +
+      "Hitung peluang:\n" +
+      "$$P(A) = \\frac{n(A)}{n(S)} = \\frac{9}{36} = \\frac{1}{4}$$",
+  },
+];
+
 const PeluangPage = () => (
   <TKAPemantapanLayout
     title="PELUANG"
-  materiSections={materiSections}
-  contohSoal={getTkaContohSoal("peluang")}
-  latihanDasar={latihanDasar}
+    materiSections={materiSections}
+    contohSoal={contohSoal}
+    latihanDasar={latihanDasar}
     gambarMap={latihanDasarSVG}
   />
 );
