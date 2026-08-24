@@ -2,6 +2,7 @@ import TKAPemantapanLayout from "@/components/tka/TKAPemantapanLayout";
 import type { MateriSection, LatihanSoal } from "@/components/tka/TKAPemantapanLayout";
 import { latihanDasarSVG } from "@/pages/OlimpiadePeluangPage";
 import diagramKelereng from "@assets/image_1787583206453.png";
+import papanSpinner from "@assets/image_1787585871802.png";
 
 const materiSections: MateriSection[] = [
   { heading: "A. Ruang Sampel", content: `Ruang sampel (S) = himpunan semua kemungkinan hasil percobaan.\n\nKejadian (A) = bagian dari ruang sampel.\n\nContoh:\n- Melempar dadu: S = {1, 2, 3, 4, 5, 6}, n(S) = 6\n- Melempar koin: S = {A (angka), G (gambar)}, n(S) = 2\n- Melempar 2 koin: S = {AA, AG, GA, GG}, n(S) = 4` },
@@ -16,7 +17,29 @@ const latihanAwal: LatihanSoal[] = [
   {
     no: 1,
     type: "pgkbs",
-    soal: "Topik: Frekuensi Relatif — Tabel Percobaan\nSeorang siswa melakukan lemparan dadu bermata enam sebanyak $50$ kali. Hasil pengamatan dicatat dalam tabel berikut:\nMata dadu: $1\\quad 2\\quad 3\\quad 4\\quad 5\\quad 6$\nFrekuensi: $12\\quad 8\\quad 10\\quad 5\\quad 11\\quad 4$\n\nTentukan nilai Benar atau Salah untuk setiap pernyataan berikut!",
+    soal: "Seorang siswa melakukan lemparan dadu bermata enam sebanyak $50$ kali. Hasil pengamatan dicatat dalam tabel berikut.\n\nTentukan nilai Benar atau Salah untuk setiap pernyataan berikut!",
+    gambar: (
+      <div className="my-2 overflow-x-auto">
+        <table className="mx-auto min-w-[360px] border-collapse overflow-hidden rounded-lg text-center text-xs">
+          <thead>
+            <tr className="bg-cyan-500/20 text-cyan-100">
+              <th className="border border-cyan-400/30 px-4 py-2">Mata dadu</th>
+              {[1, 2, 3, 4, 5, 6].map((mata) => (
+                <th key={mata} className="border border-cyan-400/30 px-3 py-2">{mata}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="bg-white/5 text-white/85">
+              <th className="border border-cyan-400/30 px-4 py-2 text-cyan-100">Frekuensi</th>
+              {[12, 8, 10, 5, 11, 4].map((frekuensi, index) => (
+                <td key={index} className="border border-cyan-400/30 px-3 py-2">{frekuensi}</td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    ),
     pernyataan: [
       "Frekuensi relatif munculnya mata dadu 2 adalah $0,16$.",
       "Frekuensi relatif munculnya mata dadu 5 adalah $0,22$.",
@@ -28,7 +51,7 @@ const latihanAwal: LatihanSoal[] = [
   {
     no: 2,
     type: "pg",
-    soal: "Topik: Frekuensi Relatif Koin\nSebuah koin seimbang dilempar sebanyak $80$ kali. Jika sisi Gambar ($G$) muncul sebanyak $32$ kali, berapakah frekuensi relatif munculnya sisi Angka ($A$)?",
+    soal: "Sebuah koin seimbang dilempar sebanyak $80$ kali. Jika sisi Gambar ($G$) muncul sebanyak $32$ kali, berapakah frekuensi relatif munculnya sisi Angka ($A$)?",
     options: ["A. $0,400$", "B. $0,500$", "C. $0,600$", "D. $0,750$"],
     jawaban: "C",
     pembahasan: "Jawaban: C\n\nKonsep & Trik:\nFrekuensi sisi Angka adalah sisa dari seluruh lemparan setelah kemunculan Gambar.\n\nStep-by-Step Penyelesaian:\n$f_A=80-32=48$.\n\n$F_r(A)=\\frac{48}{80}=\\frac{6}{10}=0,600$.",
@@ -36,7 +59,7 @@ const latihanAwal: LatihanSoal[] = [
   {
     no: 3,
     type: "pg",
-    soal: "Topik: Peluang Kejadian Mustahil\nSebuah dadu standar bermata $6$ dilambungkan satu kali. Peluang munculnya mata dadu bernilai lebih dari $6$ adalah ....",
+    soal: "Sebuah dadu standar bermata $6$ dilambungkan satu kali. Peluang munculnya mata dadu bernilai lebih dari $6$ adalah ....",
     options: ["A. $0$", "B. $\\frac{1}{6}$", "C. $\\frac{1}{2}$", "D. $1$"],
     jawaban: "A",
     pembahasan: "Jawaban: A\n\nKonsep & Trik:\nDadu standar hanya memiliki mata $1,2,3,4,5,6$. Kejadian muncul mata dadu lebih dari 6 adalah kejadian mustahil.\n\n$P(A)=\\frac{n(A)}{n(S)}=\\frac{0}{6}=0$.",
@@ -44,7 +67,7 @@ const latihanAwal: LatihanSoal[] = [
   {
     no: 4,
     type: "pg",
-    soal: "Topik: Peluang 3 Koin\nTiga buah koin uang logam dilempar bersamaan satu kali. Peluang munculnya tepat $2$ Gambar dan $1$ Angka adalah ....",
+    soal: "Tiga buah koin uang logam dilempar bersamaan satu kali. Peluang munculnya tepat $2$ Gambar dan $1$ Angka adalah ....",
     options: ["A. $\\frac{1}{8}$", "B. $\\frac{3}{8}$", "C. $\\frac{1}{2}$", "D. $\\frac{5}{8}$"],
     jawaban: "B",
     pembahasan: "Jawaban: B\n\nKonsep & Trik:\nTiga koin memiliki $2^3=8$ kemungkinan hasil. Hasil dengan tepat 2 Gambar adalah $AGG$, $GAG$, dan $GGA$, sebanyak 3 hasil.\n\n$P(A)=\\frac{3}{8}$.",
@@ -52,7 +75,7 @@ const latihanAwal: LatihanSoal[] = [
   {
     no: 5,
     type: "pg",
-    soal: "Topik: Peluang Pengambilan Sederhana\nDalam sebuah kotak terdapat $10$ bola merah, $15$ bola kuning, dan $25$ bola hijau. Jika diambil satu bola secara acak, peluang terambilnya bola kuning adalah ....",
+    soal: "Dalam sebuah kotak terdapat $10$ bola merah, $15$ bola kuning, dan $25$ bola hijau. Jika diambil satu bola secara acak, peluang terambilnya bola kuning adalah ....",
     options: ["A. $\\frac{1}{5}$", "B. $\\frac{3}{10}$", "C. $\\frac{1}{2}$", "D. $\\frac{3}{5}$"],
     jawaban: "B",
     pembahasan: "Jawaban: B\n\nTotal bola $=10+15+25=50$. Banyak bola kuning adalah 15, sehingga\n$P(K)=\\frac{15}{50}=\\frac{3}{10}$.",
@@ -60,7 +83,7 @@ const latihanAwal: LatihanSoal[] = [
   {
     no: 6,
     type: "pgk",
-    soal: "Topik: Peluang Pengundian Kupon\nDalam rangka Peringatan Hari Guru, sekolah membagikan kupon undian bernomor $001$ sampai $200$ kepada $200$ siswa. Panitia menyediakan $5$ unit laptop, $15$ unit sepeda, dan $30$ unit buku tulis.\n\nPilihlah semua pernyataan yang Benar!",
+    soal: "Dalam rangka Peringatan Hari Guru, sekolah membagikan kupon undian bernomor $001$ sampai $200$ kepada $200$ siswa. Panitia menyediakan $5$ unit laptop, $15$ unit sepeda, dan $30$ unit buku tulis.\n\nPilihlah semua pernyataan yang Benar!",
     pernyataan: [
       "Peluang setiap siswa memperoleh hadiah adalah $\\frac{1}{4}$.",
       "Peluang siswa mendapat laptop pada undian pertama adalah $2,5\\%$.",
@@ -73,7 +96,7 @@ const latihanAwal: LatihanSoal[] = [
   {
     no: 7,
     type: "pgkbs",
-    soal: "Topik: Peluang Pengambilan 2 Bola Sekaligus\nDalam sebuah kantong terdapat $8$ kartu bernomor $1,2,3,4,5,6,7,8$. Diambil dua kartu sekaligus secara acak. Tentukan nilai Benar atau Salah!",
+    soal: "Dalam sebuah kantong terdapat $8$ kartu bernomor $1,2,3,4,5,6,7,8$. Diambil dua kartu sekaligus secara acak. Tentukan nilai Benar atau Salah!",
     pernyataan: [
       "Peluang terambil pasangan kartu bernomor berurutan adalah $\\frac{1}{4}$.",
       "Peluang terambil pasangan kartu dengan jumlah genap adalah $\\frac{3}{7}$.",
@@ -85,7 +108,7 @@ const latihanAwal: LatihanSoal[] = [
   {
     no: 8,
     type: "pg",
-    soal: "Topik: Frekuensi Harapan (Prakiraan Cuaca)\nBerdasarkan data meteorologi, peluang hari berawan di Kota Bandung selama bulan Agustus ($31$ hari) adalah $\\frac{2}{5}$. Berapakah harapan banyaknya hari tidak berawan di bulan tersebut?",
+    soal: "Berdasarkan data meteorologi, peluang hari berawan di Kota Bandung selama bulan Agustus ($31$ hari) adalah $\\frac{2}{5}$. Berapakah harapan banyaknya hari tidak berawan di bulan tersebut?",
     options: ["A. $12,4$ hari", "B. $18,6$ hari", "C. $20,0$ hari", "D. $24,8$ hari"],
     jawaban: "B",
     pembahasan: "Jawaban: B\n\nPeluang tidak berawan adalah $1-\\frac{2}{5}=\\frac{3}{5}$.\n\nFrekuensi harapan $=\\frac{3}{5}\\times31=\\frac{93}{5}=18,6$ hari.",
@@ -93,7 +116,7 @@ const latihanAwal: LatihanSoal[] = [
   {
     no: 9,
     type: "pg",
-    soal: "Topik: Peluang Pengambilan Tanpa Pengembalian\nDi dalam sebuah kotak terdapat $12$ bola bernomor $1$ sampai $12$. Diambil satu bola secara acak dan terambil bola bernomor $3$ (tidak dikembalikan). Peluang terambil bola bernomor kelipatan $3$ pada pengambilan kedua adalah ....",
+    soal: "Di dalam sebuah kotak terdapat $12$ bola bernomor $1$ sampai $12$. Diambil satu bola secara acak dan terambil bola bernomor $3$ (tidak dikembalikan). Peluang terambil bola bernomor kelipatan $3$ pada pengambilan kedua adalah ....",
     options: ["A. $\\frac{1}{4}$", "B. $\\frac{3}{11}$", "C. $\\frac{4}{11}$", "D. $\\frac{1}{3}$"],
     jawaban: "B",
     pembahasan: "Jawaban: B\n\nKelipatan 3 dari 1 sampai 12 adalah $3,6,9,12$. Setelah bola 3 diambil, tersisa 3 bola kelipatan 3 dan 11 bola seluruhnya.\n\n$P=\\frac{3}{11}$.",
@@ -101,7 +124,7 @@ const latihanAwal: LatihanSoal[] = [
   {
     no: 10,
     type: "pg",
-    soal: "Topik: Ruang Sampel Majemuk\nBanyak anggota ruang sampel dari pelemparan tiga koin uang logam dan satu dadu bermata 6 secara bersamaan adalah ....",
+    soal: "Banyak anggota ruang sampel dari pelemparan tiga koin uang logam dan satu dadu bermata 6 secara bersamaan adalah ....",
     options: ["A. $18$", "B. $24$", "C. $48$", "D. $72$"],
     jawaban: "C",
     pembahasan: "Jawaban: C\n\nTiga koin menghasilkan $2^3=8$ kemungkinan dan satu dadu menghasilkan 6 kemungkinan. Dengan aturan perkalian, $n(S)=8\\times6=48$.",
@@ -109,7 +132,7 @@ const latihanAwal: LatihanSoal[] = [
   {
     no: 11,
     type: "pg",
-    soal: "Topik: Permutasi Antrean\nLima orang nasabah: Andi, Budi, Citra, Deni, dan Eka sedang mengantre di depan teller bank yang menyediakan $5$ kursi berdampingan secara sejajar. Banyak cara kelima nasabah tersebut mengatur posisi duduk mereka adalah ....",
+    soal: "Lima orang nasabah: Andi, Budi, Citra, Deni, dan Eka sedang mengantre di depan teller bank yang menyediakan $5$ kursi berdampingan secara sejajar. Banyak cara kelima nasabah tersebut mengatur posisi duduk mereka adalah ....",
     options: ["A. $20$ cara", "B. $60$ cara", "C. $120$ cara", "D. $720$ cara"],
     jawaban: "C",
     pembahasan: "Jawaban: C\n\nLima orang berbeda dapat disusun berjajar dengan $5!$ cara.\n\n$5!=5\\times4\\times3\\times2\\times1=120$ cara.",
@@ -117,7 +140,7 @@ const latihanAwal: LatihanSoal[] = [
   {
     no: 12,
     type: "pgk",
-    soal: "Topik: Peluang pada Antrean\nLima orang nasabah: Andi, Budi, Citra, Deni, dan Eka sedang duduk acak pada $5$ kursi berjajar. Pilihlah semua pernyataan yang Benar!",
+    soal: "Lima orang nasabah: Andi, Budi, Citra, Deni, dan Eka sedang duduk acak pada $5$ kursi berjajar. Pilihlah semua pernyataan yang Benar!",
     pernyataan: [
       "Peluang Andi duduk di posisi paling ujung (kiri atau kanan) adalah $\\frac{2}{5}$.",
       "Peluang Budi dan Citra selalu duduk berdampingan adalah $40\\%$.",
@@ -130,7 +153,7 @@ const latihanAwal: LatihanSoal[] = [
   {
     no: 13,
     type: "pgkbs",
-    soal: "Topik: Jadwal Les Musik\nReno dan Siska memiliki jadwal les musik pada hari kerja (Senin sampai Jumat). Masing-masing memilih satu hari secara acak dalam seminggu. Tentukan Benar atau Salah!",
+    soal: "Reno dan Siska memiliki jadwal les musik pada hari kerja (Senin sampai Jumat). Masing-masing memilih satu hari secara acak dalam seminggu. Tentukan Benar atau Salah!",
     pernyataan: [
       "Peluang mereka memilih hari les yang sama adalah $0,20$.",
       "Peluang mereka memilih hari les yang berurutan (misal: Senin-Selasa) adalah $\\frac{8}{25}$.",
@@ -142,7 +165,7 @@ const latihanAwal: LatihanSoal[] = [
   {
     no: 14,
     type: "pg",
-    soal: "Topik: Peluang Komplemen\nSebuah kantong berisi $30$ kelereng yang terdiri dari $12$ warna merah, $8$ warna biru, dan $10$ warna hijau. Jika diambil satu kelereng secara acak, peluang terambil kelereng bukan warna biru adalah ....",
+    soal: "Sebuah kantong berisi $30$ kelereng yang terdiri dari $12$ warna merah, $8$ warna biru, dan $10$ warna hijau. Jika diambil satu kelereng secara acak, peluang terambil kelereng bukan warna biru adalah ....",
     options: ["A. $\\frac{4}{15}$", "B. $\\frac{2}{3}$", "C. $\\frac{11}{15}$", "D. $\\frac{4}{5}$"],
     jawaban: "C",
     pembahasan: "Jawaban: C\n\nKelereng bukan biru berjumlah $12+10=22$. Maka\n$P(B^c)=\\frac{22}{30}=\\frac{11}{15}$.",
@@ -150,7 +173,12 @@ const latihanAwal: LatihanSoal[] = [
   {
     no: 15,
     type: "pgkbs",
-    soal: "Topik: Papan Spinner / Undian Putar\nSebuah papan undian berbentuk lingkaran dibagi menjadi 10 sektor sama besar yang diberi nomor $1$ sampai $10$. Papan diputar satu kali. Tentukan nilai Benar atau Salah!",
+    soal: "Sebuah papan undian berbentuk lingkaran dibagi menjadi 10 sektor sama besar yang diberi nomor $1$ sampai $10$. Papan diputar satu kali. Tentukan nilai Benar atau Salah!",
+    gambar: (
+      <div className="my-2 flex justify-center">
+        <img src={papanSpinner} alt="Papan undian putar bernomor 1 sampai 10" className="max-h-64 w-auto rounded-xl border border-white/15 bg-white p-2 object-contain" />
+      </div>
+    ),
     pernyataan: [
       "Peluang jarum menunjukkan angka ganjil adalah $50\\%$.",
       "Frekuensi harapan jarum menunjuk angka kelipatan 5 jika diputar $50$ kali adalah $10$ kali.",
