@@ -221,10 +221,36 @@ const latihanDasarLanjutan: LatihanSoal[] = [
   { no: 40, soal: "Tiga buah dadu biasa dilempar sekaligus sebanyak satu kali. Peluang salah satu mata dadu sama dengan jumlah dua mata dadu lainnya adalah …", options: ["A. $\\frac{1}{6}$", "B. $\\frac{5}{24}$", "C. $\\frac{7}{24}$", "D. $\\frac{1}{3}$"] },
 ];
 
-const latihanDasar: LatihanSoal[] = [
-  ...latihanAwal,
-  ...latihanDasarLanjutan.map((soal) => ({ ...soal, no: soal.no + latihanAwal.length })),
+const soalByRef = new Map<string, LatihanSoal>([
+  ...latihanAwal.map((soal) => [`awal-${soal.no}`, soal] as const),
+  ...latihanDasarLanjutan.map((soal) => [`lanjutan-${soal.no}`, soal] as const),
+]);
+
+const urutanSubtopik: string[] = [
+  // Ruang sampel
+  "awal-10", "lanjutan-22", "lanjutan-23", "lanjutan-24", "lanjutan-35", "awal-11",
+  // Frekuensi relatif / peluang empirik
+  "awal-1", "awal-2", "lanjutan-39",
+  // Peluang teoretis
+  "awal-3", "awal-4", "awal-5", "awal-9",
+  "lanjutan-12", "lanjutan-13", "lanjutan-14", "lanjutan-15", "lanjutan-16",
+  "lanjutan-21", "lanjutan-27", "lanjutan-29", "lanjutan-30", "lanjutan-31", "lanjutan-37",
+  // Frekuensi harapan
+  "awal-8", "lanjutan-28", "awal-15",
+  // Peluang komplemen
+  "awal-14",
+  // Peluang kejadian majemuk
+  "awal-6", "awal-7", "awal-12", "awal-13",
+  "lanjutan-17", "lanjutan-18", "lanjutan-19", "lanjutan-20",
+  "lanjutan-25", "lanjutan-26", "lanjutan-32", "lanjutan-33",
+  "lanjutan-34", "lanjutan-36", "lanjutan-38", "lanjutan-40",
 ];
+
+const latihanDasar: LatihanSoal[] = urutanSubtopik.map((ref, index) => {
+  const soal = soalByRef.get(ref);
+  if (!soal) throw new Error(`Soal dengan referensi ${ref} tidak ditemukan`);
+  return { ...soal, no: index + 1 };
+});
 
 const ruangSampelDuaDadu = (
   <div className="space-y-4 min-w-[600px]">
