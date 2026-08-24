@@ -543,6 +543,13 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                       </div>
                     )}
 
+                    {/* ── Optional diagram/image, placed after the statements ── */}
+                    {(soal.gambar || (soal.soalSvg && soalSvgMap?.[soal.soalSvg]) || gambarMap?.[soal.no]) && (
+                      <div className="px-5 pb-2">
+                        {soal.gambar ?? (soal.soalSvg && soalSvgMap?.[soal.soalSvg]) ?? gambarMap?.[soal.no]}
+                      </div>
+                    )}
+
                     {/* ── PG & PGK: options (correct always highlighted green) ── */}
                     {(type === "pg" || type === "pgk") && soal.options && soal.options.length > 0 && (
                       <div className="px-5 pb-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
