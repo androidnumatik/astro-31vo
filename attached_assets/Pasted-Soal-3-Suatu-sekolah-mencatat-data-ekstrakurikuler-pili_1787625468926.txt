@@ -1,0 +1,180 @@
+Soal 3 
+Suatu sekolah mencatat data ekstrakurikuler pilihan siswa kelas VII dalam tabel berikut:
+Jenis Ekstrakurikuler	Frekuensi
+Basket	20
+Renang	10
+Futsal	50
+Taekwondo	5
+Bulu Tangkis	15
+Bentuk diagram lingkaran persen yang paling tepat untuk menyajikan data di atas adalah ....
+(Pilihan diagram menunjukkan persentase: Basket 20%, Renang 10%, Futsal 50%, Taekwondo 5%, Bulu Tangkis 15%)
+Pembahasan
+•	Jawaban Akhir: Diagram yang memuat pembagian sektor: Futsal 50%, Basket 20%, Bulu Tangkis 15%, Renang 10%, dan Taekwondo 5%.
+•	Konsep dan Trik:
+o	$\text{Persentase Sektor} = \frac{\text{Frekuensi Sektor}}{\text{Total Frekuensi}} \times 100\%$
+o	Trik: Total siswa = 100 orang. Karena totalnya pas 100, nilai frekuensi tiap kategori langsung sama dengan nilai persentasenya.
+•	Step by Step Penyelesaian:
+1.	Hitung total siswa: $20 + 10 + 50 + 5 + 15 = 100\text{ siswa}$.
+2.	Hitung persentase masing-masing:
+	Futsal: $\frac{50}{100} \times 100\% = 50\%$
+	Basket: $\frac{20}{100} \times 100\% = 20\%$
+	Bulu Tangkis: $\frac{15}{100} \times 100\% = 15\%$
+	Renang: $\frac{10}{100} \times 100\% = 10\%$
+	Taekwondo: $\frac{5}{100} \times 100\% = 5\%$
+Soal 4 
+Soal Modifikasi
+Hasil survei terhadap pelanggan restoran mengenai menu makanan favorit menghasilkan persentase sebagai berikut:
+Jenis Makanan	Persentase Jawaban
+Rendang	40%
+Soto	25%
+Bakso	15%
+Mie Ayam	12%
+Gado-Gado	8%
+Jika sebanyak 60 orang memilih Rendang sebagai makanan favoritnya, jumlah total orang yang mengikuti survei tersebut adalah ....
+A. 120 orang
+B. 150 orang
+C. 180 orang
+D. 200 orang
+Pembahasan
+•	Jawaban Akhir: B. 150 orang
+•	Konsep dan Trik:
+o	$\text{Total Responden} = \frac{\text{Jumlah Bagian Diketahui}}{\text{Persentase Bagian Diketahui}} \times 100\%$
+o	Trik: Bagi jumlah orang dengan nilai persentasenya dalam bentuk desimal ($60 \div 0{,}4$).
+•	Step by Step Penyelesaian:
+1.	Persentase Rendang = $40\% = 0{,}4$.
+2.	$\text{Total Responden} = \frac{60}{40\%} = \frac{60}{40} \times 100 = 150\text{ orang}$.
+Soal 5 
+Diagram batang berikut menunjukkan distribusi nilai kuis IPA siswa kelas VIII:
+•	Nilai 5: 1 siswa
+•	Nilai 6: 4 siswa
+•	Nilai 7: 5 siswa
+•	Nilai 8: 6 siswa
+•	Nilai 9: 4 siswa
+•	Nilai 10: 2 siswa
+Pilihlah semua pernyataan yang benar (Jawaban benar lebih dari satu):
+•	[ ] Jumlah seluruh siswa di kelas tersebut adalah 22 orang.
+•	[ ] Nilai 8 merupakan modus (nilai yang paling banyak diperoleh).
+•	[ ] Selisih banyaknya siswa yang mendapat nilai tertinggi (10) dan terendah (5) adalah 2 orang.
+•	[ ] Jumlah siswa yang memperoleh nilai 6 dan 9 adalah 8 orang.
+Pembahasan
+•	Jawaban Akhir:
+o	Jumlah seluruh siswa di kelas tersebut adalah 22 orang (Benar).
+o	Nilai 8 merupakan modus (Benar).
+o	Jumlah siswa yang memperoleh nilai 6 dan 9 adalah 8 orang (Benar).
+•	Konsep dan Trik:
+o	Modus = Nilai dengan batang tertinggi (frekuensi terbesar).
+o	$\text{Total Siswa} = \sum \text{Frekuensi}$.
+•	Step by Step Penyelesaian:
+1.	Total siswa: $1 + 4 + 5 + 6 + 4 + 2 = 22\text{ orang}$ $\rightarrow$ Benar.
+2.	Batang tertinggi ada pada nilai 8 (frekuensi = 6) $\rightarrow$ Benar.
+3.	Selisih siswa nilai 10 (2 orang) dan nilai 5 (1 orang) $= 2 - 1 = 1\text{ orang}$ $\rightarrow$ Salah.
+4.	Siswa bernilai 6 (4 orang) + siswa bernilai 9 (4 orang) $= 4 + 4 = 8\text{ orang}$ $\rightarrow$ Benar.
+Soal 6 & 7
+Suhu udara di suatu wilayah pegunungan dicatat dari sore hingga pagi hari dan disajikan dalam grafik garis berikut:
+•	Pukul 19.00: $29^\circ\text{C}$
+•	Pukul 21.00: $27^\circ\text{C}$
+•	Pukul 23.00: $26^\circ\text{C}$
+•	Pukul 01.00: $24^\circ\text{C}$
+•	Pukul 03.00: $25^\circ\text{C}$
+•	Pukul 05.00: $28^\circ\text{C}$
+Soal 6 (Pernyataan Benar / Salah)
+Berdasarkan grafik di atas, tentukan status Benar/Salah untuk setiap pernyataan:
+1.	Suhu udara paling dingin terjadi pada pukul 01.00.
+2.	Kenaikan suhu terbesar terjadi pada rentang pukul 03.00 sampai 05.00.
+3.	Penurunan suhu dari pukul 19.00 hingga 21.00 adalah $2^\circ\text{C}$.
+Pembahasan
+•	Jawaban Akhir:
+1.	Suhu terdingin pukul 01.00 (Benar).
+2.	Kenaikan suhu terbesar pukul 03.00–05.00 (Benar).
+3.	Penurunan suhu pukul 19.00–21.00 adalah $2^\circ\text{C}$ (Benar).
+•	Step by Step Penyelesaian:
+1.	Suhu terendah pada titik grafik terendah yaitu $24^\circ\text{C}$ pada pukul 01.00 $\rightarrow$ Benar.
+2.	Perubahan suhu naik: 01.00–03.00 (naik $1^\circ\text{C}$), 03.00–05.00 (naik $3^\circ\text{C}$). Kenaikan terbesar adalah $3^\circ\text{C}$ pada 03.00–05.00 $\rightarrow$ Benar.
+3.	Beda suhu pukul 19.00–21.00: $29^\circ\text{C} - 27^\circ\text{C} = 2^\circ\text{C}$ $\rightarrow$ Benar.
+Soal 7 (Estimasi/Interpolasi Data)
+Berdasarkan trend grafik tersebut, perkiraan suhu udara pada pukul 22.00 adalah ....
+A. $28^\circ\text{C}$
+B. $27{,}5^\circ\text{C}$
+C. $27^\circ\text{C}$
+D. $26{,}5^\circ\text{C}$
+Pembahasan
+•	Jawaban Akhir: D. $26{,}5^\circ\text{C}$
+•	Konsep dan Trik: Interpolasi linear di antara dua titik waktu yang mengapit jam tersebut:
+$$\text{Nilai Tengah} = \frac{\text{Suhu Awal} + \text{Suhu Akhir}}{2}$$
+•	Step by Step Penyelesaian:
+1.	Pukul 22.00 berada tepat di tengah pukul 21.00 ($27^\circ\text{C}$) dan pukul 23.00 ($26^\circ\text{C}$).
+2.	Perkiraan suhu: $\frac{27 + 26}{2} = 26{,}5^\circ\text{C}$.
+Soal 8
+Sebanyak 200 warga di RW 05 mengikuti pendataan demografi usia yang disajikan dalam diagram lingkaran persentase berikut:
+•	Balita ($0-5$ thn): 10%
+•	Anak-anak ($6-12$ thn): 20%
+•	Remaja ($13-17$ thn): 25%
+•	Dewasa ($18-59$ thn): 35%
+•	Lansia ($\ge 60$ thn): 10%
+Tentukan nilai Benar / Salah untuk pernyataan berikut:
+1.	Banyak penduduk kategori anak-anak adalah 40 orang.
+2.	Jumlah gabungan warga kategori remaja dan lansia adalah 70 orang.
+3.	Selisih banyaknya warga dewasa dan balita adalah 50 orang.
+Pembahasan
+•	Jawaban Akhir:
+1.	Anak-anak = 40 orang (Benar)
+2.	Remaja + Lansia = 70 orang (Benar)
+3.	Selisih Dewasa - Balita = 50 orang (Benar)
+•	Step by Step Penyelesaian:
+1.	Pernyataan 1: $\text{Anak-anak} = 20\% \times 200 = 40\text{ orang}$ $\rightarrow$ Benar.
+2.	Pernyataan 2: $\text{Remaja + Lansia} = (25\% + 10\%) \times 200 = 35\% \times 200 = 70\text{ orang}$ $\rightarrow$ Benar.
+3.	Pernyataan 3: $\text{Selisih Dewasa - Balita} = (35\% - 10\%) \times 200 = 25\% \times 200 = 50\text{ orang}$ $\rightarrow$ Benar.
+Soal 9
+Data pengunjung pameran buku selama 6 hari disajikan dalam grafik garis berikut:
+•	Hari 1: 50 orang
+•	Hari 2: 150 orang
+•	Hari 3: 250 orang
+•	Hari 4: 200 orang
+•	Hari 5: 230 orang
+•	Hari 6: 270 orang
+Pilihlah semua jawaban yang benar:
+•	[ ] Kenaikan pengunjung tertinggi terjadi pada hari ke-2 ke hari ke-3.
+•	[ ] Penurunan pengunjung hanya terjadi pada hari ke-4.
+•	[ ] Pengunjung paling sedikit terjadi pada hari pertama.
+•	[ ] Total seluruh pengunjung pameran selama 6 hari adalah 1.150 orang.
+Pembahasan
+•	Jawaban Akhir:
+o	Penurunan pengunjung hanya terjadi pada hari ke-4 (Benar).
+o	Pengunjung paling sedikit terjadi pada hari pertama (Benar).
+o	Total seluruh pengunjung pameran selama 6 hari adalah 1.150 orang (Benar).
+•	Step by Step Penyelesaian:
+1.	Hitung lonjakan harian:
+	H1–H2 (naik 100)
+	H2–H3 (naik 100)
+	H3–H4 (turun 50)
+	H4–H5 (naik 30)
+	H5–H6 (naik 40)
+2.	Kenaikan tertinggi di H1–H2 dan H2–H3 bernilai sama (100 orang).
+3.	Penurunan grafik hanya tampak dari H3 ke H4 $\rightarrow$ Benar.
+4.	Nilai terendah di H1 (50 orang) $\rightarrow$ Benar.
+5.	$\text{Total} = 50 + 150 + 250 + 200 + 230 + 270 = 1.150\text{ orang}$ $\rightarrow$ Benar.
+Soal 10 
+Perhatikan grafik nilai tukar mata uang Dolar AS (USD) terhadap Rupiah (IDR) dalam satu minggu berikut:
+•	Senin: Rp16.000
+•	Selasa: Rp16.400
+•	Rabu: Rp16.100
+•	Kamis: Rp16.300
+•	Jumat: Rp16.200
+•	Sabtu: Rp16.600
+•	Minggu: Rp16.500
+Jika Danang ingin menukarkan uang Rupiah sebanyak Rp825.000,00 ke Dolar AS pada hari Minggu, berapa banyak uang Dolar AS yang akan diperolehnya?
+A. 40 dolar
+B. 45 dolar
+C. 50 dolar
+D. 52 dolar
+Pembahasan
+•	Jawaban Akhir: C. 50 dolar
+•	Konsep dan Trik:
+$$\text{Dolar diperoleh} = \frac{\text{Jumlah Rupiah}}{\text{Kurs Dolar Hari Terkait}}$$
+•	Step by Step Penyelesaian:
+1.	Cek nilai kurs pada hari Minggu dari grafik: Rp16.500,00 / 1 USD.
+2.	Hitung hasil konversi:
+$$\text{USD} = \frac{825.000}{16.500}$$
+3.	Sederhanakan pembagian dengan mencoret dua angka nol:
+$$\text{USD} = \frac{8.250}{165} = 50\text{ dolar}$$
+

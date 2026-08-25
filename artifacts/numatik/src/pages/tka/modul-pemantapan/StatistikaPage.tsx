@@ -2,6 +2,7 @@ import TKAPemantapanLayout from "@/components/tka/TKAPemantapanLayout";
 import type { LatihanSoal } from "@/components/tka/TKAPemantapanLayout";
 import { statistikaContohSoal, statistikaContohSvgMap } from "@/data/statistikaContohSoal";
 import { statistikaDasarPembahasan } from "@/data/pembahasan/statistikaDasar";
+import { statistikaLatihanTambahan } from "@/data/statistikaLatihanTambahan";
 import {
   latihanDasar as olimpiadeStatistikaDasar,
   dasarImages,
@@ -111,7 +112,8 @@ const complexFormats: Record<number, ComplexFormat> = {
   },
 };
 
-const latihanDasar: LatihanSoal[] = olimpiadeStatistikaDasar.map((item) => {
+const latihanDasar: LatihanSoal[] = [
+  ...olimpiadeStatistikaDasar.map((item) => {
   const pembahasan = statistikaDasarPembahasan[item.no];
   const jawaban = pembahasan?.jawaban.match(/^([A-E])\./)?.[1];
 
@@ -127,7 +129,9 @@ const latihanDasar: LatihanSoal[] = olimpiadeStatistikaDasar.map((item) => {
         .join("\n\n")
       : undefined,
   };
-});
+  }),
+  ...statistikaLatihanTambahan,
+];
 
 const gambarMap = {
   ...Object.fromEntries(
