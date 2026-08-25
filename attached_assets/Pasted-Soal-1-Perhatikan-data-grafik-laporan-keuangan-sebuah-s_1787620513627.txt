@@ -1,0 +1,172 @@
+Soal 1
+Perhatikan data grafik laporan keuangan sebuah startup teknologi selama periode 2020–2024 (dalam Miliar Rupiah) berikut:
+•	2020: Pendapatan = 120, Pengeluaran = 130
+•	2021: Pendapatan = 150, Pengeluaran = 140
+•	2022: Pendapatan = 180, Pengeluaran = 200
+•	2023: Pendapatan = 220, Pengeluaran = 190
+•	2024: Pendapatan = 260, Pengeluaran = 210
+Catatan: Keuntungan (Laba) terjadi jika Pendapatan > Pengeluaran. Kerugian (Rugi) terjadi jika Pendapatan < Pengeluaran.
+Berdasarkan data di atas, pilihlah semua pernyataan yang benar:
+•	[ ] Perusahaan selalu mengalami keuntungan (laba) setiap tahun.
+•	[ ] Kerugian terbesar terjadi pada tahun 2022.
+•	[ ] Keuntungan tertinggi diraih pada tahun 2024 sebesar 50 Miliar Rupiah.
+•	[ ] Keuntungan terendah terjadi pada tahun 2020.
+Pembahasan
+•	Jawaban Akhir:
+o	Kerugian terbesar terjadi pada tahun 2022 (Benar).
+o	Keuntungan tertinggi diraih pada tahun 2024 sebesar 50 Miliar Rupiah (Benar).
+•	Konsep dan Trik:
+o	$\text{Laba/Rugi} = \text{Pendapatan} - \text{Pengeluaran}$.
+o	Jika nilai positif $\rightarrow$ Laba (Untung). Jika nilai negatif $\rightarrow$ Rugi.
+o	Trik: Buat selisih cepat pada tiap tahun tanpa menghitung ulang rumus rumit.
+•	Step by Step Penyelesaian:
+1.	Hitung selisih per tahun:
+	2020: $120 - 130 = -10$ (Rugi 10 Miliar)
+	2021: $150 - 140 = +10$ (Laba 10 Miliar)
+	2022: $180 - 200 = -20$ (Rugi 20 Miliar)
+	2023: $220 - 190 = +30$ (Laba 30 Miliar)
+	2024: $260 - 210 = +50$ (Laba 50 Miliar)
+2.	Evaluasi Opsi:
+	Pernyataan 1: Salah, karena tahun 2020 dan 2022 mengalami rugi.
+	Pernyataan 2: Benar, rugi terbesar di 2022 yaitu 20 Miliar.
+	Pernyataan 3: Benar, laba tertinggi di 2024 sebesar $260 - 210 = 50$ Miliar.
+	Pernyataan 4: Salah, tahun 2020 tidak untung melainkan rugi.
+Soal 2 
+Berdasarkan data laporan keuangan startup pada Soal 1, berapakah total pengeluaran operasional perusahaan selama 5 tahun terakhir?
+A. 850 Miliar Rupiah
+B. 870 Miliar Rupiah
+C. 930 Miliar Rupiah
+D. 950 Miliar Rupiah
+Pembahasan
+•	Jawaban Akhir: B. 870 Miliar Rupiah
+•	Konsep dan Trik:
+o	Penjumlahan data deret statistik: $\text{Total} = \sum \text{Pengeluaran}$.
+o	Trik: Kelompokkan angka yang menghasilkan puluhan genap untuk mempercepat penjumlahan manual.
+•	Step by Step Penyelesaian:
+1.	Ambil data pengeluaran dari tahun 2020 hingga 2024:
+$$\text{Total} = 130 + 140 + 200 + 190 + 210$$
+2.	Kelompokkan angka agar mudah dihitung:
+$$(190 + 210) + (130 + 140) + 200$$
+$$= 400 + 270 + 200 = 870 \text{ Miliar Rupiah}$$
+Soal 3 
+Pengelola sebuah museum mencatat jumlah pengunjung harian selama satu minggu. Data yang terkumpul adalah sebagai berikut:
+•	Senin: 300 orang
+•	Selasa: 250 orang
+•	Rabu: 400 orang
+•	Kamis: 550 orang
+•	Jumat: (Data belum terisi)
+•	Sabtu: 800 orang
+•	Minggu: 1.200 orang
+Diketahui jumlah pengunjung pada hari Kamis menyumbang 11% dari total keseluruhan pengunjung selama seminggu.
+Berdasarkan informasi di atas, tentukan kebenaran dari pernyataan-pernyataan berikut:
+1.	Jumlah pengunjung museum pada hari Jumat adalah 1.500 orang.
+2.	Penurunan pengunjung dari hari Senin ke Selasa lebih sedikit dibanding kenaikan pengunjung dari hari Jumat ke Sabtu.
+3.	Persentase pengunjung hari Jumat adalah 30% dari total mingguan.
+Pembahasan
+•	Jawaban Akhir:
+o	Pernyataan 1: Benar
+o	Pernyataan 2: Benar
+o	Pernyataan 3: Benar
+•	Konsep dan Trik:
+o	$\text{Total Data} = \frac{\text{Nilai Diketahui}}{\text{Persentase Diketahui}}$.
+o	Setelah total keseluruhan diperoleh, hitung nilai data yang hilang dengan pengurangan sederhana.
+•	Step by Step Penyelesaian:
+1.	Mencari Total Pengunjung Seminggu:
+$$\text{Total} = \frac{550}{11\%} = \frac{550}{0{,}11} = 5.000 \text{ orang}$$
+2.	Mencari Pengunjung Hari Jumat:
+$$\text{Jumlah data diketahui} = 300 + 250 + 400 + 550 + 800 + 1.200 = 3.500 \text{ orang}$$
+$$\text{Hari Jumat} = 5.000 - 3.500 = 1.500 \text{ orang}$$
+3.	Evaluasi Pernyataan:
+	Pernyataan 1: Benar (1.500 orang).
+	Pernyataan 2: Penurunan Senin–Selasa = $300 - 250 = 50$. Kenaikan Jumat–Sabtu = $800 - 1.500$ (turun) atau dari Sabtu ke Minggu $1200 - 800 = 400$. Penurunan $50 < 700$. Pernyataan Benar.
+	Pernyataan 3: $\text{Persentase Jumat} = \frac{1.500}{5.000} \times 100\% = 30\%$. Pernyataan Benar.
+Soal 4 
+Data pilihan kegiatan ekstrakurikuler 200 siswa SMP disajikan dalam tabel berikut:
+No	Ekstrakurikuler	Jumlah Siswa
+1	PMR	40
+2	Pramuka	60
+3	Paskibra	30
+4	Futsal	50
+5	Seni Musik	20
+Tentukan status (Benar / Salah) untuk setiap pernyataan berikut jika data disajikan dalam diagram lingkaran:
+Pernyataan	Benar	Salah
+Besar sudut pusat sektor PMR adalah $72^\circ$.	[ ]	[ ]
+Persentase siswa yang memilih Futsal adalah 25%.	[ ]	[ ]
+Lebih dari setengah ($50\%$) total siswa memilih gabungan Pramuka dan Paskibra.	[ ]	[ ]
+Pembahasan
+•	Jawaban Akhir:
+o	Besar sudut PMR = $72^\circ$ (Benar)
+o	Persentase Futsal = 25% (Benar)
+o	Gabungan Pramuka & Paskibra > 50% (Salah)
+•	Konsep dan Trik:
+o	$\text{Sudut} = \frac{\text{Frekuensi}}{\text{Total}} \times 360^\circ$
+o	$\text{Persentase} = \frac{\text{Frekuensi}}{\text{Total}} \times 100\%$
+•	Step by Step Penyelesaian:
+1.	Pernyataan 1:
+$$\text{Sudut PMR} = \frac{40}{200} \times 360^\circ = \frac{1}{5} \times 360^\circ = 72^\circ \quad (\mathbf{BENAR})$$
+2.	Pernyataan 2:
+$$\text{Persentase Futsal} = \frac{50}{200} \times 100\% = \frac{1}{4} \times 100\% = 25\% \quad (\mathbf{BENAR})$$
+3.	Pernyataan 3:
+$$\text{Jumlah Pramuka + Paskibra} = 60 + 30 = 90 \text{ siswa}$$
+$$\text{Persentase} = \frac{90}{200} \times 100\% = 45\% \quad (\text{Kurang dari } 50\%, \mathbf{SALAH})$$
+Soal 5 
+Seorang peneliti ingin menguji tingkat efektivitas instalasi pengolahan air limbah (IPAL) sebuah pabrik tekstil yang dibuang ke aliran sungai. Teknik pengambilan sampel air yang paling representatif untuk tujuan penelitian tersebut adalah ....
+A. Mengambil sampel air dari seluruh area sungai dari hulu hingga hilir
+B. Mengambil sampel air dari sungai lain yang dekat dengan kawasan industri
+C. Mengambil sampel air di titik keluaran (outfall) IPAL pabrik dan daerah hilir setelah titik pembuangan
+D. Mengambil sampel air di hulu sungai sebelum lokasi pabrik didirikan
+Pembahasan
+•	Jawaban Akhir: C. Mengambil sampel air di titik keluaran (outfall) IPAL pabrik dan daerah hilir setelah titik pembuangan
+•	Konsep dan Trik:
+o	Konsep Sampel Representatif: Sampel harus diambil langsung dari objek yang terpengaruh oleh variabel yang diteliti (dalam hal ini, dampak limbah pabrik).
+o	Trik: Abaikan pilihan yang terlalu luas/tidak efisien (seperti meneliti seluruh sungai) atau lokasi kontrol yang tidak terkena paparan langsung.
+•	Step by Step Penyelesaian:
+1.	Tujuan penelitian: Menguji dampak/efektivitas limbah pabrik.
+2.	Titik sampel yang valid harus mencakup lokasi terdampak langsung (outfall limbah dan bagian hilir tempat air bercampur).
+3.	Pilihan A tidak efisien. Pilihan B tidak relevan. Pilihan D hanya berfungsi sebagai kontrol awal, bukan pengujian tingkat pencemaran pabrik tersebut. Maka jawaban tepat adalah C.
+Soal 6 
+Nadia sedang merancang angket penelitian untuk mengukur tingkat kepuasan pelanggan terhadap layanan sebuah minimarket. Nadia ingin mengumpulkan data kuantitatif menggunakan pertanyaan tertutup. Pernyataan/pertanyaan berikut yang tidak tepat untuk digunakan adalah ....
+A. Apakah ruang belanja minimarket ini bersih dan nyaman?
+B. Bagaimana tanggapan dan masukan Anda mengenai kualitas pelayanan pegawai minimarket ini?
+C. Apakah petugas kasir melayani Anda secara cepat dan ramah?
+D. Berapa kali Anda berbelanja di minimarket ini dalam sebulan terakhir?
+Pembahasan
+•	Jawaban Akhir: B. Bagaimana tanggapan dan masukan Anda mengenai kualitas pelayanan pegawai minimarket ini?
+•	Konsep dan Trik:
+o	Pertanyaan Tertutup: Pertanyaan yang menyediakan pilihan jawaban terbatas (Ya/Tidak, Skala Likert, Pilihan Ganda).
+o	Pertanyaan Terbuka: Pertanyaan yang meminta uraian bebas/pendapat pribadi responden tanpa batas pilihan.
+o	Trik: Cari kalimat yang menggunakan kata tanya "Bagaimana" atau "Mengapa" yang membutuhkan deskripsi panjang.
+•	Step by Step Penyelesaian:
+1.	Pilihan A: Jawaban berupa (Ya / Tidak) $\rightarrow$ Pertanyaan Tertutup.
+2.	Pilihan B: Meminta "tanggapan dan masukan" secara bebas $\rightarrow$ Pertanyaan Terbuka.
+3.	Pilihan C: Jawaban berupa (Ya / Tidak / Sangat Setuju) $\rightarrow$ Pertanyaan Tertutup.
+4.	Pilihan D: Jawaban berupa angka pasti/pilihan rentang $\rightarrow$ Pertanyaan Tertutup.
+5.	Oleh karena itu, pertanyaan yang tidak tepat sebagai pertanyaan tertutup adalah opsi B.
+Soal 7 
+Sebuah wahana edukasi anak mendata latar belakang minat profesi dari anak-anak yang berkunjung. Data disajikan dalam diagram lingkaran berikut:
+•	Seni / Kreatif: $30^\circ$
+•	Teknologi / IT: $60^\circ$
+•	Sains / Olahraga: $90^\circ$
+•	Wirausaha: $36^\circ$
+•	Lainnya: (Sisa sektor)
+Jika total anak yang didata sebanyak 500 orang, berapakah jumlah anak yang berminat pada bidang Lainnya?
+A. 120 orang
+B. 150 orang
+C. 180 orang
+D. 200 orang
+Pembahasan
+•	Jawaban Akhir: D. 200 orang
+•	Konsep dan Trik:
+o	Total sudut 1 lingkaran = $360^\circ$.
+o	$\text{Jumlah Sektor} = \left(\frac{\text{Sudut Sektor}}{360^\circ}\right) \times \text{Total Data}$.
+o	Trik: Sederhanakan pecahan $\frac{144}{360}$ menjadi $\frac{2}{5}$ sebelum dikalikan total populasi.
+•	Step by Step Penyelesaian:
+1.	Hitung sudut sektor Lainnya:
+$$\text{Sudut} = 360^\circ - (30^\circ + 60^\circ + 90^\circ + 36^\circ) = 360^\circ - 216^\circ = 144^\circ$$
+2.	Hitung jumlah anak pada sektor tersebut:
+$$\text{Banyak Anak} = \frac{144^\circ}{360^\circ} \times 500$$
+3.	Sederhanakan $\frac{144}{360}$ dengan membagi 72:
+$$\frac{144 \div 72}{360 \div 72} = \frac{2}{5}$$
+4.	Kalikan dengan total anak:
+$$\text{Banyak Anak} = \frac{2}{5} \times 500 = 200 \text{ orang}$$
+
