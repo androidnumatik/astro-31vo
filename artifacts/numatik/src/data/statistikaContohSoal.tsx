@@ -11,11 +11,11 @@ const svgFrame = (children: ReactNode) => (
 
 const laporanKeuanganSvg = svgFrame(
   <>
-    <rect x="70" y="25" width="600" height="245" rx="8" fill="none" stroke="#94a3b8" strokeWidth="1" />
+    <rect x="70" y="25" width="600" height="245" rx="8" fill="rgba(15,23,42,0.78)" stroke="#94a3b8" strokeWidth="1" />
     {[0, 1, 2, 3, 4].map((i) => (
-      <line key={i} x1="70" y1={65 + i * 45} x2="670" y2={65 + i * 45} stroke="#cbd5e1" strokeOpacity="0.45" />
+      <line key={i} x1="70" y1={65 + i * 45} x2="670" y2={65 + i * 45} stroke="#cbd5e1" strokeOpacity="0.7" />
     ))}
-    <text x="370" y="15" textAnchor="middle" fontSize="14" fontWeight="700" fill="#0f172a">Laporan Keuangan Startup (Miliar Rupiah)</text>
+    <text x="370" y="15" textAnchor="middle" fontSize="14" fontWeight="700" fill="#f8fafc">Laporan Keuangan Startup (Miliar Rupiah)</text>
     {[
       ["2020", 120, 130],
       ["2021", 150, 140],
@@ -30,16 +30,16 @@ const laporanKeuanganSvg = svgFrame(
         <g key={year}>
           <rect x={x} y={270 - incomeHeight} width="28" height={incomeHeight} fill="#10b981" />
           <rect x={x + 34} y={270 - expenseHeight} width="28" height={expenseHeight} fill="#f97316" />
-          <text x={x + 31} y="292" textAnchor="middle" fontSize="12" fill="#0f172a">{year}</text>
-          <text x={x + 14} y={265 - incomeHeight} textAnchor="middle" fontSize="10" fill="#047857">{income}</text>
-          <text x={x + 48} y={265 - expenseHeight} textAnchor="middle" fontSize="10" fill="#c2410c">{expense}</text>
+          <text x={x + 31} y="292" textAnchor="middle" fontSize="12" fontWeight="700" fill="#f1f5f9">{year}</text>
+          <text x={x + 14} y={265 - incomeHeight} textAnchor="middle" fontSize="10" fontWeight="700" fill="#a7f3d0">{income}</text>
+          <text x={x + 48} y={265 - expenseHeight} textAnchor="middle" fontSize="10" fontWeight="700" fill="#fed7aa">{expense}</text>
         </g>
       );
     })}
     <rect x="90" y="308" width="12" height="12" fill="#10b981" />
-    <text x="108" y="318" fontSize="11" fill="#0f172a">Pendapatan</text>
+    <text x="108" y="318" fontSize="11" fontWeight="600" fill="#f1f5f9">Pendapatan</text>
     <rect x="190" y="308" width="12" height="12" fill="#f97316" />
-    <text x="208" y="318" fontSize="11" fill="#0f172a">Pengeluaran</text>
+    <text x="208" y="318" fontSize="11" fontWeight="600" fill="#f1f5f9">Pengeluaran</text>
   </>,
 );
 
