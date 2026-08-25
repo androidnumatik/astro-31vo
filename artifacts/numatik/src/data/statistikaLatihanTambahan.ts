@@ -6,31 +6,6 @@ import type { LatihanSoal } from "@/components/tka/TKAPemantapanLayout";
  */
 export const statistikaLatihanTambahan: LatihanSoal[] = [
   {
-    no: 39,
-    soal:
-      "Suatu sekolah mencatat data ekstrakurikuler pilihan siswa kelas VII dalam tabel berikut:\n" +
-      "Jenis Ekstrakurikuler | Frekuensi\n" +
-      "Basket | 20\nRenang | 10\nFutsal | 50\nTaekwondo | 5\nBulu Tangkis | 15\n" +
-      "Bentuk diagram lingkaran persen yang paling tepat untuk menyajikan data di atas adalah ....\n" +
-      "(Pilihan diagram menunjukkan persentase: Basket 20%, Renang 10%, Futsal 50%, Taekwondo 5%, Bulu Tangkis 15%)",
-    options: [
-      "A. Diagram yang memuat pembagian sektor: Futsal 50%, Basket 20%, Bulu Tangkis 15%, Renang 10%, dan Taekwondo 5%.",
-    ],
-    jawaban: "A",
-    pembahasan:
-      "Jawaban Akhir: Diagram yang memuat pembagian sektor: Futsal 50%, Basket 20%, Bulu Tangkis 15%, Renang 10%, dan Taekwondo 5%.\n\n" +
-      "Konsep dan Trik: $\\text{Persentase Sektor} = \\frac{\\text{Frekuensi Sektor}}{\\text{Total Frekuensi}} \\times 100\\%$.\n" +
-      "Trik: Total siswa = 100 orang. Karena totalnya pas 100, nilai frekuensi tiap kategori langsung sama dengan nilai persentasenya.\n\n" +
-      "Step by Step Penyelesaian:\n" +
-      "1. Hitung total siswa: $20 + 10 + 50 + 5 + 15 = 100\\text{ siswa}$.\n" +
-      "2. Hitung persentase masing-masing:\n" +
-      "Futsal: $\\frac{50}{100} \\times 100\\% = 50\\%$\n" +
-      "Basket: $\\frac{20}{100} \\times 100\\% = 20\\%$\n" +
-      "Bulu Tangkis: $\\frac{15}{100} \\times 100\\% = 15\\%$\n" +
-      "Renang: $\\frac{10}{100} \\times 100\\% = 10\\%$\n" +
-      "Taekwondo: $\\frac{5}{100} \\times 100\\% = 5\\%$",
-  },
-  {
     no: 40,
     soal:
       "Hasil survei terhadap pelanggan restoran mengenai menu makanan favorit menghasilkan persentase sebagai berikut:\n" +
@@ -391,4 +366,4 @@ export const statistikaLatihanTambahan: LatihanSoal[] = [
       "Rata-rata gabungan: $\\frac{103{,}3 + 102{,}7}{2} = 103{,}0$ cm.\n" +
       "Selisih tinggi: $103{,}3 - 102{,}7 = 0{,}6$ cm.",
   },
-];
+].filter((item) => ![39, 48, 49, 52, 55, 61].includes(item.no));
