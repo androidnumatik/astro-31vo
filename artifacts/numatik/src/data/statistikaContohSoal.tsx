@@ -11,11 +11,19 @@ const svgFrame = (children: ReactNode) => (
 
 const laporanKeuanganSvg = svgFrame(
   <>
-    <rect x="70" y="25" width="600" height="245" rx="8" fill="rgba(15,23,42,0.78)" stroke="#94a3b8" strokeWidth="1" />
-    {[0, 1, 2, 3, 4].map((i) => (
-      <line key={i} x1="70" y1={65 + i * 45} x2="670" y2={65 + i * 45} stroke="#cbd5e1" strokeOpacity="0.7" />
-    ))}
-    <text x="370" y="15" textAnchor="middle" fontSize="14" fontWeight="700" fill="#f8fafc">Laporan Keuangan Startup (Miliar Rupiah)</text>
+    <rect x="70" y="30" width="580" height="240" rx="8" fill="rgba(15,23,42,0.78)" stroke="#94a3b8" strokeWidth="1" />
+    {[0, 50, 100, 150, 200, 250, 300].map((value) => {
+      const y = 260 - (value / 300) * 200;
+      return (
+        <g key={value}>
+          <line x1="90" y1={y} x2="640" y2={y} stroke="#cbd5e1" strokeOpacity="0.7" />
+          <text x="82" y={y + 4} textAnchor="end" fontSize="10" fill="#e2e8f0">{value}</text>
+        </g>
+      );
+    })}
+    <line x1="90" y1="60" x2="90" y2="260" stroke="#f1f5f9" strokeWidth="1.5" />
+    <line x1="90" y1="260" x2="640" y2="260" stroke="#f1f5f9" strokeWidth="1.5" />
+    <text x="365" y="20" textAnchor="middle" fontSize="14" fontWeight="700" fill="#f8fafc">Laporan Keuangan Startup (Miliar Rupiah)</text>
     {[
       ["2020", 120, 130],
       ["2021", 150, 140],
@@ -23,23 +31,23 @@ const laporanKeuanganSvg = svgFrame(
       ["2023", 220, 190],
       ["2024", 260, 210],
     ].map(([year, income, expense], i) => {
-      const x = 115 + i * 130;
-      const incomeHeight = Number(income) * 0.7;
-      const expenseHeight = Number(expense) * 0.7;
+      const x = 110 + i * 105;
+      const incomeHeight = (Number(income) / 300) * 200;
+      const expenseHeight = (Number(expense) / 300) * 200;
       return (
         <g key={year}>
-          <rect x={x} y={270 - incomeHeight} width="28" height={incomeHeight} fill="#10b981" />
-          <rect x={x + 34} y={270 - expenseHeight} width="28" height={expenseHeight} fill="#f97316" />
-          <text x={x + 31} y="292" textAnchor="middle" fontSize="12" fontWeight="700" fill="#f1f5f9">{year}</text>
-          <text x={x + 14} y={265 - incomeHeight} textAnchor="middle" fontSize="10" fontWeight="700" fill="#a7f3d0">{income}</text>
-          <text x={x + 48} y={265 - expenseHeight} textAnchor="middle" fontSize="10" fontWeight="700" fill="#fed7aa">{expense}</text>
+          <rect x={x} y={260 - incomeHeight} width="28" height={incomeHeight} fill="#10b981" />
+          <rect x={x + 34} y={260 - expenseHeight} width="28" height={expenseHeight} fill="#f97316" />
+          <text x={x + 31} y="278" textAnchor="middle" fontSize="12" fontWeight="700" fill="#f1f5f9">{year}</text>
+          <text x={x + 14} y={254 - incomeHeight} textAnchor="middle" fontSize="10" fontWeight="700" fill="#a7f3d0">{income}</text>
+          <text x={x + 48} y={254 - expenseHeight} textAnchor="middle" fontSize="10" fontWeight="700" fill="#fed7aa">{expense}</text>
         </g>
       );
     })}
-    <rect x="90" y="308" width="12" height="12" fill="#10b981" />
-    <text x="108" y="318" fontSize="11" fontWeight="600" fill="#f1f5f9">Pendapatan</text>
-    <rect x="190" y="308" width="12" height="12" fill="#f97316" />
-    <text x="208" y="318" fontSize="11" fontWeight="600" fill="#f1f5f9">Pengeluaran</text>
+    <rect x="240" y="300" width="12" height="12" fill="#10b981" />
+    <text x="258" y="310" fontSize="11" fontWeight="600" fill="#f1f5f9">Pendapatan</text>
+    <rect x="380" y="300" width="12" height="12" fill="#f97316" />
+    <text x="398" y="310" fontSize="11" fontWeight="600" fill="#f1f5f9">Pengeluaran</text>
   </>,
 );
 
