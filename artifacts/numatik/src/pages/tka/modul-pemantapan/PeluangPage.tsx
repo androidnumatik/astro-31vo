@@ -247,19 +247,19 @@ const soalByRef = new Map<string, LatihanSoal>([
 
 const urutanSubtopik: string[] = [
   // Ruang sampel
-  "awal-10", "lanjutan-22", "lanjutan-23", "lanjutan-24", "lanjutan-35", "awal-11",
+  "awal-10", "lanjutan-22", "lanjutan-35",
   // Frekuensi relatif / peluang empirik
   "awal-1", "awal-2", "lanjutan-39",
   // Peluang teoretis
-  "awal-3", "awal-4", "awal-5", "awal-9",
+  "awal-4", "awal-5", "awal-9",
   "lanjutan-12", "lanjutan-13", "lanjutan-14", "lanjutan-15", "lanjutan-16",
-  "lanjutan-21", "lanjutan-27", "lanjutan-29", "lanjutan-30", "lanjutan-31", "lanjutan-37",
+  "lanjutan-21", "lanjutan-27", "lanjutan-30", "lanjutan-31",
   // Frekuensi harapan
   "awal-8", "lanjutan-28", "awal-15",
   // Peluang komplemen
-  "awal-14",
+
   // Peluang kejadian majemuk
-  "awal-6", "awal-7", "awal-12", "awal-13",
+  "awal-6", "awal-13",
   "lanjutan-17", "lanjutan-18", "lanjutan-19", "lanjutan-20",
   "lanjutan-25", "lanjutan-26", "lanjutan-32", "lanjutan-33",
   "lanjutan-34", "lanjutan-36", "lanjutan-38", "lanjutan-40",
