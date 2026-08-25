@@ -141,6 +141,12 @@ const renderWithLatex = (text: string, imageScale: "default" | "half" = "default
   });
 };
 
+const getPembahasanPart = (text: string, heading: string, nextHeadings: string[]) => {
+  const headingPattern = [heading, ...nextHeadings].map((value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+  const match = text.match(new RegExp(`(?:^|\\n)${heading}:\\s*([\\s\\S]*?)(?=\\n(?:${headingPattern}):|$)`, "i"));
+  return match?.[1]?.trim() ?? "";
+};
+
 const SECTION_COLORS = [
   { bg: "from-indigo-500/20 to-indigo-600/10", border: "border-indigo-400/50", badge: "bg-indigo-500/30 text-indigo-200 border-indigo-400/40", dot: "bg-indigo-400" },
   { bg: "from-violet-500/20 to-violet-600/10", border: "border-violet-400/50", badge: "bg-violet-500/30 text-violet-200 border-violet-400/40", dot: "bg-violet-400" },
@@ -824,6 +830,12 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                       && selectedPGK.every(index => soal.jawabanPGK?.includes(index))
                   : selected === soal.jawaban;
                 const typeBadge = TYPE_BADGE[type];
+                const conceptPembahasan = soal.pembahasan
+                  ? getPembahasanPart(soal.pembahasan, "Konsep & Trik", ["Step-by-Step Penyelesaian", "Tips", "Kesimpulan"])
+                  : "";
+                const stepsPembahasan = soal.pembahasan
+                  ? getPembahasanPart(soal.pembahasan, "Step-by-Step Penyelesaian", ["Tips", "Kesimpulan"])
+                  : "";
 
                 return (
                   <div key={soal.no} className="relative rounded-2xl overflow-hidden"
@@ -1175,14 +1187,16 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                           <p className={`text-[9px] font-bold uppercase tracking-widest mb-2 flex items-center gap-1.5 ${isLightTheme ? "text-violet-600" : "text-violet-300"}`}>
                             <Lightbulb className="w-3.5 h-3.5" /> ② Konsep &amp; Trik
                           </p>
-                          <p className={`text-xs leading-relaxed ${isLightTheme ? "text-violet-900" : "text-white/80"}`}>{conceptTip}</p>
+                           <p className={`text-xs leading-relaxed whitespace-pre-wrap ${isLightTheme ? "text-violet-900" : "text-white/80"}`}>
+                             {conceptPembahasan || conceptTip}
+                           </p>
                         </div>
                         <div className={`rounded-xl px-4 py-3 border ${isLightTheme ? "bg-cyan-50 border-cyan-300" : "bg-gradient-to-r from-cyan-900/40 to-sky-900/20 border-cyan-500/40"}`}>
                           <p className={`text-[9px] font-bold uppercase tracking-widest mb-2 flex items-center gap-1.5 ${isLightTheme ? "text-cyan-600" : "text-cyan-300"}`}>
                             <PenLine className="w-3.5 h-3.5" /> ③ Step by Step Penyelesaian
                           </p>
                           <div className={`text-xs leading-relaxed whitespace-pre-wrap ${isLightTheme ? "text-cyan-900" : "text-white/80"}`}>
-                            {(soal.pembahasan ?? '').split('\n').map((line, i) => (
+                             {(stepsPembahasan || soal.pembahasan || '').split('\n').map((line, i) => (
                               <span key={i}>{i > 0 && <br />}{contentRenderer(line)}</span>
                             ))}
                           </div>
