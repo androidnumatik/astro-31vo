@@ -436,11 +436,19 @@ const contohSoal: LatihanSoal[] = [
   },
 ];
 
+const contohSoalTerurut = [
+  contohSoal[0],
+  contohSoal[1],
+  contohSoal[4],
+  contohSoal[2],
+  contohSoal[3],
+];
+
 const PeluangPage = () => (
   <TKAPemantapanLayout
     title="PELUANG"
     materiSections={materiSections}
-    contohSoal={contohSoal}
+    contohSoal={contohSoalTerurut}
     latihanDasar={latihanDasar}
     gambarMap={latihanDasarSVG}
   />
