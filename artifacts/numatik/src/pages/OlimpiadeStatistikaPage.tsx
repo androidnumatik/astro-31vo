@@ -407,6 +407,53 @@ export const renderDasarVisual = (no: number): React.ReactNode => {
           ]}
         />
       );
+    case 41:
+      return (
+        <BarChart
+          title="Diagram Batang Nilai Kuis IPA Kelas VIII"
+          xLabel="Nilai"
+          yLabel="Banyak Siswa"
+          data={[
+            { label: 5, value: 1 },
+            { label: 6, value: 4 },
+            { label: 7, value: 5 },
+            { label: 8, value: 6 },
+            { label: 9, value: 4 },
+            { label: 10, value: 2 },
+          ]}
+        />
+      );
+    case 51:
+      return (
+        <BarChart
+          title="Diagram Batang Nilai Kuis Fisika"
+          xLabel="Nilai"
+          yLabel="Banyak Siswa"
+          data={[
+            { label: 50, value: 2 },
+            { label: 60, value: 3 },
+            { label: 70, value: 8 },
+            { label: 80, value: 5 },
+            { label: 90, value: 6 },
+            { label: 100, value: 1 },
+          ]}
+        />
+      );
+    case 60:
+      return (
+        <FrequencyTable
+          title="Tabel Acuan Tinggi Badan Ideal Anak"
+          headers={["Usia", "Laki-Laki / Perempuan"]}
+          showTotal={false}
+          rows={[
+            { label: "1 tahun", value: "75,7 cm / 74,0 cm" },
+            { label: "2 tahun", value: "87,8 cm / 86,4 cm" },
+            { label: "3 tahun", value: "96,1 cm / 95,1 cm" },
+            { label: "4 tahun", value: "103,3 cm / 102,7 cm" },
+            { label: "5 tahun", value: "110,0 cm / 109,4 cm" },
+          ]}
+        />
+      );
     case 4:
       return (
         <HorizontalFrequencyTable
@@ -1132,8 +1179,8 @@ Sampel: Sebagian dari populasi yang diambil untuk diteliti. Sampel harus represe
 export const latihanDasar = [
   { no: 1, soal: "Diketahui data berikut: 85, 90, 70, 80, 70, 65, 80, 85, 70, 80, 95, 70. Modus dan median data tersebut berturut-turut adalah ...", options: ["A. 65 dan 80", "B. 70 dan 80", "C. 75 dan 70", "D. 80 dan 75"] },
   { no: 2, soal: "Perhatikan data berikut. Median dan mean dari data tersebut berturut-turut adalah ...", options: ["A. 5,5 dan 6,1", "B. 5,5 dan 7,0", "C. 6,5 dan 6,1", "D. 6,5 dan 7,0"] },
-  { no: 3, soal: "Nilai matematika siswa disajikan dalam tabel berikut:\nNilai: 4, 5, 6, 7, 8, 9, 10\nBanyak siswa: 2, 4, 5, 5, 9, 3, 4\nMedian dari data di atas adalah ...", options: ["A. 6,5", "B. 7,0", "C. 7,5", "D. 8,0"] },
-  { no: 4, soal: "Perhatikan tabel berikut!\nNilai: 3, 4, 5, 6, 7, 8, 9, 10\nFrekuensi: 2, 5, 5, 3, 4, 4, 4, 3\nPernyataan yang benar dari tabel di atas adalah ...", options: ["A. Modus dari data 5", "B. Median data 6,5", "C. Rata-rata data 6,6", "D. Jangkauan data 6"] },
+  { no: 3, soal: "Nilai matematika siswa disajikan dalam tabel berikut:\nMedian dari data di atas adalah ...", options: ["A. 6,5", "B. 7,0", "C. 7,5", "D. 8,0"] },
+  { no: 4, soal: "Perhatikan tabel berikut!\nPernyataan yang benar dari tabel di atas adalah ...", options: ["A. Modus dari data 5", "B. Median data 6,5", "C. Rata-rata data 6,6", "D. Jangkauan data 6"] },
   { no: 5, soal: "Diagram batang menunjukan nilai ulangan matematika diperoleh dari 20 anak pada suatu kelas. Tinggi batang untuk nilai 6 = 2, nilai 7 = 4, nilai 8 = 6, nilai 9 = 5, nilai 10 = 3. Rataan (Mean) dari data tersebut adalah ...", options: ["A. 7", "B. 7,5", "C. 8", "D. 8,5"] },
   { no: 6, soal: "Dalam sebuah kelas, nilai rata-rata siswa putra adalah 7,2, sedangkan rata-rata kelompok putri adalah 8,1. Jika nilai rata-rata kelas adalah 7,5, maka perbandingan banyak putra dan siswa putri adalah ...", options: ["A. 2 : 1", "B. 1 : 2", "C. 1 : 3", "D. 2 : 3"] },
   { no: 7, soal: "Nilai rata-rata ulangan matematika siswa perempuan 75 dan siswa laki-laki adalah 66 dan rata-rata nilai keseluruhan siswa kelas tersebut adalah 72. Jika dalam kelas tersebut terdapat 36 siswa, banyak siswa laki-laki adalah ...", options: ["A. 12 orang", "B. 16 orang", "C. 18 orang", "D. 24 orang"] },

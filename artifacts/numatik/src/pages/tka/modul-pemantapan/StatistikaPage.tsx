@@ -164,6 +164,11 @@ const gambarMap = {
       .map((item) => [item.no, renderDasarVisual(item.no)] as const)
       .filter(([, visual]) => visual !== null),
   ),
+  ...Object.fromEntries(
+    statistikaLatihanTambahan
+      .map((item) => [item.no, renderDasarVisual(item.no)] as const)
+      .filter(([, visual]) => visual !== null),
+  ),
   ...dasarImages,
 };
 
