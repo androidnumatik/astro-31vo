@@ -895,6 +895,17 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                       </div>
                     </div>
 
+                    {/* ── Optional diagram/image, placed before the statements ── */}
+                    {(soal.gambar || (soal.soalSvg && soalSvgMap?.[soal.soalSvg]) || gambarMap?.[soal.no]) && (
+                      <div className="px-5 pb-2">
+                        {soal.gambar
+                          ?? (soal.soalSvg && soalSvgMap?.[soal.soalSvg])
+                          ?? (typeof gambarMap?.[soal.no] === "string"
+                            ? renderQuestionImage(gambarMap[soal.no] as string, soal.no, imageScale)
+                            : gambarMap?.[soal.no])}
+                      </div>
+                    )}
+
                     {/* ── PGK: numbered pernyataan list ── */}
                     {(type === "pgk") && soal.pernyataan && (
                       <div className="px-5 pb-2 space-y-1.5 ml-11">
@@ -937,17 +948,6 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                             ? <>Pilih <span className="font-bold not-italic text-amber-300/80">semua pernyataan yang benar</span> (jawaban lebih dari satu).</>
                             : <>Pernyataan yang <span className="font-bold not-italic text-amber-300/80">BENAR</span> adalah ...</>}
                         </p>
-                      </div>
-                    )}
-
-                    {/* ── Optional diagram/image, placed after the statements ── */}
-                    {(soal.gambar || (soal.soalSvg && soalSvgMap?.[soal.soalSvg]) || gambarMap?.[soal.no]) && (
-                      <div className="px-5 pb-2">
-                        {soal.gambar
-                          ?? (soal.soalSvg && soalSvgMap?.[soal.soalSvg])
-                          ?? (typeof gambarMap?.[soal.no] === "string"
-                            ? renderQuestionImage(gambarMap[soal.no] as string, soal.no, imageScale)
-                            : gambarMap?.[soal.no])}
                       </div>
                     )}
 
