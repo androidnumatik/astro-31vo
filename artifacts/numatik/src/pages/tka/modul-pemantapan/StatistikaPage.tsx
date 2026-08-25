@@ -121,15 +121,15 @@ const subtopicRankByQuestion: Record<number, number> = {
   // Ukuran pemusatan data: mean, median, modus, and comparisons between them.
   1: 1, 3: 1, 4: 1, 15: 1, 16: 1, 25: 1, 28: 1, 29: 1,
   31: 1, 33: 1, 34: 1, 36: 1, 37: 1, 41: 1, 47: 1, 51: 1,
-  52: 1, 60: 1, 61: 1,
+  60: 1,
 
   // Rata-rata dan rata-rata gabungan.
   2: 2, 5: 2, 6: 2, 7: 2, 8: 2, 12: 2, 13: 2, 14: 2,
   18: 2, 20: 2, 23: 2, 24: 2, 26: 2, 27: 2, 30: 2, 32: 2,
-  35: 2, 38: 2, 48: 2, 49: 2, 53: 2, 54: 2, 55: 2, 57: 2, 58: 2,
+  35: 2, 38: 2, 53: 2, 54: 2, 57: 2, 58: 2,
 
   // Penyajian data dan interpretasi diagram/grafik.
-  9: 3, 10: 3, 11: 3, 17: 3, 21: 3, 39: 3, 40: 3, 42: 3,
+  9: 3, 10: 3, 11: 3, 17: 3, 21: 3, 40: 3, 42: 3,
   43: 3, 44: 3, 45: 3, 46: 3, 59: 3,
 
   // Kuartil, jangkauan, dan ukuran penyebaran.
