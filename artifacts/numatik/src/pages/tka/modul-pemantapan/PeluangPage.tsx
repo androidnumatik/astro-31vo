@@ -252,7 +252,7 @@ const urutanSubtopik: string[] = [
   "awal-1", "awal-2", "lanjutan-39",
   // Peluang teoretis
   "awal-4", "awal-5", "awal-9",
-  "lanjutan-12", "lanjutan-13", "lanjutan-14", "lanjutan-15", "lanjutan-16",
+  "lanjutan-12", "lanjutan-15", "lanjutan-16",
   "lanjutan-21", "lanjutan-27", "lanjutan-30", "lanjutan-31",
   // Frekuensi harapan
   "awal-8", "lanjutan-28", "awal-15",
@@ -260,20 +260,24 @@ const urutanSubtopik: string[] = [
 
   // Peluang kejadian majemuk
   "awal-6", "awal-13",
-  "lanjutan-17", "lanjutan-18", "lanjutan-19", "lanjutan-20",
+  "lanjutan-17", "lanjutan-18", "lanjutan-20",
   "lanjutan-25", "lanjutan-26", "lanjutan-32", "lanjutan-33",
-  "lanjutan-34", "lanjutan-36", "lanjutan-38", "lanjutan-40",
+  "lanjutan-36", "lanjutan-40",
 ];
 
-const nomorSoalDihapus = new Set([2, 5, 9, 14, 15, 16, 22, 23, 35, 39, 40, 41, 42, 43, 44]);
+const soalRefsDihapus = new Set([
+  // Soal yang telah dihapus sebelumnya
+  "lanjutan-22", "awal-2", "awal-9", "lanjutan-16", "lanjutan-21",
+  "lanjutan-27", "awal-6", "awal-13", "lanjutan-40",
+]);
 
 const latihanDasarAwal: LatihanSoal[] = urutanSubtopik
+  .filter((ref) => !soalRefsDihapus.has(ref))
   .map((ref, index) => {
   const soal = soalByRef.get(ref);
   if (!soal) throw new Error(`Soal dengan referensi ${ref} tidak ditemukan`);
   return { ...soal, no: index + 1 };
   })
-  .filter((soal) => !nomorSoalDihapus.has(soal.no))
   .map((soal, index) => ({ ...soal, no: index + 1 }));
 
 const latihanDasar: LatihanSoal[] = latihanDasarAwal.map((soal, index) => ({
