@@ -279,9 +279,7 @@ const latihanDasarAwal: LatihanSoal[] = urutanSubtopik
 const latihanDasar: LatihanSoal[] = [
   ...latihanDasarAwal.filter((soal) => soal.no !== 3 && soal.no !== 4),
   ...latihanDasarAwal.filter((soal) => soal.no === 3 || soal.no === 4),
-]
-  .filter((soal) => !new Set([2, 5, 13, 14, 18, 20, 21, 28, 29]).has(soal.no))
-  .map((soal, index) => ({ ...soal, no: index + 1 }));
+].map((soal, index) => ({ ...soal, no: index + 1 }));
 
 const ruangSampelDuaDadu = (
   <div className="space-y-4 min-w-[600px]">
