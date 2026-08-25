@@ -66,7 +66,7 @@ const renderWithLatex = (text: string) => {
   });
 };
 
-const materiSection = {
+export const materiSection = {
   title: "MATERI - TRANSFORMASI GEOMETRI",
   sections: [
     {

@@ -1,13 +1,20 @@
 import TKAPemantapanLayout from "@/components/tka/TKAPemantapanLayout";
 import type { MateriSection, LatihanSoal } from "@/components/tka/TKAPemantapanLayout";
 import { getTkaContohSoal } from "@/data/tkaContohSoal";
+import { materiSection as olimpiadeMateriSection } from "@/pages/OlimpiadeTransformasiPage";
 
-const materiSections: MateriSection[] = [
-  { heading: "A. Translasi (Pergeseran)", content: `Translasi $T\\begin{pmatrix}a\\\\b\\end{pmatrix}$ menggeser titik $(x, y)$ menjadi $(x+a, y+b)$.\n\nJika titik $P(x, y)$ ditranslasi oleh $T\\begin{pmatrix}a\\\\b\\end{pmatrix}$ maka bayangan $P' = (x+a, y+b)$.` },
-  { heading: "B. Refleksi (Pencerminan)", content: `Pencerminan (Refleksi) terhadap:\n\n1. Sumbu-x: $(x, y) \\to (x, -y)$\n2. Sumbu-y: $(x, y) \\to (-x, y)$\n3. Garis $y = x$: $(x, y) \\to (y, x)$\n4. Garis $y = -x$: $(x, y) \\to (-y, -x)$\n5. Titik asal O(0,0): $(x, y) \\to (-x, -y)$\n6. Garis $x = a$: $(x, y) \\to (2a-x, y)$\n7. Garis $y = b$: $(x, y) \\to (x, 2b-y)$` },
-  { heading: "C. Rotasi (Perputaran)", content: `Rotasi terhadap pusat O(0,0) sebesar sudut $\\theta$:\n\n- $90°$ berlawanan jarum jam: $(x, y) \\to (-y, x)$\n- $90°$ searah jarum jam: $(x, y) \\to (y, -x)$\n- $180°$: $(x, y) \\to (-x, -y)$\n- $270°$ berlawanan jarum jam (= $90°$ searah): $(x, y) \\to (y, -x)$\n\nRotasi terhadap pusat $P(a, b)$ sebesar $90°$ berlawanan jarum jam:\n$(x, y) \\to (a - (y-b), b + (x-a)) = (a-y+b, b+x-a)$` },
-  { heading: "D. Dilatasi", content: `Dilatasi dengan pusat $O(0,0)$ dan faktor skala $k$:\n$(x, y) \\to (kx, ky)$\n\nDilatasi dengan pusat $P(a, b)$ dan faktor skala $k$:\n$(x, y) \\to (a + k(x-a),\\ b + k(y-b))$\n\nSifat dilatasi:\n- Jika $|k| > 1$: diperbesar\n- Jika $0 < |k| < 1$: diperkecil\n- Jika $k < 0$: terjadi pembesaran/perkecilan dan pembalikan arah` },
+const materiImages = [
+  "/transformasi-geometri-space.png",
+  "/translasi-claw-machine.png",
+  "/cermin-refleksi.png",
+  "/pontiac-rotasi.png",
+  "/troli-dilatasi.webp",
 ];
+
+const materiSections: MateriSection[] = olimpiadeMateriSection.sections.map((section, index) => ({
+  ...section,
+  content: `${section.content}\n\n[IMAGE:${materiImages[index]}]`,
+}));
 
 const latihanDasar: LatihanSoal[] = [
   { no: 1, soal: "Titik A(5, -2) ditranslasi oleh $T\\binom{-3}{1}$. Tentukan koordinat bayangan titik A tersebut!", options: ["A. A'(2, 1)", "B. A'(1, 1)", "C. A'(2, 2)", "D. A'(2, -1)", "E. A'(-2, 1)"] },
