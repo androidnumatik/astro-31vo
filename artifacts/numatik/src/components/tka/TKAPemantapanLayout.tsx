@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Starfield from "@/components/Starfield";
 import PageNavigation from "@/components/PageNavigation";
@@ -836,6 +836,12 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                 const stepsPembahasan = soal.pembahasan
                   ? getPembahasanPart(soal.pembahasan, "Step-by-Step Penyelesaian", ["Tips", "Kesimpulan"])
                   : "";
+                const diagram = soal.gambar
+                  ?? (soal.soalSvg && soalSvgMap?.[soal.soalSvg])
+                  ?? (typeof gambarMap?.[soal.no] === "string"
+                    ? renderQuestionImage(gambarMap[soal.no] as string, soal.no, imageScale)
+                    : gambarMap?.[soal.no]);
+                let diagramInserted = false;
 
                 return (
                   <div key={soal.no} className="relative rounded-2xl overflow-hidden"
@@ -885,10 +891,16 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                               );
                             }
                             return (
-                              <span key={lineIdx}>
+                              <Fragment key={lineIdx}>
                                 {lineIdx > 0 && <br />}
                                 {contentRenderer(line)}
-                              </span>
+                                {!diagramInserted && diagram && /berikut/i.test(line) && (
+                                  (() => {
+                                    diagramInserted = true;
+                                    return <div className="my-2">{diagram}</div>;
+                                  })()
+                                )}
+                              </Fragment>
                             );
                           })}
                         </div>
@@ -941,13 +953,9 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                     )}
 
                     {/* ── Optional diagram/image, placed after the statements ── */}
-                    {(soal.gambar || (soal.soalSvg && soalSvgMap?.[soal.soalSvg]) || gambarMap?.[soal.no]) && (
+                    {!diagramInserted && diagram && (
                       <div className="px-5 pb-2">
-                        {soal.gambar
-                          ?? (soal.soalSvg && soalSvgMap?.[soal.soalSvg])
-                          ?? (typeof gambarMap?.[soal.no] === "string"
-                            ? renderQuestionImage(gambarMap[soal.no] as string, soal.no, imageScale)
-                            : gambarMap?.[soal.no])}
+                        {diagram}
                       </div>
                     )}
 
