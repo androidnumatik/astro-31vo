@@ -262,7 +262,7 @@ const urutanSubtopik: string[] = [
   "awal-6", "awal-13",
   "lanjutan-17", "lanjutan-18", "lanjutan-20",
   "lanjutan-25", "lanjutan-26", "lanjutan-32", "lanjutan-33",
-  "lanjutan-36", "lanjutan-40",
+  "lanjutan-40",
 ];
 
 const soalRefsDihapus = new Set([
