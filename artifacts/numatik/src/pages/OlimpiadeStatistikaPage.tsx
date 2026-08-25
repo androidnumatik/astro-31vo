@@ -353,6 +353,28 @@ const formatRupiahShort = (v: number) => {
 
 export const renderDasarVisual = (no: number): React.ReactNode => {
   switch (no) {
+    case 2:
+      return (
+        <FrequencyTable
+          title="Data Nilai"
+          headers={["Data ke-", "Nilai"]}
+          showTotal={false}
+          rows={[
+            { label: 1, value: 5 },
+            { label: 2, value: 5 },
+            { label: 3, value: 7 },
+            { label: 4, value: 3 },
+            { label: 5, value: 2 },
+            { label: 6, value: 5 },
+            { label: 7, value: 6 },
+            { label: 8, value: 9 },
+            { label: 9, value: 7 },
+            { label: 10, value: 10 },
+            { label: 11, value: 7 },
+            { label: 12, value: 7 },
+          ]}
+        />
+      );
     case 3:
       return (
         <FrequencyTable
@@ -367,6 +389,21 @@ export const renderDasarVisual = (no: number): React.ReactNode => {
             { label: 8, value: 9 },
             { label: 9, value: 3 },
             { label: 10, value: 4 },
+          ]}
+        />
+      );
+    case 16:
+      return (
+        <FrequencyTable
+          title="Keterangan Nilai Siswa"
+          headers={["Siswa", "Nilai"]}
+          showTotal={false}
+          rows={[
+            { label: "Adi", value: 10 },
+            { label: "Budi", value: "—" },
+            { label: "Cici", value: "—" },
+            { label: "Didi", value: "—" },
+            { label: "Eki", value: 4 },
           ]}
         />
       );
@@ -1094,7 +1131,7 @@ Sampel: Sebagian dari populasi yang diambil untuk diteliti. Sampel harus represe
 
 export const latihanDasar = [
   { no: 1, soal: "Diketahui data berikut: 85, 90, 70, 80, 70, 65, 80, 85, 70, 80, 95, 70. Modus dan median data tersebut berturut-turut adalah ...", options: ["A. 65 dan 80", "B. 70 dan 80", "C. 75 dan 70", "D. 80 dan 75"] },
-  { no: 2, soal: "Median dan mean dari data: 5, 5, 7, 3, 2, 5, 6, 9, 7, 10, 7, 7 berturut-turut adalah ...", options: ["A. 5,5 dan 6,1", "B. 5,5 dan 7,0", "C. 6,5 dan 6,1", "D. 6,5 dan 7,0"] },
+  { no: 2, soal: "Perhatikan data berikut. Median dan mean dari data tersebut berturut-turut adalah ...", options: ["A. 5,5 dan 6,1", "B. 5,5 dan 7,0", "C. 6,5 dan 6,1", "D. 6,5 dan 7,0"] },
   { no: 3, soal: "Nilai matematika siswa disajikan dalam tabel berikut:\nNilai: 4, 5, 6, 7, 8, 9, 10\nBanyak siswa: 2, 4, 5, 5, 9, 3, 4\nMedian dari data di atas adalah ...", options: ["A. 6,5", "B. 7,0", "C. 7,5", "D. 8,0"] },
   { no: 4, soal: "Perhatikan tabel berikut!\nNilai: 3, 4, 5, 6, 7, 8, 9, 10\nFrekuensi: 2, 5, 5, 3, 4, 4, 4, 3\nPernyataan yang benar dari tabel di atas adalah ...", options: ["A. Modus dari data 5", "B. Median data 6,5", "C. Rata-rata data 6,6", "D. Jangkauan data 6"] },
   { no: 5, soal: "Diagram batang menunjukan nilai ulangan matematika diperoleh dari 20 anak pada suatu kelas. Tinggi batang untuk nilai 6 = 2, nilai 7 = 4, nilai 8 = 6, nilai 9 = 5, nilai 10 = 3. Rataan (Mean) dari data tersebut adalah ...", options: ["A. 7", "B. 7,5", "C. 8", "D. 8,5"] },
@@ -1126,7 +1163,7 @@ const latihanOlimpiade = [
   { no: 13, soal: "OSN Matematika 2014 Tingkat Kota\nDiketahui empat bilangan a, b, c dan d. Jika rata-rata a dan b adalah 50 dan rata-rata b dan c adalah 75, serta rata-rata c dan d adalah 70, maka rata-rata a dan d adalah ...", options: ["A. 35", "B. 45", "C. 50", "D. 55"] },
   { no: 14, soal: "OSN Matematika 2014 Tingkat Kota\nRata-rata nilai 28 siswa adalah 80. Setelah ditambah nilai siswa A dan B, rata-ratanya menjadi 78. Jika nilai A tiga kali nilai B, maka selisih antara nilai A dan B adalah ...", options: ["A. 15", "B. 25", "C. 50", "D. 75"] },
   { no: 15, soal: "OSN Matematika 2014 Tingkat Kota\nPerhatikan dua diagram batang A dan B. Pernyataan berikut yang salah adalah ...", options: ["A. Modus pada gambar A < modus pada gambar B", "B. Median pada gambar A < median pada gambar B", "C. Quartil 1 pada gambar A < Quartil 1 pada gambar B", "D. Rata-rata pada gambar A = rata-rata pada gambar B"] },
-  { no: 16, soal: "OSN Matematika 2015 Tingkat Kota\nNilai ujian lima orang siswa yakni Adi, Budi, Cici, Didi dan Eki adalah bilangan bulat dan mempunyai rata-rata yang sama dengan mediannya. Diketahui nilai tertinggi adalah 10 dan terendah adalah 4. Jika yang memperoleh nilai tertinggi adalah Adi dan yang terendah adalah Eki, maka susunan nilai yang mungkin ada sebanyak ...", options: ["A. 3", "B. 4", "C. 13", "D. 16"] },
+  { no: 16, soal: "OSN Matematika 2015 Tingkat Kota\nNilai ujian lima orang siswa yakni Adi, Budi, Cici, Didi dan Eki adalah bilangan bulat dan mempunyai rata-rata yang sama dengan mediannya. Diketahui data berikut. Nilai tertinggi adalah 10 dan terendah adalah 4. Jika yang memperoleh nilai tertinggi adalah Adi dan yang terendah adalah Eki, maka susunan nilai yang mungkin ada sebanyak ...", options: ["A. 3", "B. 4", "C. 13", "D. 16"] },
   { no: 17, soal: "OSN Matematika 2016 Tingkat Kota\nSuatu survey dilakukan pada siswa kelas VII untuk mengetahui siswa yang berminat mengikuti kegiatan Paskibra. Hasil survei adalah sebagai berikut:\n– 25% dari total siswa kelas VII berminat mengikuti kegiatan tersebut.\n– 90% dari total peminat kegiatan Paskibra adalah siswa putri.\nRasio total siswa putri dari total siswa putra kelas VII di sekolah tersebut adalah ...", options: ["A. 9 : 1", "B. 9 : 2", "C. 9 : 3", "D. 9 : 4"] },
   { no: 18, soal: "OSN Matematika 2016 Tingkat Kota\nSuatu perusahaan menjual dua jenis produk A dan B. Rasio penjualan A : B tiap tahun adalah 3:2 (2012), 2:3 (2013), 1:4 (2014), 5:6 (2015). Banyak penjualan produk A: 2012 = 600, 2013 = 800, 2014 = 400, 2015 = 1000.\nRata-rata banyak penjualan produk B dalam 4 tahun yang sama adalah ...", options: ["A. 1000", "B. 1340", "C. 1350", "D. 1500"] },
   { no: 19, soal: "OSN Matematika 2016 Tingkat Kota\nTerdapat lima bilangan bulat positif dengan rata-rata 40 dan jangkauan 10. Nilai maksimum yang mungkin untuk bilangan terbesar dari lima bilangan tersebut adalah ...", options: ["A. 50", "B. 49", "C. 48", "D. 45"] },
@@ -1270,6 +1307,7 @@ const OlimpiadeStatistikaPage = () => {
             {latihanDasar.map((soal) => {
               const key = `d-${soal.no}`;
               const visual = renderDasarVisual(soal.no);
+              let visualInserted = false;
               return (
                 <div key={soal.no} className="bg-card/70 backdrop-blur border border-border/60 rounded-xl px-5 py-4 hover:border-cyan-400/20 transition-colors">
                   <div className="font-body text-sm text-white mb-3 whitespace-pre-wrap">
@@ -1278,6 +1316,12 @@ const OlimpiadeStatistikaPage = () => {
                       <span key={lineIdx}>
                         {lineIdx > 0 && <br />}
                         {lineIdx === 0 && line.startsWith('OSN') ? <span className="text-yellow-400 font-semibold">{line}</span> : renderWithLatex(line)}
+                        {!visualInserted && visual && /berikut/i.test(line) && (
+                          (() => {
+                            visualInserted = true;
+                            return <span className="block">{visual}</span>;
+                          })()
+                        )}
                       </span>
                     ))}
                   </div>
@@ -1290,7 +1334,7 @@ const OlimpiadeStatistikaPage = () => {
                       />
                     </div>
                   )}
-                  {visual}
+                  {!visualInserted && visual}
                   {soal.options.length > 0 && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {soal.options.map((opt, j) => (
