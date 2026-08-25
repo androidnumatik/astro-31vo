@@ -113,7 +113,7 @@ export const statistikaContohSoal: LatihanSoal[] = [
   {
     no: 1,
     type: "pgk",
-    soal: "Perhatikan data grafik laporan keuangan sebuah startup teknologi selama periode 2020–2024 (dalam Miliar Rupiah) berikut:\n• 2020: Pendapatan = 120, Pengeluaran = 130\n• 2021: Pendapatan = 150, Pengeluaran = 140\n• 2022: Pendapatan = 180, Pengeluaran = 200\n• 2023: Pendapatan = 220, Pengeluaran = 190\n• 2024: Pendapatan = 260, Pengeluaran = 210\nCatatan: Keuntungan (Laba) terjadi jika Pendapatan > Pengeluaran. Kerugian (Rugi) terjadi jika Pendapatan < Pengeluaran.\nBerdasarkan data di atas, pilihlah semua pernyataan yang benar:",
+     soal: "Perhatikan diagram batang laporan keuangan sebuah startup teknologi selama periode 2020–2024 (dalam Miliar Rupiah) berikut:\n[DIAGRAM]\nCatatan: Keuntungan (Laba) terjadi jika Pendapatan > Pengeluaran. Kerugian (Rugi) terjadi jika Pendapatan < Pengeluaran.\nBerdasarkan data di atas, pilihlah semua pernyataan yang benar:",
     soalSvg: "laporanKeuangan",
     pernyataan: [
       "Perusahaan selalu mengalami keuntungan (laba) setiap tahun.",

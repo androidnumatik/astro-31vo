@@ -520,6 +520,12 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                 const selected = selectedContohAnswers[soal.no];
                 const bsArr = pgkbsContohAnswers[soal.no] ?? Array(soal.pernyataan?.length ?? 3).fill(null);
                 const typeBadge = TYPE_BADGE[type];
+                const diagram = soal.gambar
+                  ?? (soal.soalSvg && soalSvgMap?.[soal.soalSvg])
+                  ?? (typeof gambarMap?.[soal.no] === "string"
+                    ? renderQuestionImage(gambarMap[soal.no] as string, soal.no, imageScale)
+                    : gambarMap?.[soal.no]);
+                const hasInlineDiagram = soal.soal.includes("[DIAGRAM]");
 
                 return (
                   <div key={soal.no} className="relative rounded-2xl overflow-hidden"
@@ -552,7 +558,9 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                           {soal.soal.split('\n').map((line, lineIdx) => (
                             <span key={lineIdx}>
                               {lineIdx > 0 && <br />}
-                              {contentRenderer(line)}
+                              {line.trim() === "[DIAGRAM]" ? (
+                                <span className="my-2 block">{diagram}</span>
+                              ) : contentRenderer(line)}
                             </span>
                           ))}
                         </div>
@@ -560,13 +568,9 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                     </div>
 
                     {/* ── Optional diagram/image, placed after the statements ── */}
-                    {(soal.gambar || (soal.soalSvg && soalSvgMap?.[soal.soalSvg]) || gambarMap?.[soal.no]) && (
+                    {!hasInlineDiagram && diagram && (
                       <div className="px-5 pb-2">
-                        {soal.gambar
-                          ?? (soal.soalSvg && soalSvgMap?.[soal.soalSvg])
-                          ?? (typeof gambarMap?.[soal.no] === "string"
-                            ? renderQuestionImage(gambarMap[soal.no] as string, soal.no, imageScale)
-                            : gambarMap?.[soal.no])}
+                        {diagram}
                       </div>
                     )}
 
