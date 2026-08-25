@@ -279,14 +279,7 @@ const latihanDasarAwal: LatihanSoal[] = urutanSubtopik
 const latihanDasar: LatihanSoal[] = [
   ...latihanDasarAwal.filter((soal) => soal.no !== 3 && soal.no !== 4),
   ...latihanDasarAwal.filter((soal) => soal.no === 3 || soal.no === 4),
-]
-  .filter((soal) => !new Set([2, 5, 13, 14, 18, 20, 28, 29]).has(soal.no))
-  .map((soal, index) => ({
-    ...soal,
-    no: index + 1,
-    // Keep the graph with the original question 21 when the list is renumbered.
-    gambar: soal.no === 21 ? latihanDasarSVG[21] : soal.gambar,
-  }));
+].map((soal, index) => ({ ...soal, no: index + 1 }));
 
 const ruangSampelDuaDadu = (
   <div className="space-y-4 min-w-[600px]">
