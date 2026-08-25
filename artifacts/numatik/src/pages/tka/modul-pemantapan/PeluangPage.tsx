@@ -1,6 +1,7 @@
 import TKAPemantapanLayout from "@/components/tka/TKAPemantapanLayout";
 import type { MateriSection, LatihanSoal } from "@/components/tka/TKAPemantapanLayout";
 import { latihanDasarSVG } from "@/pages/OlimpiadePeluangPage";
+import { peluangDasarPembahasan } from "@/data/pembahasan/peluangDasar";
 import diagramKelereng from "@assets/image_1787583206453.png";
 import papanSpinner from "@assets/image_1787585871802.png";
 
@@ -189,6 +190,19 @@ const latihanAwal: LatihanSoal[] = [
   },
 ];
 
+const formatPembahasan = (pembahasan: {
+  jawaban: string;
+  konsepTrik: string;
+  stepByStep: string;
+  tips: string;
+  kesimpulan: string;
+}) =>
+  `Jawaban: ${pembahasan.jawaban}\n\n` +
+  `Konsep & Trik:\n${pembahasan.konsepTrik}\n\n` +
+  `Step-by-Step Penyelesaian:\n${pembahasan.stepByStep}\n\n` +
+  `Tips:\n${pembahasan.tips}\n\n` +
+  `Kesimpulan:\n${pembahasan.kesimpulan}`;
+
 const latihanDasarLanjutan: LatihanSoal[] = [
   { no: 12, soal: "Sebuah dadu dilambungkan satu kali. Peluang muncul mata dadu bilangan prima adalah...", options: ["A. $\\frac{1}{6}$", "B. $\\frac{2}{9}$", "C. $\\frac{3}{6}$", "D. $\\frac{4}{6}$"] },
   { no: 13, soal: "Dua buah dadu dilempar bersama-sama, peluang munculnya dadu berjumlah 9 adalah ...", options: ["A. $\\frac{1}{9}$", "B. $\\frac{3}{4}$", "C. $\\frac{1}{4}$", "D. $\\frac{1}{3}$"] },
@@ -219,7 +233,12 @@ const latihanDasarLanjutan: LatihanSoal[] = [
   { no: 38, soal: "Dalam rangka memperingati Hari Kemerdekaan RI, panitia menyiapkan sebuah kotak berisi kartu yang diberi nomor 1 sampai dengan 30. Setiap peserta hanya boleh mengambil satu kartu, dan yang mendapatkan kartu bernomor kelipatan 3 atau bilangan prima akan mendapat hadiah doorprize. Berapakah peluang seorang murid akan mendapatkan doorprize?", options: ["A. $\\frac{7}{15}$", "B. $\\frac{17}{30}$", "C. $\\frac{19}{30}$", "D. $\\frac{2}{3}$"] },
   { no: 39, soal: "Sebuah survei mengambil secara acak 60 murid sebagai sampelnya. Hasilnya, 36 siswa menjawab membawa bekal ke sekolah. Jika survei dilakukan lagi pada 50 murid lainnya dan diperkirakan hasil survei sama proporsinya dengan survei sebelumnya, frekuensi relatif murid yang membawa bekal dari seluruh siswa yang disurvei adalah ....", options: ["A. 0,59", "B. 0,60", "C. 0,61", "D. 0,62"] },
   { no: 40, soal: "Tiga buah dadu biasa dilempar sekaligus sebanyak satu kali. Peluang salah satu mata dadu sama dengan jumlah dua mata dadu lainnya adalah …", options: ["A. $\\frac{1}{6}$", "B. $\\frac{5}{24}$", "C. $\\frac{7}{24}$", "D. $\\frac{1}{3}$"] },
-];
+].map((soal) => {
+  const pembahasan = peluangDasarPembahasan[soal.no];
+  return pembahasan
+    ? { ...soal, pembahasan: formatPembahasan(pembahasan) }
+    : soal;
+});
 
 const soalByRef = new Map<string, LatihanSoal>([
   ...latihanAwal.map((soal) => [`awal-${soal.no}`, soal] as const),
@@ -374,7 +393,7 @@ const contohSoal: LatihanSoal[] = [
   {
     no: 4,
     type: "pgkbs",
-    soal: "Teks Stimulus: Permainan Monopoli Sederhana\nFajar dan Doni sedang bermain board game dengan melempar dua buah dadu berenam sisi secara bersamaan. Seseorang dapat melangkah sesuai jumlah mata dadu yang muncul. Jika pemain mendapatkan pasangan dadu kembar (dobel), ia mendapat kesempatan melempar sekali lagi. Jika jumlah kedua mata dadu kurang dari 5, pemain masuk ke kotak \"Bonus\". Jika jumlah kedua mata dadu lebih dari 9, pemain masuk ke kotak \"Tantangan\".\n\nBerdasarkan teks di atas, tentukan Benar atau Salah untuk setiap pernyataan berikut!",
+    soal: "Perhatikan teks berikut untuk menjawab soal nomor 4 dan 5!\n\nTeks Stimulus: Permainan Monopoli Sederhana\nFajar dan Doni sedang bermain board game dengan melempar dua buah dadu berenam sisi secara bersamaan. Seseorang dapat melangkah sesuai jumlah mata dadu yang muncul. Jika pemain mendapatkan pasangan dadu kembar (dobel), ia mendapat kesempatan melempar sekali lagi. Jika jumlah kedua mata dadu kurang dari 5, pemain masuk ke kotak \"Bonus\". Jika jumlah kedua mata dadu lebih dari 9, pemain masuk ke kotak \"Tantangan\".\n\nBerdasarkan teks di atas, tentukan Benar atau Salah untuk setiap pernyataan berikut!",
     pernyataan: [
       "Peluang Fajar masuk ke kotak \"Bonus\" (jumlah $< 5$) adalah $\\frac{1}{6}$.",
       "Peluang Doni masuk ke kotak \"Tantangan\" (jumlah $> 9$) adalah $\\frac{1}{12}$.",
