@@ -82,10 +82,11 @@ const isImageUrl = (value: string) => {
     || /blob\.vusercontent\.net|images\.|image\.|imgur\.com|cloudinary\.com|unsplash\.com|googleusercontent\.com/i.test(trimmed);
 };
 
-const renderQuestionImage = (source: string, soalNo: number) => {
+const renderQuestionImage = (source: string, soalNo: number, imageScale: "default" | "half" = "default") => {
   const imageUrl = normalizeImageUrl(source);
+  const isHalf = imageScale === "half";
   return (
-    <div className="mx-auto w-full max-w-xl">
+    <div className={`mx-auto w-full ${isHalf ? "max-w-[50%]" : "max-w-xl"}`}>
       <a
         href={imageUrl}
         target="_blank"
@@ -97,7 +98,7 @@ const renderQuestionImage = (source: string, soalNo: number) => {
           src={imageUrl}
           alt={`Gambar soal ${soalNo}`}
           wrapperClassName="rounded-xl"
-          className="max-h-[420px] w-full rounded-xl object-contain bg-white p-2"
+          className={`${isHalf ? "max-h-[210px]" : "max-h-[420px]"} w-full rounded-xl object-contain bg-white p-2`}
           showSkeleton
         />
       </a>
@@ -564,7 +565,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                         {soal.gambar
                           ?? (soal.soalSvg && soalSvgMap?.[soal.soalSvg])
                           ?? (typeof gambarMap?.[soal.no] === "string"
-                            ? renderQuestionImage(gambarMap[soal.no] as string, soal.no)
+                            ? renderQuestionImage(gambarMap[soal.no] as string, soal.no, imageScale)
                             : gambarMap?.[soal.no])}
                       </div>
                     )}
@@ -929,7 +930,7 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                         {soal.gambar
                           ?? (soal.soalSvg && soalSvgMap?.[soal.soalSvg])
                           ?? (typeof gambarMap?.[soal.no] === "string"
-                            ? renderQuestionImage(gambarMap[soal.no] as string, soal.no)
+                            ? renderQuestionImage(gambarMap[soal.no] as string, soal.no, imageScale)
                             : gambarMap?.[soal.no])}
                       </div>
                     )}

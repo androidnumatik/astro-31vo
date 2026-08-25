@@ -145,6 +145,7 @@ const StatistikaPage = () => (
     contohSoal={getTkaContohSoal("statistika")}
     latihanDasar={latihanDasar}
     gambarMap={gambarMap}
+    imageScale="half"
   />
 );
 
