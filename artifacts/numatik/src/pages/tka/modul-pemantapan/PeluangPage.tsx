@@ -267,7 +267,7 @@ const urutanSubtopik: string[] = [
 
 const nomorSoalDihapus = new Set([2, 5, 9, 14, 15, 16, 22, 23, 35, 39, 40, 41, 42, 43, 44]);
 
-const latihanDasar: LatihanSoal[] = urutanSubtopik
+const latihanDasarAwal: LatihanSoal[] = urutanSubtopik
   .map((ref, index) => {
   const soal = soalByRef.get(ref);
   if (!soal) throw new Error(`Soal dengan referensi ${ref} tidak ditemukan`);
@@ -275,6 +275,11 @@ const latihanDasar: LatihanSoal[] = urutanSubtopik
   })
   .filter((soal) => !nomorSoalDihapus.has(soal.no))
   .map((soal, index) => ({ ...soal, no: index + 1 }));
+
+const latihanDasar: LatihanSoal[] = [
+  ...latihanDasarAwal.filter((soal) => soal.no !== 3 && soal.no !== 4),
+  ...latihanDasarAwal.filter((soal) => soal.no === 3 || soal.no === 4),
+].map((soal, index) => ({ ...soal, no: index + 1 }));
 
 const ruangSampelDuaDadu = (
   <div className="space-y-4 min-w-[600px]">
