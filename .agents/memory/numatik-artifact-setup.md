@@ -176,3 +176,7 @@ Pecahan soal components are JSX components (not data arrays). Key differences:
 - Locale keys live under `practice.pecahan.<pageKey>.*` (e.g. `practice.pecahan.artiSenilai.q5.instruction`).
 - Index page (BilanganRasionalPage): rename `subtopics` const to `subtopicsConfig` (remove `label`/`desc`, add `key`), then derive `subtopics` inside component with `subtopicsConfig.map(s => ({ ...s, label: t(...), desc: t(...) }))`.
 - Reference file: `artifacts/numatik/src/pages/latihan-mandiri/kelas7/pecahan/ArtiPecahanSenilaiMembandingkanPage.tsx`
+
+## Shared statistics question data
+- The TKA Statistika module reuses question data exported by the Olimpiade Statistika page. Apply TKA-only removals by filtering in `tka/modul-pemantapan/StatistikaPage.tsx`, not by editing the shared source.
+- **Why:** The same source questions feed the Olimpiade page, so direct deletion would unintentionally change another user-facing module.

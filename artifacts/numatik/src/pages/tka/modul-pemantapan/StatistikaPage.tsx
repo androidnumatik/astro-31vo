@@ -136,8 +136,10 @@ const subtopicRankByQuestion: Record<number, number> = {
   19: 4, 22: 4, 50: 4, 56: 4,
 };
 
+const removedQuestionNumbers = new Set([2, 4, 11, 13]);
+
 const latihanDasar: LatihanSoal[] = [
-  ...olimpiadeStatistikaDasar.map((item) => {
+  ...olimpiadeStatistikaDasar.filter((item) => !removedQuestionNumbers.has(item.no)).map((item) => {
   const pembahasan = statistikaDasarPembahasan[item.no];
   const jawaban = pembahasan?.jawaban.match(/^([A-E])\./)?.[1];
 
