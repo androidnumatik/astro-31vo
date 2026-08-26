@@ -4544,3 +4544,86 @@ html.light-mode .bg-slate-900\/90 .bg-yellow-500\/10 {
     max-width: 50% !important;
   }
 }
+
+/* ── Bilangan Rasional / Pecahan — pastel cards for light themes ──
+   These ten practice pages intentionally keep their original dark gradients
+   for the dark and ocean themes. In the other themes, replace only the
+   -900 gradient stops with soft pastel tones so the question text remains
+   readable without flattening the color coding between cards. */
+.light-mode .rational-fractions-practice-route [class*="from-violet-900/"],
+.light-mode .rational-fractions-practice-route [class*="from-purple-900/"] {
+  --tw-gradient-from: rgba(237, 233, 254, 0.92) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .rational-fractions-practice-route [class*="from-fuchsia-900/"] {
+  --tw-gradient-from: rgba(250, 232, 255, 0.92) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .rational-fractions-practice-route [class*="from-pink-900/"],
+.light-mode .rational-fractions-practice-route [class*="from-rose-900/"] {
+  --tw-gradient-from: rgba(255, 228, 230, 0.92) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .rational-fractions-practice-route [class*="from-orange-900/"] {
+  --tw-gradient-from: rgba(255, 237, 213, 0.92) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .rational-fractions-practice-route [class*="from-amber-900/"],
+.light-mode .rational-fractions-practice-route [class*="from-yellow-900/"] {
+  --tw-gradient-from: rgba(254, 249, 195, 0.92) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .rational-fractions-practice-route [class*="from-cyan-900/"],
+.light-mode .rational-fractions-practice-route [class*="from-sky-900/"] {
+  --tw-gradient-from: rgba(207, 250, 254, 0.92) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .rational-fractions-practice-route [class*="from-emerald-900/"],
+.light-mode .rational-fractions-practice-route [class*="from-green-900/"] {
+  --tw-gradient-from: rgba(220, 252, 231, 0.92) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .rational-fractions-practice-route [class*="from-indigo-900/"] {
+  --tw-gradient-from: rgba(224, 231, 255, 0.92) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .rational-fractions-practice-route [class*="from-teal-900/"] {
+  --tw-gradient-from: rgba(204, 251, 241, 0.92) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .rational-fractions-practice-route [class*="from-lime-900/"] {
+  --tw-gradient-from: rgba(236, 252, 203, 0.92) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .rational-fractions-practice-route [class*="to-purple-900/"],
+.light-mode .rational-fractions-practice-route [class*="to-violet-900/"] {
+  --tw-gradient-to: rgba(243, 232, 255, 0.88) var(--tw-gradient-to-position) !important;
+}
+
+.light-mode .rational-fractions-practice-route [class*="to-pink-900/"],
+.light-mode .rational-fractions-practice-route [class*="to-rose-900/"] {
+  --tw-gradient-to: rgba(252, 231, 243, 0.88) var(--tw-gradient-to-position) !important;
+}
+
+.light-mode .rational-fractions-practice-route [class*="to-amber-900/"],
+.light-mode .rational-fractions-practice-route [class*="to-yellow-900/"] {
+  --tw-gradient-to: rgba(254, 243, 199, 0.88) var(--tw-gradient-to-position) !important;
+}
+
+.light-mode .rational-fractions-practice-route [class*="to-cyan-900/"],
+.light-mode .rational-fractions-practice-route [class*="to-sky-900/"] {
+  --tw-gradient-to: rgba(224, 242, 254, 0.88) var(--tw-gradient-to-position) !important;
+}
+
+.light-mode .rational-fractions-practice-route [class*="to-emerald-900/"],
+.light-mode .rational-fractions-practice-route [class*="to-green-900/"] {
+  --tw-gradient-to: rgba(209, 250, 229, 0.88) var(--tw-gradient-to-position) !important;
+}
+
+.light-mode .rational-fractions-practice-route [class*="to-teal-900/"] {
+  --tw-gradient-to: rgba(204, 251, 241, 0.88) var(--tw-gradient-to-position) !important;
+}
+
+.light-mode .rational-fractions-practice-route [class*="to-blue-900/"] {
+  --tw-gradient-to: rgba(219, 234, 254, 0.88) var(--tw-gradient-to-position) !important;
+}
