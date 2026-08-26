@@ -45,11 +45,138 @@ const latihanDasar: LatihanSoal[] = [
   { no: 23, soal: "Segitiga PQR memiliki koordinat P(1, 1); Q(1, 5) dan R(3, 3). Didilatasi dengan [O, c] menghasilkan bayangan P'(-2, -2); Q'(-2, -10) dan R'(-6, -6). Nilai c adalah ...", options: ["A. 2", "B. 3", "C. -3", "D. -2"] },
 ];
 
+const uploadedRefleksiImage = "/soal-refleksi-segitiga-klm.png";
+
+const uploadedContohSoal: LatihanSoal[] = [
+  {
+    no: 1,
+    type: "pgkbs",
+    soal: "Sebuah segitiga $KLM$ dicerminkan terhadap garis tegak $x = 5$ sehingga menghasilkan bayangan segitiga $K'L'M'$. Diketahui koordinat titik $K(2, 4)$, $L'(6, 2)$, dan $M'(4, 8)$.",
+    pernyataan: [
+      "Koordinat awal titik $L$ adalah $(4, 2)$.",
+      "Koordinat bayangan titik $M'$ adalah $(6, 8)$.",
+      "Jarak antara garis cermin $x = 5$ ke titik $K$ adalah 3 satuan.",
+    ],
+    jawabanBS: ["B", "S", "B"],
+    gambar: <img src={uploadedRefleksiImage} alt="Diagram refleksi segitiga KLM terhadap garis x = 5" className="mx-auto w-full max-w-xl rounded-xl border border-white/10 bg-white p-2" />,
+    pembahasan: `Pembahasan Soal 1:
+Konsep & Trik Cepat:
+Refleksi terhadap garis vertikal $x = k$ menggunakan rumus:
+$$P(x, y) \\xrightarrow{x=k} P'(2k - x, y)$$
+Trik: Koordinat tegak ($y$) nilainya selalu tetap, sedangkan koordinat datar ($x$) berjarak sama terhadap garis cermin $x = k$.
+
+Penyelesaian Step-by-Step:
+Analisis Pernyataan 1:
+Titik bayangan $L'(6, 2)$ dicerminkan oleh garis $x = 5$.
+$$6 = 2(5) - x \\implies x = 4$$
+Karena nilai $y$ tetap ($y = 2$), maka koordinat titik $L$ adalah $(4, 2)$. Pernyataan 1 BENAR.
+
+Analisis Pernyataan 2:
+Titik awal $M(x, y)$ yang menghasilkan $M'(4, 8)$ melalui garis $x = 5$:
+$$4 = 2(5) - x \\implies x = 6$$
+Maka koordinat asal titik $M$ adalah $(6, 8)$. Bayangan yang terbentuk tetap $M'(4, 8)$. Pernyataan 2 SALAH.
+
+Analisis Pernyataan 3:
+$$\\text{Jarak} = |5 - 2| = 3 \\text{ satuan}$$
+Pernyataan 3 BENAR.
+
+Jawaban: 1. Benar | 2. Salah | 3. Benar`,
+  },
+  {
+    no: 2,
+    type: "pg",
+    soal: "Pada bidang Kartesius, titik $A(4, -3)$ dicerminkan terhadap garis mendatar $y = 3$ hingga menghasilkan bayangan titik $B$. Jarak antara titik $A$ dan titik $B$ adalah ....",
+    options: ["A. 6 satuan", "B. 8 satuan", "C. 12 satuan", "D. 14 satuan"],
+    jawaban: "C",
+    pembahasan: `Pembahasan Soal 2:
+Refleksi terhadap garis horizontal $y = h$ menggunakan rumus $P(x, y) \\to P'(x, 2h - y)$.
+
+Bayangan titik $B$:
+$$B = (4, 2(3) - (-3)) = (4, 9)$$
+Maka jarak antara $A(4, -3)$ dan $B(4, 9)$ adalah:
+$$AB = |9 - (-3)| = 12 \\text{ satuan}$$
+
+Jawaban: C.`,
+  },
+  {
+    no: 3,
+    type: "pgk",
+    soal: "Sebuah bangun datar diputar dengan pusat rotasi $O(0,0)$. Salah satu titik sudutnya $P(3, 4)$ berpindah posisi ke bayangannya $P'(-4, 3)$. Sudut rotasi $\\theta$ yang memenuhi pemetaan tersebut adalah .... Pilih semua jawaban yang benar.",
+    pernyataan: [
+      "Rotasi sejauh $90^\\circ$ searah jarum jam ($-90^\\circ$)",
+      "Rotasi sejauh $90^\\circ$ berlawanan arah jarum jam ($90^\\circ$)",
+      "Rotasi sejauh $270^\\circ$ searah jarum jam ($-270^\\circ$)",
+      "Rotasi sejauh $180^\\circ$",
+    ],
+    jawabanPGK: [1, 2],
+    pembahasan: `Pembahasan Soal 3:
+Aturan rotasi pusat $(0,0)$:
+Rotasi $+90^\\circ$: $(x, y) \\to (-y, x)$.
+Rotasi $-90^\\circ$: $(x, y) \\to (y, -x)$.
+
+Dari $P(3, 4)$ ke $P'(-4, 3)$ berlaku:
+$$ (3, 4) \\to (-4, 3) = (-y, x) $$
+Jadi, rotasinya adalah $90^\\circ$ berlawanan arah jarum jam atau ekuivalen dengan $-270^\\circ$ searah jarum jam.
+
+Jawaban: rotasi $90^\\circ$ berlawanan arah jarum jam dan rotasi $270^\\circ$ searah jarum jam.`,
+  },
+  {
+    no: 4,
+    type: "pg",
+    soal: "Titik $R(-3, 2)$ didilatasi terhadap titik pusat $O(0,0)$ dengan faktor skala $k$ sehingga menghasilkan bayangan $R'(-12, 8)$. Faktor skala $k$ dan koordinat bayangan jika titik $S(2, -5)$ didilatasi dengan faktor skala yang sama adalah ....",
+    options: [
+      "A. $k = 4$ dan $S'(8, -20)$",
+      "B. $k = -4$ dan $S'(-8, 20)$",
+      "C. $k = 4$ dan $S'(-8, 20)$",
+      "D. $k = 3$ dan $S'(6, -15)$",
+    ],
+    jawaban: "A",
+    pembahasan: `Pembahasan Soal 4:
+Dilatasi dengan pusat $O(0,0)$ dan faktor skala $k$ memetakan $(x,y) \\to (kx,ky)$.
+
+Dari $R(-3, 2) \\to R'(-12, 8)$:
+$$k = \\frac{-12}{-3} = \\frac{8}{2} = 4$$
+Maka:
+$$S' = (4 \\times 2, 4 \\times (-5)) = (8, -20)$$
+
+Jawaban: A.`,
+  },
+  {
+    no: 5,
+    type: "pg",
+    soal: "Persamaan bayangan dari garis $3x - 2y + 6 = 0$ oleh translasi $T(-3, 4)$ adalah ....",
+    options: [
+      "A. $3x - 2y + 23 = 0$",
+      "B. $3x - 2y - 11 = 0$",
+      "C. $3x - 2y + 17 = 0$",
+      "D. $3x + 2y + 23 = 0$",
+    ],
+    jawaban: "A",
+    pembahasan: `Pembahasan Soal 5:
+Translasi $T(a,b)$ menggunakan penggantian $x$ dengan $(x-a)$ dan $y$ dengan $(y-b)$ pada persamaan awal.
+
+Untuk $T(-3,4)$:
+$$3(x+3) - 2(y-4) + 6 = 0$$
+$$3x + 9 - 2y + 8 + 6 = 0$$
+$$3x - 2y + 23 = 0$$
+
+Jawaban: A.`,
+  },
+];
+
+const contohSoal: LatihanSoal[] = [
+  ...uploadedContohSoal,
+  ...getTkaContohSoal("transformasi-geometri").map((soal) => ({
+    ...soal,
+    no: soal.no + uploadedContohSoal.length,
+  })),
+];
+
 const TransformasiPage = () => (
   <TKAPemantapanLayout
     title="TRANSFORMASI GEOMETRI"
   materiSections={materiSections}
-  contohSoal={getTkaContohSoal("transformasi-geometri")}
+  contohSoal={contohSoal}
   latihanDasar={latihanDasar}
   showImageSourceLinks={false}
   />
