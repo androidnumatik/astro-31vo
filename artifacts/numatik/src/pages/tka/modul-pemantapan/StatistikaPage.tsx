@@ -136,10 +136,10 @@ const subtopicRankByQuestion: Record<number, number> = {
   19: 4, 22: 4, 50: 4, 56: 4,
 };
 
-const removedQuestionNumbers = new Set([2, 4, 11, 13]);
+const removedDisplayedQuestionNumbers = new Set([2, 4, 11, 13]);
 
 const latihanDasar: LatihanSoal[] = [
-  ...olimpiadeStatistikaDasar.filter((item) => !removedQuestionNumbers.has(item.no)).map((item) => {
+  ...olimpiadeStatistikaDasar.map((item) => {
   const pembahasan = statistikaDasarPembahasan[item.no];
   const jawaban = pembahasan?.jawaban.match(/^([A-E])\./)?.[1];
 
@@ -158,7 +158,8 @@ const latihanDasar: LatihanSoal[] = [
   }),
   ...statistikaLatihanTambahan,
 ].sort((a, b) => (subtopicRankByQuestion[a.no] ?? Number.MAX_SAFE_INTEGER)
-  - (subtopicRankByQuestion[b.no] ?? Number.MAX_SAFE_INTEGER) || a.no - b.no);
+  - (subtopicRankByQuestion[b.no] ?? Number.MAX_SAFE_INTEGER) || a.no - b.no)
+  .filter((_, index) => !removedDisplayedQuestionNumbers.has(index + 1));
 
 const gambarMap = {
   ...Object.fromEntries(
