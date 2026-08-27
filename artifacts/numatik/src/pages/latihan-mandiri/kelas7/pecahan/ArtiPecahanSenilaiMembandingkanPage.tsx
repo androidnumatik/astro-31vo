@@ -7,7 +7,7 @@ import { InlineMath } from "react-katex";
 import "katex/dist/katex.min.css";
 
 /* ── SVG helpers ─────────────────────────────────────── */
-const cx = 60, cy = 60, r = 50;
+const cx = 60, cy = 60, r = 56;
 const pts = Array.from({ length: 8 }, (_, i) => {
   const a = -Math.PI / 2 + (i * Math.PI) / 4;
   return [+(cx + r * Math.cos(a)).toFixed(2), +(cy + r * Math.sin(a)).toFixed(2)];
@@ -37,7 +37,7 @@ const SubLabel = ({ letter, color }: { letter: string; color: string }) => (
 );
 
 const FractionDiagram1C = () => (
-  <svg width="220" height="190" viewBox="0 0 460 400" className="w-full max-w-[220px] h-auto" role="img" aria-label="1c">
+  <svg width="160" height="160" viewBox="0 0 460 400" className="w-[160px] h-[160px]" role="img" aria-label="1c">
     {[
       { points: "230,10 157,137 303,137", shaded: true },
       { points: "157,137 83,263 230,263", shaded: false },
@@ -86,18 +86,18 @@ const SoalSatu = () => {
       <p className="font-body text-sm text-white/90 leading-relaxed">
         {t('practice.pecahan.artiSenilai.q1.instruction')}
       </p>
-      <div className="grid grid-cols-1 landscape:grid-cols-4 gap-6 items-start justify-items-center pt-1">
+        <div className="grid grid-cols-1 landscape:grid-cols-4 gap-6 items-start justify-items-center pt-1">
         {/* Rectangle */}
-        <div className="flex flex-col items-center gap-2 landscape:w-[160px] landscape:h-[160px]">
+        <div className="flex w-[160px] h-[160px] flex-col items-center gap-2">
           <SubLabel letter="a" color="bg-violet-500/30 text-violet-300 border border-violet-400/40" />
           <div className="flex h-[160px] w-full items-center justify-center">
-          <svg width="220" height="60" viewBox="0 0 220 60" className="w-full max-w-[220px] h-auto rounded landscape:max-w-[160px]">
+          <svg width="160" height="160" viewBox="0 0 160 160" className="h-[160px] w-[160px] rounded">
             <defs>
-              <clipPath id="rect-clip-0"><rect x={0} y={0} width={44} height={60} /></clipPath>
-              <clipPath id="rect-clip-1"><rect x={44} y={0} width={44} height={60} /></clipPath>
+              <clipPath id="rect-clip-0"><rect x={0} y={0} width={32} height={160} /></clipPath>
+              <clipPath id="rect-clip-1"><rect x={32} y={0} width={32} height={160} /></clipPath>
             </defs>
             {[0, 1, 2, 3, 4].map((i) => (
-              <rect key={i} x={i * 44} y={0} width={44} height={60}
+              <rect key={i} x={i * 32} y={0} width={32} height={160}
                 fill={i < 2 ? "#a78bfa" : "transparent"}
                 fillOpacity={i < 2 ? 0.35 : 0}
                 stroke="#a78bfa" strokeWidth={1.5} />
@@ -106,8 +106,8 @@ const SoalSatu = () => {
               <g key={i} clipPath={`url(#rect-clip-${i})`}>
                 {Array.from({ length: 12 }, (_, j) => (
                   <line key={j}
-                    x1={i * 44 + j * 7 - 10} y1={0}
-                    x2={i * 44 + j * 7} y2={60}
+                    x1={i * 32 + j * 5 - 8} y1={0}
+                    x2={i * 32 + j * 5} y2={160}
                     stroke="#a78bfa" strokeWidth={0.9} strokeOpacity={0.5} />
                 ))}
               </g>
@@ -116,10 +116,10 @@ const SoalSatu = () => {
           </div>
         </div>
         {/* Circle */}
-        <div className="flex flex-col items-center gap-2 landscape:w-[160px] landscape:h-[160px]">
+        <div className="flex w-[160px] h-[160px] flex-col items-center gap-2">
           <SubLabel letter="b" color="bg-violet-500/30 text-violet-300 border border-violet-400/40" />
           <div className="flex h-[160px] w-full items-center justify-center">
-          <svg width="110" height="110" viewBox="0 0 120 120" className="w-[110px] h-[110px] landscape:max-w-[110px] landscape:max-h-[110px]">
+          <svg width="160" height="160" viewBox="0 0 120 120" className="w-[160px] h-[160px]">
             <circle cx={cx} cy={cy} r={r} fill="transparent" stroke="#a78bfa" strokeWidth={1.5} />
             {[0,1,2,3,4,5,6,7].map((i) => (
               <path key={i} d={slicePath(i)}
@@ -144,14 +144,14 @@ const SoalSatu = () => {
           </div>
         </div>
         {/* Triangle partition */}
-        <div className="flex flex-col items-center gap-2 landscape:w-[160px] landscape:h-[160px]">
+        <div className="flex w-[160px] h-[160px] flex-col items-center gap-2">
           <SubLabel letter="c" color="bg-violet-500/30 text-violet-300 border border-violet-400/40" />
           <div className="flex h-[160px] w-full items-center justify-center">
             <FractionDiagram1C />
           </div>
         </div>
         {/* Square partition */}
-        <div className="flex flex-col items-center gap-2 landscape:w-[160px] landscape:h-[160px]">
+        <div className="flex w-[160px] h-[160px] flex-col items-center gap-2">
           <SubLabel letter="d" color="bg-violet-500/30 text-violet-300 border border-violet-400/40" />
           <div className="flex h-[160px] w-full items-center justify-center">
             <FractionDiagram1D />
