@@ -4627,3 +4627,99 @@ html.light-mode .bg-slate-900\/90 .bg-yellow-500\/10 {
 .light-mode .rational-fractions-practice-route [class*="to-blue-900/"] {
   --tw-gradient-to: rgba(219, 234, 254, 0.88) var(--tw-gradient-to-position) !important;
 }
+
+/* ── Aljabar practice — pastel content cards for light themes ──
+   Keep the original space palette for dark and ocean themes. */
+.light-mode .algebra-practice-light-route [class*="from-emerald-900/"] {
+  --tw-gradient-from: rgba(209, 250, 229, 0.94) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="from-teal-900/"] {
+  --tw-gradient-from: rgba(204, 251, 241, 0.94) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="from-cyan-900/"] {
+  --tw-gradient-from: rgba(207, 250, 254, 0.94) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="from-sky-900/"] {
+  --tw-gradient-from: rgba(224, 242, 254, 0.94) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="from-violet-900/"],
+.light-mode .algebra-practice-light-route [class*="from-purple-900/"] {
+  --tw-gradient-from: rgba(237, 233, 254, 0.94) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="from-indigo-900/"] {
+  --tw-gradient-from: rgba(224, 231, 255, 0.94) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="from-amber-900/"],
+.light-mode .algebra-practice-light-route [class*="from-yellow-900/"] {
+  --tw-gradient-from: rgba(254, 249, 195, 0.94) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="from-orange-900/"] {
+  --tw-gradient-from: rgba(255, 237, 213, 0.94) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="from-rose-900/"],
+.light-mode .algebra-practice-light-route [class*="from-pink-900/"] {
+  --tw-gradient-from: rgba(255, 228, 230, 0.94) var(--tw-gradient-from-position) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="to-teal-900/"] {
+  --tw-gradient-to: rgba(204, 251, 241, 0.88) var(--tw-gradient-to-position) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="to-cyan-900/"],
+.light-mode .algebra-practice-light-route [class*="to-sky-900/"] {
+  --tw-gradient-to: rgba(224, 242, 254, 0.88) var(--tw-gradient-to-position) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="to-purple-900/"],
+.light-mode .algebra-practice-light-route [class*="to-violet-900/"] {
+  --tw-gradient-to: rgba(243, 232, 255, 0.88) var(--tw-gradient-to-position) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="to-yellow-900/"],
+.light-mode .algebra-practice-light-route [class*="to-amber-900/"] {
+  --tw-gradient-to: rgba(254, 243, 199, 0.88) var(--tw-gradient-to-position) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="to-pink-900/"] {
+  --tw-gradient-to: rgba(252, 231, 243, 0.88) var(--tw-gradient-to-position) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="bg-emerald-500/5"] {
+  background-color: rgba(236, 253, 245, 0.92) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="bg-teal-500/5"] {
+  background-color: rgba(240, 253, 250, 0.92) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="bg-cyan-500/5"] {
+  background-color: rgba(236, 254, 255, 0.92) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="bg-violet-500/5"] {
+  background-color: rgba(245, 243, 255, 0.92) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="bg-indigo-500/5"] {
+  background-color: rgba(238, 242, 255, 0.92) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="bg-amber-500/5"] {
+  background-color: rgba(255, 251, 235, 0.92) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="bg-orange-500/5"] {
+  background-color: rgba(255, 247, 237, 0.92) !important;
+}
+
+.light-mode .algebra-practice-light-route [class*="bg-rose-500/5"] {
+  background-color: rgba(255, 241, 242, 0.92) !important;
+}

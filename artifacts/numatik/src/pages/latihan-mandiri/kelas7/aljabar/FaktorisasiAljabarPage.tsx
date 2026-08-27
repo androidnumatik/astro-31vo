@@ -371,7 +371,7 @@ const FaktorisasiAljabarPage = () => {
   ];
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center gradient-space overflow-hidden">
+    <div className="algebra-practice-light-route relative min-h-screen flex flex-col items-center gradient-space overflow-hidden">
       <Starfield />
       <PageNavigation />
 
