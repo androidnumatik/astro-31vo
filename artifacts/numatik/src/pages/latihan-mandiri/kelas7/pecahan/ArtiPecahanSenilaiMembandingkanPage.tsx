@@ -86,9 +86,9 @@ const SoalSatu = () => {
       <p className="font-body text-sm text-white/90 leading-relaxed">
         {t('practice.pecahan.artiSenilai.q1.instruction')}
       </p>
-        <div className="grid grid-cols-1 landscape:grid-cols-4 gap-6 items-start justify-items-center pt-1">
+      <div className="grid grid-cols-1 landscape:grid-cols-4 gap-6 items-start justify-items-center pt-1">
         {/* Rectangle */}
-        <div className="flex w-[160px] h-[160px] flex-col items-center gap-2">
+        <div className="flex w-[160px] h-[188px] flex-col items-center gap-2">
           <SubLabel letter="a" color="bg-violet-500/30 text-violet-300 border border-violet-400/40" />
           <div className="flex h-[160px] w-full items-center justify-center">
           <svg width="160" height="160" viewBox="0 0 160 160" className="h-[160px] w-[160px] rounded">
@@ -116,7 +116,7 @@ const SoalSatu = () => {
           </div>
         </div>
         {/* Circle */}
-        <div className="flex w-[160px] h-[160px] flex-col items-center gap-2">
+        <div className="flex w-[160px] h-[188px] flex-col items-center gap-2">
           <SubLabel letter="b" color="bg-violet-500/30 text-violet-300 border border-violet-400/40" />
           <div className="flex h-[160px] w-full items-center justify-center">
           <svg width="160" height="160" viewBox="0 0 120 120" className="w-[160px] h-[160px]">
@@ -144,14 +144,14 @@ const SoalSatu = () => {
           </div>
         </div>
         {/* Triangle partition */}
-        <div className="flex w-[160px] h-[160px] flex-col items-center gap-2">
+        <div className="flex w-[160px] h-[188px] flex-col items-center gap-2">
           <SubLabel letter="c" color="bg-violet-500/30 text-violet-300 border border-violet-400/40" />
           <div className="flex h-[160px] w-full items-center justify-center">
             <FractionDiagram1C />
           </div>
         </div>
         {/* Square partition */}
-        <div className="flex w-[160px] h-[160px] flex-col items-center gap-2">
+        <div className="flex w-[160px] h-[188px] flex-col items-center gap-2">
           <SubLabel letter="d" color="bg-violet-500/30 text-violet-300 border border-violet-400/40" />
           <div className="flex h-[160px] w-full items-center justify-center">
             <FractionDiagram1D />
