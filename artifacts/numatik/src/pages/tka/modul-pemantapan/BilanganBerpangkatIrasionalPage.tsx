@@ -338,10 +338,62 @@ const latihanTambahan: LatihanSoal[] = [
   },
 ];
 
+const contohSoal: LatihanSoal[] = [
+  {
+    no: 1,
+    type: "pg",
+    soal: "Sederhanakan $2^3 \\times 2^4$.",
+    options: ["A. $2^7$", "B. $2^{12}$", "C. $4^7$", "D. $4^{12}$"],
+    jawaban: "A",
+    pembahasan: "Gunakan sifat perkalian bilangan berpangkat dengan basis yang sama.\n$2^3 \\times 2^4 = 2^{3+4} = 2^7 = 128$."
+  },
+  {
+    no: 2,
+    type: "pg",
+    soal: "Hasil dari $3^{-2} + 2^{-2}$ adalah ...",
+    options: ["A. $\\frac{5}{36}$", "B. $\\frac{13}{36}$", "C. $\\frac{1}{13}$", "D. $\\frac{36}{13}$"],
+    jawaban: "B",
+    pembahasan: "Ubah pangkat negatif menjadi kebalikan pangkat positif.\n$3^{-2} + 2^{-2} = \\frac{1}{9} + \\frac{1}{4} = \\frac{4}{36} + \\frac{9}{36} = \\frac{13}{36}$."
+  },
+  {
+    no: 3,
+    type: "pg",
+    soal: "Nilai dari $16^{\\frac{3}{4}}$ adalah ...",
+    options: ["A. 4", "B. 6", "C. 8", "D. 12"],
+    jawaban: "C",
+    pembahasan: "Gunakan $a^{m/n} = (\\sqrt[n]{a})^m$.\n$16^{\\frac{3}{4}} = (\\sqrt[4]{16})^3 = 2^3 = 8$."
+  },
+  {
+    no: 4,
+    type: "pg",
+    soal: "Sederhanakan $\\sqrt{50} + \\sqrt{8}$.",
+    options: ["A. $7\\sqrt{2}$", "B. $9\\sqrt{2}$", "C. $7\\sqrt{5}$", "D. $\\sqrt{58}$"],
+    jawaban: "A",
+    pembahasan: "Uraikan setiap bilangan di dalam akar menjadi faktor kuadrat sempurna.\n$\\sqrt{50} + \\sqrt{8} = \\sqrt{25 \\times 2} + \\sqrt{4 \\times 2} = 5\\sqrt{2} + 2\\sqrt{2} = 7\\sqrt{2}$."
+  },
+  {
+    no: 5,
+    type: "pg",
+    soal: "Bentuk sederhana dari $\\frac{5}{\\sqrt{3}}$ adalah ...",
+    options: ["A. $\\frac{5\\sqrt{3}}{3}$", "B. $\\frac{5}{3\\sqrt{3}}$", "C. $\\frac{\\sqrt{3}}{5}$", "D. $5\\sqrt{3}$"],
+    jawaban: "A",
+    pembahasan: "Rasionalkan penyebut dengan mengalikan pembilang dan penyebut dengan $\\sqrt{3}$.\n$\\frac{5}{\\sqrt{3}} \\times \\frac{\\sqrt{3}}{\\sqrt{3}} = \\frac{5\\sqrt{3}}{3}$."
+  },
+  {
+    no: 6,
+    type: "pg",
+    soal: "Bentuk notasi ilmiah dari $0{,}000035$ adalah ...",
+    options: ["A. $3{,}5 \\times 10^{-5}$", "B. $35 \\times 10^{-5}$", "C. $3{,}5 \\times 10^5$", "D. $0{,}35 \\times 10^{-4}$"],
+    jawaban: "A",
+    pembahasan: "Geser tanda koma 5 tempat ke kanan hingga koefisien berada antara 1 dan 10.\n$0{,}000035 = 3{,}5 \\times 10^{-5}$."
+  },
+];
+
 const BilanganBerpangkatIrasionalPage = () => (
   <TKAPemantapanLayout
     title="BILANGAN BERPANGKAT DAN IRASIONAL"
     materiSections={materiSections}
+    contohSoal={contohSoal}
     latihanDasar={[...latihanDasar, ...latihanTambahan]
       .filter((soal) => ![4, 5, 7, 8].includes(soal.no))
       .map((soal, index) => ({ ...soal, no: index + 1 }))}
