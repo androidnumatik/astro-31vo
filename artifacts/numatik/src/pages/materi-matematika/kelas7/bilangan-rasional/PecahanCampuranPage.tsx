@@ -45,17 +45,6 @@ const translations = {
     ex2s2: "Verifikasi dengan mengubah kembali ke pecahan biasa",
     ex2ans: <>Jadi, <InlineMath math="\frac{17}{5} = 3\frac{2}{5}" /> (terverifikasi!)</>,
 
-    ex3Q: <>Dua per lima dari penduduk kota A adalah laki-laki. Jika total penduduk kota tersebut adalah 8 juta jiwa, berapa banyak penduduk laki-laki di kota tersebut?</>,
-    ex3s1: "Identifikasi pecahan dan nilai total",
-    ex3s1a: <>Pecahan laki-laki = <InlineMath math="\frac{2}{5}" /></>,
-    ex3s1b: "Total penduduk = 8.000.000 jiwa",
-    ex3s2: "Hitung banyak penduduk laki-laki",
-    ex3katex1: "\\text{Penduduk laki-laki} = \\frac{2}{5} \\times 8.000.000",
-    ex3katex2: "= \\frac{2 \\times 8.000.000}{5}",
-    ex3katex3: "= \\frac{16.000.000}{5}",
-    ex3katex4: "= 3.200.000 \\text{ jiwa}",
-    ex3ans: "Jadi, penduduk laki-laki di kota A adalah 3.200.000 jiwa (3,2 juta jiwa).",
-
     sec2Title: "Konversi Pecahan Campuran dan Pecahan Biasa",
     sec2Summary: "Pecahan campuran dan pecahan biasa dapat saling dikonversi. Kemampuan ini sangat berguna saat melakukan operasi hitung seperti penjumlahan, pengurangan, perkalian, dan pembagian pecahan.",
     sec2ImpTitle: "Pecahan Biasa ke Campuran:",
@@ -76,37 +65,22 @@ const translations = {
     ex5s3: "Sederhanakan pecahan (FPB 6 dan 12 adalah 6)",
     ex5ans: <>Jadi, <InlineMath math="\frac{126}{12} = 10\frac{1}{2}" /></>,
 
-    ex6Q: <>Emas 18 karat mengandung <InlineMath math="\frac{18}{24}" /> emas murni. Jika kamu memiliki 48 gram emas 18 karat, berapa gram emas murni yang terkandung di dalamnya?</>,
-    ex6s1: "Sederhanakan pecahan kadar emas",
-    ex6s2: "Hitung kandungan emas murni",
-    ex6katex1: "\\text{Emas murni} = \\frac{3}{4} \\times 48 \\text{ gram}",
-    ex6katex2: "= \\frac{3 \\times 48}{4} = \\frac{144}{4} = 36 \\text{ gram}",
-    ex6ans: "Jadi, dalam 48 gram emas 18 karat terkandung 36 gram emas murni.",
-
     sec3Title: "Persen",
     sec3Summary: <><strong className="text-primary">Persen (%)</strong> adalah cara menyatakan pecahan dengan penyebut 100. Kata "persen" berasal dari bahasa Latin "per centum" yang berarti "per seratus". Persen sangat umum digunakan dalam kehidupan sehari-hari seperti diskon, pajak, dan statistik.</>,
     sec3Example: <>Contoh: <InlineMath math="25\% = \frac{25}{100} = \frac{1}{4}" /></>,
-    sec3FormulaTitle: "Rumus Mengubah Pecahan ke Persen:",
-    sec3FormulaDesc: "Artinya, kalikan pecahan dengan 100 lalu tambahkan simbol %.",
-    sec3TableTitle: "Hubungan Persen - Pecahan - Desimal:",
-    sec3ColPct: "Persen",
-    sec3ColFrac: "Pecahan",
-    sec3ColDec: "Desimal",
-    sec3DecRow1: "0,25",
-    sec3DecRow2: "0,5",
-    sec3DecRow3: "0,75",
-    sec3DecRow4: "1",
-    sec3Tip: <><strong>Tips Praktis:</strong> Untuk menghitung persen dari suatu nilai, kalikan nilai tersebut dengan persen dalam bentuk desimal. Contoh: 20% dari 150 = 0,20 x 150 = 30.</>,
+    sec3FormulaTitle: "Cara Mengubah Pecahan ke Persen:",
+    sec3FormulaDesc: "Cara 1 — ubah pecahan menjadi pecahan senilai dengan penyebut 100. Pilih k sehingga b × k = 100, lalu tulis hasilnya sebagai persen. Cara 2 — kalikan pecahan dengan 100% lalu sederhanakan hasilnya.",
 
     ex7Q: <>Nyatakan <InlineMath math="\frac{7}{20}" /> dalam bentuk persen!</>,
-    ex7s1: "Kalikan pecahan dengan 100%",
-    ex7s2: "Hitung hasilnya",
+    ex7s1: "Cara 1 — ubah menjadi pecahan senilai dengan penyebut 100",
+    ex7s2: "Cara 2 — gunakan rumus dengan mengalikan 100%",
     ex7ans: <>Jadi, <InlineMath math="\frac{7}{20} = 35\%" /></>,
 
     ex8Q: <>Nyatakan <InlineMath math="\frac{2}{15}" /> dalam bentuk persen!</>,
     ex8s1: "Kalikan pecahan dengan 100%",
-    ex8s2: "Sederhanakan (bagi dengan 5)",
-    ex8s3: "Ubah ke pecahan campuran",
+    ex8s2: "Sederhanakan hasilnya",
+    ex8s3: "Mengapa tidak menggunakan pecahan senilai berpenyebut 100?",
+    ex8Why: "Karena 15 bukan faktor dari 100, 100 ÷ 15 bukan bilangan bulat. Jadi, pecahan 2/15 tidak dapat diubah menjadi pecahan senilai dengan penyebut tepat 100.",
     ex8ans: <>Jadi, <InlineMath math="\frac{2}{15} = 13\frac{1}{3}\%" /></>,
 
     ex9Q: <>Dalam sebuah kelas terdapat 18 siswa putra dan 22 siswa putri. Pada suatu hari, 3 orang tidak masuk karena sakit. Berapa persen siswa yang tidak masuk sekolah?</>,
@@ -182,17 +156,6 @@ const translations = {
     ex2s2: "Verify by converting back to an improper fraction",
     ex2ans: <>So, <InlineMath math="\frac{17}{5} = 3\frac{2}{5}" /> (verified!)</>,
 
-    ex3Q: <>Two-fifths of the population of City A are male. If the total population is 8 million residents, how many male residents are there?</>,
-    ex3s1: "Identify the fraction and total value",
-    ex3s1a: <>Male fraction = <InlineMath math="\frac{2}{5}" /></>,
-    ex3s1b: "Total population = 8,000,000 residents",
-    ex3s2: "Calculate the number of male residents",
-    ex3katex1: "\\text{Male residents} = \\frac{2}{5} \\times 8{,}000{,}000",
-    ex3katex2: "= \\frac{2 \\times 8{,}000{,}000}{5}",
-    ex3katex3: "= \\frac{16{,}000{,}000}{5}",
-    ex3katex4: "= 3{,}200{,}000 \\text{ residents}",
-    ex3ans: "So, there are 3,200,000 male residents in City A (3.2 million people).",
-
     sec2Title: "Converting Mixed Numbers and Improper Fractions",
     sec2Summary: "Mixed numbers and improper fractions can be converted into each other. This skill is very useful when performing operations such as addition, subtraction, multiplication, and division of fractions.",
     sec2ImpTitle: "Improper Fraction to Mixed Number:",
@@ -213,37 +176,22 @@ const translations = {
     ex5s3: "Simplify the fraction (GCD of 6 and 12 is 6)",
     ex5ans: <>So, <InlineMath math="\frac{126}{12} = 10\frac{1}{2}" /></>,
 
-    ex6Q: <>18-karat gold contains <InlineMath math="\frac{18}{24}" /> pure gold. If you have 48 grams of 18-karat gold, how many grams of pure gold does it contain?</>,
-    ex6s1: "Simplify the gold purity fraction",
-    ex6s2: "Calculate the pure gold content",
-    ex6katex1: "\\text{Pure gold} = \\frac{3}{4} \\times 48 \\text{ g}",
-    ex6katex2: "= \\frac{3 \\times 48}{4} = \\frac{144}{4} = 36 \\text{ g}",
-    ex6ans: "So, 48 grams of 18-karat gold contains 36 grams of pure gold.",
-
     sec3Title: "Percentages",
     sec3Summary: <><strong className="text-primary">Percent (%)</strong> is a way to express a fraction with a denominator of 100. The word "percent" comes from the Latin "per centum" meaning "per hundred". Percentages are widely used in everyday life — discounts, tax, and statistics.</>,
     sec3Example: <>Example: <InlineMath math="25\% = \frac{25}{100} = \frac{1}{4}" /></>,
-    sec3FormulaTitle: "Formula for Converting a Fraction to a Percentage:",
-    sec3FormulaDesc: "Multiply the fraction by 100 and add the % symbol.",
-    sec3TableTitle: "Relationship between Percent – Fraction – Decimal:",
-    sec3ColPct: "Percent",
-    sec3ColFrac: "Fraction",
-    sec3ColDec: "Decimal",
-    sec3DecRow1: "0.25",
-    sec3DecRow2: "0.5",
-    sec3DecRow3: "0.75",
-    sec3DecRow4: "1",
-    sec3Tip: <><strong>Practical Tip:</strong> To find a percentage of a value, multiply that value by the percentage expressed as a decimal. Example: 20% of 150 = 0.20 × 150 = 30.</>,
+    sec3FormulaTitle: "How to Convert a Fraction to a Percentage:",
+    sec3FormulaDesc: "Method 1 — rewrite the fraction as an equivalent fraction with denominator 100. Choose k so that b × k = 100, then write the result as a percentage. Method 2 — multiply the fraction by 100% and simplify the result.",
 
     ex7Q: <>Express <InlineMath math="\frac{7}{20}" /> as a percentage!</>,
-    ex7s1: "Multiply the fraction by 100%",
-    ex7s2: "Calculate the result",
+    ex7s1: "Method 1 — rewrite as an equivalent fraction with denominator 100",
+    ex7s2: "Method 2 — use the formula by multiplying by 100%",
     ex7ans: <>So, <InlineMath math="\frac{7}{20} = 35\%" /></>,
 
     ex8Q: <>Express <InlineMath math="\frac{2}{15}" /> as a percentage!</>,
     ex8s1: "Multiply the fraction by 100%",
-    ex8s2: "Simplify (divide by 5)",
-    ex8s3: "Convert to a mixed number",
+    ex8s2: "Simplify the result",
+    ex8s3: "Why not use an equivalent fraction with denominator 100?",
+    ex8Why: "Because 15 is not a factor of 100, 100 ÷ 15 is not a whole number. Therefore, 2/15 cannot be rewritten as an equivalent fraction with exactly 100 as its denominator.",
     ex8ans: <>So, <InlineMath math="\frac{2}{15} = 13\frac{1}{3}\%" /></>,
 
     ex9Q: <>A class has 18 male students and 22 female students. One day, 3 students were absent due to illness. What percentage of students were absent?</>,
@@ -319,17 +267,6 @@ const translations = {
     ex2s2: "仮分数に戻して確認する",
     ex2ans: <>よって、<InlineMath math="\frac{17}{5} = 3\frac{2}{5}" />（確認済み！）</>,
 
-    ex3Q: <>都市Aの人口の5分の2は男性です。都市の総人口が800万人のとき、男性住民は何人ですか？</>,
-    ex3s1: "分数と合計値を確認する",
-    ex3s1a: <>男性の割合 = <InlineMath math="\frac{2}{5}" /></>,
-    ex3s1b: "総人口 = 8,000,000人",
-    ex3s2: "男性住民数を計算する",
-    ex3katex1: "\\text{男性住民数} = \\frac{2}{5} \\times 8{,}000{,}000",
-    ex3katex2: "= \\frac{2 \\times 8{,}000{,}000}{5}",
-    ex3katex3: "= \\frac{16{,}000{,}000}{5}",
-    ex3katex4: "= 3{,}200{,}000 \\text{ 人}",
-    ex3ans: "よって、都市Aの男性住民は3,200,000人（320万人）です。",
-
     sec2Title: "帯分数と仮分数の変換",
     sec2Summary: "帯分数と仮分数は相互に変換できます。この能力は分数の足し算・引き算・掛け算・割り算を行う際に非常に役立ちます。",
     sec2ImpTitle: "仮分数 → 帯分数：",
@@ -350,37 +287,22 @@ const translations = {
     ex5s3: "分数を約分する（6と12の最大公約数は6）",
     ex5ans: <>よって、<InlineMath math="\frac{126}{12} = 10\frac{1}{2}" /></>,
 
-    ex6Q: <>18カラットの金には <InlineMath math="\frac{18}{24}" /> の純金が含まれています。18カラットの金を48グラム持っている場合、純金は何グラム含まれていますか？</>,
-    ex6s1: "金の純度を表す分数を約分する",
-    ex6s2: "純金の量を計算する",
-    ex6katex1: "\\text{純金} = \\frac{3}{4} \\times 48 \\text{ g}",
-    ex6katex2: "= \\frac{3 \\times 48}{4} = \\frac{144}{4} = 36 \\text{ g}",
-    ex6ans: "よって、18カラットの金48グラムには純金が36グラム含まれています。",
-
     sec3Title: "パーセント",
     sec3Summary: <><strong className="text-primary">パーセント（%）</strong>とは、分母を100とした分数の表し方です。"percent"はラテン語の"per centum"（100あたり）に由来します。パーセントは割引、税金、統計など日常生活で広く使われています。</>,
     sec3Example: <>例：<InlineMath math="25\% = \frac{25}{100} = \frac{1}{4}" /></>,
-    sec3FormulaTitle: "分数をパーセントに変換する公式：",
-    sec3FormulaDesc: "分数に100を掛けて、%の記号をつけます。",
-    sec3TableTitle: "パーセント・分数・小数の関係：",
-    sec3ColPct: "パーセント",
-    sec3ColFrac: "分数",
-    sec3ColDec: "小数",
-    sec3DecRow1: "0.25",
-    sec3DecRow2: "0.5",
-    sec3DecRow3: "0.75",
-    sec3DecRow4: "1",
-    sec3Tip: <><strong>実践的なヒント：</strong>ある値のパーセントを求めるには、その値にパーセントを小数で表したものを掛けます。例：150の20% = 0.20 × 150 = 30。</>,
+    sec3FormulaTitle: "分数をパーセントに変換する方法：",
+    sec3FormulaDesc: "方法1 — 分母が100になるように同値分数に直します。b × k = 100となるkを選び、結果をパーセントで表します。方法2 — 分数に100%を掛けて計算します。",
 
     ex7Q: <><InlineMath math="\frac{7}{20}" /> をパーセントで表せ！</>,
-    ex7s1: "分数に100%を掛ける",
-    ex7s2: "結果を計算する",
+    ex7s1: "方法1 — 分母が100の同値分数に直す",
+    ex7s2: "方法2 — 公式を使って100%を掛ける",
     ex7ans: <>よって、<InlineMath math="\frac{7}{20} = 35\%" /></>,
 
     ex8Q: <><InlineMath math="\frac{2}{15}" /> をパーセントで表せ！</>,
     ex8s1: "分数に100%を掛ける",
-    ex8s2: "簡略化する（5で割る）",
-    ex8s3: "帯分数に変換する",
+    ex8s2: "結果を簡単にする",
+    ex8s3: "なぜ分母が100の同値分数を使わないのか？",
+    ex8Why: "15は100の約数ではなく、100 ÷ 15は整数になりません。そのため、2/15を分母がちょうど100の同値分数に直すことはできません。",
     ex8ans: <>よって、<InlineMath math="\frac{2}{15} = 13\frac{1}{3}\%" /></>,
 
     ex9Q: <>あるクラスに男子18人と女子22人がいます。ある日、3人が病気で欠席しました。欠席した生徒の割合は何パーセントですか？</>,
@@ -562,32 +484,6 @@ const PecahanCampuranPage = () => {
                     </div>
                   </div>
 
-                  {/* Example 3 - Hard */}
-                  <div className="border-l-4 border-red-500 pl-4 space-y-3">
-                    <div className="flex items-center gap-2">
-                      <span className="bg-red-500/20 text-red-400 text-xs font-bold px-2 py-1 rounded">{t.badgeHard}</span>
-                      <span className="font-body font-semibold text-white">{t.ex(3)}</span>
-                    </div>
-                    <div className="bg-slate-800/50 rounded-lg p-4">
-                      <p className="font-body text-sm text-white">{t.ex3Q}</p>
-                    </div>
-                    <div className="bg-red-500/5 border border-red-500/20 rounded-lg p-4">
-                      <p className="font-body text-xs font-semibold text-red-400 mb-3">{t.discuss}</p>
-                      <div className="space-y-2 font-body text-sm text-white/80">
-                        <p><strong>{t.step(1)}</strong> {t.ex3s1}</p>
-                        <p className="pl-4">{t.ex3s1a}</p>
-                        <p className="pl-4">{t.ex3s1b}</p>
-                        <p><strong>{t.step(2)}</strong> {t.ex3s2}</p>
-                        <div className="bg-slate-900/50 rounded p-3">
-                          <BlockMath math={t.ex3katex1} />
-                          <BlockMath math={t.ex3katex2} />
-                          <BlockMath math={t.ex3katex3} />
-                          <BlockMath math={t.ex3katex4} />
-                        </div>
-                        <p className="text-primary font-semibold">{t.ex3ans}</p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             )}
@@ -691,31 +587,6 @@ const PecahanCampuranPage = () => {
                     </div>
                   </div>
 
-                  {/* Example 6 - Hard */}
-                  <div className="border-l-4 border-red-500 pl-4 space-y-3">
-                    <div className="flex items-center gap-2">
-                      <span className="bg-red-500/20 text-red-400 text-xs font-bold px-2 py-1 rounded">{t.badgeHard}</span>
-                      <span className="font-body font-semibold text-white">{t.ex(3)}</span>
-                    </div>
-                    <div className="bg-slate-800/50 rounded-lg p-4">
-                      <p className="font-body text-sm text-white">{t.ex6Q}</p>
-                    </div>
-                    <div className="bg-red-500/5 border border-red-500/20 rounded-lg p-4">
-                      <p className="font-body text-xs font-semibold text-red-400 mb-3">{t.discuss}</p>
-                      <div className="space-y-2 font-body text-sm text-white/80">
-                        <p><strong>{t.step(1)}</strong> {t.ex6s1}</p>
-                        <div className="bg-slate-900/50 rounded p-3">
-                          <BlockMath math="\frac{18}{24} = \frac{18 \div 6}{24 \div 6} = \frac{3}{4}" />
-                        </div>
-                        <p><strong>{t.step(2)}</strong> {t.ex6s2}</p>
-                        <div className="bg-slate-900/50 rounded p-3">
-                          <BlockMath math={t.ex6katex1} />
-                          <BlockMath math={t.ex6katex2} />
-                        </div>
-                        <p className="text-primary font-semibold">{t.ex6ans}</p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             )}
@@ -749,51 +620,21 @@ const PecahanCampuranPage = () => {
 
                 <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-4">
                   <p className="font-body text-sm font-semibold text-purple-300 mb-3">{t.sec3FormulaTitle}</p>
-                  <div className="bg-slate-900/50 rounded p-4 text-center">
-                    <BlockMath math="\frac{a}{b} = \frac{a}{b} \times 100\%" />
+                  <div className="space-y-3 text-white/70">
+                    <div>
+                      <p className="font-body text-sm mb-2">{language === "id" ? "Cara 1 — Pecahan senilai dengan penyebut 100" : language === "en" ? "Method 1 — Equivalent fraction with denominator 100" : "方法1 — 分母が100の同値分数"}</p>
+                      <div className="bg-slate-900/50 rounded p-4 text-center">
+                        <BlockMath math="\frac{a}{b} = \frac{a \times k}{b \times k} = \frac{a \times k}{100}\quad (b \times k = 100)" />
+                      </div>
+                    </div>
+                    <div>
+                      <p className="font-body text-sm mb-2">{language === "id" ? "Cara 2 — Kalikan dengan 100%" : language === "en" ? "Method 2 — Multiply by 100%" : "方法2 — 100%を掛ける"}</p>
+                      <div className="bg-slate-900/50 rounded p-4 text-center">
+                        <BlockMath math="\frac{a}{b} = \frac{a}{b} \times 100\%" />
+                      </div>
+                    </div>
                   </div>
                   <p className="font-body text-sm text-white/70 mt-3 leading-relaxed">{t.sec3FormulaDesc}</p>
-                </div>
-
-                <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-4">
-                  <p className="font-body text-sm font-semibold text-cyan-300 mb-2">{t.sec3TableTitle}</p>
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-sm font-body">
-                      <thead>
-                        <tr className="text-white/60 border-b border-border">
-                          <th className="py-2 px-3 text-center">{t.sec3ColPct}</th>
-                          <th className="py-2 px-3 text-center">{t.sec3ColFrac}</th>
-                          <th className="py-2 px-3 text-center">{t.sec3ColDec}</th>
-                        </tr>
-                      </thead>
-                      <tbody className="text-white/80">
-                        <tr className="border-b border-border/50">
-                          <td className="py-2 px-3 text-center text-primary">25%</td>
-                          <td className="py-2 px-3 text-center"><InlineMath math="\frac{1}{4}" /></td>
-                          <td className="py-2 px-3 text-center">{t.sec3DecRow1}</td>
-                        </tr>
-                        <tr className="border-b border-border/50">
-                          <td className="py-2 px-3 text-center text-primary">50%</td>
-                          <td className="py-2 px-3 text-center"><InlineMath math="\frac{1}{2}" /></td>
-                          <td className="py-2 px-3 text-center">{t.sec3DecRow2}</td>
-                        </tr>
-                        <tr className="border-b border-border/50">
-                          <td className="py-2 px-3 text-center text-primary">75%</td>
-                          <td className="py-2 px-3 text-center"><InlineMath math="\frac{3}{4}" /></td>
-                          <td className="py-2 px-3 text-center">{t.sec3DecRow3}</td>
-                        </tr>
-                        <tr>
-                          <td className="py-2 px-3 text-center text-primary">100%</td>
-                          <td className="py-2 px-3 text-center"><InlineMath math="\frac{4}{4} = 1" /></td>
-                          <td className="py-2 px-3 text-center">{t.sec3DecRow4}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
-                  <p className="font-body text-sm text-yellow-200 leading-relaxed">{t.sec3Tip}</p>
                 </div>
 
                 {/* Examples Section 3 */}
@@ -816,11 +657,11 @@ const PecahanCampuranPage = () => {
                       <div className="space-y-2 font-body text-sm text-white/80">
                         <p><strong>{t.step(1)}</strong> {t.ex7s1}</p>
                         <div className="bg-slate-900/50 rounded p-3">
-                          <BlockMath math="\frac{7}{20} \times 100\% = \frac{7 \times 100}{20}\%" />
+                          <BlockMath math="\frac{7}{20} = \frac{7 \times 5}{20 \times 5} = \frac{35}{100} = 35\%" />
                         </div>
                         <p><strong>{t.step(2)}</strong> {t.ex7s2}</p>
                         <div className="bg-slate-900/50 rounded p-3">
-                          <BlockMath math="= \frac{700}{20}\% = 35\%" />
+                          <BlockMath math="\frac{7}{20} \times 100\% = \frac{7 \times 100}{20}\% = 35\%" />
                         </div>
                         <p className="text-primary font-semibold">{t.ex7ans}</p>
                       </div>
@@ -851,6 +692,7 @@ const PecahanCampuranPage = () => {
                         <div className="bg-slate-900/50 rounded p-3">
                           <BlockMath math="= 13\frac{1}{3}\%" />
                         </div>
+                        <p className="text-white/70">{t.ex8Why}</p>
                         <p className="text-primary font-semibold">{t.ex8ans}</p>
                       </div>
                     </div>
