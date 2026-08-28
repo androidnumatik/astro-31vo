@@ -45,6 +45,18 @@ const translations = {
     ex2s2: "Verifikasi dengan mengubah kembali ke pecahan biasa",
     ex2ans: <>Jadi, <InlineMath math="\frac{17}{5} = 3\frac{2}{5}" /> (terverifikasi!)</>,
 
+    ex3NegQ: <>Nyatakan <InlineMath math="-\frac{8}{3}" /> sebagai pecahan campuran!</>,
+    ex3Negs1: "Pisahkan tanda negatif, lalu bagi nilai mutlaknya",
+    ex3Negkatex1: "-(8 \\div 3) = -(2 \\text{ sisa } 2)",
+    ex3Negs2: "Tulis dalam bentuk pecahan campuran dengan tanda negatif di depan",
+    ex3Negans: <>Jadi, <InlineMath math="-\frac{8}{3} = -2\frac{2}{3}" /></>,
+
+    ex4NegQ: <>Nyatakan <InlineMath math="-\frac{19}{4}" /> sebagai pecahan campuran!</>,
+    ex4Negs1: "Pisahkan tanda negatif, lalu bagi nilai mutlaknya",
+    ex4Negkatex1: "-(19 \\div 4) = -(4 \\text{ sisa } 3)",
+    ex4Negs2: "Tulis dalam bentuk pecahan campuran dengan tanda negatif di depan",
+    ex4Negans: <>Jadi, <InlineMath math="-\frac{19}{4} = -4\frac{3}{4}" /></>,
+
     sec2Title: "Konversi Pecahan Campuran dan Pecahan Biasa",
     sec2Summary: "Pecahan campuran dan pecahan biasa dapat saling dikonversi. Kemampuan ini sangat berguna saat melakukan operasi hitung seperti penjumlahan, pengurangan, perkalian, dan pembagian pecahan.",
     sec2ImpTitle: "Pecahan Biasa ke Campuran:",
@@ -64,6 +76,20 @@ const translations = {
     ex5s2: "Tulis dalam bentuk pecahan campuran",
     ex5s3: "Sederhanakan pecahan (FPB 6 dan 12 adalah 6)",
     ex5ans: <>Jadi, <InlineMath math="\frac{126}{12} = 10\frac{1}{2}" /></>,
+
+    convEx3Q: <>Nyatakan <InlineMath math="-2\frac{5}{6}" /> sebagai pecahan biasa!</>,
+    convEx3s1: "Perhatikan bahwa tanda negatif berlaku untuk seluruh pecahan campuran",
+    convEx3katex1: "-\\left(2\\frac{5}{6}\\right) = -\\frac{(6 \\times 2) + 5}{6}",
+    convEx3s2: "Hitung pembilang lalu pertahankan tanda negatif",
+    convEx3katex2: "= -\\frac{12 + 5}{6} = -\\frac{17}{6}",
+    convEx3ans: <>Jadi, <InlineMath math="-2\frac{5}{6} = -\frac{17}{6}" /></>,
+
+    convEx4Q: <>Nyatakan <InlineMath math="-4\frac{3}{7}" /> sebagai pecahan biasa!</>,
+    convEx4s1: "Gunakan rumus konversi pada nilai positifnya, lalu pertahankan tanda negatif",
+    convEx4katex1: "-\\left(4\\frac{3}{7}\\right) = -\\frac{(7 \\times 4) + 3}{7}",
+    convEx4s2: "Hitung pembilang baru",
+    convEx4katex2: "= -\\frac{28 + 3}{7} = -\\frac{31}{7}",
+    convEx4ans: <>Jadi, <InlineMath math="-4\frac{3}{7} = -\frac{31}{7}" /></>,
 
     sec3Title: "Persen",
     sec3Summary: <><strong className="text-primary">Persen (%)</strong> adalah cara menyatakan pecahan dengan penyebut 100. Kata "persen" berasal dari bahasa Latin "per centum" yang berarti "per seratus". Persen sangat umum digunakan dalam kehidupan sehari-hari seperti diskon, pajak, dan statistik.</>,
@@ -156,6 +182,18 @@ const translations = {
     ex2s2: "Verify by converting back to an improper fraction",
     ex2ans: <>So, <InlineMath math="\frac{17}{5} = 3\frac{2}{5}" /> (verified!)</>,
 
+    ex3NegQ: <>Express <InlineMath math="-\frac{8}{3}" /> as a mixed number!</>,
+    ex3Negs1: "Separate the negative sign, then divide the absolute value",
+    ex3Negkatex1: "-(8 \\div 3) = -(2 \\text{ remainder } 2)",
+    ex3Negs2: "Write in mixed number form with the negative sign in front",
+    ex3Negans: <>So, <InlineMath math="-\frac{8}{3} = -2\frac{2}{3}" /></>,
+
+    ex4NegQ: <>Express <InlineMath math="-\frac{19}{4}" /> as a mixed number!</>,
+    ex4Negs1: "Separate the negative sign, then divide the absolute value",
+    ex4Negkatex1: "-(19 \\div 4) = -(4 \\text{ remainder } 3)",
+    ex4Negs2: "Write in mixed number form with the negative sign in front",
+    ex4Negans: <>So, <InlineMath math="-\frac{19}{4} = -4\frac{3}{4}" /></>,
+
     sec2Title: "Converting Mixed Numbers and Improper Fractions",
     sec2Summary: "Mixed numbers and improper fractions can be converted into each other. This skill is very useful when performing operations such as addition, subtraction, multiplication, and division of fractions.",
     sec2ImpTitle: "Improper Fraction to Mixed Number:",
@@ -175,6 +213,20 @@ const translations = {
     ex5s2: "Write in mixed number form",
     ex5s3: "Simplify the fraction (GCD of 6 and 12 is 6)",
     ex5ans: <>So, <InlineMath math="\frac{126}{12} = 10\frac{1}{2}" /></>,
+
+    convEx3Q: <>Express <InlineMath math="-2\frac{5}{6}" /> as an improper fraction!</>,
+    convEx3s1: "Note that the negative sign applies to the entire mixed number",
+    convEx3katex1: "-\\left(2\\frac{5}{6}\\right) = -\\frac{(6 \\times 2) + 5}{6}",
+    convEx3s2: "Calculate the numerator while keeping the negative sign",
+    convEx3katex2: "= -\\frac{12 + 5}{6} = -\\frac{17}{6}",
+    convEx3ans: <>So, <InlineMath math="-2\frac{5}{6} = -\frac{17}{6}" /></>,
+
+    convEx4Q: <>Express <InlineMath math="-4\frac{3}{7}" /> as an improper fraction!</>,
+    convEx4s1: "Apply the conversion formula to the positive value, then keep the negative sign",
+    convEx4katex1: "-\\left(4\\frac{3}{7}\\right) = -\\frac{(7 \\times 4) + 3}{7}",
+    convEx4s2: "Calculate the new numerator",
+    convEx4katex2: "= -\\frac{28 + 3}{7} = -\\frac{31}{7}",
+    convEx4ans: <>So, <InlineMath math="-4\frac{3}{7} = -\frac{31}{7}" /></>,
 
     sec3Title: "Percentages",
     sec3Summary: <><strong className="text-primary">Percent (%)</strong> is a way to express a fraction with a denominator of 100. The word "percent" comes from the Latin "per centum" meaning "per hundred". Percentages are widely used in everyday life — discounts, tax, and statistics.</>,
@@ -267,6 +319,18 @@ const translations = {
     ex2s2: "仮分数に戻して確認する",
     ex2ans: <>よって、<InlineMath math="\frac{17}{5} = 3\frac{2}{5}" />（確認済み！）</>,
 
+    ex3NegQ: <><InlineMath math="-\frac{8}{3}" /> を帯分数で表せ！</>,
+    ex3Negs1: "負の符号を分け、絶対値を割る",
+    ex3Negkatex1: "-(8 \\div 3) = -(2 \\text{ 余り } 2)",
+    ex3Negs2: "負の符号を前に置いて帯分数の形で書く",
+    ex3Negans: <>よって、<InlineMath math="-\frac{8}{3} = -2\frac{2}{3}" /></>,
+
+    ex4NegQ: <><InlineMath math="-\frac{19}{4}" /> を帯分数で表せ！</>,
+    ex4Negs1: "負の符号を分け、絶対値を割る",
+    ex4Negkatex1: "-(19 \\div 4) = -(4 \\text{ 余り } 3)",
+    ex4Negs2: "負の符号を前に置いて帯分数の形で書く",
+    ex4Negans: <>よって、<InlineMath math="-\frac{19}{4} = -4\frac{3}{4}" /></>,
+
     sec2Title: "帯分数と仮分数の変換",
     sec2Summary: "帯分数と仮分数は相互に変換できます。この能力は分数の足し算・引き算・掛け算・割り算を行う際に非常に役立ちます。",
     sec2ImpTitle: "仮分数 → 帯分数：",
@@ -286,6 +350,20 @@ const translations = {
     ex5s2: "帯分数の形で書く",
     ex5s3: "分数を約分する（6と12の最大公約数は6）",
     ex5ans: <>よって、<InlineMath math="\frac{126}{12} = 10\frac{1}{2}" /></>,
+
+    convEx3Q: <><InlineMath math="-2\frac{5}{6}" /> を仮分数で表せ！</>,
+    convEx3s1: "負の符号は帯分数全体にかかっていることに注意する",
+    convEx3katex1: "-\\left(2\\frac{5}{6}\\right) = -\\frac{(6 \\times 2) + 5}{6}",
+    convEx3s2: "負の符号を保ったまま分子を計算する",
+    convEx3katex2: "= -\\frac{12 + 5}{6} = -\\frac{17}{6}",
+    convEx3ans: <>よって、<InlineMath math="-2\frac{5}{6} = -\frac{17}{6}" /></>,
+
+    convEx4Q: <><InlineMath math="-4\frac{3}{7}" /> を仮分数で表せ！</>,
+    convEx4s1: "正の値に変換公式を使い、負の符号を保つ",
+    convEx4katex1: "-\\left(4\\frac{3}{7}\\right) = -\\frac{(7 \\times 4) + 3}{7}",
+    convEx4s2: "新しい分子を計算する",
+    convEx4katex2: "= -\\frac{28 + 3}{7} = -\\frac{31}{7}",
+    convEx4ans: <>よって、<InlineMath math="-4\frac{3}{7} = -\frac{31}{7}" /></>,
 
     sec3Title: "パーセント",
     sec3Summary: <><strong className="text-primary">パーセント（%）</strong>とは、分母を100とした分数の表し方です。"percent"はラテン語の"per centum"（100あたり）に由来します。パーセントは割引、税金、統計など日常生活で広く使われています。</>,
@@ -484,6 +562,56 @@ const PecahanCampuranPage = () => {
                     </div>
                   </div>
 
+                  {/* Example 3 - Negative */}
+                  <div className="border-l-4 border-yellow-500 pl-4 space-y-3 mb-6">
+                    <div className="flex items-center gap-2">
+                      <span className="bg-yellow-500/20 text-yellow-400 text-xs font-bold px-2 py-1 rounded">{t.badgeMedium}</span>
+                      <span className="font-body font-semibold text-white">{t.ex(3)}</span>
+                    </div>
+                    <div className="bg-slate-800/50 rounded-lg p-4">
+                      <p className="font-body text-sm text-white">{t.ex3NegQ}</p>
+                    </div>
+                    <div className="bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-4">
+                      <p className="font-body text-xs font-semibold text-yellow-400 mb-3">{t.discuss}</p>
+                      <div className="space-y-2 font-body text-sm text-white/80">
+                        <p><strong>{t.step(1)}</strong> {t.ex3Negs1}</p>
+                        <div className="bg-slate-900/50 rounded p-3">
+                          <BlockMath math={t.ex3Negkatex1} />
+                        </div>
+                        <p><strong>{t.step(2)}</strong> {t.ex3Negs2}</p>
+                        <div className="bg-slate-900/50 rounded p-3">
+                          <BlockMath math="-\frac{8}{3} = -2\frac{2}{3}" />
+                        </div>
+                        <p className="text-primary font-semibold">{t.ex3Negans}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Example 4 - Negative */}
+                  <div className="border-l-4 border-red-500 pl-4 space-y-3">
+                    <div className="flex items-center gap-2">
+                      <span className="bg-red-500/20 text-red-400 text-xs font-bold px-2 py-1 rounded">{t.badgeHard}</span>
+                      <span className="font-body font-semibold text-white">{t.ex(4)}</span>
+                    </div>
+                    <div className="bg-slate-800/50 rounded-lg p-4">
+                      <p className="font-body text-sm text-white">{t.ex4NegQ}</p>
+                    </div>
+                    <div className="bg-red-500/5 border border-red-500/20 rounded-lg p-4">
+                      <p className="font-body text-xs font-semibold text-red-400 mb-3">{t.discuss}</p>
+                      <div className="space-y-2 font-body text-sm text-white/80">
+                        <p><strong>{t.step(1)}</strong> {t.ex4Negs1}</p>
+                        <div className="bg-slate-900/50 rounded p-3">
+                          <BlockMath math={t.ex4Negkatex1} />
+                        </div>
+                        <p><strong>{t.step(2)}</strong> {t.ex4Negs2}</p>
+                        <div className="bg-slate-900/50 rounded p-3">
+                          <BlockMath math="-\frac{19}{4} = -4\frac{3}{4}" />
+                        </div>
+                        <p className="text-primary font-semibold">{t.ex4Negans}</p>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             )}
@@ -583,6 +711,56 @@ const PecahanCampuranPage = () => {
                           <BlockMath math="10\frac{6}{12} = 10\frac{6 \div 6}{12 \div 6} = 10\frac{1}{2}" />
                         </div>
                         <p className="text-primary font-semibold">{t.ex5ans}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Example 3 - Negative */}
+                  <div className="border-l-4 border-yellow-500 pl-4 space-y-3 mb-6">
+                    <div className="flex items-center gap-2">
+                      <span className="bg-yellow-500/20 text-yellow-400 text-xs font-bold px-2 py-1 rounded">{t.badgeMedium}</span>
+                      <span className="font-body font-semibold text-white">{t.ex(3)}</span>
+                    </div>
+                    <div className="bg-slate-800/50 rounded-lg p-4">
+                      <p className="font-body text-sm text-white">{t.convEx3Q}</p>
+                    </div>
+                    <div className="bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-4">
+                      <p className="font-body text-xs font-semibold text-yellow-400 mb-3">{t.discuss}</p>
+                      <div className="space-y-2 font-body text-sm text-white/80">
+                        <p><strong>{t.step(1)}</strong> {t.convEx3s1}</p>
+                        <div className="bg-slate-900/50 rounded p-3">
+                          <BlockMath math={t.convEx3katex1} />
+                        </div>
+                        <p><strong>{t.step(2)}</strong> {t.convEx3s2}</p>
+                        <div className="bg-slate-900/50 rounded p-3">
+                          <BlockMath math={t.convEx3katex2} />
+                        </div>
+                        <p className="text-primary font-semibold">{t.convEx3ans}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Example 4 - Negative */}
+                  <div className="border-l-4 border-red-500 pl-4 space-y-3">
+                    <div className="flex items-center gap-2">
+                      <span className="bg-red-500/20 text-red-400 text-xs font-bold px-2 py-1 rounded">{t.badgeHard}</span>
+                      <span className="font-body font-semibold text-white">{t.ex(4)}</span>
+                    </div>
+                    <div className="bg-slate-800/50 rounded-lg p-4">
+                      <p className="font-body text-sm text-white">{t.convEx4Q}</p>
+                    </div>
+                    <div className="bg-red-500/5 border border-red-500/20 rounded-lg p-4">
+                      <p className="font-body text-xs font-semibold text-red-400 mb-3">{t.discuss}</p>
+                      <div className="space-y-2 font-body text-sm text-white/80">
+                        <p><strong>{t.step(1)}</strong> {t.convEx4s1}</p>
+                        <div className="bg-slate-900/50 rounded p-3">
+                          <BlockMath math={t.convEx4katex1} />
+                        </div>
+                        <p><strong>{t.step(2)}</strong> {t.convEx4s2}</p>
+                        <div className="bg-slate-900/50 rounded p-3">
+                          <BlockMath math={t.convEx4katex2} />
+                        </div>
+                        <p className="text-primary font-semibold">{t.convEx4ans}</p>
                       </div>
                     </div>
                   </div>
