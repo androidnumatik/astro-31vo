@@ -1,7 +1,5 @@
 import TKAPemantapanLayout from "@/components/tka/TKAPemantapanLayout";
 import type { MateriSection, LatihanSoal } from "@/components/tka/TKAPemantapanLayout";
-import { latihanDasarSVG } from "@/pages/OlimpiadePeluangPage";
-import { peluangDasarPembahasan } from "@/data/pembahasan/peluangDasar";
 import diagramKelereng from "@assets/image_1787583206453.png";
 import papanSpinner from "@assets/image_1787585871802.png";
 
@@ -14,7 +12,7 @@ const materiSections: MateriSection[] = [
   { heading: "F. Peluang Kejadian Majemuk", content: `1. Kejadian saling lepas (mutually exclusive):\n[SUBHEADING:Rumus peluang gabungan kejadian saling lepas]\n[BLOCKMATH:P(A \\cup B) = P(A) + P(B)]\n\n2. Kejadian tidak saling lepas:\n[SUBHEADING:Rumus peluang gabungan kejadian tidak saling lepas]\n[BLOCKMATH:P(A \\cup B) = P(A) + P(B) - P(A \\cap B)]\n\n3. Kejadian bebas (independent):\n[SUBHEADING:Rumus peluang irisan kejadian bebas]\n[BLOCKMATH:P(A \\cap B) = P(A) \\times P(B)]\n\n4. Kejadian bersyarat:\n[SUBHEADING:Rumus peluang bersyarat]\n[BLOCKMATH:P(A|B) = \\dfrac{P(A \\cap B)}{P(B)}]` },
 ];
 
-const latihanAwal: LatihanSoal[] = [
+const latihanDasar: LatihanSoal[] = [
   {
     no: 1,
     type: "pgkbs",
@@ -190,101 +188,6 @@ const latihanAwal: LatihanSoal[] = [
   },
 ];
 
-const formatPembahasan = (pembahasan: {
-  jawaban: string;
-  konsepTrik: string;
-  stepByStep: string;
-  tips: string;
-  kesimpulan: string;
-}) =>
-  `Jawaban: ${pembahasan.jawaban}\n\n` +
-  `Konsep & Trik:\n${pembahasan.konsepTrik}\n\n` +
-  `Step-by-Step Penyelesaian:\n${pembahasan.stepByStep}\n\n` +
-  `Tips:\n${pembahasan.tips}\n\n` +
-  `Kesimpulan:\n${pembahasan.kesimpulan}`;
-
-const latihanDasarLanjutan: LatihanSoal[] = [
-  { no: 12, soal: "Sebuah dadu dilambungkan satu kali. Peluang muncul mata dadu bilangan prima adalah...", options: ["A. $\\frac{1}{6}$", "B. $\\frac{2}{9}$", "C. $\\frac{3}{6}$", "D. $\\frac{4}{6}$"] },
-  { no: 13, soal: "Dua buah dadu dilempar bersama-sama, peluang munculnya dadu berjumlah 9 adalah ...", options: ["A. $\\frac{1}{9}$", "B. $\\frac{3}{4}$", "C. $\\frac{1}{4}$", "D. $\\frac{1}{3}$"] },
-  { no: 14, soal: "Dalam percobaan melempar 2 buah dadu, peluang muncul mata dadu berjumlah lebih dari 7 adalah ...", options: ["A. $\\frac{1}{18}$", "B. $\\frac{5}{36}$", "C. $\\frac{5}{12}$", "D. $\\frac{7}{18}$"] },
-  { no: 15, soal: "Jika dipilih satu huruf dari M A T E M A T I K A, maka peluang yang terpilih huruf A adalah ...", options: ["A. $\\frac{1}{6}$", "B. $\\frac{1}{5}$", "C. $\\frac{1}{4}$", "D. $\\frac{1}{3}$"] },
-  { no: 16, soal: "Di dalam sebuah kotak terdapat kelereng sebanyak bernomor 1 sampai dengan 15. Jika dilakukan pengambilan 1 kelereng secara acak dan terambil kelereng bernomor 9, serta kelereng tersebut tidak dikembalikan, maka peluang terambilnya kelereng bernomor ganjil pada pengambilan kedua adalah ...", options: ["A. $\\frac{8}{14}$", "B. $\\frac{7}{14}$", "C. $\\frac{8}{15}$", "D. $\\frac{7}{15}$"] },
-  { no: 17, soal: "Dalam sebuah kantong terdapat bola bernomor 1 sampai dengan 13. Bola merah bernomor 1 sampai dengan 4, bola biru bernomor 5 sampai dengan 8 dan sisanya bola putih. Dari kantong tersebut diambil sebuah bola secara acak dan terambil bola biru. Peluang terambilnya bola bernomor kelipatan tiga dan berwarna putih pada pengambilan kedua adalah ...", options: ["A. $\\frac{1}{2}$", "B. $\\frac{1}{5}$", "C. $\\frac{1}{6}$", "D. $\\frac{2}{13}$"] },
-  { no: 18, soal: "Pada seleksi pegawai sebuah perusahaan, seorang calon dapat diterima apabila lulus tes akademik dan tes fisik. Dari hasil seleksi, 25 lulus tes akademik, 20 lulus tes fisik dan 15 orang lulus keduanya. Saat pengumuman peserta tes dipanggil satu-persatu. Peluang terpanggil peserta yang hanya lulus tes fisik adalah ...", options: ["A. $\\frac{5}{6}$", "B. $\\frac{2}{3}$", "C. $\\frac{1}{2}$", "D. $\\frac{1}{6}$"] },
-  { no: 19, soal: "Tiga mata uang ditos bersama-sama. Peluang munculnya dua angka dan satu gambar adalah ...", options: ["A. $\\frac{3}{4}$", "B. $\\frac{2}{4}$", "C. $\\frac{3}{8}$", "D. $\\frac{2}{8}$"] },
-  { no: 20, soal: "Dalam percobaan melempar 3 uang logam secara bersamaan, peluang muncul minimal 2 angka adalah...", options: ["A. 0,375", "B. 0,500", "C. 0,667", "D. 0,875"] },
-  { no: 21, soal: "Roni diperbolehkan ibunya untuk mengambil 1 permen dari sebuah kantong. Dia tidak dapat melihat warna permen tersebut. Kantong tersebut berisi 4 permen merah, 2 permen biru, 8 permen kuning, dan 6 permen hijau. Berapa peluang Roni mengambil sebuah permen warna merah?", options: ["A. 10%", "B. 20%", "C. 25%", "D. 50%"] },
-  { no: 22, soal: "Di dalam kaleng terdapat 8 buah bola yang bernomor 1, 2, 3, 4, 5, 6, 7, 8. Jika diambil secara acak 2 bola sekaligus dari kaleng tersebut, peluang yang terambil kedua bola tersebut bernomor genap adalah …", options: ["A. $\\frac{1}{7}$", "B. $\\frac{2}{7}$", "C. $\\frac{3}{14}$", "D. $\\frac{3}{7}$"] },
-  { no: 23, soal: "Terdapat 5 buah bola yang diberi nomor 1, 2, 3, 4, dan 5. Jika diambil 2 buah bola sekaligus, maka peluang terambil kedua bola bernomor ganjil adalah …", options: ["A. $\\frac{1}{5}$", "B. $\\frac{3}{10}$", "C. $\\frac{2}{5}$", "D. $\\frac{1}{2}$"] },
-  { no: 24, soal: "Bima ingin menulis bilangan yang terdiri dari dua angka dari angka-angka 1, 2, 3, 5, 8, 9. Jika tidak ada angka yang sama, banyak bilangan dengan nilai berbeda yang bisa ditulis seluruhnya adalah ....", options: ["A. 20", "B. 24", "C. 30", "D. 36"] },
-  { no: 25, soal: "Pada pelemparan dua dadu, peluang muncul mata dadu berjumlah 5 atau 7 adalah ...", options: ["A. 0,14", "B. 0,16", "C. 0,17", "D. 0,28"] },
-  { no: 26, soal: "Sebuah dadu dan mata uang logam ditos bersama-sama. Peluang munculnya mata uang logam muncul gambar dan dadu lebih dari 4 adalah ....", options: ["A. $\\frac{1}{12}$", "B. $\\frac{1}{6}$", "C. $\\frac{1}{4}$", "D. $\\frac{1}{3}$"] },
-  { no: 27, soal: "Dari seperangkat kartu bridge (52 kartu), diambil sebuah kartu secara acak. Peluang yang terambil kartu As adalah ....", options: ["A. $\\frac{1}{52}$", "B. $\\frac{1}{26}$", "C. $\\frac{1}{13}$", "D. $\\frac{4}{13}$"] },
-  { no: 28, soal: "Sebuah dadu ditos sebanyak 60 kali. Frekuensi harapan munculnya angka kurang dari 3 adalah ....", options: ["A. 15 kali", "B. 20 kali", "C. 30 kali", "D. 35 kali"] },
-  { no: 29, soal: "Sebuah bola diambil dari sebuah kantong yang berisi 4 bola berwarna putih, 6 bola berwarna hijau, dan 5 bola berwarna merah. Peluang terambilnya bola berwarna merah adalah ...", options: ["A. $\\frac{1}{5}$", "B. $\\frac{4}{15}$", "C. $\\frac{1}{3}$", "D. $\\frac{3}{5}$"] },
-  { no: 30, soal: "Tiga keping uang logam dilempar bersama-sama. Peluang muncul ketiganya gambar adalah ...", options: ["A. $\\frac{1}{8}$", "B. $\\frac{1}{4}$", "C. $\\frac{3}{8}$", "D. $\\frac{1}{2}$"] },
-  { no: 31, soal: "Sebuah dadu dilambungkan satu kali. Peluang munculnya mata dadu kurang dari 4 adalah ...", options: ["A. $\\frac{1}{6}$", "B. $\\frac{1}{3}$", "C. $\\frac{1}{2}$", "D. $\\frac{2}{3}$"] },
-  { no: 32, soal: "Seorang ibu dan anaknya bermain tebak warna dengan cara mengambil bola dari kotak A dan memasukkannya ke kotak B. Kotak A berisi 5 bola merah, 7 bola kuning, dan 3 bola biru, sedangkan kotak B berisi 3 bola merah, 5 bola kuning, dan 3 bola biru. Ibu mengambil satu bola dari kotak A dan memasukkannya ke kotak B, kemudian si anak mengambil satu bola dari kotak B. Peluang si anak mendapatkan bola biru adalah ...", options: ["A. $\\frac{3}{11}$", "B. $\\frac{4}{15}$", "C. $\\frac{1}{4}$", "D. $\\frac{1}{3}$"] },
-  { no: 33, soal: "Sebuah keluarga ingin mempunyai 4 orang anak. Peluang bahwa keluarga tersebut memiliki paling banyak 2 orang anak laki-laki adalah ...", options: ["A. $\\frac{5}{16}$", "B. $\\frac{6}{16}$", "C. $\\frac{11}{16}$", "D. $\\frac{13}{16}$"] },
-  { no: 34, soal: "Babak perempat final Liga Champion diikuti oleh 8 tim A, B, C, D, E, F, G, dan H. Setiap tim memiliki peluang $\\frac{1}{2}$ untuk melaju ke babak selanjutnya. Jika B dan F berada di bagian bracket yang berbeda, peluang B bertemu F di babak final dan F menjadi juara adalah ...", options: ["A. $\\frac{1}{8}$", "B. $\\frac{1}{16}$", "C. $\\frac{1}{32}$", "D. $\\frac{1}{64}$"] },
-  { no: 35, soal: "Seorang siswa mempunyai tiga buah celana berwarna biru, hitam, dan abu-abu, tiga buah kemeja berwarna putih, hijau, dan kuning serta dua pasang sepatu berwarna hitam dan coklat. Banyak kombinasi pakaian dan sepatu yang bisa digunakan siswa tersebut adalah ... kombinasi.", options: ["A. 12", "B. 15", "C. 18", "D. 24"] },
-  { no: 36, soal: "Dalam sebuah peti terdapat 7 bola kuning bernomor 1−7, dan 5 bola merah bernomor a−e. Jika seseorang mengambil sebuah bola dari dalam peti secara acak, peluang terambilnya bola kuning bernomor ganjil atau bola merah dengan huruf vokal adalah ...", options: ["A. $\\frac{1}{4}$", "B. $\\frac{1}{3}$", "C. $\\frac{5}{12}$", "D. $\\frac{1}{2}$"] },
-  { no: 37, soal: "Sebuah kantong berisi 5 kelereng merah, 6 kelereng kuning, dan 9 kelereng hijau. Sebuah kelereng diambil dari kantong tersebut. Peluang terambil kelereng kuning adalah ...", options: ["A. $\\frac{1}{4}$", "B. $\\frac{3}{10}$", "C. $\\frac{9}{20}$", "D. $\\frac{3}{5}$"] },
-  { no: 38, soal: "Dalam rangka memperingati Hari Kemerdekaan RI, panitia menyiapkan sebuah kotak berisi kartu yang diberi nomor 1 sampai dengan 30. Setiap peserta hanya boleh mengambil satu kartu, dan yang mendapatkan kartu bernomor kelipatan 3 atau bilangan prima akan mendapat hadiah doorprize. Berapakah peluang seorang murid akan mendapatkan doorprize?", options: ["A. $\\frac{7}{15}$", "B. $\\frac{17}{30}$", "C. $\\frac{19}{30}$", "D. $\\frac{2}{3}$"] },
-  { no: 39, soal: "Sebuah survei mengambil secara acak 60 murid sebagai sampelnya. Hasilnya, 36 siswa menjawab membawa bekal ke sekolah. Jika survei dilakukan lagi pada 50 murid lainnya dan diperkirakan hasil survei sama proporsinya dengan survei sebelumnya, frekuensi relatif murid yang membawa bekal dari seluruh siswa yang disurvei adalah ....", options: ["A. 0,59", "B. 0,60", "C. 0,61", "D. 0,62"] },
-  { no: 40, soal: "Tiga buah dadu biasa dilempar sekaligus sebanyak satu kali. Peluang salah satu mata dadu sama dengan jumlah dua mata dadu lainnya adalah …", options: ["A. $\\frac{1}{6}$", "B. $\\frac{5}{24}$", "C. $\\frac{7}{24}$", "D. $\\frac{1}{3}$"] },
-].map((soal) => {
-  const pembahasan = peluangDasarPembahasan[soal.no];
-  return pembahasan
-    ? { ...soal, pembahasan: formatPembahasan(pembahasan) }
-    : soal;
-});
-
-const soalByRef = new Map<string, LatihanSoal>([
-  ...latihanAwal.map((soal) => [`awal-${soal.no}`, soal] as const),
-  ...latihanDasarLanjutan.map((soal) => [`lanjutan-${soal.no}`, soal] as const),
-]);
-
-const urutanSubtopik: string[] = [
-  // Ruang sampel
-  "awal-10", "lanjutan-22", "lanjutan-35",
-  // Frekuensi relatif / peluang empirik
-  "awal-1", "awal-2", "lanjutan-39",
-  // Peluang teoretis
-  "awal-4", "awal-5", "awal-9",
-  "lanjutan-12", "lanjutan-15", "lanjutan-16",
-  "lanjutan-21", "lanjutan-27", "lanjutan-30", "lanjutan-31",
-  // Frekuensi harapan
-  "awal-8", "lanjutan-28", "awal-15",
-  // Peluang komplemen
-
-  // Peluang kejadian majemuk
-  "awal-6", "awal-13",
-  "lanjutan-17", "lanjutan-18", "lanjutan-20",
-  "lanjutan-25", "lanjutan-26", "lanjutan-32", "lanjutan-33",
-  "lanjutan-40",
-];
-
-const soalRefsDihapus = new Set([
-  // Soal yang telah dihapus sebelumnya
-  "lanjutan-22", "awal-2", "awal-9", "lanjutan-16", "lanjutan-21",
-  "lanjutan-27", "awal-6", "awal-13", "lanjutan-40",
-]);
-
-const latihanDasarAwal: LatihanSoal[] = urutanSubtopik
-  .filter((ref) => !soalRefsDihapus.has(ref))
-  .map((ref, index) => {
-  const soal = soalByRef.get(ref);
-  if (!soal) throw new Error(`Soal dengan referensi ${ref} tidak ditemukan`);
-  return { ...soal, no: index + 1 };
-  })
-  .map((soal, index) => ({ ...soal, no: index + 1 }));
-
-const latihanDasar: LatihanSoal[] = latihanDasarAwal.map((soal, index) => ({
-  ...soal,
-  no: index + 1,
-}));
-
 const ruangSampelDuaDadu = (
   <div className="space-y-4 min-w-[600px]">
     <div>
@@ -459,7 +362,6 @@ const PeluangPage = () => (
     materiSections={materiSections}
     contohSoal={contohSoalTerurut}
     latihanDasar={latihanDasar}
-    gambarMap={latihanDasarSVG}
   />
 );
 
