@@ -26,8 +26,7 @@ export const statistikaLatihanTambahan: LatihanSoal[] = [
     type: "pgk",
     soal:
       "Diagram batang berikut menunjukkan distribusi nilai kuis IPA siswa kelas VIII:\n" +
-      "Nilai 5: 1 siswa; Nilai 6: 4 siswa; Nilai 7: 5 siswa; Nilai 8: 6 siswa; Nilai 9: 4 siswa; Nilai 10: 2 siswa.\n" +
-      "Pilihlah semua pernyataan yang benar (Jawaban benar lebih dari satu):",
+      "Berdasarkan diagram batang diatas, pilihlah semua pernyataan yang benar. pernyataan yang benar (Jawaban benar lebih dari satu):",
     pernyataan: [
       "Jumlah seluruh siswa di kelas tersebut adalah 22 orang.",
       "Nilai 8 merupakan modus (nilai yang paling banyak diperoleh).",
@@ -206,7 +205,7 @@ export const statistikaLatihanTambahan: LatihanSoal[] = [
     no: 51,
     type: "pgkbs",
     soal:
-      "Sebuah diagram batang menunjukkan nilai kuis Fisika: nilai 50: 2 siswa; nilai 60: 3 siswa; nilai 70: 8 siswa; nilai 80: 5 siswa; nilai 90: 6 siswa; nilai 100: 1 siswa.\n" +
+      "Perhatikan diagram batang berikut.\n" +
       "Berdasarkan diagram tersebut, tentukan kebenaran dari pernyataan berikut.",
     pernyataan: [
       "Modus data sama dengan mediannya.",

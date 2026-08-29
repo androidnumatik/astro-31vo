@@ -440,6 +440,7 @@ export const renderDasarVisual = (no: number): React.ReactNode => {
           title="Diagram Batang Nilai Kuis Fisika"
           xLabel="Nilai"
           yLabel="Banyak Siswa"
+          showValues={false}
           data={[
             { label: 50, value: 2 },
             { label: 60, value: 3 },
