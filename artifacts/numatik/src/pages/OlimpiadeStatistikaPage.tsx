@@ -424,6 +424,7 @@ export const renderDasarVisual = (no: number): React.ReactNode => {
           title="Diagram Batang Nilai Kuis IPA Kelas VIII"
           xLabel="Nilai"
           yLabel="Banyak Siswa"
+          showValues={false}
           data={[
             { label: 5, value: 1 },
             { label: 6, value: 4 },
@@ -431,6 +432,22 @@ export const renderDasarVisual = (no: number): React.ReactNode => {
             { label: 8, value: 6 },
             { label: 9, value: 4 },
             { label: 10, value: 2 },
+          ]}
+        />
+      );
+    case 15:
+      return (
+        <FrequencyTable
+          title="Tabel Distribusi Frekuensi Hasil Seleksi"
+          headers={["Nilai", "Frekuensi"]}
+          showTotal={false}
+          rows={[
+            { label: 50, value: 10 },
+            { label: 60, value: 16 },
+            { label: 70, value: 50 },
+            { label: 80, value: "x" },
+            { label: 90, value: 4 },
+            { label: 100, value: 5 },
           ]}
         />
       );
@@ -538,6 +555,128 @@ export const renderDasarVisual = (no: number): React.ReactNode => {
             { label: 2017, value: 95_000_000 },
             { label: 2018, value: 87_500_000 },
             { label: 2019, value: 80_000_000 },
+          ]}
+        />
+      );
+    case 19:
+      return (
+        <PieChart
+          title="Diagram Lingkaran Menu Makanan Favorit"
+          data={[
+            { label: "Rendang", value: 40, sub: "40%" },
+            { label: "Soto", value: 25, sub: "25%" },
+            { label: "Bakso", value: 15, sub: "15%" },
+            { label: "Mie Ayam", value: 12, sub: "12%" },
+            { label: "Gado-Gado", value: 8, sub: "8%" },
+          ]}
+        />
+      );
+    case 20:
+      return (
+        <LineChart
+          title="Grafik Garis Suhu Udara"
+          xLabel="Waktu"
+          yLabel="Suhu (°C)"
+          data={[
+            { label: "19.00", value: 29 },
+            { label: "21.00", value: 27 },
+            { label: "23.00", value: 26 },
+            { label: "01.00", value: 24 },
+            { label: "03.00", value: 25 },
+            { label: "05.00", value: 28 },
+          ]}
+        />
+      );
+    case 22:
+      return (
+        <PieChart
+          title="Diagram Lingkaran Demografi Usia Warga"
+          data={[
+            { label: "Balita", value: 10, sub: "10%" },
+            { label: "Anak-anak", value: 20, sub: "20%" },
+            { label: "Remaja", value: 25, sub: "25%" },
+            { label: "Dewasa", value: 35, sub: "35%" },
+            { label: "Lansia", value: 10, sub: "10%" },
+          ]}
+        />
+      );
+    case 23:
+      return (
+        <LineChart
+          title="Grafik Garis Pengunjung Pameran Buku"
+          xLabel="Hari"
+          yLabel="Pengunjung"
+          data={[
+            { label: "1", value: 50 },
+            { label: "2", value: 150 },
+            { label: "3", value: 250 },
+            { label: "4", value: 200 },
+            { label: "5", value: 230 },
+            { label: "6", value: 270 },
+          ]}
+        />
+      );
+    case 24:
+      return (
+        <LineChart
+          title="Grafik Garis Nilai Tukar USD terhadap Rupiah"
+          xLabel="Hari"
+          yLabel="Kurs (Rp)"
+          yFormatter={(value) => `${(value / 1000).toFixed(1)} rb`}
+          data={[
+            { label: "Sen", value: 16_000 },
+            { label: "Sel", value: 16_400 },
+            { label: "Rab", value: 16_100 },
+            { label: "Kam", value: 16_300 },
+            { label: "Jum", value: 16_200 },
+            { label: "Sab", value: 16_600 },
+            { label: "Min", value: 16_500 },
+          ]}
+        />
+      );
+    case 25:
+      return (
+        <PieChart
+          title="Diagram Lingkaran Moda Transportasi Siswa"
+          data={[
+            { label: "Jalan kaki", value: 60, sub: "60°" },
+            { label: "Sepeda", value: 60, sub: "60°" },
+            { label: "Angkutan umum", value: 60, sub: "60°" },
+            { label: "Ojek online", value: 72, sub: "72°" },
+            { label: "Sepeda motor", value: 48, sub: "48°" },
+            { label: "Lainnya", value: 60, sub: "60°" },
+          ]}
+        />
+      );
+    case 26:
+      return (
+        <FrequencyTable
+          title="Tabel Distribusi Frekuensi Tinggi Tanaman"
+          headers={["Tinggi", "Frekuensi"]}
+          showTotal={false}
+          rows={[
+            { label: 10, value: 3 },
+            { label: 11, value: 6 },
+            { label: 12, value: 10 },
+            { label: 13, value: 11 },
+            { label: 14, value: 8 },
+            { label: 15, value: 2 },
+          ]}
+        />
+      );
+    case 27:
+      return (
+        <FrequencyTable
+          title="Tabel Distribusi Frekuensi Nilai Ujian"
+          headers={["Skor", "Frekuensi"]}
+          showTotal={false}
+          rows={[
+            { label: 600, value: 3 },
+            { label: 700, value: 6 },
+            { label: 750, value: 7 },
+            { label: 800, value: 8 },
+            { label: 900, value: 4 },
+            { label: 1000, value: 2 },
           ]}
         />
       );

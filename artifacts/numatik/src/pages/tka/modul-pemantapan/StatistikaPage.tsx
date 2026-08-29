@@ -97,7 +97,7 @@ const latihanDasar: LatihanSoal[] = [
   {
     "no": 6,
     "type": "pgkbs",
-    "soal": "Tabel acuan tinggi badan ideal anak usia 1–5 tahun:\nUsia | Laki-Laki | Perempuan\n1 tahun | 75,7 cm | 74,0 cm\n2 tahun | 87,8 cm | 86,4 cm\n3 tahun | 96,1 cm | 95,1 cm\n4 tahun | 103,3 cm | 102,7 cm\n5 tahun | 110,0 cm | 109,4 cm\n\nBerdasarkan tabel acuan di atas, tentukan status Benar / Salah untuk pernyataan berikut.",
+    "soal": "Perhatikan tabel distribusi frekuensi berikut.\n[DIAGRAM]\nTentukan status Benar / Salah untuk pernyataan berikut.",
     "pernyataan": [
       "Rata-rata tinggi badan ideal anak laki-laki usia 3 tahun adalah 96,1 cm.",
       "Selisih tinggi badan ideal anak laki-laki dan perempuan pada usia 5 tahun adalah 0,6 cm.",
@@ -112,7 +112,7 @@ const latihanDasar: LatihanSoal[] = [
   },
   {
     "no": 7,
-    "soal": "Diagram batang menunjukan nilai ulangan matematika diperoleh dari 20 anak pada suatu kelas. Tinggi batang untuk nilai 6 = 2, nilai 7 = 4, nilai 8 = 6, nilai 9 = 5, nilai 10 = 3. Rataan (Mean) dari data tersebut adalah ...",
+    "soal": "Diagram batang menunjukkan nilai ulangan matematika yang diperoleh dari 20 anak pada suatu kelas.\n[DIAGRAM]\nRataan (Mean) dari data tersebut adalah ...",
     "options": [
       "A. 7",
       "B. 7,5",
@@ -245,7 +245,7 @@ const latihanDasar: LatihanSoal[] = [
   },
   {
     "no": 15,
-    "soal": "Data hasil seleksi penerimaan karyawan:\nNilai: 50, 60, 70, 80, 90, 100\nFrekuensi: 10, 16, 50, $x$, 4, 5.\nPanitia menetapkan bahwa peserta yang dinyatakan lulus adalah mereka yang memiliki nilai lebih besar dari rata-rata. Jika rata-rata nilai tes adalah 70,2, jumlah peserta yang diterima adalah ....",
+    "soal": "Data hasil seleksi penerimaan karyawan disajikan dalam tabel distribusi frekuensi berikut.\n[DIAGRAM]\nPanitia menetapkan bahwa peserta yang dinyatakan lulus adalah mereka yang memiliki nilai lebih besar dari rata-rata. Jika rata-rata nilai tes adalah 70,2, jumlah peserta yang diterima adalah ....",
     "options": [
       "A. 15 orang",
       "B. 18 orang",
@@ -258,7 +258,7 @@ const latihanDasar: LatihanSoal[] = [
   },
   {
     "no": 16,
-    "soal": "Diagram lingkaran menunjukan tentang kegemaran siswa terhadap mata pelajaran. Persentase: Matematika 30°, IPA 54°, IPS 48°, Bahasa 72°, Penjas X°. Jika jumlah siswa seluruhnya 240 orang, jumlah siswa yang gemar penjas adalah ...",
+    "soal": "Diagram lingkaran menunjukkan kegemaran siswa terhadap mata pelajaran berikut.\n[DIAGRAM]\nJika jumlah siswa seluruhnya 240 orang, jumlah siswa yang gemar Penjas adalah ...",
     "options": [
       "A. 76 orang",
       "B. 90 orang",
@@ -281,7 +281,7 @@ const latihanDasar: LatihanSoal[] = [
   },
   {
     "no": 17,
-    "soal": "Data koleksi jenis buku di sebuah perpustakaan tersaji dalam diagram lingkaran. Persentase: Kesenian 20%, Kesehatan 18%, Pertanian 25%, Teknologi 22%, Lainnya 15%. Jika banyak buku kesenian 200 eksemplar, banyak buku kesehatan .... eksemplar",
+    "soal": "Data koleksi jenis buku di sebuah perpustakaan tersaji dalam diagram lingkaran berikut.\n[DIAGRAM]\nJika banyak buku Kesenian 200 eksemplar, banyak buku Kesehatan .... eksemplar",
     "options": [
       "A. 180",
       "B. 200",
@@ -294,7 +294,7 @@ const latihanDasar: LatihanSoal[] = [
   },
   {
     "no": 18,
-    "soal": "Diagram garis menunjukan penyusutan harga mobil setelah dipakai dalam kurun waktu 5 tahun. Harga 2015: Rp 110.000.000, harga 2016: Rp 102.500.000. Besarnya penyusutan antara tahun 2015 dan 2016 adalah ...",
+    "soal": "Diagram garis menunjukkan penyusutan harga mobil setelah dipakai dalam kurun waktu 5 tahun.\n[DIAGRAM]\nBesarnya penyusutan antara tahun 2015 dan 2016 adalah ...",
     "options": [
       "A. Rp 2.500.000,00",
       "B. Rp 5.000.000,00",
@@ -318,7 +318,7 @@ const latihanDasar: LatihanSoal[] = [
   },
   {
     "no": 19,
-    "soal": "Hasil survei terhadap pelanggan restoran mengenai menu makanan favorit menghasilkan persentase sebagai berikut:\nJenis Makanan | Persentase Jawaban\nRendang | 40%\nSoto | 25%\nBakso | 15%\nMie Ayam | 12%\nGado-Gado | 8%\nJika sebanyak 60 orang memilih Rendang sebagai makanan favoritnya, jumlah total orang yang mengikuti survei tersebut adalah ....",
+    "soal": "Hasil survei terhadap pelanggan restoran mengenai menu makanan favorit disajikan dalam diagram lingkaran berikut.\n[DIAGRAM]\nJika sebanyak 60 orang memilih Rendang sebagai makanan favoritnya, jumlah total orang yang mengikuti survei tersebut adalah ....",
     "options": [
       "A. 120 orang",
       "B. 150 orang",
@@ -332,7 +332,7 @@ const latihanDasar: LatihanSoal[] = [
   {
     "no": 20,
     "type": "pgkbs",
-    "soal": "Suhu udara di suatu wilayah pegunungan dicatat dari sore hingga pagi hari dan disajikan dalam grafik garis berikut:\nPukul 19.00: $29^\\circ\\text{C}$; Pukul 21.00: $27^\\circ\\text{C}$; Pukul 23.00: $26^\\circ\\text{C}$; Pukul 01.00: $24^\\circ\\text{C}$; Pukul 03.00: $25^\\circ\\text{C}$; Pukul 05.00: $28^\\circ\\text{C}$.\n\nBerdasarkan grafik di atas, tentukan status Benar/Salah untuk setiap pernyataan.",
+    "soal": "Suhu udara di suatu wilayah pegunungan dicatat dari sore hingga pagi hari dan disajikan dalam grafik garis berikut.\n[DIAGRAM]\nBerdasarkan grafik di atas, tentukan status Benar/Salah untuk setiap pernyataan.",
     "pernyataan": [
       "Suhu udara paling dingin terjadi pada pukul 01.00.",
       "Kenaikan suhu terbesar terjadi pada rentang pukul 03.00 sampai 05.00.",
@@ -361,7 +361,7 @@ const latihanDasar: LatihanSoal[] = [
   {
     "no": 22,
     "type": "pgkbs",
-    "soal": "Sebanyak 200 warga di RW 05 mengikuti pendataan demografi usia yang disajikan dalam diagram lingkaran persentase berikut:\nBalita (0–5 thn): 10%; Anak-anak (6–12 thn): 20%; Remaja (13–17 thn): 25%; Dewasa (18–59 thn): 35%; Lansia (≥ 60 thn): 10%.\n\nTentukan nilai Benar / Salah untuk pernyataan berikut.",
+    "soal": "Sebanyak 200 warga di RW 05 mengikuti pendataan demografi usia yang disajikan dalam diagram lingkaran persentase berikut.\n[DIAGRAM]\nTentukan nilai Benar / Salah untuk pernyataan berikut.",
     "pernyataan": [
       "Banyak penduduk kategori anak-anak adalah 40 orang.",
       "Jumlah gabungan warga kategori remaja dan lansia adalah 70 orang.",
@@ -377,7 +377,7 @@ const latihanDasar: LatihanSoal[] = [
   {
     "no": 23,
     "type": "pgk",
-    "soal": "Data pengunjung pameran buku selama 6 hari disajikan dalam grafik garis berikut:\nHari 1: 50 orang; Hari 2: 150 orang; Hari 3: 250 orang; Hari 4: 200 orang; Hari 5: 230 orang; Hari 6: 270 orang.\nPilihlah semua jawaban yang benar.",
+    "soal": "Data pengunjung pameran buku selama 6 hari disajikan dalam grafik garis berikut.\n[DIAGRAM]\nPilihlah semua jawaban yang benar.",
     "pernyataan": [
       "Kenaikan pengunjung tertinggi terjadi pada hari ke-2 ke hari ke-3.",
       "Penurunan pengunjung hanya terjadi pada hari ke-4.",
@@ -393,7 +393,7 @@ const latihanDasar: LatihanSoal[] = [
   },
   {
     "no": 24,
-    "soal": "Perhatikan grafik nilai tukar mata uang Dolar AS (USD) terhadap Rupiah (IDR) dalam satu minggu berikut:\nSenin: Rp16.000; Selasa: Rp16.400; Rabu: Rp16.100; Kamis: Rp16.300; Jumat: Rp16.200; Sabtu: Rp16.600; Minggu: Rp16.500.\nJika Danang ingin menukarkan uang Rupiah sebanyak Rp825.000,00 ke Dolar AS pada hari Minggu, berapa banyak uang Dolar AS yang akan diperolehnya?",
+    "soal": "Perhatikan grafik nilai tukar mata uang Dolar AS (USD) terhadap Rupiah (IDR) dalam satu minggu berikut.\n[DIAGRAM]\nJika Danang ingin menukarkan uang Rupiah sebanyak Rp825.000,00 ke Dolar AS pada hari Minggu, berapa banyak uang Dolar AS yang akan diperolehnya?",
     "options": [
       "A. 40 dolar",
       "B. 45 dolar",
@@ -407,7 +407,7 @@ const latihanDasar: LatihanSoal[] = [
   {
     "no": 25,
     "type": "pgk",
-    "soal": "Suatu sekolah mendata moda transportasi siswa. Data disajikan dalam diagram lingkaran derajat berikut:\nJalan kaki: $60^\\circ$; Sepeda: $60^\\circ$; Angkutan umum: $60^\\circ$; Ojek online: $72^\\circ$; Sepeda motor: $48^\\circ$; Lainnya: $60^\\circ$.\nJika jumlah siswa yang menggunakan ojek online adalah 30 orang, pilihlah semua jawaban yang benar.",
+    "soal": "Suatu sekolah mendata moda transportasi siswa. Data disajikan dalam diagram lingkaran derajat berikut.\n[DIAGRAM]\nJika jumlah siswa yang menggunakan ojek online adalah 30 orang, pilihlah semua jawaban yang benar.",
     "pernyataan": [
       "Persentase siswa yang berjalan kaki adalah $16{,}67\\%$.",
       "Banyak siswa yang menggunakan sepeda motor adalah 20 orang.",
@@ -424,7 +424,7 @@ const latihanDasar: LatihanSoal[] = [
   },
   {
     "no": 26,
-    "soal": "Hasil pengukuran tinggi tanaman disajikan pada tabel frekuensi berikut:\nTinggi: 10, 11, 12, 13, 14, 15\nFrekuensi: 3, 6, 10, 11, 8, 2\nJumlah kuartil atas dan kuartil bawah dari data tersebut adalah ....",
+    "soal": "Hasil pengukuran tinggi tanaman disajikan pada tabel frekuensi berikut.\n[DIAGRAM]\nJumlah kuartil atas dan kuartil bawah dari data tersebut adalah ....",
     "options": [
       "A. 23",
       "B. 25",
@@ -438,7 +438,7 @@ const latihanDasar: LatihanSoal[] = [
   {
     "no": 27,
     "type": "pgkbs",
-    "soal": "Tabel nilai ujian seleksi pegawai:\nSkor: 600, 700, 750, 800, 900, 1000\nFrekuensi: 3, 6, 7, 8, 4, 2\nTentukan status Benar / Salah untuk setiap pernyataan.",
+    "soal": "Tabel nilai ujian seleksi pegawai disajikan dalam tabel frekuensi berikut.\n[DIAGRAM]\nTentukan status Benar / Salah untuk setiap pernyataan.",
     "pernyataan": [
       "Kuartil atas nilai tes pegawai adalah 800.",
       "Simpangan kuartil nilai tes pegawai adalah 50.",
@@ -460,9 +460,18 @@ const gambarMap = {
   6: renderDasarVisual(60),
   7: renderDasarVisual(5),
   10: "https://res.cloudinary.com/s4ge6not/image/upload/f_auto,q_auto/v1787612146/STATISTIKA_-_LATIHAN_DASAR_-_NO_13_fxctir.png",
+  15: renderDasarVisual(15),
   16: renderDasarVisual(9),
   17: renderDasarVisual(10),
   18: renderDasarVisual(11),
+  19: renderDasarVisual(19),
+  20: renderDasarVisual(20),
+  22: renderDasarVisual(22),
+  23: renderDasarVisual(23),
+  24: renderDasarVisual(24),
+  25: renderDasarVisual(25),
+  26: renderDasarVisual(26),
+  27: renderDasarVisual(27),
 };
 
 const StatistikaPage = () => (

@@ -890,6 +890,14 @@ const TKAPemantapanLayout = ({ title, backPath = "/tka/modul-pemantapan", materi
                                 </div>
                               );
                             }
+                            if (line.trim() === "[DIAGRAM]" && diagram) {
+                              diagramInserted = true;
+                              return (
+                                <div key={lineIdx} className="my-2">
+                                  {diagram}
+                                </div>
+                              );
+                            }
                             return (
                               <Fragment key={lineIdx}>
                                 {lineIdx > 0 && <br />}
