@@ -128,11 +128,13 @@ const BarChart = ({
   data,
   xLabel,
   yLabel,
+  showValues = true,
 }: {
   title: string;
   data: { label: string | number; value: number }[];
   xLabel?: string;
   yLabel?: string;
+  showValues?: boolean;
 }) => {
   const W = 320;
   const H = 220;
@@ -178,7 +180,9 @@ const BarChart = ({
           return (
             <g key={i}>
               <rect x={x} y={y} width={barW} height={h} fill="#22d3ee" opacity="0.85" rx="2" />
-              <text x={x + barW / 2} y={y - 4} textAnchor="middle" fontSize="10" fill="#fbbf24" fontWeight="bold">{d.value}</text>
+              {showValues && (
+                <text x={x + barW / 2} y={y - 4} textAnchor="middle" fontSize="10" fill="#fbbf24" fontWeight="bold">{d.value}</text>
+              )}
               <text x={x + barW / 2} y={H - padB + 14} textAnchor="middle" fontSize="10" fill="#e2e8f0">{d.label}</text>
             </g>
           );
@@ -484,6 +488,7 @@ export const renderDasarVisual = (no: number): React.ReactNode => {
           title="Diagram Batang Nilai Ulangan Matematika 20 Siswa"
           xLabel="Nilai"
           yLabel="Banyak Siswa"
+          showValues={false}
           data={[
             { label: 6, value: 2 },
             { label: 7, value: 4 },

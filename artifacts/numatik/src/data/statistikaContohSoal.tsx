@@ -2,8 +2,8 @@ import type { ReactNode } from "react";
 import type { LatihanSoal } from "@/components/tka/TKAPemantapanLayout";
 
 const svgFrame = (children: ReactNode) => (
-  <div className="my-3 flex justify-center overflow-x-auto rounded-xl border border-emerald-400/20 bg-white/5 p-3">
-    <svg viewBox="0 0 720 330" className="w-full max-w-2xl min-w-[520px]" role="img" aria-label="Visualisasi data soal statistika">
+  <div className="my-3 flex w-full justify-center overflow-hidden rounded-xl border border-emerald-400/20 bg-white/5 p-2 sm:p-3">
+    <svg viewBox="0 0 720 330" className="block h-auto w-full min-w-0 max-w-2xl" role="img" aria-label="Visualisasi data soal statistika">
       {children}
     </svg>
   </div>
@@ -53,15 +53,25 @@ const laporanKeuanganSvg = svgFrame(
 
 const ekstrakurikulerSvg = svgFrame(
   <>
-    <text x="360" y="18" textAnchor="middle" fontSize="14" fontWeight="700" fill="#0f172a">Data Pilihan Ekstrakurikuler 200 Siswa</text>
-    <rect x="90" y="38" width="540" height="235" fill="#ffffff" stroke="#64748b" />
-    <rect x="90" y="38" width="540" height="38" fill="#d1fae5" />
+    <text x="360" y="18" textAnchor="middle" fontSize="14" fontWeight="700" fill="#f8fafc">Data Pilihan Ekstrakurikuler 200 Siswa</text>
+    <rect x="90" y="38" width="540" height="235" fill="#dbeafe" stroke="#2563eb" />
+    {[0, 1, 2, 3, 4].map((row) => (
+      <rect
+        key={row}
+        x="90"
+        y={76 + row * 39}
+        width="540"
+        height="39"
+        fill={row % 2 === 0 ? "#bfdbfe" : "#fef3c7"}
+      />
+    ))}
+    <rect x="90" y="38" width="540" height="38" fill="#14b8a6" />
     <line x1="135" y1="38" x2="135" y2="273" stroke="#64748b" />
     <line x1="465" y1="38" x2="465" y2="273" stroke="#64748b" />
     {[76, 115, 154, 193, 232].map((y) => <line key={y} x1="90" y1={y} x2="630" y2={y} stroke="#94a3b8" />)}
-    <text x="112" y="62" textAnchor="middle" fontSize="11" fontWeight="700" fill="#0f172a">No</text>
-    <text x="300" y="62" textAnchor="middle" fontSize="11" fontWeight="700" fill="#0f172a">Ekstrakurikuler</text>
-    <text x="547" y="62" textAnchor="middle" fontSize="11" fontWeight="700" fill="#0f172a">Jumlah Siswa</text>
+    <text x="112" y="62" textAnchor="middle" fontSize="11" fontWeight="700" fill="#ffffff">No</text>
+    <text x="300" y="62" textAnchor="middle" fontSize="11" fontWeight="700" fill="#ffffff">Ekstrakurikuler</text>
+    <text x="547" y="62" textAnchor="middle" fontSize="11" fontWeight="700" fill="#ffffff">Jumlah Siswa</text>
     {[
       ["1", "PMR", "40"],
       ["2", "Pramuka", "60"],
@@ -84,19 +94,19 @@ const ekstrakurikulerSvg = svgFrame(
 const pengunjungMuseumSvg = svgFrame(
   <>
     <text x="360" y="18" textAnchor="middle" fontSize="14" fontWeight="700" fill="#f8fafc">Diagram Garis Jumlah Pengunjung Museum</text>
-    <rect x="88" y="40" width="550" height="218" rx="8" fill="rgba(15,23,42,0.78)" stroke="#64748b" />
+    <rect x="112" y="40" width="526" height="218" rx="8" fill="rgba(15,23,42,0.78)" stroke="#64748b" />
     {[0, 400, 800, 1200, 1600].map((value) => {
       const y = 238 - (value / 1600) * 170;
       return (
         <g key={value}>
-          <line x1="110" y1={y} x2="620" y2={y} stroke="#cbd5e1" strokeOpacity="0.35" strokeDasharray="4 4" />
-          <text x="100" y={y + 4} textAnchor="end" fontSize="10" fill="#cbd5e1">{value}</text>
+          <line x1="145" y1={y} x2="620" y2={y} stroke="#cbd5e1" strokeOpacity="0.35" strokeDasharray="4 4" />
+          <text x="136" y={y + 4} textAnchor="end" fontSize="10" fill="#cbd5e1">{value}</text>
         </g>
       );
     })}
-    <line x1="110" y1="68" x2="110" y2="238" stroke="#f1f5f9" strokeWidth="1.5" />
-    <line x1="110" y1="238" x2="620" y2="238" stroke="#f1f5f9" strokeWidth="1.5" />
-    <text x="34" y="153" textAnchor="middle" fontSize="10" fill="#94a3b8" transform="rotate(-90 34 153)">Pengunjung (orang)</text>
+    <line x1="145" y1="68" x2="145" y2="238" stroke="#f1f5f9" strokeWidth="1.5" />
+    <line x1="145" y1="238" x2="620" y2="238" stroke="#f1f5f9" strokeWidth="1.5" />
+    <text x="64" y="153" textAnchor="middle" fontSize="10" fill="#94a3b8" transform="rotate(-90 64 153)">Pengunjung (orang)</text>
     <text x="365" y="286" textAnchor="middle" fontSize="10" fill="#94a3b8">Hari</text>
     {[
       ["Sen", 300],
@@ -107,13 +117,13 @@ const pengunjungMuseumSvg = svgFrame(
       ["Sab", 800],
       ["Min", 1200],
     ].map(([day, visitors], index, data) => {
-      const x = 110 + index * (510 / (data.length - 1));
+      const x = 145 + index * (475 / (data.length - 1));
       const y = 238 - (Number(visitors) / 1600) * 170;
       return (
         <g key={day}>
           {index > 0 && (
             <line
-              x1={110 + (index - 1) * (510 / (data.length - 1))}
+              x1={145 + (index - 1) * (475 / (data.length - 1))}
               y1={238 - (Number(data[index - 1][1]) / 1600) * 170}
               x2={x}
               y2={y}
@@ -148,7 +158,7 @@ const pieSlicePath = (cx: number, cy: number, radius: number, startAngle: number
 
 const minatProfesiSvg = svgFrame(
   <>
-    <text x="360" y="18" textAnchor="middle" fontSize="14" fontWeight="700" fill="#0f172a">Diagram Lingkaran Minat Profesi</text>
+    <text x="360" y="18" textAnchor="middle" fontSize="14" fontWeight="700" fill="#f8fafc">Diagram Lingkaran Minat Profesi</text>
     {(() => {
       const cx = 270;
       const cy = 165;
@@ -158,14 +168,19 @@ const minatProfesiSvg = svgFrame(
         { label: "Teknologi / IT", angle: 60, color: "#10b981", textColor: "#0f172a" },
         { label: "Sains / Olahraga", angle: 90, color: "#8b5cf6", textColor: "#ffffff" },
         { label: "Wirausaha", angle: 36, color: "#38bdf8", textColor: "#0f172a" },
-        { label: "Lainnya", angle: 144, color: "#dbeafe", textColor: "#0f172a" },
+        { label: "Lainnya", angle: 144, color: "#facc15", textColor: "#0f172a" },
       ];
       let startAngle = 0;
       const positionedSectors = sectors.map((sector) => {
         const start = startAngle;
         const end = start + sector.angle;
         startAngle = end;
-        const labelPosition = polarPoint(cx, cy, radius * 0.64, start + sector.angle / 2);
+        const labelPosition = polarPoint(
+          cx,
+          cy,
+          sector.label === "Wirausaha" ? radius * 0.7 : radius * 0.64,
+          start + sector.angle / 2,
+        );
         return { ...sector, start, end, labelPosition };
       });
 
@@ -183,15 +198,20 @@ const minatProfesiSvg = svgFrame(
                 x={sector.labelPosition.x}
                 y={sector.labelPosition.y + 3}
                 textAnchor="middle"
-                fontSize="10"
+                fontSize={sector.label === "Wirausaha" ? "8" : "10"}
                 fontWeight="700"
                 fill={sector.textColor}
               >
-                {sector.label === "Lainnya" ? "Lainnya 144°" : `${sector.label.split(" / ")[0]} ${sector.angle}°`}
+                {sector.label === "Wirausaha" ? (
+                  <>
+                    <tspan x={sector.labelPosition.x} dy="-2">Wirausaha</tspan>
+                    <tspan x={sector.labelPosition.x} dy="10">36°</tspan>
+                  </>
+                ) : sector.label === "Lainnya" ? "Lainnya 144°" : `${sector.label.split(" / ")[0]} ${sector.angle}°`}
               </text>
             </g>
           ))}
-          <g fontSize="12" fill="#0f172a">
+          <g fontSize="12" fill="#f8fafc">
             {positionedSectors.map((sector, index) => (
               <g key={sector.label} transform={`translate(450 ${75 + index * 33})`}>
                 <rect width="13" height="13" fill={sector.color} stroke="#334155" strokeWidth="0.5" />
@@ -238,7 +258,7 @@ export const statistikaContohSoal: LatihanSoal[] = [
   {
     no: 3,
     type: "pgkbs",
-    soal: "Pengelola sebuah museum mencatat jumlah pengunjung harian selama satu minggu. Data yang terkumpul adalah sebagai berikut:\n• Senin: 300 orang\n• Selasa: 250 orang\n• Rabu: 400 orang\n• Kamis: 550 orang\n• Jumat: (Data belum terisi)\n• Sabtu: 800 orang\n• Minggu: 1.200 orang\n[DIAGRAM]\nDiketahui jumlah pengunjung pada hari Kamis menyumbang 11% dari total keseluruhan pengunjung selama seminggu.\nBerdasarkan informasi di atas, tentukan kebenaran dari pernyataan-pernyataan berikut:",
+    soal: "Pengelola sebuah museum mencatat jumlah pengunjung harian selama satu minggu. Data yang terkumpul disajikan dalam diagram berikut:\n[DIAGRAM]\nDiketahui jumlah pengunjung pada hari Kamis menyumbang 11% dari total keseluruhan pengunjung selama seminggu.\nBerdasarkan informasi di atas, tentukan kebenaran dari pernyataan-pernyataan berikut:",
     soalSvg: "pengunjungMuseum",
     pernyataan: [
       "Jumlah pengunjung museum pada hari Jumat adalah 1.500 orang.",
