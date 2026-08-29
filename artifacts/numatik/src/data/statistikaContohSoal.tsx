@@ -17,7 +17,7 @@ const laporanKeuanganSvg = svgFrame(
       return (
         <g key={value}>
           <line x1="90" y1={y} x2="640" y2={y} stroke="#cbd5e1" strokeOpacity="0.7" />
-          <text x="82" y={y + 4} textAnchor="end" fontSize="10" fill="#e2e8f0">{value}</text>
+          <text x="60" y={y + 4} textAnchor="end" fontSize="10" fill="#e2e8f0">{value}</text>
         </g>
       );
     })}
@@ -81,31 +81,134 @@ const ekstrakurikulerSvg = svgFrame(
   </>,
 );
 
+const pengunjungMuseumSvg = svgFrame(
+  <>
+    <text x="360" y="18" textAnchor="middle" fontSize="14" fontWeight="700" fill="#f8fafc">Diagram Garis Jumlah Pengunjung Museum</text>
+    <rect x="88" y="40" width="550" height="218" rx="8" fill="rgba(15,23,42,0.78)" stroke="#64748b" />
+    {[0, 400, 800, 1200, 1600].map((value) => {
+      const y = 238 - (value / 1600) * 170;
+      return (
+        <g key={value}>
+          <line x1="110" y1={y} x2="620" y2={y} stroke="#cbd5e1" strokeOpacity="0.35" strokeDasharray="4 4" />
+          <text x="100" y={y + 4} textAnchor="end" fontSize="10" fill="#cbd5e1">{value}</text>
+        </g>
+      );
+    })}
+    <line x1="110" y1="68" x2="110" y2="238" stroke="#f1f5f9" strokeWidth="1.5" />
+    <line x1="110" y1="238" x2="620" y2="238" stroke="#f1f5f9" strokeWidth="1.5" />
+    <text x="34" y="153" textAnchor="middle" fontSize="10" fill="#94a3b8" transform="rotate(-90 34 153)">Pengunjung (orang)</text>
+    <text x="365" y="286" textAnchor="middle" fontSize="10" fill="#94a3b8">Hari</text>
+    {[
+      ["Sen", 300],
+      ["Sel", 250],
+      ["Rab", 400],
+      ["Kam", 550],
+      ["Jum", 1500],
+      ["Sab", 800],
+      ["Min", 1200],
+    ].map(([day, visitors], index, data) => {
+      const x = 110 + index * (510 / (data.length - 1));
+      const y = 238 - (Number(visitors) / 1600) * 170;
+      return (
+        <g key={day}>
+          {index > 0 && (
+            <line
+              x1={110 + (index - 1) * (510 / (data.length - 1))}
+              y1={238 - (Number(data[index - 1][1]) / 1600) * 170}
+              x2={x}
+              y2={y}
+              stroke="#22d3ee"
+              strokeWidth="3"
+            />
+          )}
+          <circle cx={x} cy={y} r="5" fill="#fbbf24" stroke="#0f172a" strokeWidth="1.5" />
+          <text x={x} y={y - 10} textAnchor="middle" fontSize="10" fontWeight="700" fill="#fde68a">{visitors}</text>
+          <text x={x} y="255" textAnchor="middle" fontSize="10" fontWeight="700" fill="#e2e8f0">{day}</text>
+        </g>
+      );
+    })}
+    <text x="620" y="305" textAnchor="end" fontSize="10" fill="#94a3b8">Jumat = 1.500 orang dari perhitungan soal</text>
+  </>,
+);
+
+const polarPoint = (cx: number, cy: number, radius: number, angle: number) => {
+  const radians = ((angle - 90) * Math.PI) / 180;
+  return {
+    x: cx + radius * Math.cos(radians),
+    y: cy + radius * Math.sin(radians),
+  };
+};
+
+const pieSlicePath = (cx: number, cy: number, radius: number, startAngle: number, endAngle: number) => {
+  const start = polarPoint(cx, cy, radius, startAngle);
+  const end = polarPoint(cx, cy, radius, endAngle);
+  const largeArc = endAngle - startAngle > 180 ? 1 : 0;
+  return `M ${cx} ${cy} L ${start.x.toFixed(2)} ${start.y.toFixed(2)} A ${radius} ${radius} 0 ${largeArc} 1 ${end.x.toFixed(2)} ${end.y.toFixed(2)} Z`;
+};
+
 const minatProfesiSvg = svgFrame(
   <>
     <text x="360" y="18" textAnchor="middle" fontSize="14" fontWeight="700" fill="#0f172a">Diagram Lingkaran Minat Profesi</text>
-    <circle cx="270" cy="165" r="105" fill="#dbeafe" stroke="#334155" strokeWidth="1" />
-    <path d="M270 165 L270 60 A105 105 0 0 1 335.8 83.2 Z" fill="#f97316" />
-    <path d="M270 165 L335.8 83.2 A105 105 0 0 1 367.1 204.9 Z" fill="#10b981" />
-    <path d="M270 165 L367.1 204.9 A105 105 0 0 1 153.9 240.9 Z" fill="#8b5cf6" />
-    <path d="M270 165 L153.9 240.9 A105 105 0 0 1 270 60 Z" fill="#38bdf8" />
-    <text x="270" y="125" textAnchor="middle" fontSize="11" fill="#0f172a">Seni 30°</text>
-    <text x="337" y="125" textAnchor="middle" fontSize="11" fill="#0f172a">IT 60°</text>
-    <text x="285" y="245" textAnchor="middle" fontSize="11" fill="#ffffff">Sains 90°</text>
-    <text x="190" y="150" textAnchor="middle" fontSize="11" fill="#ffffff">Wirausaha 36°</text>
-    <g fontSize="12" fill="#0f172a">
-      <rect x="450" y="75" width="13" height="13" fill="#f97316" /><text x="472" y="86">Seni / Kreatif: 30°</text>
-      <rect x="450" y="108" width="13" height="13" fill="#10b981" /><text x="472" y="119">Teknologi / IT: 60°</text>
-      <rect x="450" y="141" width="13" height="13" fill="#8b5cf6" /><text x="472" y="152">Sains / Olahraga: 90°</text>
-      <rect x="450" y="174" width="13" height="13" fill="#38bdf8" /><text x="472" y="185">Wirausaha: 36°</text>
-      <text x="450" y="220">Lainnya: sisa sektor</text>
-    </g>
+    {(() => {
+      const cx = 270;
+      const cy = 165;
+      const radius = 105;
+      const sectors = [
+        { label: "Seni / Kreatif", angle: 30, color: "#f97316", textColor: "#0f172a" },
+        { label: "Teknologi / IT", angle: 60, color: "#10b981", textColor: "#0f172a" },
+        { label: "Sains / Olahraga", angle: 90, color: "#8b5cf6", textColor: "#ffffff" },
+        { label: "Wirausaha", angle: 36, color: "#38bdf8", textColor: "#0f172a" },
+        { label: "Lainnya", angle: 144, color: "#dbeafe", textColor: "#0f172a" },
+      ];
+      let startAngle = 0;
+      const positionedSectors = sectors.map((sector) => {
+        const start = startAngle;
+        const end = start + sector.angle;
+        startAngle = end;
+        const labelPosition = polarPoint(cx, cy, radius * 0.64, start + sector.angle / 2);
+        return { ...sector, start, end, labelPosition };
+      });
+
+      return (
+        <>
+          {positionedSectors.map((sector) => (
+            <g key={sector.label}>
+              <path
+                d={pieSlicePath(cx, cy, radius, sector.start, sector.end)}
+                fill={sector.color}
+                stroke="#334155"
+                strokeWidth="1.2"
+              />
+              <text
+                x={sector.labelPosition.x}
+                y={sector.labelPosition.y + 3}
+                textAnchor="middle"
+                fontSize="10"
+                fontWeight="700"
+                fill={sector.textColor}
+              >
+                {sector.label === "Lainnya" ? "Lainnya 144°" : `${sector.label.split(" / ")[0]} ${sector.angle}°`}
+              </text>
+            </g>
+          ))}
+          <g fontSize="12" fill="#0f172a">
+            {positionedSectors.map((sector, index) => (
+              <g key={sector.label} transform={`translate(450 ${75 + index * 33})`}>
+                <rect width="13" height="13" fill={sector.color} stroke="#334155" strokeWidth="0.5" />
+                <text x="22" y="11">{sector.label}: {sector.angle}°</text>
+              </g>
+            ))}
+          </g>
+        </>
+      );
+    })()}
   </>,
 );
 
 export const statistikaContohSvgMap: Record<string, ReactNode> = {
   laporanKeuangan: laporanKeuanganSvg,
   ekstrakurikuler: ekstrakurikulerSvg,
+  pengunjungMuseum: pengunjungMuseumSvg,
   minatProfesi: minatProfesiSvg,
 };
 
@@ -135,7 +238,8 @@ export const statistikaContohSoal: LatihanSoal[] = [
   {
     no: 3,
     type: "pgkbs",
-    soal: "Pengelola sebuah museum mencatat jumlah pengunjung harian selama satu minggu. Data yang terkumpul adalah sebagai berikut:\n• Senin: 300 orang\n• Selasa: 250 orang\n• Rabu: 400 orang\n• Kamis: 550 orang\n• Jumat: (Data belum terisi)\n• Sabtu: 800 orang\n• Minggu: 1.200 orang\nDiketahui jumlah pengunjung pada hari Kamis menyumbang 11% dari total keseluruhan pengunjung selama seminggu.\nBerdasarkan informasi di atas, tentukan kebenaran dari pernyataan-pernyataan berikut:",
+    soal: "Pengelola sebuah museum mencatat jumlah pengunjung harian selama satu minggu. Data yang terkumpul adalah sebagai berikut:\n• Senin: 300 orang\n• Selasa: 250 orang\n• Rabu: 400 orang\n• Kamis: 550 orang\n• Jumat: (Data belum terisi)\n• Sabtu: 800 orang\n• Minggu: 1.200 orang\n[DIAGRAM]\nDiketahui jumlah pengunjung pada hari Kamis menyumbang 11% dari total keseluruhan pengunjung selama seminggu.\nBerdasarkan informasi di atas, tentukan kebenaran dari pernyataan-pernyataan berikut:",
+    soalSvg: "pengunjungMuseum",
     pernyataan: [
       "Jumlah pengunjung museum pada hari Jumat adalah 1.500 orang.",
       "Penurunan pengunjung dari hari Senin ke Selasa lebih sedikit dibanding kenaikan pengunjung dari hari Jumat ke Sabtu.",

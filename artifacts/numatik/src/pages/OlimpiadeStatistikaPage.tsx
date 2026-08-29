@@ -261,12 +261,14 @@ const LineChart = ({
   xLabel,
   yLabel,
   yFormatter,
+  includeZero = false,
 }: {
   title: string;
   data: { label: string | number; value: number }[];
   xLabel?: string;
   yLabel?: string;
   yFormatter?: (v: number) => string;
+  includeZero?: boolean;
 }) => {
   const W = 340;
   const H = 220;
@@ -278,9 +280,14 @@ const LineChart = ({
   const chartH = H - padT - padB;
   const maxV = Math.max(...data.map(d => d.value));
   const minV = Math.min(...data.map(d => d.value));
-  const range = maxV - minV || 1;
-  const yMin = Math.floor((minV - range * 0.15) / 1000000) * 1000000;
-  const yMax = Math.ceil((maxV + range * 0.15) / 1000000) * 1000000;
+  const range = maxV - minV || Math.max(maxV, 1);
+  const roughTick = range / 5;
+  const magnitude = 10 ** Math.floor(Math.log10(Math.max(roughTick, 1)));
+  const normalizedTick = roughTick / magnitude;
+  const tickFactor = normalizedTick <= 1 ? 1 : normalizedTick <= 2 ? 2 : normalizedTick <= 5 ? 5 : 10;
+  const tickStep = tickFactor * magnitude;
+  const yMin = includeZero && minV >= 0 ? 0 : Math.floor(minV / tickStep) * tickStep;
+  const yMax = Math.max(yMin + tickStep, Math.ceil(maxV / tickStep) * tickStep);
   const yRange = yMax - yMin || 1;
 
   const xStep = data.length > 1 ? chartW / (data.length - 1) : 0;
@@ -290,8 +297,7 @@ const LineChart = ({
     ...d,
   }));
 
-  const yTickCount = 5;
-  const yTicks = Array.from({ length: yTickCount + 1 }, (_, i) => yMin + (i * yRange) / yTickCount);
+  const yTicks = Array.from({ length: Math.round(yRange / tickStep) + 1 }, (_, i) => yMin + i * tickStep);
 
   return (
     <div className="my-3 rounded-xl border border-cyan-400/30 bg-white/5 p-3">
@@ -377,11 +383,12 @@ export const renderDasarVisual = (no: number): React.ReactNode => {
       );
     case 3:
       return (
-        <FrequencyTable
-          title="Tabel Frekuensi Nilai Matematika Siswa"
-          headers={["Nilai", "Banyak Siswa"]}
-          showTotal={false}
-          rows={[
+        <LineChart
+          title="Diagram Garis Frekuensi Nilai Matematika Siswa"
+          xLabel="Nilai Matematika"
+          yLabel="Banyak Siswa"
+          includeZero
+          data={[
             { label: 4, value: 2 },
             { label: 5, value: 4 },
             { label: 6, value: 5 },
@@ -1178,7 +1185,7 @@ Sampel: Sebagian dari populasi yang diambil untuk diteliti. Sampel harus represe
 
 export const latihanDasar = [
   { no: 1, soal: "Diketahui data berikut: 85, 90, 70, 80, 70, 65, 80, 85, 70, 80, 95, 70. Modus dan median data tersebut berturut-turut adalah ...", options: ["A. 65 dan 80", "B. 70 dan 80", "C. 75 dan 70", "D. 80 dan 75"] },
-  { no: 3, soal: "Nilai matematika siswa disajikan dalam tabel berikut:\nMedian dari data di atas adalah ...", options: ["A. 6,5", "B. 7,0", "C. 7,5", "D. 8,0"] },
+  { no: 3, soal: "Nilai matematika siswa disajikan dalam diagram garis berikut:\nMedian dari data di atas adalah ...", options: ["A. 6,5", "B. 7,0", "C. 7,5", "D. 8,0"] },
   { no: 4, soal: "Perhatikan tabel berikut!\nPernyataan yang benar dari tabel di atas adalah ...", options: ["A. Modus dari data 5", "B. Median data 6,5", "C. Rata-rata data 6,6", "D. Jangkauan data 6"] },
   { no: 5, soal: "Diagram batang menunjukan nilai ulangan matematika diperoleh dari 20 anak pada suatu kelas. Tinggi batang untuk nilai 6 = 2, nilai 7 = 4, nilai 8 = 6, nilai 9 = 5, nilai 10 = 3. Rataan (Mean) dari data tersebut adalah ...", options: ["A. 7", "B. 7,5", "C. 8", "D. 8,5"] },
   { no: 6, soal: "Dalam sebuah kelas, nilai rata-rata siswa putra adalah 7,2, sedangkan rata-rata kelompok putri adalah 8,1. Jika nilai rata-rata kelas adalah 7,5, maka perbandingan banyak putra dan siswa putri adalah ...", options: ["A. 2 : 1", "B. 1 : 2", "C. 1 : 3", "D. 2 : 3"] },
