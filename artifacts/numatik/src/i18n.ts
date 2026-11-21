@@ -9,7 +9,7 @@ import { readLocalStorage } from "@/lib/localStorage";
 const STORAGE_KEY = "numatik_language";
 
 const savedLang = readLocalStorage(STORAGE_KEY) || "id";
-const validLangs = ["id", "en", "ja"];
+const validLangs = ["id", "en", "ms-MY", "ja", "zh-CN", "ru"];
 const resolvedLang = validLangs.includes(savedLang) ? savedLang : "id";
 
 i18n
@@ -19,6 +19,9 @@ i18n
       id: { translation: id },
       en: { translation: en },
       ja: { translation: ja },
+      "zh-CN": { translation: {} },
+      "ms-MY": { translation: {} },
+      ru: { translation: {} },
     },
     lng: resolvedLang,
     fallbackLng: "id",

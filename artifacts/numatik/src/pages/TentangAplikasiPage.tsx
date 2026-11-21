@@ -3,15 +3,17 @@ import { Trans, useTranslation } from "react-i18next";
 import { Monitor } from "lucide-react";
 import Starfield from "@/components/Starfield";
 import PageNavigation from "@/components/PageNavigation";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { playPopSound } from "@/hooks/useAudio";
 import { useTheme } from "@/contexts/ThemeContext";
 
 const TentangAplikasiPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const containerRef = useRef<HTMLDivElement>(null);
   const { isDark } = useTheme();
   const { t } = useTranslation();
+  const skipIntroAnimation = location.state?.skipIntroAnimation === true;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -21,7 +23,7 @@ const TentangAplikasiPage = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative min-h-screen flex flex-col items-center gradient-space overflow-hidden">
+    <div ref={containerRef} className={`relative min-h-screen flex flex-col items-center gradient-space overflow-hidden${skipIntroAnimation ? " skip-intro-animation" : ""}`}>
       <Starfield />
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

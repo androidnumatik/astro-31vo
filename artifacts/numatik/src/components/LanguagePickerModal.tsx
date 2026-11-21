@@ -40,6 +40,16 @@ const LANGUAGES: LangDef[] = [
     glow: "rgba(29,78,216,0.35)",
   },
   {
+    id: "ms-MY",
+    flag: "🇲🇾",
+    native: "Bahasa Melayu (Malaysia)",
+    label: "Malay (Malaysia)",
+    sub: "Terjemahan menu menyusul",
+    gradient: "linear-gradient(135deg,#1d4ed8,#dc2626,#facc15)",
+    ring: "ring-blue-400 shadow-[0_0_16px_rgba(29,78,216,0.55)]",
+    glow: "rgba(29,78,216,0.35)",
+  },
+  {
     id: "ja",
     flag: "🇯🇵",
     native: "日本語",
@@ -48,6 +58,26 @@ const LANGUAGES: LangDef[] = [
     gradient: "linear-gradient(135deg,#dc2626,#ffffff,#dc2626)",
     ring: "ring-rose-400 shadow-[0_0_16px_rgba(244,63,94,0.55)]",
     glow: "rgba(244,63,94,0.35)",
+  },
+  {
+    id: "zh-CN",
+    flag: "🇨🇳",
+    native: "简体中文",
+    label: "Mandarin Chinese",
+    sub: "Menu translations will follow",
+    gradient: "linear-gradient(135deg,#dc2626,#facc15)",
+    ring: "ring-red-400 shadow-[0_0_16px_rgba(220,38,38,0.55)]",
+    glow: "rgba(220,38,38,0.35)",
+  },
+  {
+    id: "ru",
+    flag: "🇷🇺",
+    native: "Русский",
+    label: "Russian",
+    sub: "Перевод меню будет добавлен позже",
+    gradient: "linear-gradient(135deg,#ffffff,#2563eb,#dc2626)",
+    ring: "ring-blue-400 shadow-[0_0_16px_rgba(37,99,235,0.55)]",
+    glow: "rgba(37,99,235,0.35)",
   },
 ];
 

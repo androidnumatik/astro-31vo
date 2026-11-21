@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect, ReactNode } from "react
 import i18n from "@/i18n";
 import { readLocalStorage, writeLocalStorage } from "@/lib/localStorage";
 
-export type Language = "id" | "en" | "ja";
+export type Language = "id" | "en" | "ms-MY" | "ja" | "zh-CN" | "ru";
 
 interface LanguageContextType {
   language: Language;
@@ -13,7 +13,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 const STORAGE_KEY = "numatik_language";
-const VALID_LANGS: Language[] = ["id", "en", "ja"];
+const VALID_LANGS: Language[] = ["id", "en", "ms-MY", "ja", "zh-CN", "ru"];
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const urlParam = new URLSearchParams(window.location.search).get("lang") as Language | null;

@@ -279,7 +279,8 @@ const SmaVektorPadaSistemKoordinatKartesiusPage = lazy(() => import("./pages/rua
 const SmaSudutAntaraDuaVektorPage = lazy(() => import("./pages/ruang-untuk-guru/SmaSudutAntaraDuaVektorPage"));
 const SmaProyeksiVektorPage = lazy(() => import("./pages/ruang-untuk-guru/SmaProyeksiVektorPage"));
 const NumatikGamePage = lazy(() => import("./pages/ruang-untuk-guru/NumatikGamePage"));
-const NumatikCityRiderPage = lazy(() => import("./games/numatik-metropolis/NumatikMetropolisPage.tsx"));
+const NumatikMetropolisPage = lazy(() => import("./games/numatik-metropolis/NumatikMetropolisPage.tsx"));
+const NumatikCityRiderPage = lazy(() => import("./pages/ruang-untuk-guru/NumatikCityRiderPage"));
 const NumatikKartPage = lazy(() => import("./pages/ruang-untuk-guru/NumatikKartPage"));
 const NumatikRunnerPage = lazy(() => import("./games/numatik-runner/NumatikRunnerPage"));
 const ObbyMatematikaPage = lazy(() => import("./games/obby-matematika/ObbyPage"));
@@ -1491,7 +1492,7 @@ const AppInner = () => {
             <Route path="/ruang-untuk-guru/sma/tes-kemampuan-akademik" element={<SmaComingSoonPage />} />
             <Route path="/ruang-untuk-guru/exam-browser" element={<ExamBrowserComingSoonPage />} />
             <Route path="/ruang-untuk-guru/numatik-game" element={<NumatikGamePage />} />
-            <Route path="/game/numatik-metropolis" element={<NumatikCityRiderPage />} />
+            <Route path="/game/numatik-metropolis" element={<NumatikMetropolisPage />} />
             <Route path="/ruang-untuk-guru/numatik-game/city-ride" element={<NumatikCityRiderPage />} />
             <Route path="/ruang-untuk-guru/numatik-game/kart" element={<NumatikKartPage />} />
             <Route path="/game/numatik-runner" element={<NumatikRunnerPage />} />

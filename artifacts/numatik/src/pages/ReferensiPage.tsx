@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Starfield from "@/components/Starfield";
 import PageNavigation from "@/components/PageNavigation";
@@ -37,14 +37,16 @@ const internetRefs = [
 
 const ReferensiPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { t } = useTranslation();
+  const skipIntroAnimation = location.state?.skipIntroAnimation === true;
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center gradient-space overflow-hidden">
+    <div className={`relative min-h-screen flex flex-col items-center gradient-space overflow-hidden${skipIntroAnimation ? " skip-intro-animation" : ""}`}>
       <Starfield />
       <PageNavigation prevPath="/menu" />
       <div className="relative z-10 max-w-2xl w-full px-4 py-10">

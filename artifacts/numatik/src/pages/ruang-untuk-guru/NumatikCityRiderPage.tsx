@@ -14,6 +14,8 @@ import {
   X,
 } from "lucide-react";
 import { CITY_TREASURES, mountCityGame, type CityControls, type CityGame, type CityTreasure } from "@/numatik-city-rider/cityRiderGame";
+import type { QuizQuestion } from "@/components/MeteorShootingGame";
+import { useSound } from "@/contexts/SoundContext";
 import type { PointerEvent as ReactPointerEvent } from "react";
 import "./NumatikCityRiderPage.css";
 
@@ -24,6 +26,8 @@ const QUESTIONS = [
   { prompt: "Pak Budi memiliki 36 bibit. Bibit itu dibagi rata ke dalam 4 baris. Berapa bibit tiap baris?", options: ["8 bibit", "9 bibit", "10 bibit", "12 bibit"], answer: 1 },
   { prompt: "Sebuah toko menjual 12 kotak pensil. Setiap kotak berisi 8 pensil. Berapa jumlah pensil?", options: ["86 pensil", "92 pensil", "96 pensil", "108 pensil"], answer: 2 },
 ];
+
+const GAS_SOUND_VOLUME_BOOST = 1.25;
 
 const CITY_MAP = CITY_TREASURES.map(({ position }) => ({
   x: 50 + (position.x / 130) * 44,
@@ -76,12 +80,21 @@ const CityMapGraphic = ({ mapX, mapY, collected }: CityMapGraphicProps) => (
   </svg>
 );
 
-const NumatikCityRiderPage = () => {
+const NumatikCityRiderPage = ({
+  treasureQuestions,
+  backPath = "/ruang-untuk-guru/numatik-game",
+}: {
+  treasureQuestions?: QuizQuestion[];
+  backPath?: string;
+} = {}) => {
   const hostRef = useRef<HTMLDivElement>(null);
   const gameRef = useRef<CityGame | null>(null);
   const answerTimeoutRef = useRef<number | null>(null);
   const analogPointerIdRef = useRef<number | null>(null);
+  const gasAudioRef = useRef<HTMLAudioElement | null>(null);
+  const activeAcceleratorsRef = useRef(new Set<string>());
   const navigate = useNavigate();
+  const { soundOn, volume } = useSound();
   const [gameError, setGameError] = useState<string | null>(null);
   const [started, setStarted] = useState(false);
   const [nearby, setNearby] = useState<CityTreasure | null>(null);
@@ -97,14 +110,106 @@ const NumatikCityRiderPage = () => {
   const [playerPosition, setPlayerPosition] = useState({ x: 8, z: 100 });
   const [speed, setSpeed] = useState(0);
   const [mapExpanded, setMapExpanded] = useState(false);
+  const questions = treasureQuestions?.length
+    ? Array.from({ length: CITY_TREASURES.length }, (_, index) => {
+        const question = treasureQuestions[index % treasureQuestions.length]!;
+        return {
+          prompt: question.question,
+          options: question.options,
+          answer: question.correctIndex,
+        };
+      })
+    : QUESTIONS;
+
+  const playGasSound = useCallback(() => {
+    if (!soundOn || !started || questionId !== null) return;
+    const audio = gasAudioRef.current;
+    if (!audio || !audio.paused) return;
+    audio.currentTime = 0;
+    audio.volume = Math.min(1, (volume / 100) * GAS_SOUND_VOLUME_BOOST);
+    void audio.play().catch((error: unknown) => {
+      console.warn("Unable to play the City Rider gas sound.", error);
+    });
+  }, [questionId, soundOn, started, volume]);
+
+  const stopGasSound = useCallback(() => {
+    const audio = gasAudioRef.current;
+    if (!audio) return;
+    audio.pause();
+    audio.currentTime = 0;
+  }, []);
+
+  const setAccelerator = useCallback((source: string, active: boolean) => {
+    const activeSources = activeAcceleratorsRef.current;
+    if (active) {
+      const wasIdle = activeSources.size === 0;
+      activeSources.add(source);
+      if (wasIdle) playGasSound();
+      return;
+    }
+
+    activeSources.delete(source);
+    if (activeSources.size === 0) stopGasSound();
+  }, [playGasSound, stopGasSound]);
+
+  useEffect(() => {
+    const audio = new Audio("/sounds/city-rider-gas.mp3");
+    audio.preload = "auto";
+    audio.loop = true;
+    gasAudioRef.current = audio;
+    return () => {
+      activeAcceleratorsRef.current.clear();
+      audio.pause();
+      audio.currentTime = 0;
+      gasAudioRef.current = null;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (gasAudioRef.current) {
+      gasAudioRef.current.volume = Math.min(1, (volume / 100) * GAS_SOUND_VOLUME_BOOST);
+    }
+  }, [volume]);
+
+  useEffect(() => {
+    if (soundOn && started && questionId === null) return;
+    activeAcceleratorsRef.current.clear();
+    stopGasSound();
+  }, [questionId, soundOn, started, stopGasSound]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      const key = event.key.toLowerCase();
+      if (key === "w" || key === "arrowup") setAccelerator(`key:${key}`, true);
+    };
+    const onKeyUp = (event: KeyboardEvent) => {
+      const key = event.key.toLowerCase();
+      if (key === "w" || key === "arrowup") setAccelerator(`key:${key}`, false);
+    };
+    const onBlur = () => {
+      activeAcceleratorsRef.current.clear();
+      stopGasSound();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("keyup", onKeyUp);
+    window.addEventListener("blur", onBlur);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("keyup", onKeyUp);
+      window.removeEventListener("blur", onBlur);
+    };
+  }, [setAccelerator, stopGasSound]);
 
   const openQuestion = useCallback((treasure: CityTreasure) => {
     gameRef.current?.setPaused(true);
+    activeAcceleratorsRef.current.clear();
+    stopGasSound();
     setMapExpanded(false);
     setQuestionId(treasure.id);
     setSelectedAnswer(null);
     setAnswerFeedback(null);
-  }, []);
+  }, [stopGasSound]);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -142,7 +247,7 @@ const NumatikCityRiderPage = () => {
   const chooseAnswer = (answerIndex: number) => {
     if (answerFeedback || questionId === null) return;
     setSelectedAnswer(answerIndex);
-    if (answerIndex === QUESTIONS[questionId]?.answer) {
+    if (answerIndex === questions[questionId]?.answer) {
       setAnswerFeedback("correct");
       answerTimeoutRef.current = window.setTimeout(() => {
         gameRef.current?.setCollected(questionId);
@@ -166,6 +271,8 @@ const NumatikCityRiderPage = () => {
   const resetGame = () => {
     if (answerTimeoutRef.current !== null) window.clearTimeout(answerTimeoutRef.current);
     answerTimeoutRef.current = null;
+    activeAcceleratorsRef.current.clear();
+    stopGasSound();
     gameRef.current?.reset();
     setCollected([]);
     setQuestionId(null);
@@ -183,10 +290,20 @@ const NumatikCityRiderPage = () => {
       event.preventDefault();
       event.currentTarget.setPointerCapture(event.pointerId);
       updateControl(key, value);
+      if (key === "accelerate") setAccelerator("touch", true);
     },
-    onPointerUp: () => updateControl(key, 0),
-    onPointerCancel: () => updateControl(key, 0),
-    onLostPointerCapture: () => updateControl(key, 0),
+    onPointerUp: () => {
+      updateControl(key, 0);
+      if (key === "accelerate") setAccelerator("touch", false);
+    },
+    onPointerCancel: () => {
+      updateControl(key, 0);
+      if (key === "accelerate") setAccelerator("touch", false);
+    },
+    onLostPointerCapture: () => {
+      updateControl(key, 0);
+      if (key === "accelerate") setAccelerator("touch", false);
+    },
   });
 
   const updateAnalogSteering = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -217,9 +334,10 @@ const NumatikCityRiderPage = () => {
     updateControl("steer", 0);
   };
 
-  const question = questionId === null ? null : QUESTIONS[questionId];
+  const question = questionId === null ? null : questions[questionId];
   const activeQuestionId = questionId ?? 0;
   const allCollected = collected.length === CITY_TREASURES.length;
+  const analogPosition = -touchControls.steer;
   const mapX = 50 + (playerPosition.x / 130) * 44;
   const mapY = 50 + (playerPosition.z / 130) * 44;
 
@@ -229,7 +347,7 @@ const NumatikCityRiderPage = () => {
       <div className="city-game__vignette" />
 
       <header className="city-game__topbar">
-        <button className="city-game__back" type="button" onClick={() => navigate("/ruang-untuk-guru/numatik-game")}>
+        <button className="city-game__back" type="button" onClick={() => navigate(backPath)}>
           <ArrowLeft size={17} />
           <span>NUMATIK GAME</span>
         </button>
@@ -292,7 +410,7 @@ const NumatikCityRiderPage = () => {
               aria-label="Analog kemudi"
               aria-valuemin={-1}
               aria-valuemax={1}
-              aria-valuenow={Number(touchControls.steer.toFixed(2))}
+              aria-valuenow={Number(analogPosition.toFixed(2))}
               tabIndex={0}
               onPointerDown={startAnalogSteering}
               onPointerMove={moveAnalogSteering}
@@ -303,7 +421,7 @@ const NumatikCityRiderPage = () => {
               <span className="city-game__analog-guide" />
               <span
                 className="city-game__analog-knob"
-                style={{ transform: `translate(calc(-50% + ${touchControls.steer * 30}px), -50%)` }}
+                style={{ transform: `translate(calc(-50% + ${analogPosition * 30}px), -50%)` }}
               />
               <span className="city-game__analog-label">KEMUDI</span>
             </div>

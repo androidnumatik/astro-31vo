@@ -15,7 +15,10 @@ type Picker = "language" | "music" | "theme" | null;
 const LANGUAGES: ReadonlyArray<{ id: Language; name: string }> = [
   { id: "id", name: "Indonesia" },
   { id: "en", name: "English" },
+  { id: "ms-MY", name: "Bahasa Melayu (Malaysia)" },
   { id: "ja", name: "日本語" },
+  { id: "zh-CN", name: "简体中文" },
+  { id: "ru", name: "Русский" },
 ];
 
 const THEMES: readonly Theme[] = ["dark", "sunset", "pastel", "ocean", "light", "forest", "white"];

@@ -17,6 +17,7 @@ import {
   Flag,
   Bike,
 } from "lucide-react";
+import { FaMotorcycle } from "react-icons/fa";
 import Starfield from "@/components/Starfield";
 import PageNavigation from "@/components/PageNavigation";
 import { playPopSound } from "@/hooks/useAudio";
@@ -42,6 +43,13 @@ const games = [
     path: "/game/numatik-metropolis",
     desc: "Jelajahi kota 3D, kendarai beragam kendaraan, dan pecahkan lima tantangan peti harta!",
     icon: <Bike className="w-7 h-7 text-amber-300 shrink-0 group-hover:scale-110 transition-transform" />,
+  },
+  {
+    label: "NUMATIK CITY RIDER 3D",
+    emoji: "🏍️",
+    path: "/ruang-untuk-guru/numatik-game/city-ride",
+    desc: "Jelajahi kota 3D dengan motor, temukan lima peti, dan jawab tantangan matematika!",
+    icon: <FaMotorcycle className="w-7 h-7 text-amber-300 shrink-0 group-hover:scale-110 transition-transform" />,
   },
   {
     label: "NUMATIK KART 3D",
@@ -179,7 +187,7 @@ const NumatikGamePage = () => {
             const isStrike = game.path.endsWith("/numatik-strike");
             const isWorld = game.path.endsWith("/numatik-world");
             const isKart = game.path.endsWith("/numatik-game/kart");
-            const isCity = game.path.endsWith("/numatik-metropolis");
+            const isCity = game.path.endsWith("/numatik-metropolis") || game.path.endsWith("/city-ride");
             const isRunner = game.path.endsWith("/numatik-runner");
             const isObby = game.path.endsWith("/obby-matematika");
             const is3dGame = isStrike || isWorld || isKart || isCity || isRunner || isObby;

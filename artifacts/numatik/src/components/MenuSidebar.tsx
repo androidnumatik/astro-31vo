@@ -7,6 +7,7 @@ import {
   ChevronDown,
   ClipboardCheck,
   Ellipsis,
+  Heart,
   Home,
   Wrench,
 } from "lucide-react";
@@ -33,6 +34,8 @@ const SIDEBAR_GROUPS = [
   group: Exclude<MenuGroup, "featured">;
   icon: LucideIcon;
 }>;
+
+const DONATION_ITEM = MENU_ITEMS.find((item) => item.key === "donate");
 
 const MenuSidebar = ({ activeTab, activePath, onHomeClick, onOpenItem }: MenuSidebarProps) => {
   const location = useLocation();
@@ -108,7 +111,7 @@ const MenuSidebar = ({ activeTab, activePath, onHomeClick, onOpenItem }: MenuSid
               </button>
               {isExpanded && (
                 <div id={submenuId} className="menu-sidebar-submenu">
-                  {MENU_ITEMS.filter((item) => item.group === group).map((item) => {
+                  {MENU_ITEMS.filter((item) => item.group === group && item.key !== "donate").map((item) => {
                     const ItemIcon = item.icon;
                     return (
                       <button
@@ -130,6 +133,17 @@ const MenuSidebar = ({ activeTab, activePath, onHomeClick, onOpenItem }: MenuSid
           );
         })}
       </nav>
+      {DONATION_ITEM && (
+        <button
+          type="button"
+          onClick={() => onOpenItem ? onOpenItem(DONATION_ITEM) : navigate(DONATION_ITEM.path)}
+          aria-label={t("menuItems.donate.label")}
+          className="menu-sidebar-link menu-sidebar-donate menu-focusable"
+        >
+          <Heart aria-hidden="true" className="h-5 w-5 shrink-0" />
+          <span>{t("menu.donate")}</span>
+        </button>
+      )}
     </aside>
   );
 };

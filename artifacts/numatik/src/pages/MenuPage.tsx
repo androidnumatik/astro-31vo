@@ -2,43 +2,49 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
+  ArrowLeft,
   ArrowUpRight,
-  BookOpen,
+  BookMarked,
   CircleHelp,
-  ClipboardList,
   Ellipsis,
   Home,
   Loader2,
   Megaphone,
+  MessageSquare,
+  Rocket,
   Search,
-  Wrench,
   X,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import Starfield, { StarfieldVisibilityContext } from "@/components/Starfield";
 import MenuHeaderControls from "@/components/MenuHeaderControls";
 import MenuSidebar from "@/components/MenuSidebar";
+import ExitDialog from "@/components/ExitDialog";
 import { MENU_ITEMS, MENU_SECTIONS, type MenuGroup, type MenuItemConfig } from "@/data/menuConfig";
 import { MENU_ANNOUNCEMENTS } from "@/data/menuAnnouncements";
 import { playPopSound } from "@/hooks/useAudio";
 import { hasSeenGuide, markGuideSeen } from "@/lib/guideVisit";
+import { useSound } from "@/contexts/SoundContext";
 
 type DeepSearchItem = { path: string; title: string; content: string };
 type MobileTab = "home" | "learn" | "practice" | "tools" | "more";
+type MobileNavigationTab = "home" | "reference" | "about" | "feedback" | "more";
 
 const RECENT_STORAGE_KEY = "numatik-menu-recent";
-const ANNOUNCEMENT_STORAGE_PREFIX = "numatik-menu-announcement-dismissed:";
 
-function readDismissedAnnouncementIds(): string[] {
-  return MENU_ANNOUNCEMENTS.filter(({ id }) => {
-    try {
-      return localStorage.getItem(`${ANNOUNCEMENT_STORAGE_PREFIX}${id}`) === "true";
-    } catch (error) {
-      console.warn("Unable to read dismissed menu announcement.", error);
-      return false;
-    }
-  }).map(({ id }) => id);
-}
+const normalizeBrandName = (text: string) => text.replace(/NUMATIK/gi, "Numatik");
+
+const formatMenuLabel = (label: string) => {
+  if (!/[A-Za-z]/.test(label)) return label;
+  const acronyms = new Set(["AI", "LKPD", "TKA", "RPP", "SD", "SMP", "SMA"]);
+  return label
+    .toLowerCase()
+    .replace(/\b([a-z])/g, (letter) => letter.toUpperCase())
+    .replace(/\b[A-Za-z]+\b/g, (word) => {
+      const upper = word.toUpperCase();
+      return acronyms.has(upper) ? upper : word;
+    });
+};
 
 let deepIndexCache: DeepSearchItem[] | null = null;
 let deepIndexPromise: Promise<DeepSearchItem[]> | null = null;
@@ -85,26 +91,27 @@ function isHomeMenuItem(item: MenuItemConfig): boolean {
 }
 
 const TAB_ITEMS: ReadonlyArray<{
-  id: MobileTab;
+  id: MobileNavigationTab;
   icon: LucideIcon;
   labelKey: string;
+  ariaLabelKey?: string;
 }> = [
   { id: "home", icon: Home, labelKey: "menu.homeTab" },
-  { id: "learn", icon: BookOpen, labelKey: "menu.learnTab" },
-  { id: "practice", icon: ClipboardList, labelKey: "menu.practiceTab" },
-  { id: "tools", icon: Wrench, labelKey: "menu.toolsTab" },
+  { id: "reference", icon: BookMarked, labelKey: "menu.mobileReferenceTab", ariaLabelKey: "menuItems.reference.label" },
+  { id: "about", icon: Rocket, labelKey: "menu.mobileAboutTab", ariaLabelKey: "menuItems.about.label" },
+  { id: "feedback", icon: MessageSquare, labelKey: "menu.mobileFeedbackTab", ariaLabelKey: "menuItems.kritikSaran.label" },
   { id: "more", icon: Ellipsis, labelKey: "menu.moreTab" },
 ];
 
 const MenuPage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { soundOn } = useSound();
   const [searchQuery, setSearchQuery] = useState("");
   const [deepIndex, setDeepIndex] = useState<DeepSearchItem[] | null>(deepIndexCache);
   const [deepIndexLoading, setDeepIndexLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<MobileTab>("home");
   const [recentPaths, setRecentPaths] = useState(readRecentPaths);
-  const [dismissedAnnouncementIds, setDismissedAnnouncementIds] = useState(readDismissedAnnouncementIds);
   const [guideSeen, setGuideSeen] = useState(hasSeenGuide);
   const [isPageVisible, setIsPageVisible] = useState(() => !document.hidden);
 
@@ -171,7 +178,7 @@ const MenuPage = () => {
     .map(findMenuItem)
     .filter((item): item is MenuItemConfig => item !== undefined);
 
-  const handleOpenPath = (path: string) => {
+  const handleOpenPath = (path: string, routeState?: { skipIntroAnimation?: boolean }) => {
     if (MENU_ITEMS.some((item) => item.path === path)) {
       const updatedPaths = [path, ...recentPaths.filter((recentPath) => recentPath !== path)].slice(0, 3);
       setRecentPaths(updatedPaths);
@@ -181,8 +188,17 @@ const MenuPage = () => {
         console.warn("Unable to save recent menu items.", error);
       }
     }
+    if (soundOn) {
+      playPopSound();
+      if ("vibrate" in navigator) navigator.vibrate(10);
+    }
+    navigate(path, routeState ? { state: routeState } : undefined);
+  };
+
+  const handleTapFeedback = () => {
+    if (!soundOn) return;
     playPopSound();
-    navigate(path);
+    if ("vibrate" in navigator) navigator.vibrate(10);
   };
 
   const handleOpenItem = (item: MenuItemConfig) => handleOpenPath(item.path);
@@ -191,20 +207,6 @@ const MenuPage = () => {
     markGuideSeen();
     setGuideSeen(true);
     handleOpenPath("/petunjuk");
-  };
-
-  const handleDismissGuideAnnouncement = () => {
-    markGuideSeen();
-    setGuideSeen(true);
-  };
-
-  const handleDismissAnnouncement = (id: string) => {
-    setDismissedAnnouncementIds((current) => current.includes(id) ? current : [...current, id]);
-    try {
-      localStorage.setItem(`${ANNOUNCEMENT_STORAGE_PREFIX}${id}`, "true");
-    } catch (error) {
-      console.warn("Unable to save dismissed menu announcement.", error);
-    }
   };
 
   const renderFirstVisitAnnouncement = () => (
@@ -218,37 +220,19 @@ const MenuPage = () => {
       >
         {t("menu.viewGuide")}
       </button>
-      <button
-        type="button"
-        aria-label={t("menu.closeMore")}
-        title={t("menu.dismissAnnouncement")}
-        onClick={handleDismissGuideAnnouncement}
-        className="menu-first-visit-dismiss menu-focusable"
-      >
-        <X aria-hidden="true" className="h-4 w-4" />
-      </button>
     </aside>
   );
 
   const renderDesktopAnnouncement = () => {
     if (!guideSeen) return renderFirstVisitAnnouncement();
 
-    const announcement = MENU_ANNOUNCEMENTS.find(({ id }) => !dismissedAnnouncementIds.includes(id));
+    const announcement = MENU_ANNOUNCEMENTS[0];
     if (!announcement) return null;
 
     return (
       <aside className="menu-announcement" role="status">
         <Megaphone aria-hidden="true" className="h-4 w-4 shrink-0" />
         <p>{t(announcement.messageKey)}</p>
-        <button
-          type="button"
-          aria-label={t("menu.closeMore")}
-          title={t("menu.closeMore")}
-          onClick={() => handleDismissAnnouncement(announcement.id)}
-          className="menu-announcement-dismiss menu-focusable"
-        >
-          <X aria-hidden="true" className="h-4 w-4" />
-        </button>
       </aside>
     );
   };
@@ -259,7 +243,20 @@ const MenuPage = () => {
     document.getElementById("menu-desktop-content")?.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleMobileTabClick = (tab: MobileTab) => {
+  const handleMobileTabClick = (tab: MobileNavigationTab) => {
+    if (tab === "reference") {
+      handleOpenPath("/referensi", { skipIntroAnimation: true });
+      return;
+    }
+    if (tab === "about") {
+      handleOpenPath("/tentang-aplikasi", { skipIntroAnimation: true });
+      return;
+    }
+    if (tab === "feedback") {
+      handleOpenPath("/kritik-saran", { skipIntroAnimation: true });
+      return;
+    }
+    handleTapFeedback();
     if (tab === "home") {
       handleHomeClick();
       return;
@@ -271,7 +268,7 @@ const MenuPage = () => {
     }
 
     setSearchQuery("");
-    setActiveTab(tab);
+    setActiveTab("more");
   };
 
   const renderRecentItems = () => recentItems.length > 0 && (
@@ -283,10 +280,10 @@ const MenuPage = () => {
           type="button"
           onClick={() => handleOpenItem(item)}
           className="menu-recent-chip menu-focusable"
-          aria-label={t(`menuItems.${item.key}.label`)}
-          title={t(`menuItems.${item.key}.label`)}
+          aria-label={normalizeBrandName(t(`menuItems.${item.key}.label`))}
+          title={normalizeBrandName(t(`menuItems.${item.key}.label`))}
         >
-          {t(`menu.${item.key}`)}
+          {formatMenuLabel(t(`menu.${item.key}`))}
         </button>
       ))}
     </div>
@@ -299,13 +296,15 @@ const MenuPage = () => {
         key={item.path}
         type="button"
         onClick={() => handleOpenItem(item)}
-        aria-label={t(`menuItems.${item.key}.label`)}
+        aria-label={normalizeBrandName(t(`menuItems.${item.key}.label`))}
         className="menu-card menu-focusable menu-compact-card"
       >
         <span className="menu-compact-icon-box">
           <Icon aria-hidden="true" className="h-11 w-11" />
         </span>
-        <span className="menu-compact-title">{t(`menu.${item.key}`)}</span>
+        <span className="menu-compact-title" data-menu-key={item.key}>
+          {formatMenuLabel(t(`menu.${item.key}`))}
+        </span>
       </button>
     );
   };
@@ -318,14 +317,16 @@ const MenuPage = () => {
         key={item.path}
         type="button"
         onClick={() => handleOpenItem(item)}
-        aria-label={t(`menuItems.${item.key}.label`)}
+        aria-label={normalizeBrandName(t(`menuItems.${item.key}.label`))}
         className={`menu-card menu-focusable menu-expanded-card${desktop ? " menu-expanded-card-desktop" : ""}${feedbackCardClass}`}
       >
-        <Icon aria-hidden="true" className="menu-card-icon h-7 w-7 shrink-0" />
+        <span className="menu-card-icon-box">
+          <Icon aria-hidden="true" className="menu-card-icon" />
+        </span>
         <span className="menu-expanded-copy">
-          <span className="menu-card-title menu-expanded-title">{t(`menuItems.${item.key}.label`)}</span>
-          <span className="menu-card-description menu-expanded-description" title={desktop ? t(`menuItems.${item.key}.desc`) : undefined}>
-            {t(`menuItems.${item.key}.desc`)}
+          <span className="menu-card-title menu-expanded-title">{formatMenuLabel(t(`menuItems.${item.key}.label`))}</span>
+          <span className="menu-card-description menu-expanded-description" title={desktop ? normalizeBrandName(t(`menuItems.${item.key}.desc`)) : undefined}>
+            {normalizeBrandName(t(`menuItems.${item.key}.desc`))}
           </span>
         </span>
       </button>
@@ -339,20 +340,19 @@ const MenuPage = () => {
         key={item.path}
         type="button"
         onClick={() => handleOpenItem(item)}
-        aria-label={t(`menuItems.${item.key}.label`)}
+        aria-label={normalizeBrandName(t(`menuItems.${item.key}.label`))}
         className={`menu-card menu-focusable menu-featured-card${desktop ? " menu-featured-card-desktop" : ""}`}
       >
+        <Icon aria-hidden="true" className="menu-featured-watermark" />
         <span className="menu-featured-icon-box">
           <Icon aria-hidden="true" />
         </span>
         <span className="menu-featured-title">
-          {desktop ? t(`menuItems.${item.key}.label`) : t(`menu.${item.key}`)}
+          {formatMenuLabel(desktop ? t(`menuItems.${item.key}.label`) : t(`menu.${item.key}`))}
         </span>
-        {desktop && (
-          <span className="menu-card-description menu-featured-description">
-            {t(`menuItems.${item.key}.desc`)}
-          </span>
-        )}
+        <span className="menu-card-description menu-featured-description">
+          {normalizeBrandName(t(`menuItems.${item.key}.desc`))}
+        </span>
       </button>
     );
   };
@@ -381,7 +381,7 @@ const MenuPage = () => {
       onClick={() => handleOpenPath("/donasi")}
       className="menu-donate-banner menu-focusable"
     >
-      <span>{t("menu.donateBanner")}</span>
+      <span>{normalizeBrandName(t("menu.donateBanner"))}</span>
       <ArrowUpRight aria-hidden="true" className="h-5 w-5 shrink-0" />
     </button>
   );
@@ -409,8 +409,8 @@ const MenuPage = () => {
                 className="menu-deep-result menu-focusable"
               >
                 <span className="menu-deep-result-copy">
-                  <span className="menu-card-title menu-deep-result-title">{result.title}</span>
-                  <span className="menu-card-description menu-deep-result-snippet">{result.snippet}</span>
+                  <span className="menu-card-title menu-deep-result-title">{normalizeBrandName(result.title)}</span>
+                  <span className="menu-card-description menu-deep-result-snippet">{normalizeBrandName(result.snippet)}</span>
                 </span>
                 <span className="menu-muted shrink-0 text-xs">{t("menu.open")}</span>
               </button>
@@ -477,7 +477,12 @@ const MenuPage = () => {
         </button>
         <div className="menu-more-sheet-grid">
           {MENU_ITEMS
-            .filter((item) => item.group === "more" && item.key !== "guide" && item.key !== "donate")
+            .filter((item) => item.group === "more"
+              && item.key !== "guide"
+              && item.key !== "donate"
+              && item.key !== "reference"
+              && item.key !== "about"
+              && item.key !== "kritikSaran")
             .map((item) => renderExpandedCard(item))}
         </div>
         {renderInfoBanner()}
@@ -531,7 +536,6 @@ const MenuPage = () => {
               : <div key={`${group}-empty-${row}`} aria-hidden="true" />;
           }))}
         </div>
-        {renderInfoBanner()}
       </>
     );
   };
@@ -554,9 +558,20 @@ const MenuPage = () => {
                 NUMATIK
               </button>
             </h1>
-            <p className="menu-muted">{t("menu.subtitle")}</p>
+            <button
+              type="button"
+              onClick={() => handleOpenPath("/")}
+              aria-label={t("nav.backToHome")}
+              className="menu-mobile-home-return menu-focusable"
+            >
+              <ArrowLeft aria-hidden="true" className="h-3.5 w-3.5" />
+              <span>{t("nav.backToHome")}</span>
+            </button>
           </div>
-          <MenuHeaderControls />
+          <div className="menu-mobile-header-actions">
+            <MenuHeaderControls />
+            <ExitDialog className="menu-control-button menu-mobile-exit-button" />
+          </div>
         </header>
 
         <main className="menu-mobile-main">
@@ -584,7 +599,7 @@ const MenuPage = () => {
             )}
           </div>
 
-          {guideSeen ? renderRecentItems() : renderFirstVisitAnnouncement()}
+          {guideSeen && renderRecentItems()}
 
           <div className={`menu-mobile-content${normalizedQuery ? " menu-mobile-search-content" : ""}`}>
             {normalizedQuery
@@ -594,12 +609,13 @@ const MenuPage = () => {
         </main>
 
         <nav className="menu-mobile-tabs" aria-label={t("menu.homeTab")}>
-          {TAB_ITEMS.map(({ id, icon: Icon, labelKey }) => (
+          {TAB_ITEMS.map(({ id, icon: Icon, labelKey, ariaLabelKey }) => (
             <button
               key={id}
               type="button"
+              data-tab={id}
               aria-current={activeTab === id ? "page" : undefined}
-              aria-label={t(labelKey)}
+              aria-label={t(ariaLabelKey ?? labelKey)}
               onClick={() => handleMobileTabClick(id)}
               className={`menu-mobile-tab menu-focusable${activeTab === id ? " is-active" : ""}`}
             >

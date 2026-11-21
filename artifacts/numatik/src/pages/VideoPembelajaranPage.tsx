@@ -237,11 +237,10 @@ const VideoPembelajaranPage = () => {
 
   const handleShare = () => {
     playPopSound();
-    navigator.clipboard?.writeText(
-      currentVideo.id
-        ? `https://www.youtube.com/watch?v=${currentVideo.id}&list=${currentVideo.playlistId}`
-        : `https://www.youtube.com/playlist?list=${currentVideo.playlistId}`
-    );
+    const url = currentVideo.id
+      ? `https://www.youtube.com/watch?v=${currentVideo.id}`
+      : `https://www.youtube.com/playlist?list=${currentVideo.playlistId}`;
+    navigator.clipboard?.writeText(url);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -334,10 +333,11 @@ const VideoPembelajaranPage = () => {
                     className="absolute inset-0 w-full h-full"
                     src={
                       currentVideo.id
-                        ? `https://www.youtube.com/embed/${currentVideo.id}?list=${currentVideo.playlistId}&rel=0&modestbranding=1&color=white&iv_load_policy=3`
-                        : `https://www.youtube.com/embed/videoseries?list=${currentVideo.playlistId}&rel=0&modestbranding=1&color=white&iv_load_policy=3`
+                        ? `https://www.youtube-nocookie.com/embed/${currentVideo.id}?playsinline=1&rel=0&modestbranding=1&color=white&iv_load_policy=3`
+                        : `https://www.youtube-nocookie.com/embed/videoseries?list=${currentVideo.playlistId}&playsinline=1&rel=0&modestbranding=1&color=white&iv_load_policy=3`
                     }
                     title={currentVideo.title}
+                    referrerPolicy="strict-origin-when-cross-origin"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                     allowFullScreen
                   />

@@ -130,11 +130,32 @@ const LANG_OPTIONS: LangOption[] = [
     ring: "ring-blue-400 shadow-[0_0_14px_rgba(29,78,216,0.45)]",
   },
   {
+    id: "ms-MY",
+    flag: "🇲🇾",
+    native: "Bahasa Melayu (Malaysia)",
+    sub: "Terjemahan menu menyusul",
+    ring: "ring-blue-400 shadow-[0_0_14px_rgba(29,78,216,0.45)]",
+  },
+  {
     id: "ja",
     flag: "🇯🇵",
     native: "日本語",
     sub: "にほんご",
     ring: "ring-rose-400 shadow-[0_0_14px_rgba(244,63,94,0.45)]",
+  },
+  {
+    id: "zh-CN",
+    flag: "🇨🇳",
+    native: "简体中文",
+    sub: "Menu translations will follow",
+    ring: "ring-red-400 shadow-[0_0_14px_rgba(220,38,38,0.45)]",
+  },
+  {
+    id: "ru",
+    flag: "🇷🇺",
+    native: "Русский",
+    sub: "Перевод меню будет добавлен позже",
+    ring: "ring-blue-400 shadow-[0_0_14px_rgba(37,99,235,0.45)]",
   },
 ];
 

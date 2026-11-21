@@ -12,6 +12,7 @@ import ZumaMathPage from "@/pages/numatik-gamez/umum/ZumaMathPage";
 import PacmanMathPage from "@/pages/numatik-gamez/umum/PacmanMathPage";
 import NumatikStrikePage from "@/pages/numatik-gamez/umum/GamePage";
 import NumatikWorldPage from "@/pages/numatik-gamez/umum/NumatikWorldPage";
+import NumatikCityRiderPage from "@/pages/ruang-untuk-guru/NumatikCityRiderPage";
 import { getSubmaterial } from "@/data/mga-k7/registry";
 import type { GuruQuestion } from "@/hooks/useGuruQuiz";
 import { useTranslation } from "react-i18next";
@@ -74,6 +75,8 @@ const SubmaterialGameDispatcher = () => {
       return <NumatikStrikePage treasureQuestions={q.meteor} backPath={backPath} />;
     case "numatik-world":
       return <NumatikWorldPage treasureQuestions={q.meteor} backPath={backPath} />;
+    case "city-rider":
+      return <NumatikCityRiderPage treasureQuestions={q.meteor} backPath={backPath} />;
     case "pesawat-tembak-meteor":
       return (
         <MeteorShootingGame

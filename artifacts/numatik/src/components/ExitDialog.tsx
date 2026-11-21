@@ -35,6 +35,7 @@ const ExitDialog = ({ className = "" }: ExitDialogProps) => {
     <>
       <button
         id="btn-exit"
+        aria-label="Keluar"
         onClick={handleExit}
         className={`w-10 h-10 rounded-full bg-card/80 backdrop-blur border border-border 
           flex items-center justify-center text-destructive hover:border-destructive/60 

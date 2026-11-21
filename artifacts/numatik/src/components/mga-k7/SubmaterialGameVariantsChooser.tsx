@@ -19,13 +19,13 @@ interface GameVariant {
 
 const VARIANTS: GameVariant[] = [
   {
-    name: "NUMATIK STRIKE",
-    emoji: "🎖️",
-    description: "Taklukkan misi tempur dengan 5 soal mudah dari sub-materi ini.",
-    variantSlug: "numatik-strike",
+    name: "NUMATIK CITY RIDER 3D",
+    emoji: "🏍️",
+    description: "Jelajahi kota dengan motor dan buka 5 peti berisi soal dari sub-materi ini.",
+    variantSlug: "city-rider",
     from: "#f59e0b",
     to: "#ef4444",
-    glow: "rgba(245,158,11,0.8)",
+    glow: "rgba(245,158,11,0.7)",
   },
   {
     name: "NUMATIK WORLD",
@@ -35,6 +35,15 @@ const VARIANTS: GameVariant[] = [
     from: "#22d3ee",
     to: "#22c55e",
     glow: "rgba(34,211,238,0.8)",
+  },
+  {
+    name: "NUMATIK STRIKE",
+    emoji: "🎖️",
+    description: "Taklukkan misi tempur dengan 5 soal mudah dari sub-materi ini.",
+    variantSlug: "numatik-strike",
+    from: "#f59e0b",
+    to: "#ef4444",
+    glow: "rgba(245,158,11,0.8)",
   },
   {
     name: "Pesawat Tembak Meteor",
@@ -193,7 +202,13 @@ const SubmaterialGameVariantsChooser = () => {
             const path = `/numatik-gamez/${entry.parentSlug}/${entry.slug}/${v.variantSlug}`;
             const isStrike = v.variantSlug === "numatik-strike";
             const isWorld = v.variantSlug === "numatik-world";
-            const is3dGame = isStrike || isWorld;
+            const isCityRider = v.variantSlug === "city-rider";
+            const is3dGame = isStrike || isWorld || isCityRider;
+            const depthShadowColor = isStrike
+              ? "rgba(127,29,29,0.85)"
+              : isCityRider
+                ? "rgba(88,28,135,0.85)"
+                : "rgba(6,95,70,0.85)";
             return (
               <button
                 key={v.name}
@@ -201,23 +216,24 @@ const SubmaterialGameVariantsChooser = () => {
                 className={`group relative flex items-stretch overflow-hidden rounded-2xl text-left
                   transition-all duration-300 animate-slide-up cursor-pointer hover:scale-[1.015]
                   ${isStrike ? "border-2 border-amber-300/80 ring-1 ring-red-400/50" : ""}
-                  ${isWorld ? "border-2 border-cyan-300/80 ring-1 ring-emerald-300/50" : ""}`}
+                  ${isWorld ? "border-2 border-cyan-300/80 ring-1 ring-emerald-300/50" : ""}
+                  ${isCityRider ? "border-2 border-fuchsia-300/80 ring-1 ring-violet-400/50" : ""}`}
                 style={{
                   animationDelay: `${i * 0.05}s`,
                   boxShadow: is3dGame
-                    ? `0 5px 0 ${isStrike ? "rgba(127,29,29,0.85)" : "rgba(6,95,70,0.85)"}, 0 8px 26px ${v.glow}`
+                    ? `0 5px 0 ${depthShadowColor}, 0 8px 26px ${v.glow}`
                     : `0 2px 20px rgba(0,0,0,0.4)`,
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLButtonElement).style.boxShadow =
                     is3dGame
-                      ? `0 6px 0 ${isStrike ? "rgba(127,29,29,0.85)" : "rgba(6,95,70,0.85)"}, 0 12px 34px ${v.glow}`
+                      ? `0 6px 0 ${depthShadowColor}, 0 12px 34px ${v.glow}`
                       : `0 4px 30px ${v.glow}, 0 2px 10px rgba(0,0,0,0.5)`;
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLButtonElement).style.boxShadow =
                     is3dGame
-                      ? `0 5px 0 ${isStrike ? "rgba(127,29,29,0.85)" : "rgba(6,95,70,0.85)"}, 0 8px 26px ${v.glow}`
+                      ? `0 5px 0 ${depthShadowColor}, 0 8px 26px ${v.glow}`
                       : `0 2px 20px rgba(0,0,0,0.4)`;
                 }}
               >
@@ -283,11 +299,13 @@ const SubmaterialGameVariantsChooser = () => {
                         className={`inline-flex items-center gap-1 rounded-md border px-2 py-1 mb-1.5 font-display text-[10px] font-black tracking-[0.12em] text-white shadow-[0_3px_0_rgba(0,0,0,0.55),0_0_14px_rgba(255,255,255,0.2)] ${
                           isStrike
                             ? "border-amber-200/80 bg-gradient-to-b from-amber-300 via-orange-500 to-red-600"
-                            : "border-cyan-100/80 bg-gradient-to-b from-cyan-300 via-teal-500 to-emerald-600"
+                            : isCityRider
+                              ? "border-fuchsia-100/80 bg-gradient-to-b from-fuchsia-300 via-fuchsia-500 to-violet-600"
+                              : "border-cyan-100/80 bg-gradient-to-b from-cyan-300 via-teal-500 to-emerald-600"
                         }`}
                       >
                         <span className="text-sm leading-none">3D</span>
-                        <span>GAME {isStrike ? "· STRIKE" : "· WORLD"}</span>
+                        <span>GAME {isStrike ? "· STRIKE" : isCityRider ? "· RIDER" : "· WORLD"}</span>
                       </div>
                     )}
                     <div className="font-display text-sm font-bold text-white leading-tight mb-1">
