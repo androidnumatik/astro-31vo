@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import i18n from "@/i18n";
 import { readLocalStorage, writeLocalStorage } from "@/lib/localStorage";
+import { normalizeLanguage } from "@/lib/pickLang";
 
 export type Language = "id" | "en" | "ms-MY" | "ja" | "zh-CN" | "ru";
 
@@ -13,16 +14,15 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 const STORAGE_KEY = "numatik_language";
-const VALID_LANGS: Language[] = ["id", "en", "ms-MY", "ja", "zh-CN", "ru"];
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const urlParam = new URLSearchParams(window.location.search).get("lang") as Language | null;
+  const urlLanguage = normalizeLanguage(new URLSearchParams(window.location.search).get("lang"));
   const saved = readLocalStorage(STORAGE_KEY);
-  const initial: Language = VALID_LANGS.includes(urlParam as Language) ? (urlParam as Language) : VALID_LANGS.includes(saved as Language) ? (saved as Language) : "id";
-  const resolved: Language = initial;
+  const savedLanguage = normalizeLanguage(saved);
+  const initial = urlLanguage ?? savedLanguage ?? "id";
 
-  const [language, setLangState] = useState<Language>(resolved);
-  const [hasChosenLanguage, setHasChosenLanguage] = useState(!!saved);
+  const [language, setLangState] = useState<Language>(initial);
+  const [hasChosenLanguage, setHasChosenLanguage] = useState(savedLanguage !== undefined);
 
   useEffect(() => {
     i18n.changeLanguage(language);
