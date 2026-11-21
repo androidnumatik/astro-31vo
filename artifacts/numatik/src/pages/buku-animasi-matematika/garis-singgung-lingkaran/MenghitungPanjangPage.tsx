@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Starfield from "@/components/Starfield";
@@ -233,7 +234,7 @@ const DuaGarisSinggungSVG = () => (
 const MenghitungPanjangPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const t = translations[language] as Record<TranslationKey, string>;
+  const t = pickLang(translations, language) as Record<TranslationKey, string>;
 
   const [open, setOpen] = useState<string[]>(["intro", "rumus", "contoh1", "contoh2", "contoh3", "rangkuman"]);
 

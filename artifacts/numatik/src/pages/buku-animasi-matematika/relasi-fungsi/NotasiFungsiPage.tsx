@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Starfield from "@/components/Starfield";
@@ -429,7 +430,7 @@ const NotasiFungsiPage = () => {
   const { language } = useLanguage();
   const { theme } = useTheme();
   const isSpaceTheme = theme === "dark";
-  const t = translations[language];
+  const t = pickLang(translations, language);
 
   const [expandedSections, setExpandedSections] = useState<string[]>([
      "intro", "notasi", "operasi", "contoh1", "contoh2", "contoh4", "domainRange", "rangkuman",

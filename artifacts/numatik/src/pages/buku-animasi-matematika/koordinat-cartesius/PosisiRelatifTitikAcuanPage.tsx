@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Starfield from "@/components/Starfield";
@@ -326,7 +327,7 @@ const PosisiRelatifTitikAcuanPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const { isDark } = useTheme();
-  const t = translations[language];
+  const t = pickLang(translations, language);
   const [expandedSections, setExpandedSections] = useState<string[]>([
     "intro", "konsep", "contoh1", "contoh2", "contoh3", "rangkuman",
   ]);

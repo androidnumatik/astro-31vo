@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Starfield from "@/components/Starfield";
@@ -451,7 +452,7 @@ const PenjumlahanPenguranganPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const [expandedSections, setExpandedSections] = useState<string[]>(["penjumlahan", "pengurangan", "sifat-penjumlahan", "pecahan-negatif"]);
-  const t = translations[language];
+  const t = pickLang(translations, language);
 
   const toggleSection = (section: string) => {
     playPopSound();

@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -370,7 +371,7 @@ const SudutDiameterSVG = ({ t }: { t: T }) => (
 const SudutPusatKelilingPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const t = translations[language];
+  const t = pickLang(translations, language);
   const { isDark } = useTheme();
 
   const SectionHeader = ({ icon, iconColor, title }: { id?: string; icon: React.ReactNode; iconColor?: string; title: string }) => (

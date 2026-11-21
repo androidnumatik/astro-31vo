@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import { useNavigate } from "react-router-dom";
 import Starfield from "@/components/Starfield";
 import PageNavigation from "@/components/PageNavigation";
@@ -334,7 +335,7 @@ const PerkalianPecahanPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const [activeSection, setActiveSection] = useState<number | null>(null);
-  const t = translations[language];
+  const t = pickLang(translations, language);
 
   return (
     <div className="relative min-h-screen flex flex-col items-center gradient-space overflow-hidden">

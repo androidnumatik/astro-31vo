@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Starfield from "@/components/Starfield";
@@ -335,8 +336,8 @@ const BeltCalculator = ({ labels }: {
 const SabukLilitanPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const t = translations[language] as Record<TranslationKey, string>;
-  const recapRows = translations[language].recap_rows;
+  const t = pickLang(translations, language) as Record<TranslationKey, string>;
+  const recapRows = pickLang(translations, language).recap_rows;
 
   const [open, setOpen] = useState<string[]>(["intro", "rumus", "kalkulator", "contoh1", "contoh2", "contoh3", "rangkuman"]);
 

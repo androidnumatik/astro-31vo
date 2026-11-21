@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BookOpen, Calculator, RefreshCw } from "lucide-react";
@@ -311,7 +312,7 @@ const BentukDesimalPage = () => {
   const { language } = useLanguage();
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState<number | null>(null);
-  const c = translations[language];
+  const c = pickLang(translations, language);
 
   const toggleSection = (index: number) => {
     setActiveSection(activeSection === index ? null : index);

@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -585,7 +586,7 @@ const ExampleCard = ({ ex, idx, showLabel, hideLabel, exLabel }: { ex: Example; 
 const KelilingSegitigaSegiempatPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const t = translations[language];
+  const t = pickLang(translations, language);
 
   const sections: Section[] = [
     {

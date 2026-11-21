@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Starfield from "@/components/Starfield";
@@ -352,7 +353,7 @@ const PenjumlahanPenguranganBentukDesimalPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const { isDark } = useTheme();
-  const t = translations[language];
+  const t = pickLang(translations, language);
   const [activeSection, setActiveSection] = useState<number | null>(null);
 
   const toggleSection = (index: number) => {

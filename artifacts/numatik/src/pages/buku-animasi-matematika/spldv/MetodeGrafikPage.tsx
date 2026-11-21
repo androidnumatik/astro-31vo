@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -236,7 +237,7 @@ const MetodeGrafikPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const { isDark } = useTheme();
-  const t = translations[language];
+  const t = pickLang(translations, language);
 
   const [expandedSections, setExpandedSections] = useState<string[]>([
     "lab", "intro", "langkah", "contoh1", "rangkuman",

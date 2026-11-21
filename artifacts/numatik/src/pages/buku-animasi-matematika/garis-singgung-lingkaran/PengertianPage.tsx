@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Starfield from "@/components/Starfield";
@@ -202,7 +203,7 @@ type TranslationKey = keyof typeof translations.id;
 const PengertianPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const t = translations[language] as Record<TranslationKey, string>;
+  const t = pickLang(translations, language) as Record<TranslationKey, string>;
 
   const [open, setOpen] = useState<string[]>(["intro", "definisi", "sifat", "contoh1", "contoh2", "contoh3", "rangkuman"]);
 

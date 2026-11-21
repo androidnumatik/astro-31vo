@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Starfield from "@/components/Starfield";
@@ -443,7 +444,7 @@ const PolaGeometriPage = ({ audience = "kelas8" }: PolaGeometriPageProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const { isDark } = useTheme();
-  const t = translations[language];
+  const t = pickLang(translations, language);
   const isSmaTeacherPage = audience === "sma";
   const backPath = isSmaTeacherPage
     ? "/ruang-untuk-guru/sma/buku-animasi/barisan-dan-deret"

@@ -1,6 +1,6 @@
 import type { Language } from "@/contexts/LanguageContext";
 
-type LanguageMap<T> = Partial<Record<Language, T>>;
+type LanguageMap = Partial<Record<Language, unknown>>;
 
 const LANGUAGE_FALLBACKS: Record<Language, readonly Language[]> = {
   id: ["id"],
@@ -24,10 +24,15 @@ export const normalizeLanguage = (
   return value && isLanguage(value) ? value : undefined;
 };
 
-export const pickLang = <T>(map: LanguageMap<T>, language: Language): T => {
+export const pickLang = <T extends LanguageMap>(
+  map: T,
+  language: Language,
+): Exclude<T[Language], undefined> => {
   for (const candidate of LANGUAGE_FALLBACKS[language]) {
     const translation = map[candidate];
-    if (translation !== undefined) return translation;
+    if (translation !== undefined) {
+      return translation as Exclude<T[Language], undefined>;
+    }
   }
 
   throw new Error(`No translation available for "${language}" or its fallback languages.`);

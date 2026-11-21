@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Starfield from "@/components/Starfield";
@@ -484,7 +485,7 @@ const PolaAritmetikaPage = ({ audience = "kelas8" }: PolaAritmetikaPageProps) =>
   const { language } = useLanguage();
   const { isDark } = useTheme();
   const isSmaTeacherPage = audience === "sma";
-  const baseTranslation = translations[language];
+  const baseTranslation = pickLang(translations, language);
   const t = isSmaTeacherPage
     ? {
         ...baseTranslation,

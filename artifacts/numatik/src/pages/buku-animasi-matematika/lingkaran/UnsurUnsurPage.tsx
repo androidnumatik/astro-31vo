@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -629,7 +630,7 @@ const SlideCarousel = ({ t }: { t: T }) => {
 const UnsurUnsurPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const t = translations[language];
+  const t = pickLang(translations, language);
   const { isDark } = useTheme();
   const [open, setOpen] = useState<string[]>(["contoh1"]);
   const toggle = (id: string) => { playPopSound(); setOpen(prev => prev.includes(id) ? prev.filter(s => s !== id) : [...prev, id]); };

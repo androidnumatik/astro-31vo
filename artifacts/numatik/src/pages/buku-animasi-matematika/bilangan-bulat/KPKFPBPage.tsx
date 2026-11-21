@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Starfield from "@/components/Starfield";
@@ -690,7 +691,7 @@ const KPKFPBPage = () => {
     },
   };
 
-  const c = translations[language];
+  const c = pickLang(translations, language);
 
   return (
     <div className="relative min-h-screen flex flex-col items-center gradient-space overflow-hidden">

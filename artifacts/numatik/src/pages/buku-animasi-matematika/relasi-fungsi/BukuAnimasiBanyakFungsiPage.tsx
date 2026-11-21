@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import Starfield from "@/components/Starfield";
 import PageNavigation from "@/components/PageNavigation";
@@ -316,7 +317,7 @@ const MiniDiagram: React.FC<{
 
 const BukuAnimasiBanyakFungsiPage: React.FC = () => {
   const { language } = useLanguage();
-  const t = translations[language];
+  const t = pickLang(translations, language);
 
   const [mode, setMode] = useState<Mode>("AtoB");
   const [currentMapping, setCurrentMapping] = useState<Mapping>({});

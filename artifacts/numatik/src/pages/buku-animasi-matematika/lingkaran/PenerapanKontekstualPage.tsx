@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -462,7 +463,7 @@ const BanMenggelindingSVG = ({ t }: { t: T }) => {
 const PenerapanKontekstualPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const t = translations[language];
+  const t = pickLang(translations, language);
   const { isDark } = useTheme();
 
   const SH = ({ icon, iconColor, title }: { icon: React.ReactNode; iconColor?: string; title: string }) => (

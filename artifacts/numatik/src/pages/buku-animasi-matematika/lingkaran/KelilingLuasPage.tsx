@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -682,7 +683,7 @@ const KelilingLuasCirclesSVG = ({ t }: { t: T }) => {
 const KelilingLuasPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const t = translations[language];
+  const t = pickLang(translations, language);
   const { isDark } = useTheme();
 
   const SectionHeader = ({ icon, iconColor, title }: { icon: React.ReactNode; iconColor?: string; title: string }) => (

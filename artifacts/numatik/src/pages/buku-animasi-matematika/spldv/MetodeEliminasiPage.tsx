@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -292,7 +293,7 @@ const MetodeEliminasiPage = () => {
   const { language } = useLanguage();
   const { theme } = useTheme();
   const isSpaceTheme = theme === "dark";
-  const t = translations[language];
+  const t = pickLang(translations, language);
 
   const SectionHeader = ({
     icon, iconColor, title,

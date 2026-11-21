@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import { useLanguage } from "@/contexts/LanguageContext";
 import MateriTopicPage from "@/components/MateriTopicPage";
 
@@ -48,7 +49,7 @@ const translations = {
 
 const SPLDVPage = () => {
   const { language } = useLanguage();
-  const t = translations[language];
+  const t = pickLang(translations, language);
   return (
     <MateriTopicPage
       title={t.title}

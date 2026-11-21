@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -240,7 +241,7 @@ const translations = {
 const MetodeSubstitusiPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const t = translations[language];
+  const t = pickLang(translations, language);
 
   const [expandedSections, setExpandedSections] = useState<string[]>([
     "intro", "langkah", "lab", "contoh1", "rangkuman",

@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Starfield from "@/components/Starfield";
@@ -872,7 +873,7 @@ const PerkalianBilanganBulatPage = () => {
     },
   };
 
-  const c = translations[language];
+  const c = pickLang(translations, language);
 
   return (
     <div className="animation-submaterial-route integer-animation-book-route integer-multiplication-book-route relative min-h-screen flex flex-col items-center gradient-space overflow-hidden">

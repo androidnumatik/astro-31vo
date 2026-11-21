@@ -5,6 +5,7 @@ import PageNavigation from "@/components/PageNavigation";
 import { BookOpen, ChevronUp, Lightbulb, Calculator, Target } from "lucide-react";
 import { playPopSound } from "@/hooks/useAudio";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { pickLang } from "@/lib/pickLang";
 import "katex/dist/katex.min.css";
 import { InlineMath, BlockMath } from "react-katex";
 
@@ -146,7 +147,7 @@ const translations = {
 const PembagianAljabarPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const t = translations[language];
+  const t = pickLang(translations, language);
   const [expandedSections, setExpandedSections] = useState<string[]>(["intro", "konsep", "contoh"]);
 
   const toggleSection = (section: string) => {

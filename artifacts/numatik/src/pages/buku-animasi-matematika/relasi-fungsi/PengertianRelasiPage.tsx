@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Starfield from "@/components/Starfield";
@@ -378,7 +379,7 @@ const translations = {
 const PengertianRelasiPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const t = translations[language];
+  const t = pickLang(translations, language);
 
   const [expandedSections, setExpandedSections] = useState<string[]>([
     "intro", "konsep", "data", "penyajian", "contoh3", "rangkuman",

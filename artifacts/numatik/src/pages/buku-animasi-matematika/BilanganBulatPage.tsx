@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import { useLanguage } from "@/contexts/LanguageContext";
 import MateriTopicPage from "@/components/MateriTopicPage";
 
@@ -46,7 +47,7 @@ const BilanganBulatPage = () => {
     },
   };
 
-  const c = translations[language];
+  const c = pickLang(translations, language);
 
   const subtopics = [
     { label: c.subtopics[0], path: "/buku-animasi-matematika/bilangan-bulat/penjumlahan", icon: "➕" },

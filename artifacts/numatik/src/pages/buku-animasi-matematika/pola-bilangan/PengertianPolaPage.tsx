@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Starfield from "@/components/Starfield";
@@ -466,7 +467,7 @@ const PengertianPolaPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const { isDark } = useTheme();
-  const t = translations[language];
+  const t = pickLang(translations, language);
 
   const prose = isDark ? "text-white/80" : "text-gray-700";
   const proseSm = isDark ? "text-white/60" : "text-gray-500";

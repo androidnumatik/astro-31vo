@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -970,7 +971,7 @@ const BusurJuringPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const { isDark } = useTheme();
-  const t = translations[language];
+  const t = pickLang(translations, language);
 
   const SectionHeader = ({ icon, iconColor, title }: {
     id?: string; icon: React.ReactNode; iconColor?: string; title: string;

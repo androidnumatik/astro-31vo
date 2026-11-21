@@ -1,3 +1,4 @@
+import { pickLang } from "@/lib/pickLang";
 import MateriTopicPage from "@/components/MateriTopicPage";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -57,7 +58,7 @@ const translations = {
 
 const BilanganRasionalPage = () => {
   const { language } = useLanguage();
-  const t = translations[language];
+  const t = pickLang(translations, language);
 
   return (
     <MateriTopicPage
